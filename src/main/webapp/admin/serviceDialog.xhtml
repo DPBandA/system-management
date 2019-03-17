@@ -65,13 +65,20 @@ Email: info@dpbennett.com.jm
                     <p:selectBooleanCheckbox style="vertical-align: middle"
                                              id="serviceActive"
                                              value="#{systemManager.selectedService.active}" />    
-                    
+
                     <p:outputLabel value="Internal:" for="serviceInternal" 
                                    style="font-weight: bold;" />               
                     <p:selectBooleanCheckbox style="vertical-align: middle"
                                              id="serviceInternal"
-                                             value="#{systemManager.selectedService.internal}" />      
+                                             value="#{systemManager.selectedService.internal}" />  
                     
+                    <h:outputText value="Name:" style="font-weight: bold;" />
+                    <p:inputText value="#{systemManager.selectedService.name}"    
+                                 id="serviceName"
+                                 style="width:300px" >
+                        <f:validator validatorId="requiredFieldValidator" />
+                    </p:inputText>                     
+
                     <h:outputText value="Accounting code:" style="font-weight: bold;" />
                     <p:autoComplete id="accountingCode"  
                                     var="accountingCode"
@@ -83,17 +90,10 @@ Email: info@dpbennett.com.jm
                                     value="#{systemManager.selectedService.accountingCode}"
                                     title="#{systemManager.selectedService.accountingCode}"
                                     itemValue="#{accountingCode}"
-                                    itemLabel="#{accountingCode.name}"
+                                    itemLabel="#{accountingCode.code} (#{accountingCode.name})"
                                     converter="accountingCodeConverter"
                                     validator="businessEntityValidator"
                                     completeMethod="#{systemManager.completeAccountingCode}" />
-
-                    <h:outputText value="Name:" style="font-weight: bold;" />
-                    <p:inputText value="#{systemManager.selectedService.name}"    
-                                 id="serviceName"
-                                 style="width:300px" >
-                        <f:validator validatorId="requiredFieldValidator" />
-                    </p:inputText> 
 
                     <h:outputText value="Description:" style="width: 50%;font-weight: bold;" />
                     <p:inputTextarea  value="#{systemManager.selectedService.description}"
@@ -108,7 +108,7 @@ Email: info@dpbennett.com.jm
                 </h:panelGrid>
             </p:panel>
 
-           <p:toolbar>
+            <p:toolbar>
                 <p:toolbarGroup align="left">
                     <p:commandButton value="Ok"
                                      actionListener="#{systemManager.saveSelectedService}"
