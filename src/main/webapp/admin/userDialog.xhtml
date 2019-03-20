@@ -271,21 +271,25 @@ Email: info@dpbennett.com.jm
                             </p:selectBooleanCheckbox>
                         </ui:remove>
 
-                        <p:selectBooleanCheckbox id="canAccessCertificationUnit" 
-                                                 itemLabel="Certification"
-                                                 value="#{systemManager.selectedUser.privilege.canAccessCertificationUnit}" >
-                            <p:ajax listener="#{systemManager.updateModuleAccess}"
-                                    global="false"
-                                    process="@this"/>
-                        </p:selectBooleanCheckbox>
+                        <ui:remove>
+                            <p:selectBooleanCheckbox id="canAccessCertificationUnit" 
+                                                     itemLabel="Certification"
+                                                     value="#{systemManager.selectedUser.privilege.canAccessCertificationUnit}" >
+                                <p:ajax listener="#{systemManager.updateModuleAccess}"
+                                        global="false"
+                                        process="@this"/>
+                            </p:selectBooleanCheckbox>
+                        </ui:remove>
 
-                        <p:selectBooleanCheckbox id="canAccessFoodsUnit" 
-                                                 itemLabel="Foods Inspectorate"
-                                                 value="#{systemManager.selectedUser.privilege.canAccessFoodsUnit}" >
-                            <p:ajax listener="#{systemManager.updateModuleAccess}"
-                                    global="false"
-                                    process="@this"/>
-                        </p:selectBooleanCheckbox>
+                        <ui:remove>
+                            <p:selectBooleanCheckbox id="canAccessFoodsUnit" 
+                                                     itemLabel="Foods Inspectorate"
+                                                     value="#{systemManager.selectedUser.privilege.canAccessFoodsUnit}" >
+                                <p:ajax listener="#{systemManager.updateModuleAccess}"
+                                        global="false"
+                                        process="@this"/>
+                            </p:selectBooleanCheckbox>
+                        </ui:remove>
 
                         <p:selectBooleanCheckbox id="canAccessJobManagementUnit" 
                                                  itemLabel="Job Management"
@@ -297,13 +301,15 @@ Email: info@dpbennett.com.jm
 
                         </p:selectBooleanCheckbox>
 
-                        <p:selectBooleanCheckbox id="canAccessLegalMetrologyUnit" 
-                                                 itemLabel="Legal Metrology"
-                                                 value="#{systemManager.selectedUser.privilege.canAccessLegalMetrologyUnit}" >
-                            <p:ajax listener="#{systemManager.updateModuleAccess}"
-                                    global="false"
-                                    process="@this"/>
-                        </p:selectBooleanCheckbox>
+                        <ui:remove>
+                            <p:selectBooleanCheckbox id="canAccessLegalMetrologyUnit" 
+                                                     itemLabel="Legal Metrology"
+                                                     value="#{systemManager.selectedUser.privilege.canAccessLegalMetrologyUnit}" >
+                                <p:ajax listener="#{systemManager.updateModuleAccess}"
+                                        global="false"
+                                        process="@this"/>
+                            </p:selectBooleanCheckbox>
+                        </ui:remove>
 
                         <p:selectBooleanCheckbox id="canAccessLegalOfficeUnit" 
                                                  itemLabel="Legal"
@@ -315,25 +321,29 @@ Email: info@dpbennett.com.jm
 
                         </p:selectBooleanCheckbox>    
 
-                        <p:selectBooleanCheckbox id="canAccessServiceRequestUnit" 
-                                                 itemLabel="Service Request"
-                                                 value="#{systemManager.selectedUser.privilege.canAccessServiceRequestUnit}" >
+                        <ui:remove>
+                            <p:selectBooleanCheckbox id="canAccessServiceRequestUnit" 
+                                                     itemLabel="Service Request"
+                                                     value="#{systemManager.selectedUser.privilege.canAccessServiceRequestUnit}" >
 
-                            <p:ajax listener="#{systemManager.updateModuleAccess}"
-                                    global="false"
-                                    process="@this"/>
+                                <p:ajax listener="#{systemManager.updateModuleAccess}"
+                                        global="false"
+                                        process="@this"/>
 
-                        </p:selectBooleanCheckbox> 
+                            </p:selectBooleanCheckbox> 
+                        </ui:remove>
 
-                        <p:selectBooleanCheckbox id="canAccessStandardsUnit" 
-                                                 itemLabel="Standards"
-                                                 value="#{systemManager.selectedUser.privilege.canAccessStandardsUnit}" >
+                        <ui:remove>
+                            <p:selectBooleanCheckbox id="canAccessStandardsUnit" 
+                                                     itemLabel="Standards"
+                                                     value="#{systemManager.selectedUser.privilege.canAccessStandardsUnit}" >
 
-                            <p:ajax listener="#{systemManager.updateModuleAccess}"
-                                    global="false"
-                                    process="@this"/>
+                                <p:ajax listener="#{systemManager.updateModuleAccess}"
+                                        global="false"
+                                        process="@this"/>
 
-                        </p:selectBooleanCheckbox>
+                            </p:selectBooleanCheckbox>
+                        </ui:remove>
 
                         <p:selectBooleanCheckbox id="canAccessCRMUnit" 
                                                  itemLabel="Client Management"
