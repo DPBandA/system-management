@@ -176,28 +176,126 @@
     <validator>
         <validator-id>contactValidator</validator-id>
         <validator-class>jm.com.dpbennett.wal.validator.ContactValidator</validator-class>
-    </validator>      
+    </validator>
+    <navigation-rule>
+        <from-view-id>/index.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>purchreqDialog</from-outcome>
+            <to-view-id>/finance/purch/purchreqDialog.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/index.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>purchaseReqEmailDialog</from-outcome>
+            <to-view-id>/finance/purch/purchaseReqEmailDialog.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/index.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>employeePositionDialog</from-outcome>
+            <to-view-id>/hrm/employeePositionDialog.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/index.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>jobPricings</from-outcome>
+            <to-view-id>/jobPricings.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/index.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>jobCostings</from-outcome>
+            <to-view-id>/jobCostings.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>   
     <navigation-rule>
         <from-view-id>/index.xhtml</from-view-id>
         <navigation-case>
             <from-outcome>userDialog</from-outcome>
             <to-view-id>/admin/userDialog.xhtml</to-view-id>
         </navigation-case>
+    </navigation-rule>   
+    <navigation-rule>
+        <from-view-id>/index.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>employeeDialog</from-outcome>
+            <to-view-id>/hrm/employeeDialog.xhtml</to-view-id>
+        </navigation-case>
     </navigation-rule>  
+    <navigation-rule>
+        <from-view-id>/index.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>departmentDialog</from-outcome>
+            <to-view-id>/hrm/departmentDialog.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>    
+    <navigation-rule>
+        <from-view-id>/index.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>departmentPickListDialog</from-outcome>
+            <to-view-id>/hrm/departmentPickListDialog.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>    
+    <navigation-rule>
+        <from-view-id>/index.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>subgroupPickListDialog</from-outcome>
+            <to-view-id>/hrm/subgroupPickListDialog.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
     <navigation-rule>
         <from-view-id>/index.xhtml</from-view-id>
         <navigation-case>
             <from-outcome>systemOptionDialog</from-outcome>
             <to-view-id>/admin/systemOptionDialog.xhtml</to-view-id>
         </navigation-case>
-    </navigation-rule>   
+    </navigation-rule>  
+    <navigation-rule>
+        <from-view-id>/index.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>clientDialog</from-outcome>
+            <to-view-id>/client/clientDialog.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>     
+    <navigation-rule>
+        <from-view-id>/index.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>supplierDialog</from-outcome>
+            <to-view-id>/finance/purch/supplierDialog.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/index.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>jobCostingDialog</from-outcome>
+            <to-view-id>/job/finance/jobCostingDialog.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>      
+    <navigation-rule>
+        <from-view-id>/index.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>jobSampleDialog</from-outcome>
+            <to-view-id>/job/sample/jobSampleDialog.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>      
+    <navigation-rule>
+        <from-view-id>/index.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>jobSampleDeleteConfirmDialog</from-outcome>
+            <to-view-id>/job/sample/jobSampleDeleteConfirmDialog.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>  
     <navigation-rule>
         <from-view-id>/index.xhtml</from-view-id>
         <navigation-case>
             <from-outcome>classificationDialog</from-outcome>
             <to-view-id>/admin/classificationDialog.xhtml</to-view-id>
         </navigation-case>
-    </navigation-rule>
+    </navigation-rule> 
     <navigation-rule>
         <from-view-id>/index.xhtml</from-view-id>
         <navigation-case>
@@ -205,6 +303,13 @@
             <to-view-id>/admin/documentTypeDialog.xhtml</to-view-id>
         </navigation-case>
     </navigation-rule> 
+    <navigation-rule>
+        <from-view-id>/index.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>legalDocumentDialog</from-outcome>
+            <to-view-id>/legal/legalDocumentDialog.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
     <navigation-rule>
         <from-view-id>/index.xhtml</from-view-id>
         <navigation-case>
@@ -239,6 +344,69 @@
             <from-outcome>ldapDialog</from-outcome>
             <to-view-id>/admin/ldapDialog.xhtml</to-view-id>
         </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/index.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>accountingCodeDialog</from-outcome>
+            <to-view-id>/finance/accountingCodeDialog.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/index.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>taxDialog</from-outcome>
+            <to-view-id>/finance/taxDialog.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/index.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>discountDialog</from-outcome>
+            <to-view-id>/finance/discountDialog.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/index.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>cashPaymentDialog</from-outcome>
+            <to-view-id>/job/finance/cashPaymentDialog.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/index.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>cashPaymentDeleteConfirmDialog</from-outcome>
+            <to-view-id>/job/finance/cashPaymentDeleteConfirmDialog.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/index.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>businessDialog</from-outcome>
+            <to-view-id>/hrm/businessDialog.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule> 
+    <navigation-rule>
+        <from-view-id>/index.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>subgroupDialog</from-outcome>
+            <to-view-id>/hrm/subgroupDialog.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>     
+    <navigation-rule>
+        <from-view-id>/index.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>divisionDialog</from-outcome>
+            <to-view-id>/hrm/divisionDialog.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/index.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>jobDialog</from-outcome>
+            <to-view-id>/job/jobDialog.xhtml</to-view-id>
+        </navigation-case>
     </navigation-rule> 
     <navigation-rule>
         <from-view-id>/index.xhtml</from-view-id>
@@ -247,19 +415,100 @@
             <to-view-id>/admin/emailTemplateDialog.xhtml</to-view-id>
         </navigation-case>
     </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/index.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>reportTemplateDialog</from-outcome>
+            <to-view-id>/report/reportTemplateDialog.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule> 
+    <navigation-rule>
+        <from-view-id>/index.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>reportDatePeriodDialog</from-outcome>
+            <to-view-id>/report/reportDatePeriodDialog.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule> 
+    <navigation-rule>
+        <from-view-id>/index.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>complianceSurveyDialog</from-outcome>
+            <to-view-id>/compliance/surveyDialog.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
     <lifecycle>
         <phase-listener id="nocache">jm.com.dpbennett.wal.utils.CacheControlPhaseListener</phase-listener>
     </lifecycle>
-     
+    
     <managed-bean>
         <managed-bean-name>authentication</managed-bean-name>
         <managed-bean-class>jm.com.dpbennett.wal.Authentication</managed-bean-class>
         <managed-bean-scope>session</managed-bean-scope>
     </managed-bean>
-       
+    
     <managed-bean>
         <managed-bean-name>systemManager</managed-bean-name>
         <managed-bean-class>jm.com.dpbennett.wal.managers.SystemManager</managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>  
+       
+    <managed-bean>
+        <managed-bean-name>humanResourceManager</managed-bean-name>
+        <managed-bean-class>jm.com.dpbennett.wal.managers.HumanResourceManager</managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+    
+    <managed-bean>
+        <managed-bean-name>reportManager</managed-bean-name>
+        <managed-bean-class>jm.com.dpbennett.wal.managers.ReportManager</managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+    
+    <managed-bean>
+        <managed-bean-name>jobFinanceManager</managed-bean-name>
+        <managed-bean-class>jm.com.dpbennett.wal.managers.jmts.JobFinanceManager</managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+    
+    <managed-bean>
+        <managed-bean-name>jobManager</managed-bean-name>
+        <managed-bean-class>jm.com.dpbennett.wal.managers.jmts.JobManager</managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+    
+    <managed-bean>
+        <managed-bean-name>jobSampleManager</managed-bean-name>
+        <managed-bean-class>jm.com.dpbennett.wal.managers.jmts.JobSampleManager</managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+    
+    <managed-bean>
+        <managed-bean-name>legalDocumentManager</managed-bean-name>
+        <managed-bean-class>jm.com.dpbennett.wal.managers.LegalDocumentManager</managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+    
+    <managed-bean>
+        <managed-bean-name>jobContractManager</managed-bean-name>
+        <managed-bean-class>jm.com.dpbennett.wal.managers.jmts.JobContractManager</managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+    
+    <managed-bean>
+        <managed-bean-name>clientManager</managed-bean-name>
+        <managed-bean-class>jm.com.dpbennett.wal.managers.ClientManager</managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+    
+    <managed-bean>
+        <managed-bean-name>financeManager</managed-bean-name>
+        <managed-bean-class>jm.com.dpbennett.wal.managers.FinanceManager</managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+    
+    <managed-bean>
+        <managed-bean-name>purchasingManager</managed-bean-name>
+        <managed-bean-class>jm.com.dpbennett.wal.managers.PurchasingManager</managed-bean-class>
         <managed-bean-scope>session</managed-bean-scope>
     </managed-bean>
     
