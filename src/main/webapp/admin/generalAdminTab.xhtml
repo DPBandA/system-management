@@ -37,27 +37,12 @@ Email: info@dpbennett.com.jm
             <ui:include src="../hrm/humanResourceTab.xhtml"/>  
         </p:tab>
 
-        <ui:remove>            
-            <p:tab id="employeesTab" title="Employees">                  
-                <ui:include src="employeesTab.xhtml"/>    
-            </p:tab>
-
-            <p:tab id="departmentsTab" title="Departments">
-                <ui:include src="departmentsTab.xhtml"/>  
-            </p:tab>
-
-            <p:tab id="organizationsTab" title="Organizations">
-                <ui:include src="organizationsTab.xhtml"/>  
-            </p:tab>
-        </ui:remove>
-
         <p:tab id="dataListsTab" title="Business Entities">                                    
             <ui:include src="businessEntitiesTab.xhtml"/>                          
         </p:tab>
 
         <p:tab id="systemOptionsTab" 
                title="Configuration" 
-               rendered="#{jobManager.user.privilege.canBeJMTSAdministrator}">
             <ui:include src="systemOptionsTab.xhtml"/>   
         </p:tab>
 
