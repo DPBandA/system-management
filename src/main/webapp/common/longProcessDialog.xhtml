@@ -22,6 +22,22 @@ Email: info@dpbennett.com.jm
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:p="http://primefaces.org/ui">
 
+    <h:form>
+        <p:dialog closable="false"
+                  resizable="false"
+                  modal="false"                  
+                  showHeader="false"
+                  widgetVar="longProcessDialog" >   
+            <table border="0" width="100%">
+                <tr>
+                    <td align="center">
+                        <h:graphicImage value="/images/ajaxloading.gif" width="24" height="24" />
+                    </td>
+                </tr>
+            </table>
+        </p:dialog>
+    </h:form>
+    
     <h:form id="longProgressDialogForm" >
         <p:dialog id="longProgressDialog"               
                   closable="false"
@@ -137,7 +153,7 @@ Email: info@dpbennett.com.jm
             </h:panelGroup>
         </p:dialog>
     </h:form>
-    
+
     <h:form id="longProgressDialogForm5">
         <p:dialog id="longProgressDialog5"
                   onShow="PF('longProcessBarVar5').start();"
