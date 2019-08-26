@@ -115,6 +115,15 @@ Email: info@dpbennett.com.jm
                                     global="false"
                                     process="@this"/>
                         </p:selectBooleanCheckbox>    
+                        
+                        <p:selectBooleanCheckbox id="purchaseManagementUnit" 
+                                                 itemLabel="Procurement"
+                                                 rendered="#{systemManager.user.privilege.canAccessProcurementUnit}"
+                                                 value="#{systemManager.user.modules.purchaseManagementModule}" >
+                            <p:ajax listener="#{systemManager.updateDashboardTabs}"
+                                    global="false"
+                                    process="@this"/>
+                        </p:selectBooleanCheckbox>
                        
                         <p:selectBooleanCheckbox id="legalOfficeUnit" 
                                                  itemLabel="Legal"
