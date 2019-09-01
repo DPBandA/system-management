@@ -43,7 +43,7 @@ Email: info@dpbennett.com.jm
         <ui:include src="admin/loginDialog.xhtml"/>   
         <ui:include src="common/generalAlertDialogs.xhtml"/>
         <ui:include src="common/longProcessDialog.xhtml"/>   
-        <ui:include src="common/adminPreferencesDialog.xhtml"/>   
+        <ui:include src="common/preferencesDialog.xhtml"/>   
 
         <p:layout id="JMTSWeb" fullPage="true" widgetVar="layoutVar" >
             <p:ajax event="toggle" listener="#{systemManager.handleLayoutUnitToggle}" />
@@ -75,8 +75,8 @@ Email: info@dpbennett.com.jm
 
                                 <p:menuitem actionListener="#{systemManager.editPreferences}"
                                             onstart="PF('longProcessDialogVar').show();"
-                                            update=":adminPreferencesDialogForm"
-                                            oncomplete="PF('longProcessDialogVar').hide();PF('adminPreferencesDialog').show();"
+                                            update=":preferencesDialogForm"
+                                            oncomplete="PF('longProcessDialogVar').hide();PF('preferencesDialog').show();"
                                             onerror="PF('connectionErrorDialog').show();"    
                                             value="Preferences"
                                             process="@this"/>

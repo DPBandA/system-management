@@ -41,7 +41,7 @@ Email: info@dpbennett.com.jm
         <ui:include src="admin/loginDialog.xhtml"/>   
         <ui:include src="common/generalAlertDialogs.xhtml"/>
         <ui:include src="common/longProcessDialog.xhtml"/>   
-        <ui:include src="common/adminPreferencesDialog.xhtml"/> 
+        <ui:include src="common/preferencesDialog.xhtml"/> 
 
         <p:layout id="JMTSWeb" fullPage="true" widgetVar="layoutVar" >
             <p:ajax event="toggle" listener="#{systemManager.handleLayoutUnitToggle}" />
@@ -72,8 +72,8 @@ Email: info@dpbennett.com.jm
 
                             <p:menuitem actionListener="#{systemManager.editPreferences}"
                                         onstart="PF('longProcessDialogVar').show();"
-                                        update=":adminPreferencesDialogForm"
-                                        oncomplete="PF('longProcessDialogVar').hide();PF('adminPreferencesDialog').show();"
+                                        update=":preferencesDialogForm"
+                                        oncomplete="PF('longProcessDialogVar').hide();PF('preferencesDialog').show();"
                                         onerror="PF('connectionErrorDialog').show();"    
                                         value="Preferences"
                                         process="@this"/>
@@ -154,6 +154,56 @@ Email: info@dpbennett.com.jm
                 </h:form>
             </p:layoutUnit>
 
+            <p:layoutUnit
+                id="dashboard"    
+                position="west" 
+                size="375"
+                header="Dashboard"
+                resizable="true"                  
+                collapsed="#{systemManager.westLayoutUnitCollapsed}"
+                collapsible="true">   
+                <h:form id="dashboardForm" > 
+
+                    <p:commandButton
+                        id="doGeneralSearchButton"
+                        style="visibility: hidden;"
+                        global="false"                                        
+                        value=""  
+                        update=":headerForm:growl3"
+                        title="This is the default button that accepts the enter key press" 
+                        onstart="PF('longProcessDialogVar').show();"                                 
+                        oncomplete="PF('longProcessDialogVar').hide();"
+                        actionListener="#{systemManager.doDefaultSearch}"
+                        process="@form"/>                    
+
+                    <p:defaultCommand id="dashboardDefaultCommandButton" 
+                                      target="doGeneralSearchButton" />
+
+                    <p:accordionPanel id="dashboardAccordion" 
+                                      value="#{systemManager.dashboard.tabs}" 
+                                      var="t" 
+                                      widgetVar="dashboardAccordionVar"
+                                      rendered="#{systemManager.dashboard.render}"
+                                      multiple="false">
+
+                        <p:ajax event="tabChange"       
+                                immediate="true"
+                                process="@this"
+                                listener="#{systemManager.onDashboardTabChange}" />
+
+                        <p:tab title="#{t.name}" > 
+
+                            <h:panelGroup rendered="#{t.id == 'System Administration'}">
+                                <ui:include src="dashboard/admin/generalAdminTab.xhtml" />
+                            </h:panelGroup>
+
+                        </p:tab>   
+
+                    </p:accordionPanel>      
+
+
+                </h:form>
+            </p:layoutUnit>
 
         </p:layout>
     </h:body>

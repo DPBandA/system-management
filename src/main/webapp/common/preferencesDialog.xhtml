@@ -23,13 +23,13 @@ Email: info@dpbennett.com.jm
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:ui="http://java.sun.com/jsf/facelets">
-    <h:form id="adminPreferencesDialogForm">
-        <ui:remove>
+    <h:form id="preferencesDialogForm">
+        
         <p:dialog width="750"
                   height="300"
                   draggable="true"
                   modal="true"
-                  widgetVar="adminPreferencesDialog"
+                  widgetVar="preferencesDialog"
                   maximizable="false"
                   closable="true"
                   header="Preferences" >
@@ -57,7 +57,7 @@ Email: info@dpbennett.com.jm
                                          style="width:165px" 
                                          id="adminDefaultSwitcher">  
                             <f:selectItem itemLabel="Choose Theme" itemValue="" />  
-                            <f:selectItems value="#{App.themes}" />  
+                            <f:selectItems value="#{SMApp.themes}" />  
                             <p:ajax listener="#{systemManager.updatePreferences}"
                                     global="false"
                                     process="@this"/>
@@ -76,6 +76,6 @@ Email: info@dpbennett.com.jm
                 </p:toolbarGroup>
             </p:toolbar>
         </p:dialog>
-            </ui:remove>
+           
     </h:form>
 </html>

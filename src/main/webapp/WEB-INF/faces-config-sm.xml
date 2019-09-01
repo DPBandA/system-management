@@ -18,21 +18,9 @@
         </view-handler>
     </application>  
     <converter>
-        <converter-id>activeEmployeeConverter</converter-id>
-        <converter-class>jm.com.dpbennett.sm.converter.ActiveEmployeeConverter</converter-class>
-    </converter>  
-    <converter>
         <converter-id>countryConverter</converter-id>
         <converter-class>jm.com.dpbennett.sm.converter.CountryConverter</converter-class>
-    </converter>    
-    <converter>
-        <converter-id>sectorConverter</converter-id>
-        <converter-class>jm.com.dpbennett.sm.converter.SectorConverter</converter-class>
-    </converter> 
-    <converter>
-        <converter-id>serviceConverter</converter-id>
-        <converter-class>jm.com.dpbennett.sm.converter.ServiceConverter</converter-class>
-    </converter> 
+    </converter>   
     <validator>
         <validator-id>systemOptionValidator</validator-id>
         <validator-class>jm.com.dpbennett.sm.validator.SystemOptionValidator</validator-class>
@@ -48,8 +36,8 @@
     <navigation-rule>
         <from-view-id>/index.xhtml</from-view-id>
         <navigation-case>
-            <from-outcome>adminUserDialog</from-outcome>
-            <to-view-id>/admin/adminUserDialog.xhtml</to-view-id>
+            <from-outcome>userDialog</from-outcome>
+            <to-view-id>/admin/userDialog.xhtml</to-view-id>
         </navigation-case>
     </navigation-rule> 
     <navigation-rule>
@@ -62,31 +50,10 @@
     <navigation-rule>
         <from-view-id>/index.xhtml</from-view-id>
         <navigation-case>
-            <from-outcome>classificationDialog</from-outcome>
-            <to-view-id>/admin/classificationDialog.xhtml</to-view-id>
-        </navigation-case>
-    </navigation-rule> 
-    <navigation-rule>
-        <from-view-id>/index.xhtml</from-view-id>
-        <navigation-case>
             <from-outcome>documentTypeDialog</from-outcome>
             <to-view-id>/admin/documentTypeDialog.xhtml</to-view-id>
         </navigation-case>
     </navigation-rule>  
-    <navigation-rule>
-        <from-view-id>/index.xhtml</from-view-id>
-        <navigation-case>
-            <from-outcome>sectorDialog</from-outcome>
-            <to-view-id>/admin/sectorDialog.xhtml</to-view-id>
-        </navigation-case>
-    </navigation-rule>
-    <navigation-rule>
-        <from-view-id>/index.xhtml</from-view-id>
-        <navigation-case>
-            <from-outcome>serviceDialog</from-outcome>
-            <to-view-id>/admin/serviceDialog.xhtml</to-view-id>
-        </navigation-case>
-    </navigation-rule>
     <navigation-rule>
         <from-view-id>/index.xhtml</from-view-id>
         <navigation-case>
