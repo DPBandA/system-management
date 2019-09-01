@@ -23,38 +23,42 @@ Email: info@dpbennett.com.jm
       xmlns:ui="http://java.sun.com/jsf/facelets"> 
 
     <p:toolbar>
-        <p:toolbarGroup align="left">
 
-            <p:commandButton value="New"
-                             title="Create new system option"
-                             icon="ui-icon-plus"
-                             onstart="PF('longProcessDialogVar').show();" 
-                             oncomplete="longProcessDialogVar.hide();"
-                             actionListener="#{systemManager.createNewSystemOption}" 
-                             process="@this" >
+        <ui:remove>
+            <p:toolbarGroup align="left">
 
-                <p:ajax event="dialogReturn" 
-                        update=":mainTabViewForm:mainTabView:centerTabView:systemConfigurationTabView:systemOptionsTable"/>
+                <p:commandButton value="New"
+                                 title="Create new system option"
+                                 icon="ui-icon-plus"
+                                 onstart="PF('longProcessDialogVar').show();" 
+                                 oncomplete="longProcessDialogVar.hide();"
+                                 actionListener="#{systemManager.createNewSystemOption}" 
+                                 process="@this" >
 
-            </p:commandButton>       
+                    <p:ajax event="dialogReturn" 
+                            update=":mainTabViewForm:mainTabView:centerTabView:systemConfigurationTabView:systemOptionsTable"/>
 
-        </p:toolbarGroup>
-        <p:toolbarGroup align="right">
+                </p:commandButton>       
 
-            <p:menuButton value="Tools" >  
+            </p:toolbarGroup>
+            <p:toolbarGroup align="right">
 
-                <p:menuitem>                       
-                    <p:commandButton value="System Browser"
-                                     style="text-align: left;background: none;border: 0;"
-                                     title="Open System Browser"
-                                     onstart="PF('longProcessDialogVar').show();" 
-                                     actionListener="#{systemManager.openSystemBrowser}" 
-                                     oncomplete="longProcessDialogVar.hide();"
-                                     process="@this" />
-                </p:menuitem>
-           
-            </p:menuButton>         
-        </p:toolbarGroup>
+                <p:menuButton value="Tools" >  
+
+                    <p:menuitem>                       
+                        <p:commandButton value="System Browser"
+                                         style="text-align: left;background: none;border: 0;"
+                                         title="Open System Browser"
+                                         onstart="PF('longProcessDialogVar').show();" 
+                                         actionListener="#{systemManager.openSystemBrowser}" 
+                                         oncomplete="longProcessDialogVar.hide();"
+                                         process="@this" />
+                    </p:menuitem>
+
+                </p:menuButton>         
+            </p:toolbarGroup>
+        </ui:remove>
+
     </p:toolbar>
 
 </html>

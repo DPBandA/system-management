@@ -35,15 +35,13 @@ Email: info@dpbennett.com.jm
         <script type="text/javascript" src="js/jmtsJavascript.js" />   
         <link rel="stylesheet" href="css/main.css" />
     </h:head>
-    <h:body onload="checkWhichBrowser();
-            PF('longProcessDialogVar').hide();
-            mainTabViewVar.select(0);" >
+    <h:body onload="checkWhichBrowser();"  >
 
         <ui:include src="common/commonDialogs.xhtml" />   
         <ui:include src="admin/loginDialog.xhtml"/>   
         <ui:include src="common/generalAlertDialogs.xhtml"/>
         <ui:include src="common/longProcessDialog.xhtml"/>   
-        <ui:include src="common/adminPreferencesDialog.xhtml"/>   
+        <ui:include src="common/adminPreferencesDialog.xhtml"/> 
 
         <p:layout id="JMTSWeb" fullPage="true" widgetVar="layoutVar" >
             <p:ajax event="toggle" listener="#{systemManager.handleLayoutUnitToggle}" />
@@ -119,13 +117,13 @@ Email: info@dpbennett.com.jm
                                value="#{systemManager.mainTabView.tabs}" 
                                var="t"         
                                style="border-width: 0px;"
-                               onTabShow="PF('longProcessDialogVar').hide();"
+
                                widgetVar="mainTabViewVar">
 
                         <p:ajax event="tabClose" 
                                 immediate="true"
                                 process="@this"
-                                update=":headerForm:growl3"
+                                update=""
                                 listener="#{systemManager.onMainViewTabClose}" />  
 
                         <p:ajax event="tabChange" 
@@ -156,56 +154,6 @@ Email: info@dpbennett.com.jm
                 </h:form>
             </p:layoutUnit>
 
-            <p:layoutUnit
-                id="dashboard"    
-                position="west" 
-                size="375"
-                header="Dashboard"
-                resizable="true"                  
-                collapsed="#{systemManager.westLayoutUnitCollapsed}"
-                collapsible="true">   
-                <h:form id="dashboardForm" > 
-
-                    <p:commandButton
-                        id="doGeneralSearchButton"
-                        style="visibility: hidden;"
-                        global="false"                                        
-                        value=""  
-                        update=":headerForm:growl3"
-                        title="This is the default button that accepts the enter key press" 
-                        onstart="PF('longProcessDialogVar').show();"                                 
-                        oncomplete="PF('longProcessDialogVar').hide();"
-                        actionListener="#{systemManager.doDefaultSearch}"
-                        process="@form"/>                    
-
-                    <p:defaultCommand id="dashboardDefaultCommandButton" 
-                                      target="doGeneralSearchButton" />
-
-                    <p:accordionPanel id="dashboardAccordion" 
-                                      value="#{systemManager.dashboard.tabs}" 
-                                      var="t" 
-                                      widgetVar="dashboardAccordionVar"
-                                      rendered="#{systemManager.dashboard.render}"
-                                      multiple="false">
-
-                        <p:ajax event="tabChange"       
-                                immediate="true"
-                                process="@this"
-                                listener="#{systemManager.onDashboardTabChange}" />
-
-                        <p:tab title="#{t.name}" > 
-
-                            <h:panelGroup rendered="#{t.id == 'System Administration'}">
-                                <ui:include src="dashboard/admin/generalAdminTab.xhtml" />
-                            </h:panelGroup>
-
-                        </p:tab>   
-
-                    </p:accordionPanel>      
-
-
-                </h:form>
-            </p:layoutUnit>
 
         </p:layout>
     </h:body>
