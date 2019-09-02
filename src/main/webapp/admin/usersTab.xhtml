@@ -43,11 +43,15 @@ Email: info@dpbennett.com.jm
                          value="#{systemManager.userSearchText}"
                          style="width:150px" 
                          placeholder="Enter any part of name">
+
                 <p:ajax event="keyup"
                         global="true"
+                        onstart="PF('longProcessDialogVar').show();"
+                        oncomplete="PF('longProcessDialogVar').hide();"   
                         update=":mainTabViewForm:mainTabView:centerTabView:usersTable"
                         listener="#{systemManager.doUserSearch}"
-                        process="@this"/>                                   
+                        process="@this"/> 
+
             </p:inputText>       
         </p:toolbarGroup>
 

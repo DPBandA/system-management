@@ -55,7 +55,7 @@
         </navigation-case>
     </navigation-rule>
     <lifecycle>
-        <phase-listener id="nocache">jm.com.dpbennett.sm.utils.CacheControlPhaseListener</phase-listener>
+        <phase-listener id="nocache">jm.com.dpbennett.sm.util.CacheControlPhaseListener</phase-listener>
     </lifecycle>
     
     <managed-bean>
