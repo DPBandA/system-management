@@ -32,14 +32,7 @@
     <validator>
         <validator-id>businessEntityValidator</validator-id>
         <validator-class>jm.com.dpbennett.sm.validator.BusinessEntityValidator</validator-class>
-    </validator>  
-    <navigation-rule>
-        <from-view-id>/index.xhtml</from-view-id>
-        <navigation-case>
-            <from-outcome>userDialog</from-outcome>
-            <to-view-id>/admin/userDialog.xhtml</to-view-id>
-        </navigation-case>
-    </navigation-rule> 
+    </validator>       
     <navigation-rule>
         <from-view-id>/index.xhtml</from-view-id>
         <navigation-case>
