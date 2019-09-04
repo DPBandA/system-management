@@ -20,12 +20,27 @@
             <groupId>${project.groupId}</groupId>
             <artifactId>system-management-lib</artifactId>
             <version>1.0.0</version>
+        </dependency> 
+        <dependency>
+            <groupId>org.primefaces.themes</groupId>
+            <artifactId>aristo</artifactId>
+            <version>1.0.1</version>
         </dependency>  
-         <dependency>
-            <groupId>org.primefaces.extensions</groupId>
-            <artifactId>all-themes</artifactId>
+        <dependency>
+            <groupId>org.primefaces.themes</groupId>
+            <artifactId>black-tie</artifactId>
             <version>1.0.8</version>
-        </dependency>    
+        </dependency>
+        <dependency>
+            <groupId>org.primefaces.themes</groupId>
+            <artifactId>redmond</artifactId>
+            <version>1.0.8</version>
+        </dependency>
+        <dependency>
+            <groupId>org.primefaces.themes</groupId>
+            <artifactId>dark-hive</artifactId>
+            <version>1.0.8</version>
+        </dependency>
         <dependency>
             <groupId>org.primefaces</groupId>
             <artifactId>primefaces</artifactId>
@@ -76,4 +91,12 @@
             -->         
         </plugins>
     </build>    
+    
+    <repositories>
+        <repository>
+            <id>primefaces-themes-repo</id>
+            <url>https://repository.primefaces.org/</url>
+        </repository>     
+    </repositories>
+
 </project>
