@@ -20,29 +20,23 @@ Email: info@dpbennett.com.jm
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:p="http://primefaces.org/ui"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:ui="http://java.sun.com/jsf/facelets"> 
+      xmlns:p="http://primefaces.org/ui"> 
 
-    <p:tabView id="centerTabView"   
-               widgetVar="centerTabVar"
-               scrollable="false"
-               dynamic="true">
-        
-        <p:tab title="Document types">
-            <ui:include src="documentTypesTab.xhtml" />   
-        </p:tab>
-        
-        <p:tab title="Email templates">
-            <ui:include src="emailTemplatesTab.xhtml" /> 
-        </p:tab> 
-        
-        <p:tab title="Configuration">
-            <ui:include src="configurationsTab.xhtml"/>   
-        </p:tab>
+    <p:toolbar>
+        <p:toolbarGroup align="left">
+            
+            <p:commandButton value="Ok"
+                             actionListener="#{systemManager.saveSelectedDocumentType}"
+                             update="documenttype_growl"
+                             icon="ui-icon ui-icon-check"
+                             process="@this"/>
+            <p:spacer width="10" />
+            <p:commandButton value="Cancel"
+                             process="@this"
+                             actionListener="#{systemManager.cancelDocumentTypeEdit}"
+                             icon="ui-icon ui-icon-close" /> 
 
-    </p:tabView>
+        </p:toolbarGroup>
+    </p:toolbar>
 
 </html>
-
-

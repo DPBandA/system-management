@@ -17,6 +17,10 @@
             org.primefaces.application.DialogViewHandler
         </view-handler>
     </application>  
+     <converter>
+        <converter-id>documentTypeConverter</converter-id>
+        <converter-class>jm.com.dpbennett.sm.converter.DocumentTypeConverter</converter-class>
+    </converter>
     <converter>
         <converter-id>countryConverter</converter-id>
         <converter-class>jm.com.dpbennett.sm.converter.CountryConverter</converter-class>
@@ -32,7 +36,21 @@
     <validator>
         <validator-id>businessEntityValidator</validator-id>
         <validator-class>jm.com.dpbennett.sm.validator.BusinessEntityValidator</validator-class>
-    </validator>       
+    </validator>  
+    <navigation-rule>
+        <from-view-id>/index.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>emailTemplateDialog</from-outcome>
+            <to-view-id>/admin/emailTemplateDialog.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule> 
+    <navigation-rule>
+        <from-view-id>/index.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>documentTypeDialog</from-outcome>
+            <to-view-id>/admin/documentTypeDialog.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>    
     <navigation-rule>
         <from-view-id>/index.xhtml</from-view-id>
         <navigation-case>
