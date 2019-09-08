@@ -94,8 +94,10 @@ Email: info@dpbennett.com.jm
                                      process="@this"/>
 
 
+                    <ui:remove>
                     <p:remoteCommand name="auth" autoRun="true" 
                                      actionListener="#{systemManager.setupAuthentication}" />
+                    </ui:remove>
 
 
                     <p:remoteCommand name="keepAliveRequest"
