@@ -17,14 +17,18 @@
             org.primefaces.application.DialogViewHandler
         </view-handler>
     </application>  
-     <converter>
+    <converter>
         <converter-id>documentTypeConverter</converter-id>
         <converter-class>jm.com.dpbennett.sm.converter.DocumentTypeConverter</converter-class>
     </converter>
     <converter>
         <converter-id>countryConverter</converter-id>
         <converter-class>jm.com.dpbennett.sm.converter.CountryConverter</converter-class>
-    </converter>   
+    </converter>  
+    <validator>
+        <validator-id>turnaroundTimeValidator</validator-id>
+        <validator-class>jm.com.dpbennett.sm.validator.TurnaroundTimeValidator</validator-class>
+    </validator> 
     <validator>
         <validator-id>systemOptionValidator</validator-id>
         <validator-class>jm.com.dpbennett.sm.validator.SystemOptionValidator</validator-class>
