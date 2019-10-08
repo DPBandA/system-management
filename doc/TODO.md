@@ -8,3 +8,4 @@
 - Put createNewFinancialSystemOption() FM.
 - Put system option categories in system option. 
 - Check out hazle cast config in Payara domain for controlling Payara Micro instances.
+- Remove passwords from config and pass them in as java/system options.
