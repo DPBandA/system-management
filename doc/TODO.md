@@ -1,3 +1,5 @@
+### JMTS Migration
+- Setup remote deployment to Payara 5 on appsrv.
 ### General
 - Try Payara Micro after configuring glassfish resources with datasource and connection pool:
   * Get the Accpac pool to work.
