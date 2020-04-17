@@ -40,14 +40,7 @@
     <validator>
         <validator-id>businessEntityValidator</validator-id>
         <validator-class>jm.com.dpbennett.sm.validator.BusinessEntityValidator</validator-class>
-    </validator>  
-    <navigation-rule>
-        <from-view-id>/index.xhtml</from-view-id>
-        <navigation-case>
-            <from-outcome>emailTemplateDialog</from-outcome>
-            <to-view-id>/admin/emailTemplateDialog.xhtml</to-view-id>
-        </navigation-case>
-    </navigation-rule> 
+    </validator>       
     <navigation-rule>
         <from-view-id>/index.xhtml</from-view-id>
         <navigation-case>
