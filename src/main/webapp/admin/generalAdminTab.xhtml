@@ -28,11 +28,15 @@ Email: info@dpbennett.com.jm
                widgetVar="centerTabVar"
                scrollable="false"
                dynamic="true">
-        
+
+        <p:ajax event="tabChange" 
+                onstart="PF('longProcessDialogVar').show();"  
+                oncomplete="PF('longProcessDialogVar').hide();" />  
+
         <p:tab title="Document Types">
             <ui:include src="documentTypesTab.xhtml" />   
         </p:tab>
-                
+
         <p:tab title="Configuration">
             <ui:include src="configurationsTab.xhtml"/>   
         </p:tab>
