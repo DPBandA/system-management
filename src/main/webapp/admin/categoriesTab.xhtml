@@ -32,96 +32,76 @@ Email: info@dpbennett.com.jm
                              onstart="PF('longProcessDialogVar').show();"                                 
                              oncomplete="PF('longProcessDialogVar').hide();"
                              onerror="PF('connectionErrorDialog').show();"
-                             update=":mainTabViewForm:mainTabView:centerTabView:documentTypesTable"
+                             update=":mainTabViewForm:mainTabView:centerTabView:categoriesTable"
                              global="true"
                              process="@this"
                              icon="ui-icon ui-icon-plus" >
 
                 <p:ajax event="dialogReturn" 
-                        listener="#{systemManager.doDocumentTypeSearch}"
-                        update=":mainTabViewForm:mainTabView:centerTabView:documentTypesTable" />
+                        listener="#{systemManager.doCategorySearch}"
+                        update=":mainTabViewForm:mainTabView:centerTabView:categoriesTable" />
 
             </p:commandButton>     
             <p:spacer width="20" />        
-            <p:inputText id="documentTypeSearchText" 
-                         value="#{systemManager.documentTypeSearchText}"
+            <p:inputText id="categorySearchText" 
+                         value="#{systemManager.categorySearchText}"
                          style="width:150px" 
                          placeholder="Enter any part of name">
                 <p:ajax event="keyup"
                         global="false"
                         onstart="PF('longProcessDialogVar').show();" 
                         oncomplete="PF('longProcessDialogVar').hide();"
-                        update=":mainTabViewForm:mainTabView:centerTabView:documentTypesTable"
-                        listener="#{systemManager.doDocumentTypeSearch}"
+                        update=":mainTabViewForm:mainTabView:centerTabView:categoriesTable"
+                        listener="#{systemManager.doCategorySearch}"
                         process="@this"/>
             </p:inputText>
         </p:toolbarGroup>
 
-        <ui:remove>
-            <p:toolbarGroup align="right">
-                <p:outputLabel for="activeDocumentTypesOnly" value="Active document types only: " />  
-                <h:panelGroup>
-                    <p:selectBooleanCheckbox style="vertical-align: middle"
-                                             id="activeDocumentTypesOnly"
-                                             value="#{systemManager.isActiveDocumentTypesOnly}" >
-                        <p:ajax  update=":mainTabViewForm:mainTabView:centerTabView:documentTypesTable"
-                                 listener="#{systemManager.doDocumentTypeSearch}"
-                                 event="change"                                      
-                                 process="@this"/>
-                    </p:selectBooleanCheckbox>            
-                    <p:tooltip for="activeDocumentTypesOnly" value="Check to show active document types only" 
-                               showEffect="fade" hideEffect="fade" />
-                    <p:spacer width="15" />                
-                </h:panelGroup>
-            </p:toolbarGroup>
-        </ui:remove>
-
     </p:toolbar>  
 
-    <p:dataTable id="documentTypesTable"                                       
-                 var="documentType"     
+    <p:dataTable id="categoriesTable"                                       
+                 var="category"     
                  editable="true" 
                  editMode="cell"
                  paginator="true"
                  rows="15"
                  style="margin-top: 1px;"
-                 widgetVar="DocumentTypesTableVar"
+                 widgetVar="CategoriesTableVar"
                  paginatorTemplate="{FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
-                 value="#{systemManager.foundDocumentTypes}">
+                 value="#{systemManager.foundCategories}">
 
         <f:facet name="header">
-            Document Types
+            Categories
         </f:facet>
 
         <p:column>
             <f:facet name="header">
                 <h:outputText value="Name"/>
             </f:facet>
-            <h:outputText value="#{documentType.name}" />
+            <h:outputText value="#{category.name}" />
         </p:column>  
 
         <p:column>
             <f:facet name="header">
                 <h:outputText value="Code"/>
             </f:facet>
-            <h:outputText value="#{documentType.code}" />
+            <h:outputText value="#{category.type}" />
         </p:column>    
 
         <p:column style="width:32px">
-            <p:commandButton title="View or edit document type"   
-                             actionListener="#{systemManager.editDocumentType}"
+            <p:commandButton title="View or edit category"   
+                             actionListener="#{systemManager.editCategory}"
                              onstart="PF('longProcessDialogVar').show();"                                 
                              oncomplete="PF('longProcessDialogVar').hide();"
-                             onerror="PF('connectionErrorDialog').show();"
                              global="true"
                              process="@this"
                              icon="ui-icon ui-icon-pencil">
 
                 <p:ajax event="dialogReturn" 
-                        update=":mainTabViewForm:mainTabView:centerTabView:documentTypesTable" />
+                        update=":mainTabViewForm:mainTabView:centerTabView:categoriesTable" />
 
-                <f:setPropertyActionListener value="#{documentType}"                                                                    
-                                             target="#{systemManager.selectedDocumentType}" />
+                <f:setPropertyActionListener value="#{category}"                                                                    
+                                             target="#{systemManager.selectedCategory}" />
             </p:commandButton>           
         </p:column>
 
