@@ -24,7 +24,11 @@
     <converter>
         <converter-id>countryConverter</converter-id>
         <converter-class>jm.com.dpbennett.sm.converter.CountryConverter</converter-class>
-    </converter>  
+    </converter> 
+     <converter>
+        <converter-id>activeCategoryConverter</converter-id>
+        <converter-class>jm.com.dpbennett.sm.converter.ActiveCategoryConverter</converter-class>
+    </converter> 
     <validator>
         <validator-id>turnaroundTimeValidator</validator-id>
         <validator-class>jm.com.dpbennett.sm.validator.TurnaroundTimeValidator</validator-class>
