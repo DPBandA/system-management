@@ -21,11 +21,13 @@
             <artifactId>system-management-lib</artifactId>
             <version>1.0.0</version>
         </dependency> 
+        <!--
         <dependency>
             <groupId>org.primefaces</groupId>
             <artifactId>primefaces</artifactId>
             <version>8.0</version>
-        </dependency>                 
+        </dependency>  
+        -->               
         <!--
         <dependency>
             <groupId>javax</groupId>
