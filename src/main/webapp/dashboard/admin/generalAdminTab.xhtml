@@ -34,7 +34,7 @@ Email: info@dpbennett.com.jm
                              oncomplete="PF('longProcessDialogVar').hide();"
                              actionListener="#{systemManager.createNewSystemOption}" 
                              process="@this" >
-                
+
                 <p:ajax event="dialogReturn" 
                         update=":mainTabViewForm:mainTabView:centerTabView:systemConfigurationTabView:systemOptionsTable"/>
 
@@ -45,15 +45,12 @@ Email: info@dpbennett.com.jm
 
             <p:menuButton value="Tools" >  
 
-                <p:menuitem>                       
-                    <p:commandButton value="System Browser"
-                                     style="text-align: left;background: none;border: 0;"
-                                     title="Open System Browser"
-                                     onstart="PF('longProcessDialogVar').show();" 
-                                     actionListener="#{systemManager.openSystemBrowser}" 
-                                     oncomplete="PF('longProcessDialogVar').hide();"
-                                     process="@this" />
-                </p:menuitem>
+                <p:menuitem value="System Browser"
+                            title="Open System Browser"
+                            onstart="PF('longProcessDialogVar').show();" 
+                            actionListener="#{systemManager.openSystemBrowser}" 
+                            oncomplete="PF('longProcessDialogVar').hide();"
+                            process="@this" />
 
             </p:menuButton>         
         </p:toolbarGroup>
