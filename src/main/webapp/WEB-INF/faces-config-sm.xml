@@ -44,7 +44,11 @@
     <validator>
         <validator-id>businessEntityValidator</validator-id>
         <validator-class>jm.com.dpbennett.sm.validator.BusinessEntityValidator</validator-class>
-    </validator>   
+    </validator>  
+    <validator>
+        <validator-id>businessEntityListValidator</validator-id>
+        <validator-class>jm.com.dpbennett.sm.validator.BusinessEntityListValidator</validator-class>
+    </validator> 
     <navigation-rule>
         <from-view-id>/index.xhtml</from-view-id>
         <navigation-case>
