@@ -22,7 +22,6 @@ Email: info@dpbennett.com.jm
     xmlns="http://www.w3.org/1999/xhtml"
     xmlns:h="http://java.sun.com/jsf/html" 
     xmlns:p="http://primefaces.org/ui"
-    xmlns:pe="http://primefaces.org/ui/extensions"
     xmlns:ui="http://java.sun.com/jsf/facelets"
     xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"> 
     <h:head>
@@ -67,17 +66,6 @@ Email: info@dpbennett.com.jm
 
                         </h:panelGrid>
                         <h:panelGroup>
-                            <p:commandButton icon="ui-icon-alert">
-                                <pe:badge content="10+" rendered="#{true}"/>
-                            </p:commandButton>
-                            <p:spacer width="10" />
-                            <p:commandButton icon="ui-icon-mail-closed">
-                                <pe:badge content="6" rendered="#{true}"/>
-                            </p:commandButton>
-                            <p:spacer width="10" />
-                            <p:commandButton icon="ui-icon-comment">
-                                <pe:badge content="3" rendered="#{true}"/>
-                            </p:commandButton>
                             <p:menuButton value="#{systemManager.user.employee.firstName} #{systemManager.user.employee.lastName}"     
                                           iconPos="left"
                                           icon="ui-icon-person"
