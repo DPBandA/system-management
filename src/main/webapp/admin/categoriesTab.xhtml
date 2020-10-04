@@ -65,7 +65,7 @@ Email: info@dpbennett.com.jm
                  editMode="cell"
                  paginator="true"
                  rows="15"
-                 style="margin-top: 1px;"
+                 style="margin-top: 1px;margin-bottom: 1px;"
                  widgetVar="CategoriesTableVar"
                  paginatorTemplate="{FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
                  value="#{systemManager.foundCategories}">
@@ -83,7 +83,7 @@ Email: info@dpbennett.com.jm
 
         <p:column>
             <f:facet name="header">
-                <h:outputText value="Code"/>
+                <h:outputText value="Type"/>
             </f:facet>
             <h:outputText value="#{category.type}" />
         </p:column>    
@@ -105,7 +105,29 @@ Email: info@dpbennett.com.jm
             </p:commandButton>           
         </p:column>
 
-    </p:dataTable>          
+    </p:dataTable>        <p:toolbar>
+        <p:toolbarGroup align="left" >   
+            <p:commandButton title="Add new category"                                  
+                             value="New"
+                             actionListener="#{systemManager.createNewCategory}"
+                             onstart="PF('longProcessDialogVar').show();"                                 
+                             oncomplete="PF('longProcessDialogVar').hide();"
+                             onerror="PF('connectionErrorDialog').show();"
+                             update=":mainTabViewForm:mainTabView:centerTabView:categoriesTable"
+                             global="true"
+                             process="@this"
+                             icon="ui-icon ui-icon-plus" >
+
+                <p:ajax event="dialogReturn" 
+                        listener="#{systemManager.doCategorySearch}"
+                        update=":mainTabViewForm:mainTabView:centerTabView:categoriesTable" />
+
+            </p:commandButton>     
+            
+        </p:toolbarGroup>
+
+    </p:toolbar>
+    
 </html>
 
 
