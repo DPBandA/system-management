@@ -177,7 +177,9 @@ Email: info@dpbennett.com.jm
                 </p:splitterPanel>
             </p:splitter>
 
-            <p:poll interval="60" listener="#{systemManager.handleKeepAlive}" />
+            <p:poll interval="60" 
+                    global="false"
+                    listener="#{systemManager.handleKeepAlive}" />
         </h:form>
     </h:body>
 </html>
