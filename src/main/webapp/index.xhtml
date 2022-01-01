@@ -38,47 +38,9 @@ Email: info@dpbennett.com.jm
     </h:head>
     <h:body>
 
-
-        <ui:include src="admin/loginDialog.xhtml"/>   
-
-
+        <ui:include src="common/commonDialogs.xhtml" />
+        <ui:include src="admin/loginDialog.xhtml"/>  
         <ui:include src="common/preferencesDialog.xhtml"/> 
-
-        <p:ajaxStatus styleClass="p-d-block p-mb-4">
-            <f:facet name="default">
-                <ui:remove>
-                    <h:outputText value="Status: StandBy" />
-                </ui:remove>
-            </f:facet>
-
-            <f:facet name="start">
-                <i class="pi pi-spin pi-spinner loading-icon" aria-hidden="true"></i>
-            </f:facet>
-
-            <f:facet name="complete">
-                <ui:remove>
-                    <h:outputText value="Status: Completed" />
-                </ui:remove>
-            </f:facet>
-        </p:ajaxStatus>
-
-        <p:ajaxStatus onstart="PF('statusDialog').show()" onsuccess="PF('statusDialog').hide()"/>
-
-        <p:dialog widgetVar="statusDialog" 
-                  modal="false" 
-                  draggable="false" 
-                  closable="false" resizable="false" 
-                  showHeader="false">
-            
-            <div class="p-text-center">
-                <i class="pi pi-spin pi-spinner loading-icon" 
-                   style="font-size: 3rem"
-                    aria-hidden="true">                       
-                </i>
-            </div>
-            
-        </p:dialog>
-
 
         <h:form id="appForm">          
             <p:splitter layout="vertical" rendered="#{systemManager.renderUserMenu()}">
@@ -129,7 +91,7 @@ Email: info@dpbennett.com.jm
                 <p:splitterPanel>
                     <p:splitter>
                         <p:splitterPanel styleClass="p-d-flex p-ai-center p-jc-center" 
-                                         size="30" minSize="20">
+                                         size="30" minSize="0">
                             <p:panel header="Dashboard">
                                 <p:commandButton
                                     id="doGeneralSearchButton"
@@ -200,6 +162,16 @@ Email: info@dpbennett.com.jm
                                 </p:tab>
 
                             </p:tabView> 
+
+                            <p:commandButton
+                                id="doNothingButton"
+                                style="visibility: hidden;"
+                                global="false"                                        
+                                value=""                                       
+                                title="This is the default button that accepts the enter key press"                                       
+                                process="@this"/> 
+
+                            <p:defaultCommand target=":appForm:doNothingButton" />
                         </p:splitterPanel>
                     </p:splitter>
                 </p:splitterPanel>
