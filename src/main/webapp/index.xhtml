@@ -45,10 +45,9 @@ Email: info@dpbennett.com.jm
         <ui:include src="common/preferencesDialog.xhtml"/> 
 
 
-        <h:form id="appForm">
-            <div class="card">
-                <p:splitter layout="vertical">
-                    <p:splitterPanel size="100" rendered="#{systemManager.renderUserMenu()}">
+        <h:form id="appForm">          
+            <p:splitter layout="vertical" rendered="#{systemManager.renderUserMenu()}">
+                    <p:splitterPanel size="100" >
 
                         <p:splitterPanel styleClass="p-d-flex p-ai-center p-jc-center" 
                                          size="20" minSize="20">
@@ -73,10 +72,11 @@ Email: info@dpbennett.com.jm
                                                   id="userMenu"
                                                   style="float: right;" >
 
-                                        <p:menuitem actionListener="#{systemManager.editPreferences}"                                                        
-                                                    update=":preferencesDialogForm"
-                                                    value="Preferences"
-                                                    process="@this"/>
+                                       <p:menuitem actionListener="#{systemManager.editPreferences}"                                            
+                                            update=":preferencesDialogForm"
+                                            oncomplete="PF('preferencesDialog').show();"
+                                            value="Preferences"
+                                            process="@this"/>
                                         <p:separator />  
                                         <p:menuitem actionListener="#{systemManager.logout}"                                             
                                                     icon="ui-icon-circle-arrow-w"
@@ -174,9 +174,7 @@ Email: info@dpbennett.com.jm
                         </p:splitter>
                     </p:splitterPanel>
                 </p:splitter>
-            </div>
         </h:form>
-
     </h:body>
 </html>
 

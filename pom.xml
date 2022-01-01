@@ -41,10 +41,7 @@
     </build>    
     
     <repositories>
-        <repository>
-            <id>primefaces-themes-repo</id>
-            <url>https://repository.primefaces.org/</url>
-        </repository>     
+        
     </repositories>
 
 </project>
