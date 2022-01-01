@@ -1,6 +1,6 @@
 <!--
 Job Management & Tracking System (JMTS) 
-Copyright (C) 2017  D P Bennett & Associates Limited
+Copyright (C) 2021  D P Bennett & Associates Limited
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU Affero General Public License as published by
@@ -28,9 +28,7 @@ Email: info@dpbennett.com.jm
 
             <p:commandButton value="New"
                              title="Create new system option"
-                             icon="ui-icon-plus"
-                             onstart="PF('longProcessDialogVar').show();" 
-                             oncomplete="PF('longProcessDialogVar').hide();"
+                             icon="pi pi-plus"                           
                              actionListener="#{systemManager.createNewSystemOption}" 
                              process="@this" >
 
@@ -46,9 +44,8 @@ Email: info@dpbennett.com.jm
 
                 <p:menuitem value="System Browser"
                             title="Open System Browser"
-                            onstart="PF('longProcessDialogVar').show();" 
-                            actionListener="#{systemManager.openSystemBrowser}" 
-                            oncomplete="PF('longProcessDialogVar').hide();"
+                            icon="pi pi-cog"
+                            actionListener="#{systemManager.openSystemBrowser}"
                             process="@this" />
 
             </p:menuButton>         
