@@ -1,6 +1,6 @@
 <!--
-Job Management & Tracking System (JMTS) 
-Copyright (C) 2017  D P Bennett & Associates Limited
+System Management (SM) 
+Copyright (C) 2021  D P Bennett & Associates Limited
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU Affero General Public License as published by
@@ -47,12 +47,18 @@ Email: info@dpbennett.com.jm
             <p:tabView id="adminPreferencesTabView" 
                        style="margin-top: 1px;margin-bottom: 1px;">
                 <p:tab title="General" id="adminGeneralTab">
-                    <h:panelGrid columns="2">
-
-                      
-
-
-                    </h:panelGrid>
+                    <p:outputPanel deferred="true">
+                        <p>
+                            Various general user preferences go here.
+                        </p>
+                    </p:outputPanel>
+                </p:tab>
+                <p:tab title="Module Access" id="adminModuleAccess">
+                    <p:outputPanel deferred="true">
+                        <p>
+                            Here is where users are granted access to the modules of the system.
+                        </p>
+                    </p:outputPanel>
                 </p:tab>
 
             </p:tabView>
