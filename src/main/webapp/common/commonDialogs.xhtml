@@ -86,23 +86,21 @@ Email: info@dpbennett.com.jm
 
     <p:ajaxStatus onstart="PF('statusDialog').show()" onsuccess="PF('statusDialog').hide()"/>
 
-    <p:dialog widgetVar="statusDialog" 
-              modal="false" 
-              draggable="false" 
-              closable="false" 
-              resizable="false" 
-              showHeader="false"
-              height="50" >
+    <h:form>
+        <p:dialog widgetVar="statusDialog" 
+                  modal="false" 
+                  draggable="false" 
+                  closable="false" 
+                  resizable="false"                 
+                  showHeader="false" 
+                  style="margin: 0;padding: 0;">
 
-        <p:spacer height="45"/>
+            <i class="pi pi-spin pi-spinner loading-icon" 
+               style="font-size: 3rem;margin: 0;padding: 0;"
+               aria-hidden="true">                       
+            </i>
 
-        <i class="pi pi-spin pi-spinner loading-icon" 
-           style="font-size: 3rem"
-           aria-hidden="true">                       
-        </i>
-
-
-
-    </p:dialog>
+        </p:dialog>
+    </h:form>
 
 </html>
