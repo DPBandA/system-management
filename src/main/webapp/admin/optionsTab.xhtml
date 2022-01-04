@@ -1,6 +1,6 @@
 <!--
-Job Management & Tracking System (JMTS) 
-Copyright (C) 2017  D P Bennett & Associates Limited
+System Management (SM) 
+Copyright (C) 2021  D P Bennett & Associates Limited
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU Affero General Public License as published by
@@ -28,27 +28,22 @@ Email: info@dpbennett.com.jm
         <p:toolbarGroup align="left" >   
             <p:commandButton title="Add new option"                                  
                              value="New"
-                             actionListener="#{systemManager.createNewSystemOption}"                                                     
-                             onstart="PF('longProcessDialogVar').show();" 
-                             oncomplete="PF('longProcessDialogVar').hide();"
-                             onerror="PF('connectionErrorDialog').show();"
+                             actionListener="#{systemManager.createNewSystemOption}" 
                              global="true"
                              process="@this"
-                             icon="ui-icon ui-icon-plus" >
+                             icon="pi pi-plus" >
 
                 <p:ajax event="dialogReturn" 
-                        update=":mainTabViewForm:mainTabView:centerTabView:systemConfigurationTabView:systemOptionsTable"/>
+                        update=":appForm:mainTabView:centerTabView:systemConfigurationTabView:systemOptionsTable"/>
 
             </p:commandButton>
             <p:spacer width="20" />
             <p:inputText value="#{systemManager.systemOptionSearchText}"
                          id="systemOptionSearchTextId"
-                         style="width:150px" placeholder="Enter search text">
+                         style="width:300px" placeholder="Enter search text">
                 <p:ajax event="keyup"
                         global="false"
-                        onstart="PF('longProcessDialogVar').show();" 
-                        oncomplete="PF('longProcessDialogVar').hide();"
-                        update=":mainTabViewForm:mainTabView:centerTabView:systemConfigurationTabView:systemOptionsTable"
+                        update=":appForm:mainTabView:centerTabView:systemConfigurationTabView:systemOptionsTable"
                         listener="#{systemManager.doSystemOptionSearch}"
                         process="@this"/>
             </p:inputText>
@@ -95,15 +90,12 @@ Email: info@dpbennett.com.jm
         <p:column style="width:32px">
             <p:commandButton title="View or edit system option"   
                              actionListener="#{systemManager.editSystemOption}"
-                             onstart="PF('longProcessDialogVar').show();"  
-                             oncomplete="PF('longProcessDialogVar').hide();"
-                             onerror="PF('connectionErrorDialog').show();"
                              global="true"
                              process="@this"
-                             icon="ui-icon ui-icon-pencil">
+                             icon="pi pi-pencil">
 
                 <p:ajax event="dialogReturn" 
-                        update=":mainTabViewForm:mainTabView:centerTabView:systemConfigurationTabView:systemOptionsTable"/>
+                        update=":appForm:mainTabView:centerTabView:systemConfigurationTabView:systemOptionsTable"/>
 
                 <f:setPropertyActionListener value="#{systemOption}"                                                                    
                                              target="#{systemManager.selectedSystemOption}" />

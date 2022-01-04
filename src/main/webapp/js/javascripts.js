@@ -31,15 +31,6 @@ function reloadCurrentPage() {
     window.location.reload();
 }
 
-// The following code keeps the session alive
-var timeout = 240000; /* 240000 = 4 minutes */
-function keepAlive() {
-    keepAliveRequest();
-
-    setTimeout("keepAlive()", timeout);
-}
-setTimeout("keepAlive()", timeout);
-
 // used to reset forms and do loging when page is reloaded
 function doLogin() {
     doLoginRequest();

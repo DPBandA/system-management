@@ -31,7 +31,8 @@ Email: info@dpbennett.com.jm
               resizable="false">
         <h:form id="loginForm">
 
-            <h:outputText id="loginMessage" value="#{authentication.logonMessage}" style="font-weight: bold" />
+            <h:outputText id="loginMessage" 
+                          value="#{authentication.logonMessage}" style="font-weight: bold" />
             <h:panelGrid columns="2" cellpadding="5">
                 <h:outputLabel for="username" value="Username:" style="font-weight: bold" />
                 <p:inputText value="#{authentication.username}"
@@ -49,10 +50,8 @@ Email: info@dpbennett.com.jm
 
                 <f:facet name="footer">
                     <p:commandButton value="Login"
-                                     icon="ui-icon ui-icon-person"    
-                                     update="loginForm"
-                                     onstart="PF('longProcessDialogVar').show();"
-                                     oncomplete="PF('longProcessDialogVar').hide();"                                     
+                                     icon="pi pi-sign-in"    
+                                     update="loginForm"                                                                                                            
                                      global="true"
                                      process="@form"
                                      actionListener="#{authentication.login}" />
