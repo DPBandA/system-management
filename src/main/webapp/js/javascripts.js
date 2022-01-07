@@ -36,3 +36,9 @@ function doLogin() {
     doLoginRequest();
 }
 
+function showLongProcessDialog() {
+    PF('longProcessDialog').show();
+}
+function hideLongProcessDialog() {
+    PF('longProcessDialog').hide();
+}
