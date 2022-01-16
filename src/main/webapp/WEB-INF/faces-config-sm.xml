@@ -18,6 +18,10 @@
         </view-handler>
     </application>  
     <converter>
+        <converter-id>activeEmployeeConverter</converter-id>
+        <converter-class>jm.com.dpbennett.sm.converter.ActiveEmployeeConverter</converter-class>
+    </converter>
+    <converter>
         <converter-id>documentTypeConverter</converter-id>
         <converter-class>jm.com.dpbennett.sm.converter.DocumentTypeConverter</converter-class>
     </converter>
@@ -54,6 +58,13 @@
         <validator-id>businessEntityListValidator</validator-id>
         <validator-class>jm.com.dpbennett.sm.validator.BusinessEntityListValidator</validator-class>
     </validator> 
+    <navigation-rule>
+        <from-view-id>/index.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>userDialog</from-outcome>
+            <to-view-id>/admin/userDialog.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
     <navigation-rule>
         <from-view-id>/index.xhtml</from-view-id>
         <navigation-case>
