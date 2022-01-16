@@ -31,11 +31,14 @@ Email: info@dpbennett.com.jm
 
         <p:ajax event="tabChange" />  
         
-        <p:tab id="UsersTab" 
-               title="User Profiles">
+        <p:tab title="Privileges">
+            <ui:include src="privilegesTab.xhtml"/>  
+        </p:tab>
+        
+        <p:tab title="User Profiles">
             <ui:include src="usersTab.xhtml"/>  
         </p:tab>
-
+        
         <p:tab title="Categories">
             <ui:include src="categoriesTab.xhtml" />   
         </p:tab>
