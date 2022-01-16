@@ -20,38 +20,71 @@ Email: info@dpbennett.com.jm
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:p="http://primefaces.org/ui"
-      xmlns:ui="http://java.sun.com/jsf/facelets"> 
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"> 
 
-    <p:toolbar>
+    <p:menubar>
+        <p:submenu label="New" icon="pi pi-plus">
+            <p:menuitem value="Option" icon="pi pi-plus"/>
+            <p:divider />
+            <p:menuitem value="User" icon="pi pi-plus"/>
+            <p:divider />
+            <p:menuitem value="User" icon="pi pi-plus"/>
+            <p:divider />
+            <p:menuitem value="User" icon="pi pi-plus"/>
+            <p:divider />
+            <p:menuitem value="User" icon="pi pi-plus"/>
+        </p:submenu>
 
-        <p:toolbarGroup align="left">
+        <p:submenu label="Tools" icon="pi pi-briefcase">
+            <p:menuitem value="Options" icon="pi pi-cog"/>
+            <p:divider />
+            <p:menuitem value="Users" icon="pi pi-users"/>
+            <p:divider />
+            <p:menuitem value="Users" icon="pi pi-users"/>
+            <p:divider />
+            <p:menuitem value="Users" icon="pi pi-users"/>
+            <p:divider />
+            <p:menuitem value="Users" icon="pi pi-users"/>
+        </p:submenu>
+    </p:menubar>
+    
+     <ui:include src="search.xhtml"/>
 
-            <p:commandButton value="New"
-                             title="Create new system option"
-                             icon="pi pi-plus"                           
-                             actionListener="#{systemManager.createNewSystemOption}" 
-                             process="@this" >
+    <ui:remove>
+        <p:toolbar>
 
-                <p:ajax event="dialogReturn" 
-                        update=""/>
+            <p:toolbarGroup align="left">
 
-            </p:commandButton>       
+                <p:commandButton value="New"
+                                 title="Create new system option"
+                                 icon="pi pi-plus"                           
+                                 actionListener="#{systemManager.createNewSystemOption}" 
+                                 process="@this" >
 
-        </p:toolbarGroup>
-        <p:toolbarGroup align="right">
+                    <p:ajax event="dialogReturn" 
+                            update=""/>
 
-            <p:menuButton value="Tools" >  
+                </p:commandButton>       
 
-                <p:menuitem value="System Browser"
-                            title="Open System Browser"
-                            icon="pi pi-briefcase"
-                            actionListener="#{systemManager.openSystemBrowser}"
-                            process="@this" />
+            </p:toolbarGroup>
+            <p:toolbarGroup align="right">
 
-            </p:menuButton>         
-        </p:toolbarGroup>
+                <p:menuButton value="Tools" >  
 
-    </p:toolbar>
+                    <p:menuitem value="System Browser"
+                                title="Open System Browser"
+                                icon="pi pi-briefcase"
+                                actionListener="#{systemManager.openSystemBrowser}"
+                                process="@this" />
+
+                </p:menuButton>         
+            </p:toolbarGroup>
+
+        </p:toolbar>
+    </ui:remove>
+    
+
 
 </html>
 
