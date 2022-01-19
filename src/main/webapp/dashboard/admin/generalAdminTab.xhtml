@@ -31,12 +31,21 @@ Email: info@dpbennett.com.jm
                 icon="pi pi-plus" >
 
                 <p:ajax event="dialogReturn" 
+                        listener="#{systemManager.doUserSearch}"
+                        update=":appForm:mainTabView:centerTabView:usersTable" />
+
+            </p:menuitem>
+            <p:divider />
+             <p:menuitem 
+                actionListener="#{systemManager.createNewUser}" 
+                value="User" 
+                icon="pi pi-plus" >
+
+                <p:ajax event="dialogReturn" 
                         listener="#{systemManager.doActivePrivilegeSearch}"
                         update=":appForm:mainTabView:centerTabView:privilegesTable" />
 
             </p:menuitem>
-            <p:divider />
-            <p:menuitem value="User" icon="pi pi-plus"/>
             <p:divider />
             <p:menuitem value="User" icon="pi pi-plus"/>
             <p:divider />
