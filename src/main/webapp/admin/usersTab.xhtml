@@ -35,7 +35,7 @@ Email: info@dpbennett.com.jm
 
                 <p:ajax event="dialogReturn" 
                         listener="#{systemManager.doUserSearch}"
-                        update=":appForm:mainTabView"/>
+                        update=":appForm:mainTabView:centerTabView:usersTable"/>
 
             </p:commandButton>
             <p:spacer width="20" />
@@ -45,7 +45,7 @@ Email: info@dpbennett.com.jm
                          placeholder="Enter any part of name">
                 <p:ajax event="keyup"
                         global="true"
-                        update=":appForm:mainTabView"
+                        update=":appForm:mainTabView:centerTabView:usersTable"
                         listener="#{systemManager.doUserSearch}"
                         process="@this"/>                                   
             </p:inputText>       
@@ -57,7 +57,7 @@ Email: info@dpbennett.com.jm
                 <p:selectBooleanCheckbox style="vertical-align: middle"
                                          id="activeUsersOnly"
                                          value="#{systemManager.isActiveUsersOnly}" >
-                    <p:ajax  update=":appForm:mainTabView"
+                    <p:ajax  update=":appForm:mainTabView:centerTabView:usersTable"
                              listener="#{systemManager.doUserSearch}"
                              event="change"                                      
                              process="@this"/>
@@ -134,7 +134,7 @@ Email: info@dpbennett.com.jm
                                              target="#{systemManager.selectedUser}" />
 
                 <p:ajax event="dialogReturn" 
-                        update=":appForm:mainTabView"/>
+                        update=":appForm:mainTabView:centerTabView:usersTable"/>
 
             </p:commandButton>           
         </p:column>
