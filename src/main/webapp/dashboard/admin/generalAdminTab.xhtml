@@ -31,27 +31,65 @@ Email: info@dpbennett.com.jm
                 icon="pi pi-plus" >
 
                 <p:ajax event="dialogReturn" 
-                        listener="#{systemManager.doUserSearch}"
+                        listener="#{systemManager.doActivePrivilegeSearch}"
                         update=":appForm:mainTabView:centerTabView:privilegesTable" />
 
             </p:menuitem>
             <p:divider />
-             <p:menuitem 
+            <p:menuitem 
                 actionListener="#{systemManager.createNewUser}" 
                 value="User" 
                 icon="pi pi-plus" >
 
                 <p:ajax event="dialogReturn" 
-                        listener="#{systemManager.doActivePrivilegeSearch}"
-                        update=":appForm:mainTabView:centerTabView:usersTable" />
+                        listener="#{systemManager.doUserSearch}"
+                        update="#{systemManager.usersTableId}" />
 
             </p:menuitem>
             <p:divider />
-            <p:menuitem value="User" icon="pi pi-plus"/>
+            <p:menuitem 
+                actionListener="#{systemManager.createNewCategory}" 
+                value="Category" 
+                icon="pi pi-plus" >
+
+                <p:ajax event="dialogReturn" 
+                        listener="#{systemManager.doCategorySearch}"
+                        update=":appForm:mainTabView:centerTabView:categoriesTable" />
+
+            </p:menuitem>
             <p:divider />
-            <p:menuitem value="User" icon="pi pi-plus"/>
+            <p:menuitem 
+                actionListener="#{systemManager.createNewDocumentType}" 
+                value="Document Type" 
+                icon="pi pi-plus" >
+
+                <p:ajax event="dialogReturn" 
+                        listener="#{systemManager.doDocumentTypeSearch}"
+                        update=":appForm:mainTabView:centerTabView:documentTypesTable" />
+
+            </p:menuitem>
             <p:divider />
-            <p:menuitem value="User" icon="pi pi-plus"/>
+            <p:menuitem 
+                actionListener="#{systemManager.createNewSystemOption}" 
+                value="Option" 
+                icon="pi pi-plus" >
+
+                <p:ajax event="dialogReturn" 
+                        listener="#{systemManager.doSystemOptionSearch}"
+                        update=":appForm:mainTabView:centerTabView:systemOptionsTable" />
+
+            </p:menuitem>
+            <p:divider />
+            <p:menuitem 
+                actionListener="#{systemManager.createNewLdapContext}" 
+                value="Authentication" 
+                icon="pi pi-plus" >
+
+                <p:ajax event="dialogReturn" 
+                        listener="#{systemManager.doLdapContextSearch}"
+                        update=":appForm:mainTabView:centerTabView:LDAPTable" />
+
+            </p:menuitem>
         </p:submenu>
 
         <p:submenu label="Tools" icon="pi pi-briefcase">
@@ -69,38 +107,7 @@ Email: info@dpbennett.com.jm
 
     <ui:include src="search.xhtml"/>
 
-    <ui:remove>
-        <p:toolbar>
-
-            <p:toolbarGroup align="left">
-
-                <p:commandButton value="New"
-                                 title="Create new system option"
-                                 icon="pi pi-plus"                           
-                                 actionListener="#{systemManager.createNewSystemOption}" 
-                                 process="@this" >
-
-                    <p:ajax event="dialogReturn" 
-                            update=""/>
-
-                </p:commandButton>       
-
-            </p:toolbarGroup>
-            <p:toolbarGroup align="right">
-
-                <p:menuButton value="Tools" >  
-
-                    <p:menuitem value="System Browser"
-                                title="Open System Browser"
-                                icon="pi pi-briefcase"
-                                actionListener="#{systemManager.openSystemBrowser}"
-                                process="@this" />
-
-                </p:menuButton>         
-            </p:toolbarGroup>
-
-        </p:toolbar>
-    </ui:remove>
+    <br/><br/>
 
 
 

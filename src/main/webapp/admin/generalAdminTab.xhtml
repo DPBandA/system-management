@@ -30,15 +30,15 @@ Email: info@dpbennett.com.jm
                dynamic="true">
 
         <p:ajax event="tabChange" />  
-        
+
         <p:tab title="Privileges">
             <ui:include src="privilegesTab.xhtml"/>  
         </p:tab>
-        
+
         <p:tab title="Users">
             <ui:include src="usersTab.xhtml"/>  
         </p:tab>
-        
+
         <p:tab title="Categories">
             <ui:include src="categoriesTab.xhtml" />   
         </p:tab>
@@ -46,10 +46,14 @@ Email: info@dpbennett.com.jm
         <p:tab title="Document Types">
             <ui:include src="documentTypesTab.xhtml" />   
         </p:tab>
-
-        <p:tab title="Configuration">
-            <ui:include src="configurationsTab.xhtml" /> 
+        
+        <p:tab title="Options">
+            <ui:include src="optionsTab.xhtml"/>
         </p:tab>
+
+        <p:tab title="Authentication">
+            <ui:include src="ldapTab.xhtml"/>  
+        </p:tab>        
 
     </p:tabView>
 
