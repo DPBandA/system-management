@@ -93,21 +93,44 @@ Email: info@dpbennett.com.jm
         </p:submenu>
 
         <p:submenu label="Tools" icon="pi pi-briefcase">
-            <p:menuitem value="Options" icon="pi pi-cog"/>
+            <p:menuitem 
+                actionListener="#{systemManager.selectSystemAdminTab('centerTabVar', 0)}" 
+                value="Privileges" 
+                icon="pi pi-key" />
             <p:divider />
-            <p:menuitem value="Users" icon="pi pi-users"/>
+            <p:menuitem 
+                actionListener="#{systemManager.selectSystemAdminTab('centerTabVar', 1)}" 
+                value="Users" 
+                icon="pi pi-users" />
             <p:divider />
-            <p:menuitem value="Users" icon="pi pi-users"/>
+            <p:menuitem 
+                actionListener="#{systemManager.selectSystemAdminTab('centerTabVar', 2)}" 
+                value="Categories" 
+                icon="pi pi-list" />
             <p:divider />
-            <p:menuitem value="Users" icon="pi pi-users"/>
             <p:divider />
-            <p:menuitem value="Users" icon="pi pi-users"/>
+            <p:menuitem 
+                actionListener="#{systemManager.selectSystemAdminTab('centerTabVar', 3)}" 
+                value="Document Types" 
+                icon="pi pi-file" />
+            <p:divider />
+            <p:menuitem 
+                actionListener="#{systemManager.selectSystemAdminTab('centerTabVar', 4)}" 
+                value="Options" 
+                icon="pi pi-sliders-v" />
+            <p:divider />
+            <p:menuitem 
+                actionListener="#{systemManager.selectSystemAdminTab('centerTabVar', 5)}" 
+                value="Authentication" 
+                icon="pi pi-lock" />
         </p:submenu>
     </p:menubar>
 
-    <ui:include src="search.xhtml"/>
+    <ui:remove>
+        <ui:include src="search.xhtml"/>
+    </ui:remove>
 
-    <br/><br/>
+   
 
 </html>
 
