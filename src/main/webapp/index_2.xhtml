@@ -1,6 +1,6 @@
 <!--
 System Management (SM) 
-Copyright (C) 2021  D P Bennett & Associates Limited
+Copyright (C) 2022  D P Bennett & Associates Limited
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU Affero General Public License as published by
@@ -107,27 +107,8 @@ Email: info@dpbennett.com.jm
                                 <p:defaultCommand id="dashboardDefaultCommandButton" 
                                                   target="doGeneralSearchButton" />
 
-                                <p:accordionPanel id="dashboardAccordion" 
-                                                  value="#{systemManager.dashboard.tabs}" 
-                                                  var="t" 
-                                                  widgetVar="dashboardAccordionVar"
-                                                  rendered="#{systemManager.dashboard.render}"
-                                                  multiple="false">
-
-                                    <p:ajax event="tabChange"       
-                                            immediate="true"
-                                            process="@this"
-                                            listener="#{systemManager.onDashboardTabChange}" />
-
-                                    <p:tab title="#{t.name}" > 
-
-                                        <h:panelGroup rendered="#{t.id == 'System Administration'}">
-                                            <ui:include src="dashboard/admin/generalAdminTab.xhtml" />
-                                        </h:panelGroup>
-
-                                    </p:tab>   
-
-                                </p:accordionPanel>
+                                <ui:include src="dashboard/admin/generalAdminTab.xhtml" />
+                                
                             </p:panel>
                         </p:splitterPanel>     
                         <p:splitterPanel styleClass="p-d-flex p-ai-center p-jc-center" 
