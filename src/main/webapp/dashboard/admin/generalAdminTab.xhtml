@@ -91,6 +91,17 @@ Email: info@dpbennett.com.jm
                             update=":appForm:mainTabView:centerTabView:LDAPTable" />
 
                 </p:menuitem>
+                 <p:divider />
+                <p:menuitem 
+                    actionListener="#{systemManager.createNewModule}" 
+                    value="Module" 
+                    icon="pi pi-plus" >
+
+                    <p:ajax event="dialogReturn" 
+                            listener="#{systemManager.doModuleSearch}"
+                            update=":appForm:mainTabView:centerTabView:modulesTable" />
+
+                </p:menuitem>
             </p:menuButton>
         </p:toolbarGroup>
 
@@ -126,6 +137,11 @@ Email: info@dpbennett.com.jm
                     actionListener="#{systemManager.selectSystemAdminTab('centerTabVar', 5)}" 
                     value="Authentication" 
                     icon="pi pi-lock" />
+                <p:divider />
+                <p:menuitem 
+                    actionListener="#{systemManager.selectSystemAdminTab('centerTabVar', 6)}" 
+                    value="Modules" 
+                    icon="pi pi-th-large" />
             </p:menuButton>
         </p:toolbarGroup>
 

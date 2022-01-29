@@ -35,38 +35,38 @@ Email: info@dpbennett.com.jm
                              icon="pi pi-plus" >
 
                 <p:ajax event="dialogReturn" 
-                        listener="#{systemManager.doActivePrivilegeSearch}"
-                        update=":appForm:mainTabView:centerTabView:privilegesTable" />
+                        listener="#{systemManager.doActiveModuleSearch}"
+                        update=":appForm:mainTabView:centerTabView:modulesTable" />
 
             </p:commandButton>     
             <p:spacer width="20" />        
-            <p:inputText id="privilegeSearchText" 
-                         value="#{systemManager.privilegeSearchText}"
+            <p:inputText id="moduleSearchText" 
+                         value="#{systemManager.moduleSearchText}"
                          style="width:300px" 
                          placeholder="Enter any part of name">
                 <p:ajax event="keyup"
                         global="false"
-                        update=":appForm:mainTabView:centerTabView:privilegesTable"
-                        listener="#{systemManager.doActivePrivilegeSearch}"
+                        update=":appForm:mainTabView:centerTabView:modulesTable"
+                        listener="#{systemManager.doActiveModuleSearch}"
                         process="@this"/>
             </p:inputText>
         </p:toolbarGroup>
 
     </p:toolbar>  
 
-    <p:dataTable id="privilegesTable"                                       
-                 var="privilege"     
+    <p:dataTable id="modulesTable"                                       
+                 var="module"     
                  editable="true" 
                  editMode="cell"
                  paginator="true"
                  rows="15"
                  style="margin-top: 1px;margin-bottom: 1px;"
-                 widgetVar="PrivilegesTableVar"
+                 widgetVar="ModulesTableVar"
                  paginatorTemplate="{FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
-                 value="#{systemManager.foundActivePrivileges}">
+                 value="#{systemManager.foundActiveModules}">
 
         <f:facet name="header">
-            Privileges
+            Modules
         </f:facet>
         
         <p:column>
@@ -76,52 +76,52 @@ Email: info@dpbennett.com.jm
             <p:selectBooleanCheckbox 
                 style="display: block;text-align: center;"
                 disabled="true"
-                value="#{privilege.active}" />
+                value="#{module.active}" />
         </p:column>
 
         <p:column>
             <f:facet name="header">
                 <h:outputText value="Name"/>
             </f:facet>
-            <h:outputText value="#{privilege.name}" />
+            <h:outputText value="#{module.name}" />
         </p:column>  
 
         <p:column>
             <f:facet name="header">
                 <h:outputText value="Description"/>
             </f:facet>
-            <h:outputText value="#{privilege.description}" />
+            <h:outputText value="#{module.description}" />
         </p:column>    
 
         <p:column style="width:32px">
-            <p:commandButton title="View or edit privilege"   
-                             actionListener="#{systemManager.editPrivilege}"                            
+            <p:commandButton title="View or edit module"   
+                             actionListener="#{systemManager.editModule}"                            
                              global="true"
                              process="@this"
                              icon="pi pi-pencil">
 
                 <p:ajax event="dialogReturn" 
-                        update=":appForm:mainTabView:centerTabView:privilegesTable" />
+                        update=":appForm:mainTabView:centerTabView:modulesTable" />
 
-                <f:setPropertyActionListener value="#{privilege}"                                                                    
-                                             target="#{systemManager.selectedPrivilege}" />
+                <f:setPropertyActionListener value="#{module}"                                                                    
+                                             target="#{systemManager.selectedModule}" />
             </p:commandButton>           
         </p:column>
 
     </p:dataTable>        
     <p:toolbar>
         <p:toolbarGroup align="left" >   
-            <p:commandButton title="Add new privilege"                                  
+            <p:commandButton title="Add new module"                                  
                              value="New"
-                             actionListener="#{systemManager.createNewPrivilege}"
-                             update=":appForm:mainTabView:centerTabView:privilegesTable"
+                             actionListener="#{systemManager.createNewModule}"
+                             update=":appForm:mainTabView:centerTabView:modulesTable"
                              global="true"
                              process="@this"
                              icon="pi pi-plus" >
 
                 <p:ajax event="dialogReturn" 
-                        listener="#{systemManager.doActivePrivilegeSearch}"
-                        update=":appForm:mainTabView:centerTabView:privilegesTable" />
+                        listener="#{systemManager.doActiveModuleSearch}"
+                        update=":appForm:mainTabView:centerTabView:modulesTable" />
 
             </p:commandButton>     
 
