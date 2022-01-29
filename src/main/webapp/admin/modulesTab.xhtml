@@ -1,0 +1,134 @@
+<!--
+System Management (SM) 
+Copyright (C) 2021  D P Bennett & Associates Limited
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU Affero General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Affero General Public License for more details.
+
+You should have received a copy of the GNU Affero General Public License
+along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+Email: info@dpbennett.com.jm
+-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"> 
+
+    <p:toolbar>
+        <p:toolbarGroup align="left" >   
+            <p:commandButton title="Add new module"                                  
+                             value="New"
+                             actionListener="#{systemManager.createNewModule}"                            
+                             update=":appForm:mainTabView:centerTabView:modulesTable"
+                             global="true"
+                             process="@this"
+                             icon="pi pi-plus" >
+
+                <p:ajax event="dialogReturn" 
+                        listener="#{systemManager.doActivePrivilegeSearch}"
+                        update=":appForm:mainTabView:centerTabView:privilegesTable" />
+
+            </p:commandButton>     
+            <p:spacer width="20" />        
+            <p:inputText id="privilegeSearchText" 
+                         value="#{systemManager.privilegeSearchText}"
+                         style="width:300px" 
+                         placeholder="Enter any part of name">
+                <p:ajax event="keyup"
+                        global="false"
+                        update=":appForm:mainTabView:centerTabView:privilegesTable"
+                        listener="#{systemManager.doActivePrivilegeSearch}"
+                        process="@this"/>
+            </p:inputText>
+        </p:toolbarGroup>
+
+    </p:toolbar>  
+
+    <p:dataTable id="privilegesTable"                                       
+                 var="privilege"     
+                 editable="true" 
+                 editMode="cell"
+                 paginator="true"
+                 rows="15"
+                 style="margin-top: 1px;margin-bottom: 1px;"
+                 widgetVar="PrivilegesTableVar"
+                 paginatorTemplate="{FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
+                 value="#{systemManager.foundActivePrivileges}">
+
+        <f:facet name="header">
+            Privileges
+        </f:facet>
+        
+        <p:column>
+            <f:facet name="header">
+                <h:outputText value="Active"/>
+            </f:facet>           
+            <p:selectBooleanCheckbox 
+                style="display: block;text-align: center;"
+                disabled="true"
+                value="#{privilege.active}" />
+        </p:column>
+
+        <p:column>
+            <f:facet name="header">
+                <h:outputText value="Name"/>
+            </f:facet>
+            <h:outputText value="#{privilege.name}" />
+        </p:column>  
+
+        <p:column>
+            <f:facet name="header">
+                <h:outputText value="Description"/>
+            </f:facet>
+            <h:outputText value="#{privilege.description}" />
+        </p:column>    
+
+        <p:column style="width:32px">
+            <p:commandButton title="View or edit privilege"   
+                             actionListener="#{systemManager.editPrivilege}"                            
+                             global="true"
+                             process="@this"
+                             icon="pi pi-pencil">
+
+                <p:ajax event="dialogReturn" 
+                        update=":appForm:mainTabView:centerTabView:privilegesTable" />
+
+                <f:setPropertyActionListener value="#{privilege}"                                                                    
+                                             target="#{systemManager.selectedPrivilege}" />
+            </p:commandButton>           
+        </p:column>
+
+    </p:dataTable>        
+    <p:toolbar>
+        <p:toolbarGroup align="left" >   
+            <p:commandButton title="Add new privilege"                                  
+                             value="New"
+                             actionListener="#{systemManager.createNewPrivilege}"
+                             update=":appForm:mainTabView:centerTabView:privilegesTable"
+                             global="true"
+                             process="@this"
+                             icon="pi pi-plus" >
+
+                <p:ajax event="dialogReturn" 
+                        listener="#{systemManager.doActivePrivilegeSearch}"
+                        update=":appForm:mainTabView:centerTabView:privilegesTable" />
+
+            </p:commandButton>     
+
+        </p:toolbarGroup>
+
+    </p:toolbar>
+
+</html>
+
+

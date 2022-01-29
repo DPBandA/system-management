@@ -30,7 +30,7 @@ Email: info@dpbennett.com.jm
                dynamic="true">
 
         <p:ajax event="tabChange" />  
-
+        
         <p:tab title="Privileges">
             <ui:include src="privilegesTab.xhtml"/>  
         </p:tab>
@@ -53,7 +53,11 @@ Email: info@dpbennett.com.jm
 
         <p:tab title="Authentication">
             <ui:include src="ldapTab.xhtml"/>  
-        </p:tab>        
+        </p:tab>  
+        
+        <p:tab title="Modules">
+            <ui:include src="modulesTab.xhtml"/>  
+        </p:tab>
 
     </p:tabView>
 

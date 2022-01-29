@@ -61,6 +61,13 @@
     <navigation-rule>
         <from-view-id>/index.xhtml</from-view-id>
         <navigation-case>
+            <from-outcome>moduleDialog</from-outcome>
+            <to-view-id>/admin/moduleDialog.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/index.xhtml</from-view-id>
+        <navigation-case>
             <from-outcome>userDialog</from-outcome>
             <to-view-id>/admin/userDialog.xhtml</to-view-id>
         </navigation-case>
