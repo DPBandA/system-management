@@ -75,7 +75,7 @@ Email: info@dpbennett.com.jm
                         autoResize="true"
                         maxlength="250" 
                         styleClass="#{not component.valid ? 'invalid-inputtextarea-field' : ''}" 
-                        style="width: 275px;">
+                        style="width: 400px;">
 
                         <f:validator validatorId="requiredFieldValidator" />
 
@@ -91,104 +91,61 @@ Email: info@dpbennett.com.jm
             <p:tabView id="privileges">
                 <p:tab title="Privileges">
                     <p:toolbar>
-                        <p:toolbarGroup align="left" >   
-                            <h:panelGrid>
-                                <p:commandButton title="Edit privilege list"                                  
-                                                 value="Edit"
-                                                 actionListener="#{humanResourceManager.addBusinessDepartments}"
-                                                 update=":businessDialogForm:businessdialog_growl"                                                
-                                                 global="true"
-                                                 process="@this"
-                                                 icon="pi pi-pencil">
-
-                                    <p:ajax event="dialogReturn" 
-                                            listener="#{humanResourceManager.addBusinessDepartmentsDialogReturn}"
-                                            update="departmentsTable"/>
-
-                                </p:commandButton>   
-                            </h:panelGrid>
-                        </p:toolbarGroup>    
-
-                        <p:toolbarGroup align="right">
-                            <h:panelGrid columns="2">
-                                <p:outputLabel value="Department label: " />
-                                <p:selectOneMenu id="departmentLabel"     
-                                                 style="width: 200px;"
-                                                 value="#{humanResourceManager.selectedBusiness.departmentLabel}">
-
-                                    <f:selectItems  value="#{humanResourceManager.departmentLabelList}"
-                                                    var="deptLabel"                            
-                                                    itemValue="#{deptLabel}"
-                                                    itemLabel="#{deptLabel}"/>
-
-                                </p:selectOneMenu>  
-                            </h:panelGrid>
-                        </p:toolbarGroup>
-                    </p:toolbar>    
-                    <p:dataTable id="departmentsTable"
-                                 paginator="true"
-                                 rows="15"
-                                 var="department"
-                                 style="margin-bottom: 1px;margin-top: 1px;"
-                                 value="#{humanResourceManager.selectedBusiness.departments}">
-
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="Name" />
-                            </f:facet>
-                            <h:outputText value="#{department.name}" />
-                        </p:column>
-
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="Head" />
-                            </f:facet>
-                            <h:outputText value="#{department.head}" />
-                        </p:column>
-
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="Code" />
-                            </f:facet>
-                            <h:outputText value="#{department.code}" />
-                        </p:column>
-
-                        <ui:remove>
-                            <p:column style="width:32px">
-                                <p:menuButton id="toolsButton" value="Actions">
-
-                                    <p:menuitem   
-                                        value="Remove"
-                                        icon="pi pi-trash"
-                                        process="@this">
-
-                                        <f:setPropertyActionListener value="#{jobSample}"
-                                                                     target="#{systemManager.selectedBusiness}" />
-
-
-                                    </p:menuitem>                   
-
-                                </p:menuButton>                   
-                            </p:column>
-                        </ui:remove>
-
-                    </p:dataTable>
-                    <p:toolbar>
-                        <p:toolbarGroup align="left" >   
-                            <p:commandButton title="Edit department list"                                  
+                        <p:toolbarGroup align="left" >  
+                            <p:commandButton title="Edit privilege list"                                  
                                              value="Edit"
-                                             actionListener="#{humanResourceManager.addBusinessDepartments}"
-                                             update=":businessDialogForm:businessdialog_growl"
+                                             actionListener="#{systemManager.addModulePrivileges}"
+                                             update=":moduleDialogForm:module_growl"                                                
                                              global="true"
                                              process="@this"
                                              icon="pi pi-pencil">
 
                                 <p:ajax event="dialogReturn" 
-                                        listener="#{humanResourceManager.addBusinessDepartmentsDialogReturn}"
-                                        update="departmentsTable"/>
+                                        listener="#{systemManager.addModulePrivilegesDialogReturn}"
+                                        update="privilegesTable"/>
 
-                            </p:commandButton>                           
-                        </p:toolbarGroup>                    
+                            </p:commandButton> 
+                        </p:toolbarGroup>  
+
+                    </p:toolbar>    
+                    <p:dataTable id="privilegesTable"
+                                 paginator="true"
+                                 rows="15"
+                                 var="privilege"
+                                 style="margin-bottom: 1px;margin-top: 1px;"
+                                 value="#{systemManager.selectedModule.privileges}">
+
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Name" />
+                            </f:facet>
+                            <h:outputText value="#{privilege.name}" />
+                        </p:column>
+
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Description" />
+                            </f:facet>
+                            <h:outputText value="#{privilege.description}" />
+                        </p:column>                        
+
+                    </p:dataTable>
+                    <p:toolbar>
+                        <p:toolbarGroup align="left" >  
+                            <p:commandButton title="Edit privilege list"                                  
+                                             value="Edit"
+                                             actionListener="#{systemManager.addModulePrivileges}"
+                                             update=":moduleDialogForm:module_growl"                                                
+                                             global="true"
+                                             process="@this"
+                                             icon="pi pi-pencil">
+
+                                <p:ajax event="dialogReturn" 
+                                        listener="#{systemManager.addModulePrivilegesDialogReturn}"
+                                        update="privilegesTable"/>
+
+                            </p:commandButton> 
+                        </p:toolbarGroup>                     
                     </p:toolbar>
                 </p:tab>                           
 
