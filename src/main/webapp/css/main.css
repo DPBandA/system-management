@@ -4,7 +4,7 @@
 .jobNumberClass {
     width: 100%;
     color: orange;
-}  
+}
 .editableclass {
     background-color: lightgoldenrodyellow !important;
 }
@@ -19,7 +19,7 @@
     font-size: 1.2em;
     background-image: none;
     font-weight: bolder;
-}   
+}
 .due {
     background-color: yellow;
     background-image: none;
@@ -74,21 +74,21 @@
     background-color: white;
     background-image: none;
     color: black;
-}     
+}
 .job-number {
     font-weight: bold;
     font-size: 14px;
     padding: 3px;
     width: 100%;
     box-shadow: 5px;
-}   
+}
 .pr-number {
     font-weight: bold;
     font-size: 14px;
     padding: 3px;
     width: 100%;
     box-shadow: 5px;
-} 
+}
 .read-only-inputfield .ui-inputfield {
     background-color: lightyellow !important;
 }
@@ -123,7 +123,7 @@
     color: blue;
 }
 
-.read-only-text-field {   
+.read-only-text-field {
     background-color: lightyellow !important;
     color: blue;
 }
@@ -137,7 +137,7 @@
     border-color: lightblue;
 }
 
-.ui-widget .ui-widget .invalid-inputtextarea-field {    
+.ui-widget .ui-widget .invalid-inputtextarea-field {
     border-color: lightblue;
 }
 
@@ -146,14 +146,15 @@
 }
 
 .debug-mode {
-    color: red; 
-    font-size: 10pt; font-weight: bold;
+    color: lightblue;
+    font-size: 10pt;
+    font-weight: bold;
 }
 
 .non-debug-mode {
-    color: darkgrey; 
-    font-size: 10pt; font-weight: bold;
+    color: darkgrey;
+    font-size: 10pt;
+    font-weight: bold;
 }
-
 
 

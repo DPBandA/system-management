@@ -1,5 +1,5 @@
 /* 
- System Management (SM) 
+System Management (SM) 
 Copyright (C) 2022  D P Bennett & Associates Limited
  
  This program is free software: you can redistribute it and/or modify
@@ -31,7 +31,6 @@ function reloadCurrentPage() {
     window.location.reload();
 }
 
-// used to reset forms and do loging when page is reloaded
 function doLogin() {
     doLoginRequest();
 }
