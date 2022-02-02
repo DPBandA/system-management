@@ -1,93 +1,70 @@
+/*
 .ui-widget {
-    font-size: 80%;
+    font-size: 80% !important;
 }
+*/
 .jobNumberClass {
-    width: 100%;
-    color: orange;
+    width: 100% !important;
+    color: orange !important;
 }
 .editableclass {
     background-color: lightgoldenrodyellow !important;
 }
 .hold {
-    color: red;
-    font-size: 1.2em;
-    background-image: none;
-    font-weight: bolder;
+    color: red !important;
+    font-size: 1.2em !important;
+    background-image: none !important;
+    font-weight: bolder !important;
 }
 .active {
-    color: green;
-    font-size: 1.2em;
-    background-image: none;
-    font-weight: bolder;
+    color: green !important;
+    font-size: 1.2em !important;
+    background-image: none !important;
+    font-weight: bolder !important;
 }
 .due {
-    background-color: yellow;
-    background-image: none;
-    color: #000000;
+    background-color: yellow !important;
+    background-image: none !important;
+    color: #000000 !important;
 }
 .overdue {
-    background-color: yellow;
-    background-image: none;
-    color: #000000;
-}
-.lightgreybg {
-    background-color:lightgrey;
-    background-image: none;
-    color: #000000;
+    background-color: yellow !important;
+    background-image: none !important;
+    color: #000000 !important;
 }
 .lightsteelbg {
-    background-color:lightsteelblue;
-    background-image: none;
-    color: #000000;
-}
-.orangeredbg {
-    background-color:orangered;
-    background-image: none;
-    color: #000000;
-}
-.lightyellowbg {
-    background-color:lightyellow;
-    background-image: none;
-    color: #000000;
-}
-.lightgreenbg {
-    background-color:lightgreen;
-    background-image: none;
-    color: #000000;
-}
-.yellowbg {
-    background-color:yellow;
-    background-image: none;
-    color: #000000;
+    background-color:lightsteelblue !important;
+    background-image: none !important;
+    color: #000000 !important;
 }
 .header {
-    background-color: gray;
-    background-image: none;
-    color: white;
+    background-color: gray !important;
+    background-image: none !important;
+    color: white !important;
 }
 .rdonly {
-    background-color: lightgrey;
-    background-image: none;
-    color: blue;
+    background-color: lightgrey !important;
+    background-image: none !important;
+    color: blue !important;
 }
 .default {
-    background-color: white;
-    background-image: none;
-    color: black;
+    background-color: white !important;
+    background-image: none !important;
+    color: black !important;
 }
 .job-number {
-    font-weight: bold;
-    font-size: 14px;
-    padding: 3px;
-    width: 100%;
-    box-shadow: 5px;
+    font-weight: bold !important;
+    font-size: 14px !important;
+    padding: 3px !important;
+    width: 100% !important;
+    box-shadow: 5px !important;
 }
 .pr-number {
-    font-weight: bold;
-    font-size: 14px;
-    padding: 3px;
-    width: 100%;
-    box-shadow: 5px;
+    font-weight: bold !important;
+    font-size: 14px !important;
+    padding: 3px !important;
+    width: 100% !important;
+    box-shadow: 5px !important;
 }
 .read-only-inputfield .ui-inputfield {
     background-color: lightyellow !important;
@@ -97,64 +74,82 @@
     text-align: right;
 }
 .right-inputfield .ui-inputfield {
-    text-align: right;
+    text-align: right !important;
 }
 
 .output-text-header {
-    display: block;
-    margin-top: 10px;
-    font-size: 14px;
-    font-weight: bold;
-    color: gray;
-    width: 100%;
+    display: block !important;
+    margin-top: 10px !important;
+    font-size: 14px !important;
+    font-weight: bold !important;
+    color: gray !important;
+    width: 100% !important;
 }
 
 .number-field {
-    text-align: right;
+    text-align: right !important;
 }
 
 .datatable-number-field {
-    float: right;
+    float: right !important;
 }
 
 .read-only-number-field {
-    text-align: right;
+    text-align: right !important;
     background-color: lightyellow !important;
-    color: blue;
+    color: blue !important;
 }
 
 .read-only-text-field {
     background-color: lightyellow !important;
-    color: blue;
+    color: blue !important;
 }
 
 .ui-widget .ui-widget .invalid-number-field {
-    text-align: right;
-    border-color: lightblue;
+    text-align: right !important;
+    border-color: lightblue !important;
 }
 
 .ui-invalid-inputfield .ui-inputfield {
-    border-color: lightblue;
+    border-color: lightblue !important;
 }
 
 .ui-widget .ui-widget .invalid-inputtextarea-field {
-    border-color: lightblue;
+    border-color: lightblue !important;
 }
 
 .read-only-calendar input {
-    background-color: lightgray;
+    background-color: lightgray !important;
 }
 
 .debug-mode {
-    color: lightblue;
-    font-size: 10pt;
-    font-weight: bold;
+    color: lightblue !important;
+    font-size: 10pt !important;
+    font-weight: bold !important;
 }
 
 .non-debug-mode {
-    color: darkgrey;
-    font-size: 10pt;
-    font-weight: bold;
+    color: darkgrey !important;
+    font-size: 10pt !important;
+    font-weight: bold !important;
 }
-
-
+.lightgreybg {
+    background-color:lightgrey !important;
+    background-image: none !important;
+    color: #000000 !important;
+}
+.lightgreenbg {
+    background-color:lightgreen !important;
+    background-image: none !important;
+    color: #000000 !important;
+}
+.orangeredbg {
+    background-color:orangered !important;
+    background-image: none !important;
+    color: #000000 !important;
+}
+.yellowbg {
+    background-color:yellow !important;
+    background-image: none !important;
+    color: #000000 !important;
+}
