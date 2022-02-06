@@ -22,6 +22,10 @@
         <converter-class>jm.com.dpbennett.sm.converter.ActivePrivilegeConverter</converter-class>
     </converter>
     <converter>
+        <converter-id>activeModuleConverter</converter-id>
+        <converter-class>jm.com.dpbennett.sm.converter.ActiveModuleConverter</converter-class>
+    </converter>
+    <converter>
         <converter-id>activeEmployeeConverter</converter-id>
         <converter-class>jm.com.dpbennett.sm.converter.ActiveEmployeeConverter</converter-class>
     </converter>
@@ -70,6 +74,13 @@
             <to-view-id>/admin/privilegePickListDialog.xhtml</to-view-id>
         </navigation-case>
     </navigation-rule> 
+     <navigation-rule>
+        <from-view-id>/index.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>modulePickListDialog</from-outcome>
+            <to-view-id>/admin/modulePickListDialog.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
     <navigation-rule>
         <from-view-id>/index.xhtml</from-view-id>
         <navigation-case>
