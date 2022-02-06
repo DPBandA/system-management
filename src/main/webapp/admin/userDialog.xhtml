@@ -154,6 +154,64 @@ Email: info@dpbennett.com.jm
 
                 <p:tab title="Privileges">
                     
+                    <p:toolbar>
+                        <p:toolbarGroup align="left" >  
+                            <p:commandButton title="Edit privilege list"                                  
+                                             value="Edit"
+                                             actionListener="#{systemManager.addUserPrivileges}"
+                                             update=":userDialogForm:userdialog_growl"                                                
+                                             global="true"
+                                             process="@this"
+                                             icon="pi pi-pencil">
+
+                                <p:ajax event="dialogReturn" 
+                                        listener="#{systemManager.addUserPrivilegesDialogReturn}"
+                                        update="privilegesTable"/>
+
+                            </p:commandButton> 
+                        </p:toolbarGroup>  
+
+                    </p:toolbar>    
+                    <p:dataTable id="privilegesTable"
+                                 paginator="true"
+                                 rows="15"
+                                 var="privilege"
+                                 style="margin-bottom: 1px;margin-top: 1px;"
+                                 value="#{systemManager.selectedUser.activeModules}">
+
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Name" />
+                            </f:facet>
+                            <h:outputText value="#{privilege.name}" />
+                        </p:column>
+
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Description" />
+                            </f:facet>
+                            <h:outputText value="#{module.description}" />
+                        </p:column>                        
+
+                    </p:dataTable>
+                    <p:toolbar>
+                       <p:toolbarGroup align="left" >  
+                            <p:commandButton title="Edit module list"                                  
+                                             value="Edit"
+                                             actionListener="#{systemManager.addUserModules}"
+                                             update=":userDialogForm:userdialog_growl"                                                
+                                             global="true"
+                                             process="@this"
+                                             icon="pi pi-pencil">
+
+                                <p:ajax event="dialogReturn" 
+                                        listener="#{systemManager.addUserModulesDialogReturn}"
+                                        update="modulesTable"/>
+
+                            </p:commandButton> 
+                        </p:toolbarGroup>                      
+                    </p:toolbar>
+                    
                 </p:tab>
                 
             </p:tabView>
