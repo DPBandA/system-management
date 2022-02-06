@@ -177,7 +177,7 @@ Email: info@dpbennett.com.jm
                                  rows="15"
                                  var="privilege"
                                  style="margin-bottom: 1px;margin-top: 1px;"
-                                 value="#{systemManager.selectedUser.activeModules}">
+                                 value="#{systemManager.selectedUser.privileges}">
 
                         <p:column>
                             <f:facet name="header">
@@ -190,23 +190,23 @@ Email: info@dpbennett.com.jm
                             <f:facet name="header">
                                 <h:outputText value="Description" />
                             </f:facet>
-                            <h:outputText value="#{module.description}" />
+                            <h:outputText value="#{privilege.description}" />
                         </p:column>                        
 
                     </p:dataTable>
                     <p:toolbar>
-                       <p:toolbarGroup align="left" >  
-                            <p:commandButton title="Edit module list"                                  
+                        <p:toolbarGroup align="left" >  
+                            <p:commandButton title="Edit privilege list"                                  
                                              value="Edit"
-                                             actionListener="#{systemManager.addUserModules}"
+                                             actionListener="#{systemManager.addUserPrivileges}"
                                              update=":userDialogForm:userdialog_growl"                                                
                                              global="true"
                                              process="@this"
                                              icon="pi pi-pencil">
 
                                 <p:ajax event="dialogReturn" 
-                                        listener="#{systemManager.addUserModulesDialogReturn}"
-                                        update="modulesTable"/>
+                                        listener="#{systemManager.addUserPrivilegesDialogReturn}"
+                                        update="privilegesTable"/>
 
                             </p:commandButton> 
                         </p:toolbarGroup>                      
