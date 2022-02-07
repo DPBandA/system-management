@@ -23,81 +23,63 @@ Email: info@dpbennett.com.jm
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:ui="http://java.sun.com/jsf/facelets">
-    <h:form id="preferencesDialogForm">
+    <h:form id="userProfileDialogForm">
 
         <p:dialog width="900"
                   height="350"
                   draggable="true"
                   modal="true"
-                  widgetVar="preferencesDialog"
+                  widgetVar="userProfileDialog"
                   maximizable="false"
-                  closable="true"
-                  header="Preferences" >
-
-            <p:ajax event="close"  
-                    listener="#{systemManager.closePreferencesDialog2}"/>
+                  closable="false"
+                  header="Profile" >
 
             <p:toolbar>
                 <p:toolbarGroup align="left" >
                     <p:commandButton value="Ok" 
                                      oncomplete="PF('mainTabViewVar').select(0);"
-                                     actionListener="#{systemManager.closePreferencesDialog1}" />        
+                                     actionListener="#{systemManager.closeUserProfileDialog}" />        
                 </p:toolbarGroup>
             </p:toolbar>
-            <p:tabView id="adminPreferencesTabView" 
-                       style="margin-top: 1px;margin-bottom: 1px;">
-                <p:tab title="General" id="adminGeneralTab">
+            <p:tabView style="margin-top: 1px;margin-bottom: 1px;">
+                <p:tab title="General" >
                     <h:panelGrid columns="2" cellspacing="10">
-                        
+
                         <h:outputText value="Username" style="font-weight: bold;"/>  
-                        <p:inputText id="user"
-                                     readonly="true"
-                                     validator="requiredFieldValidator"
-                                     value="#{systemManager.user.username}" />
-                        
+                        <h:outputText value="#{systemManager.user.username}" />
+
                         <h:outputText value="Full name" style="font-weight: bold;" />               
-                        <p:autoComplete var="employee"
-                                        scrollHeight="175"
-                                        dropdown="false"
-                                        maxlength="250"
-                                        value="#{systemManager.selectedUser.employee}"
-                                        title="#{systemManager.selectedUser.employee}"
-                                        itemLabel="#{employee.name}"
-                                        itemValue="#{employee}"
-                                        validator="businessEntityValidator"
-                                        converter="activeEmployeeConverter"
-                                        forceSelection="true"
-                                        completeMethod="#{systemManager.completeActiveEmployee}" >                       
-                        </p:autoComplete>
+                        <h:outputText value="#{systemManager.user.employee.firstName} #{systemManager.user.employee.lastName}" />
+
+                        <h:outputText value="Department" style="font-weight: bold;" />               
+                        <h:outputText value="#{systemManager.user.employee.department.name}" />
                         
-                        <h:outputText value="Job table view:"/>
-                        <p:autoComplete forceSelection="true"                               
-                                        maxlength="250"
-                                        value="#{systemManager.user.jobTableViewPreference}"
-                                        title="#{systemManager.user.jobTableViewPreference}"                                      
-                                        dropdown="true"                                       
-                                        completeMethod="#{systemManager.completePreferenceValue}" >
+                        <h:outputText value="Position(s)" style="font-weight: bold;" />               
+                        <h:outputText value="#{systemManager.user.employee.employmentPositions}" />
 
-                            <p:ajax event="itemSelect"
-                                    listener="#{systemManager.updatePreferedJobTableView}"
-                                    global="false"                                    
-                                    process="@this" />
-
-                            <p:ajax event="change"
-                                    listener="#{systemManager.updatePreferedJobTableView}"
-                                    global="false"                                    
-                                    process="@this" />
-
-                        </p:autoComplete>   
-                        
                     </h:panelGrid>
                 </p:tab>
+                <p:tab title="Modules" >
+                    <p:selectOneRadio id="modulesTable"
+                                      style="margin-top: 15px;margin-bottom: 15px;"
+                                      layout="grid" columns="3" styleClass="grid-radio"
+                                      unselectable="true" >
+                        <f:selectItems value="#{systemManager.user.activeModules}" 
+                                       var="module" 
+                                       itemLabel="#{module.description}" 
+                                       itemValue="#{module.description}"/>
+                    </p:selectOneRadio>  
+                </p:tab>
                 <p:tab title="Privileges" >
-                    <h:panelGrid columns="3" cellspacing="10">
-
-
-
-                    </h:panelGrid> 
+                    <p:selectOneRadio id="privilegesTable"
+                                      style="margin-top: 15px;margin-bottom: 15px;"
+                                      layout="grid" columns="4" styleClass="grid-radio"
+                                      unselectable="true" >
+                        <f:selectItems value="#{systemManager.user.privileges}" 
+                                       var="privilege" 
+                                       itemLabel="#{privilege.description}" 
+                                       itemValue="#{privilege.description}"/>
+                    </p:selectOneRadio> 
                 </p:tab>
 
             </p:tabView>
