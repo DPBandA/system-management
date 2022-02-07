@@ -59,8 +59,11 @@ Email: info@dpbennett.com.jm
 
                         <h:panelGrid width="100%" 
                                      border="0" columns="3" >
-                            <p:graphicImage value="#{systemManager.appShortcutIconURL}"
-                                            height="80" width="80"/>
+                            
+                            <p:graphicImage value="#{systemManager.logoURL}"
+                                            height="#{systemManager.logoURLImageHeight}" 
+                                            width="#{systemManager.logoURLImageWidth}"/>
+                            
                             <h:panelGrid columns="1">   
 
                                 <h:outputText value="#{systemManager.applicationHeader}"
