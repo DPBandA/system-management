@@ -64,7 +64,7 @@ Email: info@dpbennett.com.jm
                                 process="@this"/>
 
                     </p:inputText>
-                    
+
                     <h:outputLabel value="Dashboard title" for="dashboardTitle" style="font-weight: bold;"/>
                     <p:inputText id="dashboardTitle"
                                  value="#{systemManager.selectedModule.dashboardTitle}"  
@@ -75,7 +75,7 @@ Email: info@dpbennett.com.jm
                                 process="@this"/>
 
                     </p:inputText>
-                    
+
                     <h:outputLabel value="Main view title" for="mainViewTitle" style="font-weight: bold;"/>
                     <p:inputText id="mainViewTitle"
                                  value="#{systemManager.selectedModule.mainViewTitle}"  
@@ -88,25 +88,36 @@ Email: info@dpbennett.com.jm
                     </p:inputText>
 
                     <h:outputLabel value="Description" for="description" style="font-weight: bold;"/>       
-                    <p:inputTextarea
-                        id="description"
-                        value="#{systemManager.selectedModule.description}" 
-                        rows="5"
-                        counter="descriptionCharsRemaining"
-                        counterTemplate="{0} characters remaining."
-                        autoResize="true"
-                        maxlength="250" 
-                        styleClass="#{not component.valid ? 'invalid-inputtextarea-field' : ''}" 
-                        style="width: 400px;">
-
-                        <f:validator validatorId="requiredFieldValidator" />
+                    <p:inputText id="description"
+                                 value="#{systemManager.selectedModule.description}"  
+                                 style="width: 275px;"
+                                 validator="requiredFieldValidator" >       
 
                         <p:ajax event="change"                                                       
                                 process="@this"/>
 
-                    </p:inputTextarea> 
-                    <h:outputText value="&nbsp;&nbsp;" />
-                    <h:outputText id="descriptionCharsRemaining" />
+                    </p:inputText>
+                    <ui:remove>
+                        <p:inputTextarea
+                            id="description"
+                            value="#{systemManager.selectedModule.description}" 
+                            rows="5"
+                            counter="descriptionCharsRemaining"
+                            counterTemplate="{0} characters remaining."
+                            autoResize="true"
+                            maxlength="250" 
+                            styleClass="#{not component.valid ? 'invalid-inputtextarea-field' : ''}" 
+                            style="width: 400px;">
+
+                            <f:validator validatorId="requiredFieldValidator" />
+
+                            <p:ajax event="change"                                                       
+                                    process="@this"/>
+
+                        </p:inputTextarea> 
+                        <h:outputText value="&nbsp;&nbsp;" />
+                        <h:outputText id="descriptionCharsRemaining" />
+                    </ui:remove>
                 </h:panelGrid>
             </p:panel>
 
@@ -139,7 +150,7 @@ Email: info@dpbennett.com.jm
                                        itemLabel="#{privilege.description}" 
                                        itemValue="#{privilege.description}"/>
                     </p:selectOneRadio>  
-                    
+
                     <p:toolbar>
                         <p:toolbarGroup align="left" >  
                             <p:commandButton title="Edit privilege list"                                  

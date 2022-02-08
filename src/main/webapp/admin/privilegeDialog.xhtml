@@ -55,7 +55,7 @@ Email: info@dpbennett.com.jm
                                              value="#{systemManager.selectedPrivilege.active}" />                    
 
                     <h:outputLabel value="Name" for="privilege" style="font-weight: bold;"/>
-                    <p:inputText id="privilege"
+                    <p:inputText id="name"
                                  value="#{systemManager.selectedPrivilege.name}"  
                                  style="width: 275px;"
                                  validator="requiredFieldValidator" >       
@@ -66,25 +66,36 @@ Email: info@dpbennett.com.jm
                     </p:inputText>
 
                     <h:outputLabel value="Description" for="description" style="font-weight: bold;"/>       
-                    <p:inputTextarea
-                        id="description"
-                        value="#{systemManager.selectedPrivilege.description}" 
-                        rows="5"
-                        counter="descriptionCharsRemaining"
-                        counterTemplate="{0} characters remaining."
-                        autoResize="true"
-                        maxlength="250" 
-                        styleClass="#{not component.valid ? 'invalid-inputtextarea-field' : ''}" 
-                        style="width: 275px;">
+                    <p:inputText id="description"
+                                 value="#{systemManager.selectedPrivilege.description}"  
+                                 style="width: 275px;"
+                                 validator="requiredFieldValidator" >       
 
-                        <f:validator validatorId="requiredFieldValidator" />
-
-                       <p:ajax event="change"                                                       
+                        <p:ajax event="change"                                                       
                                 process="@this"/>
 
-                    </p:inputTextarea> 
-                    <h:outputText value="&nbsp;&nbsp;" />
-                    <h:outputText id="descriptionCharsRemaining" />
+                    </p:inputText>
+                    <ui:remove>
+                        <p:inputTextarea
+                            id="description"
+                            value="#{systemManager.selectedPrivilege.description}" 
+                            rows="5"
+                            counter="descriptionCharsRemaining"
+                            counterTemplate="{0} characters remaining."
+                            autoResize="true"
+                            maxlength="250" 
+                            styleClass="#{not component.valid ? 'invalid-inputtextarea-field' : ''}" 
+                            style="width: 275px;">
+
+                            <f:validator validatorId="requiredFieldValidator" />
+
+                            <p:ajax event="change"                                                       
+                                    process="@this"/>
+
+                        </p:inputTextarea> 
+                        <h:outputText value="&nbsp;&nbsp;" />
+                        <h:outputText id="descriptionCharsRemaining" />
+                    </ui:remove>
                 </h:panelGrid>
             </p:panel>
 
