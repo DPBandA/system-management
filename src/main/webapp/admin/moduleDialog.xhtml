@@ -115,7 +115,7 @@ Email: info@dpbennett.com.jm
                     <p:toolbar>
                         <p:toolbarGroup align="left" >  
                             <p:commandButton title="Edit privilege list"                                  
-                                             value="Edit"
+                                             value="Add/remove"
                                              actionListener="#{systemManager.addModulePrivileges}"
                                              update=":moduleDialogForm:module_growl"                                                
                                              global="true"
@@ -129,33 +129,21 @@ Email: info@dpbennett.com.jm
                             </p:commandButton> 
                         </p:toolbarGroup>  
 
-                    </p:toolbar>    
-                    <p:dataTable id="privilegesTable"
-                                 paginator="true"
-                                 rows="15"
-                                 var="privilege"
-                                 style="margin-bottom: 1px;margin-top: 1px;"
-                                 value="#{systemManager.selectedModule.privileges}">
-
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="Name" />
-                            </f:facet>
-                            <h:outputText value="#{privilege.name}" />
-                        </p:column>
-
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="Description" />
-                            </f:facet>
-                            <h:outputText value="#{privilege.description}" />
-                        </p:column>                        
-
-                    </p:dataTable>
+                    </p:toolbar>   
+                    <p:selectOneRadio id="privilegesTable"
+                                      style="margin-top: 15px;margin-bottom: 15px;"
+                                      layout="grid" columns="3" styleClass="grid-radio"
+                                      unselectable="true" >
+                        <f:selectItems value="#{systemManager.selectedModule.privileges}" 
+                                       var="privilege" 
+                                       itemLabel="#{privilege.description}" 
+                                       itemValue="#{privilege.description}"/>
+                    </p:selectOneRadio>  
+                    
                     <p:toolbar>
                         <p:toolbarGroup align="left" >  
                             <p:commandButton title="Edit privilege list"                                  
-                                             value="Edit"
+                                             value="Add/remove"
                                              actionListener="#{systemManager.addModulePrivileges}"
                                              update=":moduleDialogForm:module_growl"                                                
                                              global="true"
