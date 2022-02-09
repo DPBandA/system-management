@@ -27,17 +27,6 @@ Email: info@dpbennett.com.jm
         <p:toolbarGroup align="left">
             <p:menuButton value="New" >
                 <p:menuitem 
-                    actionListener="#{systemManager.createNewPrivilege}" 
-                    value="Privilege" 
-                    icon="pi pi-plus" >
-
-                    <p:ajax event="dialogReturn" 
-                            listener="#{systemManager.doActivePrivilegeSearch}"
-                            update=":appForm:mainTabView:centerTabView:privilegesTable" />
-
-                </p:menuitem>
-                <p:divider />
-                <p:menuitem 
                     actionListener="#{systemManager.createNewUser}" 
                     value="User" 
                     icon="pi pi-plus" >
@@ -48,6 +37,17 @@ Email: info@dpbennett.com.jm
 
                 </p:menuitem>
                 <p:divider />
+                <p:menuitem 
+                    actionListener="#{systemManager.createNewPrivilege}" 
+                    value="Privilege" 
+                    icon="pi pi-plus" >
+
+                    <p:ajax event="dialogReturn" 
+                            listener="#{systemManager.doActivePrivilegeSearch}"
+                            update=":appForm:mainTabView:centerTabView:privilegesTable" />
+
+                </p:menuitem>
+                <p:divider />                
                 <p:menuitem 
                     actionListener="#{systemManager.createNewCategory}" 
                     value="Category" 
@@ -91,7 +91,7 @@ Email: info@dpbennett.com.jm
                             update=":appForm:mainTabView:centerTabView:LDAPTable" />
 
                 </p:menuitem>
-                 <p:divider />
+                <p:divider />
                 <p:menuitem 
                     actionListener="#{systemManager.createNewModule}" 
                     value="Module" 
