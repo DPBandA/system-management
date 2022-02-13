@@ -68,7 +68,7 @@ Email: info@dpbennett.com.jm
         <f:facet name="header">
             Modules
         </f:facet>
-        
+
         <p:column>
             <f:facet name="header">
                 <h:outputText value="Active"/>
@@ -84,7 +84,21 @@ Email: info@dpbennett.com.jm
                 <h:outputText value="Name"/>
             </f:facet>
             <h:outputText value="#{module.name}" />
-        </p:column>  
+        </p:column> 
+
+        <p:column>
+            <f:facet name="header">
+                <h:outputText value="Dashboard title"/>
+            </f:facet>
+            <h:outputText value="#{module.dashboardTitle}" />
+        </p:column> 
+
+        <p:column>
+            <f:facet name="header">
+                <h:outputText value="Main view title"/>
+            </f:facet>
+            <h:outputText value="#{module.mainViewTitle}" />
+        </p:column>
 
         <p:column>
             <f:facet name="header">
