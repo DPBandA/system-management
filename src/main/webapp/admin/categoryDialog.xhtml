@@ -34,9 +34,10 @@ Email: info@dpbennett.com.jm
         <title>Category</title>
         <link rel="stylesheet" href="../css/main.css" />
     </h:head>
-    <h:body >  
-        <ui:include src="../common/longProcessDialog.xhtml"/>  
-        <ui:include src="../common/commonDialogs.xhtml"/>  
+    <h:body > 
+
+        <ui:include src="../common/commonDialogs.xhtml"/> 
+
         <h:form id="categoryDialogForm">    
 
             <p:growl id="category_growl" life="5000" showDetail="true"/>
@@ -45,9 +46,10 @@ Email: info@dpbennett.com.jm
 
             <p:panel style="margin-bottom: 1px;margin-top: 1px;">
                 <h:panelGrid columns="2">
-                    <h:outputLabel value="Category:" for="category" style="font-weight: bold;"/>
+                    <h:outputLabel value="Name:" for="category" style="font-weight: bold;"/>
                     <p:inputText id="category"
-                                 value="#{systemManager.selectedCategory.name}"                                 
+                                 value="#{systemManager.selectedCategory.name}"  
+                                 style="width: 275px;"
                                  validator="requiredFieldValidator" >       
 
                         <p:ajax event="change"                                                       
@@ -57,7 +59,8 @@ Email: info@dpbennett.com.jm
 
                     <h:outputLabel value="Type:" for="type" style="font-weight: bold;"/>
                     <p:inputText id="type"
-                                 value="#{systemManager.selectedCategory.type}"                                 
+                                 value="#{systemManager.selectedCategory.type}"   
+                                 style="width: 275px;"
                                  validator="requiredFieldValidator" >
 
                         <p:ajax event="change"                                                       
@@ -68,7 +71,7 @@ Email: info@dpbennett.com.jm
             </p:panel>
 
             <ui:include src="categoryDialogToolbar.xhtml" /> 
-            
+
         </h:form> 
     </h:body>
 </html>

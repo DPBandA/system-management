@@ -29,20 +29,18 @@ Email: info@dpbennett.com.jm
                scrollable="false"
                dynamic="true">
 
-        <p:ajax event="tabChange" 
-                onstart="PF('longProcessDialogVar').show();"  
-                oncomplete="PF('longProcessDialogVar').hide();" />  
+        <p:ajax event="tabChange" />  
 
         <p:tab title="Categories">
             <ui:include src="categoriesTab.xhtml" />   
         </p:tab>
-        
+
         <p:tab title="Document Types">
             <ui:include src="documentTypesTab.xhtml" />   
         </p:tab>
 
         <p:tab title="Configuration">
-            <ui:include src="configurationsTab.xhtml"/>   
+            <ui:include src="configurationsTab.xhtml" /> 
         </p:tab>
 
     </p:tabView>

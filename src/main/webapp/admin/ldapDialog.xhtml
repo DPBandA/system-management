@@ -1,6 +1,6 @@
 <!--
-Job Management & Tracking System (JMTS) 
-Copyright (C) 2017  D P Bennett & Associates Limited
+System Management (SM) 
+Copyright (C) 2021  D P Bennett & Associates Limited
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU Affero General Public License as published by
@@ -35,8 +35,9 @@ Email: info@dpbennett.com.jm
         <link rel="stylesheet" href="../css/main.css" />
     </h:head>
     <h:body >  
-        <ui:include src="../common/longProcessDialog.xhtml"/>  
+
         <ui:include src="../common/commonDialogs.xhtml"/>  
+
         <h:form id="ldapDialogForm">        
             <p:growl id="growl" life="5000" />
 
@@ -44,17 +45,14 @@ Email: info@dpbennett.com.jm
                 <p:toolbarGroup align="left">
                     <p:commandButton value="Ok"
                                      actionListener="#{systemManager.saveSelectedLdapContext}"
-                                     onstart="PF('longProcessDialogVar').show();"
-                                     oncomplete="PF('longProcessDialogVar').hide();"
-                                     icon="ui-icon ui-icon-check"
+                                     icon="pi pi-check"
                                      update="growl"
                                      process="@form"/>
                     <p:spacer width="5" />
                     <p:commandButton value="Cancel"
                                      actionListener="#{systemManager.cancelLdapContextEdit}" 
                                      immediate="true" 
-                                     oncomplete="PF('longProcessDialogVar').hide();"
-                                     icon="ui-icon ui-icon-close" /> 
+                                     icon="pi pi-times" /> 
                 </p:toolbarGroup>
             </p:toolbar>
 
@@ -64,25 +62,25 @@ Email: info@dpbennett.com.jm
                     <p:selectBooleanCheckbox style="vertical-align: middle"
                                              id="ldapActive"
                                              value="#{systemManager.selectedLdapContext.active}" />  
-                   
+
                     <h:outputText value="Name:" style="font-weight: bold;" />
                     <p:inputText value="#{systemManager.selectedLdapContext.name}"    
                                  id="ldapName"
-                                 style="width:300px" >
+                                 style="width:400px" >
                         <f:validator validatorId="requiredFieldValidator" />
                     </p:inputText> 
 
                     <h:outputText value="Domain:" style="width: 50%;font-weight: bold;" />
                     <p:inputText  value="#{systemManager.selectedLdapContext.domainName}"
-                                      id="ldapDomainName"
-                                      style="width:300px" >
+                                  id="ldapDomainName"
+                                  style="width:400px" >
                         <f:validator validatorId="requiredFieldValidator" />
                     </p:inputText>  
-                    
+
                     <h:outputLabel value="URL:" style="font-weight: bold;"/>               
                     <p:inputText  value="#{systemManager.selectedLdapContext.providerUrl}"
-                                      id="ldapProviderUrl"
-                                      style="width:300px" >
+                                  id="ldapProviderUrl"
+                                  style="width:400px" >
                         <f:validator validatorId="requiredFieldValidator" />
                     </p:inputText>  
 
@@ -93,17 +91,14 @@ Email: info@dpbennett.com.jm
                 <p:toolbarGroup align="left">
                     <p:commandButton value="Ok"
                                      actionListener="#{systemManager.saveSelectedLdapContext}"
-                                     onstart="PF('longProcessDialogVar').show();"
-                                     oncomplete="PF('longProcessDialogVar').hide();"
-                                     icon="ui-icon ui-icon-check"
+                                     icon="pi pi-check"
                                      update="growl"
                                      process="@form"/>
                     <p:spacer width="5" />
                     <p:commandButton value="Cancel"
                                      actionListener="#{systemManager.cancelLdapContextEdit}" 
                                      immediate="true" 
-                                     oncomplete="PF('longProcessDialogVar').hide();"
-                                     icon="ui-icon ui-icon-close" /> 
+                                     icon="pi pi-times" /> 
                 </p:toolbarGroup>
             </p:toolbar>
         </h:form> 

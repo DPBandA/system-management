@@ -1,6 +1,6 @@
 <!--
 System Management (SM) 
-Copyright (C) 2020  D P Bennett & Associates Limited
+Copyright (C) 2021  D P Bennett & Associates Limited
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU Affero General Public License as published by
@@ -28,30 +28,25 @@ Email: info@dpbennett.com.jm
         <p:toolbarGroup align="left" >   
             <p:commandButton title="Add new category"                                  
                              value="New"
-                             actionListener="#{systemManager.createNewCategory}"
-                             onstart="PF('longProcessDialogVar').show();"                                 
-                             oncomplete="PF('longProcessDialogVar').hide();"
-                             onerror="PF('connectionErrorDialog').show();"
-                             update=":mainTabViewForm:mainTabView:centerTabView:categoriesTable"
+                             actionListener="#{systemManager.createNewCategory}"                            
+                             update=":appForm:mainTabView:centerTabView:categoriesTable"
                              global="true"
                              process="@this"
-                             icon="ui-icon ui-icon-plus" >
+                             icon="pi pi-plus" >
 
                 <p:ajax event="dialogReturn" 
                         listener="#{systemManager.doCategorySearch}"
-                        update=":mainTabViewForm:mainTabView:centerTabView:categoriesTable" />
+                        update=":appForm:mainTabView:centerTabView:categoriesTable" />
 
             </p:commandButton>     
             <p:spacer width="20" />        
             <p:inputText id="categorySearchText" 
                          value="#{systemManager.categorySearchText}"
-                         style="width:150px" 
+                         style="width:300px" 
                          placeholder="Enter any part of name">
                 <p:ajax event="keyup"
                         global="false"
-                        onstart="PF('longProcessDialogVar').show();" 
-                        oncomplete="PF('longProcessDialogVar').hide();"
-                        update=":mainTabViewForm:mainTabView:centerTabView:categoriesTable"
+                        update=":appForm:mainTabView:centerTabView:categoriesTable"
                         listener="#{systemManager.doCategorySearch}"
                         process="@this"/>
             </p:inputText>
@@ -90,44 +85,40 @@ Email: info@dpbennett.com.jm
 
         <p:column style="width:32px">
             <p:commandButton title="View or edit category"   
-                             actionListener="#{systemManager.editCategory}"
-                             onstart="PF('longProcessDialogVar').show();"                                 
-                             oncomplete="PF('longProcessDialogVar').hide();"
+                             actionListener="#{systemManager.editCategory}"                            
                              global="true"
                              process="@this"
-                             icon="ui-icon ui-icon-pencil">
+                             icon="pi pi-pencil">
 
                 <p:ajax event="dialogReturn" 
-                        update=":mainTabViewForm:mainTabView:centerTabView:categoriesTable" />
+                        update=":appForm:mainTabView:centerTabView:categoriesTable" />
 
                 <f:setPropertyActionListener value="#{category}"                                                                    
                                              target="#{systemManager.selectedCategory}" />
             </p:commandButton>           
         </p:column>
 
-    </p:dataTable>        <p:toolbar>
+    </p:dataTable>        
+    <p:toolbar>
         <p:toolbarGroup align="left" >   
             <p:commandButton title="Add new category"                                  
                              value="New"
                              actionListener="#{systemManager.createNewCategory}"
-                             onstart="PF('longProcessDialogVar').show();"                                 
-                             oncomplete="PF('longProcessDialogVar').hide();"
-                             onerror="PF('connectionErrorDialog').show();"
-                             update=":mainTabViewForm:mainTabView:centerTabView:categoriesTable"
+                             update=":appForm:mainTabView:centerTabView:categoriesTable"
                              global="true"
                              process="@this"
-                             icon="ui-icon ui-icon-plus" >
+                             icon="pi pi-plus" >
 
                 <p:ajax event="dialogReturn" 
                         listener="#{systemManager.doCategorySearch}"
-                        update=":mainTabViewForm:mainTabView:centerTabView:categoriesTable" />
+                        update=":appForm:mainTabView:centerTabView:categoriesTable" />
 
             </p:commandButton>     
-            
+
         </p:toolbarGroup>
 
     </p:toolbar>
-    
+
 </html>
 
 
