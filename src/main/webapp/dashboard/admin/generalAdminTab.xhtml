@@ -108,6 +108,16 @@ Email: info@dpbennett.com.jm
         <p:toolbarGroup align="right">   
             <p:menuButton value="Tools" >
                 <p:menuitem 
+                    actionListener="#{systemManager.createNewAttachment}" 
+                    value="Attachment" 
+                    icon="pi pi-paperclip" >
+
+                    <p:ajax event="dialogReturn" 
+                            update="" />
+
+                </p:menuitem>
+                <p:divider />
+                <p:menuitem 
                     actionListener="#{systemManager.selectSystemAdminTab('centerTabVar', 0)}" 
                     value="Privileges" 
                     icon="pi pi-key" />
