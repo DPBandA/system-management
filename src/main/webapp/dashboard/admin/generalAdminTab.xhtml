@@ -27,6 +27,16 @@ Email: info@dpbennett.com.jm
         <p:toolbarGroup align="left">
             <p:menuButton value="New" >
                 <p:menuitem 
+                    actionListener="#{systemManager.createNewAttachment}" 
+                    value="Attachment" 
+                    icon="pi pi-plus" >
+
+                    <p:ajax event="dialogReturn" 
+                            update="" />
+
+                </p:menuitem>
+                <p:divider />
+                <p:menuitem 
                     actionListener="#{systemManager.createNewUser}" 
                     value="User" 
                     icon="pi pi-plus" >
@@ -108,50 +118,9 @@ Email: info@dpbennett.com.jm
         <p:toolbarGroup align="right">   
             <p:menuButton value="Tools" >
                 <p:menuitem 
-                    actionListener="#{systemManager.createNewAttachment}" 
-                    value="Attachment" 
-                    icon="pi pi-paperclip" >
-
-                    <p:ajax event="dialogReturn" 
-                            update="" />
-
-                </p:menuitem>
-                <p:divider />
-                <p:menuitem 
                     actionListener="#{systemManager.selectSystemAdminTab('centerTabVar', 0)}" 
-                    value="Privileges" 
-                    icon="pi pi-key" />
-                <p:divider />
-                <p:menuitem 
-                    actionListener="#{systemManager.selectSystemAdminTab('centerTabVar', 1)}" 
-                    value="Users" 
-                    icon="pi pi-users" />
-                <p:divider />
-                <p:menuitem 
-                    actionListener="#{systemManager.selectSystemAdminTab('centerTabVar', 2)}" 
-                    value="Categories" 
-                    icon="pi pi-list" />
-                <p:divider />
-                <p:divider />
-                <p:menuitem 
-                    actionListener="#{systemManager.selectSystemAdminTab('centerTabVar', 3)}" 
-                    value="Document Types" 
-                    icon="pi pi-file" />
-                <p:divider />
-                <p:menuitem 
-                    actionListener="#{systemManager.selectSystemAdminTab('centerTabVar', 4)}" 
-                    value="Options" 
-                    icon="pi pi-sliders-v" />
-                <p:divider />
-                <p:menuitem 
-                    actionListener="#{systemManager.selectSystemAdminTab('centerTabVar', 5)}" 
-                    value="Authentication" 
-                    icon="pi pi-lock" />
-                <p:divider />
-                <p:menuitem 
-                    actionListener="#{systemManager.selectSystemAdminTab('centerTabVar', 6)}" 
-                    value="Modules" 
-                    icon="pi pi-th-large" />
+                    value="System Administration" 
+                    icon="pi pi-server" /> 
             </p:menuButton>
         </p:toolbarGroup>
 

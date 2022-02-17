@@ -64,61 +64,43 @@ Email: info@dpbennett.com.jm
             <p:panel style="margin-top: 1px;margin-bottom: 1px;">
                 <h:panelGrid columns="2">                
                     <h:outputText value="Name" style="font-weight: bold;" />
-                    <p:inputText value="#{systemManager.selectedSystemOption.name}"    
-                                 id="systemOptionName"
+                    <p:inputText value="#{systemManager.attachment.name}"    
+                                 id="name"
                                  style="width:400px;" >
-                        <f:validator validatorId="systemOptionValidator" />
                     </p:inputText> 
 
-                    <h:outputText value="Value" style="font-weight: bold;" />
-                    <p:inputTextarea  value="#{systemManager.selectedSystemOption.optionValue}"
-                                      id="systemOptionValue"
-                                      counter="valueCharsRemaining"
-                                      counterTemplate="{0} characters remaining."
-                                      maxlength="1000"
-                                      rows="6"
-                                      autoResize="false"
-                                      style="width:400px;" >
-                        <f:validator validatorId="systemOptionValidator" />
-                    </p:inputTextarea> 
-                    
-                    <h:outputText value="&nbsp;&nbsp;" />
-                    <h:outputText id="valueCharsRemaining" /> 
+                    <h:outputText value="Type" style="font-weight: bold;" />
+                    <p:selectOneMenu id="type"    
+                                     editable="true"
+                                     style="width: 200px;"
+                                     value="#{systemManager.attachment.type}" >
 
-                    <h:outputText value="Value Type" style="font-weight: bold;" />                    
-                    <p:selectOneMenu id="systemOptionValueType"     
-                                     style="width: 400px;"
-                                     value="#{systemManager.selectedSystemOption.optionValueType}">
-
-                        <f:selectItems  value="#{systemManager.valueTypes}"
+                        <f:selectItems  value="#{systemManager.attachmentTypeList}"
                                         var="type"                            
                                         itemValue="#{type}"
-                                        itemLabel="#{type}"/>
+                                        itemLabel="#{type}"/>                      
 
                     </p:selectOneMenu>
 
-                    <h:outputText value="Category" style="font-weight: bold;" />                    
-                    <p:selectOneMenu id="systemOptionCategory"     
-                                     style="width: 400px;"
-                                     value="#{systemManager.selectedSystemOption.category}">
+                    <h:outputText value="Source file" style="font-weight: bold;" />
+                    <p:inputText value="#{systemManager.attachment.sourceURL}"    
+                                 id="sourceURL"
+                                 style="width:400px;" >
+                    </p:inputText>
 
-                        <f:selectItems  value="#{systemManager.systemOptionCategories}"
-                                        var="category"                            
-                                        itemValue="#{category}"
-                                        itemLabel="#{category}"/>
-
-                    </p:selectOneMenu>
+                    <h:outputText value="File destination" style="font-weight: bold;" />
+                    <p:inputText value="#{systemManager.attachment.destinationURL}"    
+                                 id="destinationURL"
+                                 style="width:400px;" >
+                    </p:inputText>
 
                     <h:outputText value="Description" style="width: 50%;font-weight: bold;" />
-                    <p:inputTextarea  value="#{systemManager.selectedSystemOption.comments}"
-                                      id="systemOptionComment"
-                                      maxlength="1000"
-                                      rows="4"
+                    <p:inputTextarea  value="#{systemManager.attachment.description}"
+                                      id="sescription"
+                                      maxlength="250"
+                                      rows="3"
                                       autoResize="false"
                                       style="width:400px" >
-                        
-                        <f:validator validatorId="systemOptionValidator" />
-                        
                     </p:inputTextarea>                           
 
                 </h:panelGrid>
