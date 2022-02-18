@@ -46,7 +46,7 @@ Email: info@dpbennett.com.jm
 
             <p:panel style="margin-bottom: 1px;margin-top: 1px;">
                 <h:panelGrid columns="2">
-                    <h:outputLabel value="Document type: " for="newDocumentType" style="font-weight: bold;"/>
+                    <h:outputLabel value="Document type" for="newDocumentType" style="font-weight: bold;"/>
                     <p:inputText id="newDocumentType"
                                  value="#{systemManager.selectedDocumentType.name}"                                 
                                  validator="requiredFieldValidator" >       
@@ -56,7 +56,7 @@ Email: info@dpbennett.com.jm
 
                     </p:inputText>
 
-                    <h:outputLabel value="Document code: " for="newDocumentCode" style="font-weight: bold;"/>
+                    <h:outputLabel value="Document code" for="newDocumentCode" style="font-weight: bold;"/>
                     <p:inputText id="newDocumentCode"
                                  value="#{systemManager.selectedDocumentType.code}"                                 
                                  validator="requiredFieldValidator" >

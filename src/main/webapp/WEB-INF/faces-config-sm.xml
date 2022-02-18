@@ -18,6 +18,18 @@
         </view-handler>
     </application>  
     <converter>
+        <converter-id>activePrivilegeConverter</converter-id>
+        <converter-class>jm.com.dpbennett.sm.converter.ActivePrivilegeConverter</converter-class>
+    </converter>
+    <converter>
+        <converter-id>activeModuleConverter</converter-id>
+        <converter-class>jm.com.dpbennett.sm.converter.ActiveModuleConverter</converter-class>
+    </converter>
+    <converter>
+        <converter-id>activeEmployeeConverter</converter-id>
+        <converter-class>jm.com.dpbennett.sm.converter.ActiveEmployeeConverter</converter-class>
+    </converter>
+    <converter>
         <converter-id>documentTypeConverter</converter-id>
         <converter-class>jm.com.dpbennett.sm.converter.DocumentTypeConverter</converter-class>
     </converter>
@@ -54,6 +66,42 @@
         <validator-id>businessEntityListValidator</validator-id>
         <validator-class>jm.com.dpbennett.sm.validator.BusinessEntityListValidator</validator-class>
     </validator> 
+    
+    <navigation-rule>
+        <from-view-id>/index.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>privilegePickListDialog</from-outcome>
+            <to-view-id>/admin/privilegePickListDialog.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule> 
+     <navigation-rule>
+        <from-view-id>/index.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>modulePickListDialog</from-outcome>
+            <to-view-id>/admin/modulePickListDialog.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/index.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>moduleDialog</from-outcome>
+            <to-view-id>/admin/moduleDialog.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/index.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>userDialog</from-outcome>
+            <to-view-id>/admin/userDialog.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/index.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>privilegeDialog</from-outcome>
+            <to-view-id>/admin/privilegeDialog.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule> 
     <navigation-rule>
         <from-view-id>/index.xhtml</from-view-id>
         <navigation-case>
@@ -74,7 +122,14 @@
             <from-outcome>systemOptionDialog</from-outcome>
             <to-view-id>/admin/systemOptionDialog.xhtml</to-view-id>
         </navigation-case>
-    </navigation-rule>  
+    </navigation-rule> 
+    <navigation-rule>
+        <from-view-id>/index.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>attachmentDialog</from-outcome>
+            <to-view-id>/common/attachmentDialog.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule> 
     <navigation-rule>
         <from-view-id>/index.xhtml</from-view-id>
         <navigation-case>

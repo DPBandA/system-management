@@ -1,6 +1,6 @@
 /* 
- Job Management & Tracking System (JMTS) 
- Copyright (C) 2019  D P Bennett & Associates Limited
+System Management (SM) 
+Copyright (C) 2022  D P Bennett & Associates Limited
  
  This program is free software: you can redistribute it and/or modify
  it under the terms of the GNU Affero General Public License as published by
@@ -31,8 +31,13 @@ function reloadCurrentPage() {
     window.location.reload();
 }
 
-// used to reset forms and do loging when page is reloaded
 function doLogin() {
     doLoginRequest();
 }
 
+function showStatusDialog() {
+    PF('statusDialog').show();
+}
+function hideStatusDialog() {
+    PF('statusDialog').hide();
+}

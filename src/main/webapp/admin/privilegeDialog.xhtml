@@ -31,24 +31,32 @@ Email: info@dpbennett.com.jm
         <meta http-equiv="expires" content="0" />
         <meta http-equiv="expires" content="Tue, 01 Jan 1980 1:00:00 GMT" />
         <meta http-equiv="pragma" content="no-cache" />
-        <title>Category</title>
+        <title>Privilege</title>
         <link rel="stylesheet" href="../css/main.css" />
     </h:head>
     <h:body > 
 
         <ui:include src="../common/commonDialogs.xhtml"/> 
 
-        <h:form id="categoryDialogForm">    
+        <h:form id="privilegeDialogForm">    
 
-            <p:growl id="category_growl" life="5000" showDetail="true"/>
+            <p:growl id="privilege_growl" life="5000" showDetail="true"/>
 
-            <ui:include src="categoryDialogToolbar.xhtml" /> 
+            <ui:include src="privilegeDialogToolbar.xhtml" /> 
 
             <p:panel style="margin-bottom: 1px;margin-top: 1px;">
                 <h:panelGrid columns="2">
-                    <h:outputLabel value="Name" for="category" style="font-weight: bold;"/>
-                    <p:inputText id="category"
-                                 value="#{systemManager.selectedCategory.name}"  
+
+                    <p:outputLabel value="Active"                                    
+                                   for="activePrivilege" 
+                                   style="font-weight: bold;" /> 
+                    <p:selectBooleanCheckbox id="activePrivilege" 
+                                             disabled="false"
+                                             value="#{systemManager.selectedPrivilege.active}" />                    
+
+                    <h:outputLabel value="Name" for="privilege" style="font-weight: bold;"/>
+                    <p:inputText id="name"
+                                 value="#{systemManager.selectedPrivilege.name}"  
                                  style="width: 275px;"
                                  validator="requiredFieldValidator" >       
 
@@ -57,20 +65,41 @@ Email: info@dpbennett.com.jm
 
                     </p:inputText>
 
-                    <h:outputLabel value="Type" for="type" style="font-weight: bold;"/>
-                    <p:inputText id="type"
-                                 value="#{systemManager.selectedCategory.type}"   
+                    <h:outputLabel value="Description" for="description" style="font-weight: bold;"/>       
+                    <p:inputText id="description"
+                                 value="#{systemManager.selectedPrivilege.description}"  
                                  style="width: 275px;"
-                                 validator="requiredFieldValidator" >
+                                 validator="requiredFieldValidator" >       
 
                         <p:ajax event="change"                                                       
                                 process="@this"/>
 
                     </p:inputText>
+                    <ui:remove>
+                        <p:inputTextarea
+                            id="description"
+                            value="#{systemManager.selectedPrivilege.description}" 
+                            rows="5"
+                            counter="descriptionCharsRemaining"
+                            counterTemplate="{0} characters remaining."
+                            autoResize="true"
+                            maxlength="250" 
+                            styleClass="#{not component.valid ? 'invalid-inputtextarea-field' : ''}" 
+                            style="width: 275px;">
+
+                            <f:validator validatorId="requiredFieldValidator" />
+
+                            <p:ajax event="change"                                                       
+                                    process="@this"/>
+
+                        </p:inputTextarea> 
+                        <h:outputText value="&nbsp;&nbsp;" />
+                        <h:outputText id="descriptionCharsRemaining" />
+                    </ui:remove>
                 </h:panelGrid>
             </p:panel>
 
-            <ui:include src="categoryDialogToolbar.xhtml" /> 
+            <ui:include src="privilegeDialogToolbar.xhtml" /> 
 
         </h:form> 
     </h:body>
