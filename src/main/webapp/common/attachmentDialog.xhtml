@@ -43,13 +43,14 @@ Email: info@dpbennett.com.jm
     </h:head>
     <h:body >  
         <ui:include src="../common/commonDialogs.xhtml"/>  
-        <h:form id="attachmentDialogForm">        
-            <p:growl id="growl" life="5000" />
+        <h:form enctype="multipart/form-data" id="attachmentDialogForm">        
+            <p:growl id="growl" life="5000" showDetail="true"/>
 
             <p:toolbar>
                 <p:toolbarGroup align="left">
-                    <p:commandButton value="Ok"
+                     <p:commandButton value="Ok"
                                      actionListener="#{systemManager.okAttachment}"
+                                     ajax="true"
                                      icon="pi pi-check"
                                      update="growl"
                                      process="@form"/>
@@ -62,15 +63,23 @@ Email: info@dpbennett.com.jm
             </p:toolbar>
 
             <p:panel style="margin-top: 1px;margin-bottom: 1px;">
-                <h:panelGrid columns="2">                
-                    <h:outputText value="Name" style="font-weight: bold;" />
-                    <p:inputText value="#{systemManager.attachment.name}"   
-                                 readonly="true"
+                <p:fileUpload value="#{systemManager.uploadedFile}"  
+                                  update=""   
+                                  chooseIcon="pi pi-file"
+                                  mode="simple" 
+                                  skinSimple="true"
+                                  label="Choose file" />
+                <p:divider />
+                <h:panelGrid columns="2">   
+                    
+                    <h:outputText value="Name" />
+                    <p:inputText value="#{systemManager.attachment.name}"    
                                  id="name"
                                  style="width:400px;" >
-                    </p:inputText> 
-
-                    <h:outputText value="Type" style="font-weight: bold;" />
+                                                
+                    </p:inputText>
+                    
+                    <h:outputText value="Purpose" style="font-weight: bold;" />
                     <p:selectOneMenu id="type"    
                                      editable="true"
                                      style="width: 200px;"
@@ -79,30 +88,36 @@ Email: info@dpbennett.com.jm
                         <f:selectItems  value="#{systemManager.attachmentTypeList}"
                                         var="type"                            
                                         itemValue="#{type}"
-                                        itemLabel="#{type}"/>                      
+                                        itemLabel="#{type}"/>   
+                        
+                        <f:validator validatorId="requiredFieldValidator" />
 
                     </p:selectOneMenu>
-
-                    <h:outputText value="Source file" style="font-weight: bold;" />
-                    <p:inputText value="#{systemManager.attachment.sourceURL}"    
-                                 id="sourceURL"
-                                 style="width:400px;" >
-                    </p:inputText>
 
                     <h:outputText value="File destination" style="font-weight: bold;" />
                     <p:inputText value="#{systemManager.attachment.destinationURL}"    
                                  id="destinationURL"
                                  style="width:400px;" >
+                        
+                        <f:validator validatorId="requiredFieldValidator" />
+                        
                     </p:inputText>
 
                     <h:outputText value="Description" style="width: 50%;font-weight: bold;" />
                     <p:inputTextarea  value="#{systemManager.attachment.description}"
                                       id="sescription"
+                                      counter="valueCharsRemaining"
+                                      counterTemplate="{0} characters remaining."
                                       maxlength="250"
-                                      rows="3"
+                                      rows="5"
                                       autoResize="false"
                                       style="width:400px" >
-                    </p:inputTextarea>                           
+
+                        <f:validator validatorId="requiredFieldValidator" />
+
+                    </p:inputTextarea>   
+                    <h:outputText value="&nbsp;&nbsp;" />
+                    <h:outputText id="valueCharsRemaining" />
 
                 </h:panelGrid>
             </p:panel>
@@ -111,6 +126,7 @@ Email: info@dpbennett.com.jm
                 <p:toolbarGroup align="left">
                     <p:commandButton value="Ok"
                                      actionListener="#{systemManager.okAttachment}"
+                                     ajax="true"
                                      icon="pi pi-check"
                                      update="growl"
                                      process="@form"/>
