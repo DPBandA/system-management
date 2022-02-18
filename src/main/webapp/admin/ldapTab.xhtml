@@ -49,20 +49,21 @@ Email: info@dpbennett.com.jm
         </p:toolbarGroup>
 
         <p:toolbarGroup align="right">
-            <p:outputLabel for="activeLdapOnly" value="Active LDAP options only: " />  
-            <h:panelGroup>
-                <p:selectBooleanCheckbox style="vertical-align: middle"
-                                         id="activeLdapOnly"
-                                         value="#{systemManager.isActiveLdapsOnly}" >
-                    <p:ajax  update=":appForm:mainTabView:centerTabView:LDAPTable"
-                             listener="#{systemManager.doLdapContextSearch}"
-                             event="change"                                      
-                             process="@this"/>
-                </p:selectBooleanCheckbox>            
-                <p:tooltip for="activeLdapOnly" value="Check to show active LDAP options only" 
-                           showEffect="fade" hideEffect="fade" />
-                <p:spacer width="15" />                
-            </h:panelGroup>
+            
+            <p:outputLabel for="activeLdapOnly" value="Active LDAP options only" /> 
+            <p:spacer width="10" />
+            <p:selectBooleanCheckbox style="vertical-align: middle"
+                                     id="activeLdapOnly"
+                                     value="#{systemManager.isActiveLdapsOnly}" >
+                <p:ajax  update=":appForm:mainTabView:centerTabView:LDAPTable"
+                         listener="#{systemManager.doLdapContextSearch}"
+                         event="change"                                      
+                         process="@this"/>
+            </p:selectBooleanCheckbox>    
+            
+            <p:tooltip for="activeLdapOnly" value="Check to show active LDAP options only" 
+                       showEffect="fade" hideEffect="fade" />
+
         </p:toolbarGroup>
 
     </p:toolbar>    

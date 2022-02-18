@@ -52,20 +52,21 @@ Email: info@dpbennett.com.jm
         </p:toolbarGroup>
 
         <p:toolbarGroup align="right">
-            <p:outputLabel for="activeUsersOnly" value="Active users only: " />  
-            <h:panelGroup>
-                <p:selectBooleanCheckbox style="vertical-align: middle"
-                                         id="activeUsersOnly"
-                                         value="#{systemManager.isActiveUsersOnly}" >
-                    <p:ajax  update="#{systemManager.usersTableId}"
-                             listener="#{systemManager.doUserSearch}"
-                             event="change"                                      
-                             process="@this"/>
-                </p:selectBooleanCheckbox>            
-                <p:tooltip for="activeUsersOnly" value="Check to show active users only" 
-                           showEffect="fade" hideEffect="fade" />
-                <p:spacer width="15" />                
-            </h:panelGroup>
+            <p:outputLabel for="activeUsersOnly" value="Active users only" />  
+            <p:spacer width="10" />
+            <p:selectBooleanCheckbox style="vertical-align: middle"
+                                     id="activeUsersOnly"
+                                     value="#{systemManager.isActiveUsersOnly}" >
+                <p:ajax  update="#{systemManager.usersTableId}"
+                         listener="#{systemManager.doUserSearch}"
+                         event="change"                                      
+                         process="@this"/>
+            </p:selectBooleanCheckbox>    
+            
+            <p:tooltip for="activeUsersOnly" value="Check to show active users only" 
+                       showEffect="fade" hideEffect="fade" />
+
+
         </p:toolbarGroup>
 
     </p:toolbar>    

@@ -35,7 +35,7 @@ Email: info@dpbennett.com.jm
 
                 <p:ajax event="dialogReturn" 
                         listener="#{systemManager.doAttachmentSearch}"
-                        update="attachmentsTable"/>
+                        update="attachmentsTable,:appForm:growl3"/>
 
             </p:commandButton>
             <p:spacer width="20" />
@@ -104,7 +104,7 @@ Email: info@dpbennett.com.jm
                                              target="#{systemManager.attachment}" />
 
                 <p:ajax event="dialogReturn" 
-                        update="attachmentsTable"/>
+                        update="attachmentsTable,:appForm:growl3"/>
 
             </p:commandButton>           
         </p:column>
