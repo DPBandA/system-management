@@ -40,6 +40,16 @@ Email: info@dpbennett.com.jm
                 font-size: 0.975em !important;
             }
 
+            .ui-sticky {
+                top: 0px !important;
+            }
+
+            @media (max-width: 960px) {
+                .ui-sticky {
+                    top: 0px !important;
+                }
+            }
+
         </style>
     </h:head>
     <h:body>
@@ -57,44 +67,53 @@ Email: info@dpbennett.com.jm
 
                         <p:growl id="growl3" life="5000" showDetail="true" />
 
-                        <h:panelGrid width="100%" 
-                                     border="0" columns="3" >
-                            
-                            <p:graphicImage value="#{systemManager.logoURL}"
-                                            height="#{systemManager.logoURLImageHeight}" 
-                                            width="#{systemManager.logoURLImageWidth}"/>
-                            
-                            <h:panelGrid columns="1">   
+                        <h:panelGrid columns="1" border="0" width="100%" >
 
-                                <h:outputText value="#{systemManager.applicationHeader}"
-                                              style="color: darkgrey; font-size: 14pt; font-weight: bold;" />
+                            <h:panelGrid width="100%" 
+                                         border="0" columns="3" >
 
-                                <h:outputText value="#{systemManager.applicationSubheader}"
-                                              styleClass="#{systemManager.isDebugMode eq true ? 'debug-mode' : 'non-debug-mode'}" />  
+                                <p:graphicImage value="#{systemManager.logoURL}"
+                                                height="#{systemManager.logoURLImageHeight}" 
+                                                width="#{systemManager.logoURLImageWidth}"/>
 
-                            </h:panelGrid>
-                            <h:panelGroup>
-                                <p:menuButton iconPos="left"
-                                              icon="pi pi-user"
-                                              title="#{systemManager.user.employee.firstName} #{systemManager.user.employee.lastName} (#{systemManager.user.username})"
-                                              id="userMenu"
-                                              style="float: right;margin-right: 15px;" >
+                                <h:panelGrid columns="1">   
 
-                                    <p:menuitem actionListener="#{systemManager.viewUserProfile}"                                            
-                                                update=":userProfileDialogForm"
-                                                oncomplete="PF('userProfileDialog').show();"
-                                                icon="pi pi-cog"
-                                                value="Profile"
-                                                process="@this"/>
-                                    <p:separator />  
-                                    <p:menuitem actionListener="#{systemManager.logout}"                                             
-                                                icon="pi pi-sign-out"
-                                                value="Logout"
-                                                process="@this"/>    
+                                    <h:outputText value="#{systemManager.applicationHeader}"
+                                                  style="color: darkgrey; font-size: 14pt; font-weight: bold;" />
 
-                                </p:menuButton>   
-                            </h:panelGroup>
-                        </h:panelGrid> 
+                                    <h:outputText value="#{systemManager.applicationSubheader}"
+                                                  styleClass="#{systemManager.isDebugMode eq true ? 'debug-mode' : 'non-debug-mode'}" />  
+
+                                </h:panelGrid>
+                                <h:panelGroup>
+                                    <p:menuButton iconPos="left"
+                                                  icon="pi pi-user"
+                                                  title="#{systemManager.user.employee.firstName} #{systemManager.user.employee.lastName} (#{systemManager.user.username})"
+                                                  id="userMenu"
+                                                  style="float: right;margin-right: 15px;" >
+
+                                        <p:menuitem actionListener="#{systemManager.viewUserProfile}"                                            
+                                                    update=":userProfileDialogForm"
+                                                    oncomplete="PF('userProfileDialog').show();"
+                                                    icon="pi pi-cog"
+                                                    value="Profile"
+                                                    process="@this"/>
+                                        <p:separator />  
+                                        <p:menuitem actionListener="#{systemManager.logout}"                                             
+                                                    icon="pi pi-sign-out"
+                                                    value="Logout"
+                                                    process="@this"/>    
+
+                                    </p:menuButton>   
+                                </h:panelGroup>
+                            </h:panelGrid> 
+
+                            <ui:include src="menubar.xhtml"/>
+
+                        </h:panelGrid>
+
+                        <p:sticky target="main_menubar"/>
+
                     </p:splitterPanel>                          
 
                 </p:splitterPanel>
