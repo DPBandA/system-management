@@ -135,27 +135,8 @@ Email: info@dpbennett.com.jm
                                 <p:defaultCommand id="dashboardDefaultCommandButton" 
                                                   target="doGeneralSearchButton" />
 
-                                <p:accordionPanel id="dashboardAccordion" 
-                                                  value="#{systemManager.dashboard.tabs}" 
-                                                  var="t" 
-                                                  widgetVar="dashboardAccordionVar"
-                                                  rendered="#{systemManager.dashboard.render}"
-                                                  multiple="false">
+                                <ui:include src="dashboard/admin/generalAdminTab.xhtml" />
 
-                                    <p:ajax event="tabChange"       
-                                            immediate="true"
-                                            process="@this"
-                                            listener="#{systemManager.onDashboardTabChange}" />
-
-                                    <p:tab title="#{t.name}" > 
-
-                                        <h:panelGroup rendered="#{t.id == 'System Administration'}">
-                                            <ui:include src="dashboard/admin/generalAdminTab.xhtml" />
-                                        </h:panelGroup>
-
-                                    </p:tab>   
-
-                                </p:accordionPanel>
                             </p:panel>
                         </p:splitterPanel>     
                         <p:splitterPanel styleClass="p-d-flex p-ai-center p-jc-center" 
