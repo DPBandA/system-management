@@ -187,6 +187,7 @@ Email: info@dpbennett.com.jm
 
             <p:poll interval="240" 
                     global="false"
+                    onerror="PF('connectionErrorDialog').show();"
                     listener="#{systemManager.handleKeepAlive}" />
         </h:form>
     </h:body>
