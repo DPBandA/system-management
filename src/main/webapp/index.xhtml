@@ -121,7 +121,7 @@ Email: info@dpbennett.com.jm
                     <p:splitter>
                         <p:splitterPanel styleClass="p-d-flex p-ai-center p-jc-center" 
                                          size="32" minSize="0">
-                            <p:panel header="Dashboard">
+                            <p:panel id="dashboardPanel" header="Dashboard">
                                 <p:commandButton
                                     id="doGeneralSearchButton"
                                     style="visibility: hidden;"
@@ -133,6 +133,7 @@ Email: info@dpbennett.com.jm
                                     process="@form"/>                    
 
                                 <p:defaultCommand id="dashboardDefaultCommandButton" 
+                                                  scope="dashboardPanel"
                                                   target="doGeneralSearchButton" />
 
                                 <ui:include src="dashboard/admin/generalAdminTab.xhtml" />
