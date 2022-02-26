@@ -25,7 +25,7 @@ Email: info@dpbennett.com.jm
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <p:menubar id="main_menubar">
-        
+
         <p:submenu label="Administration" 
                    rendered="#{systemManager.user.hasModule('AdminModule')}"
                    icon="pi pi-fw pi-server">   
@@ -52,6 +52,17 @@ Email: info@dpbennett.com.jm
                         actionListener="#{financeManager.openFinancialAdministration}" 
                         process="@this" />
         </p:submenu>
+
+        <ui:remove>
+            <f:facet name="options">
+                <div class="ui-input-icon-left p-mr-2">
+                    <i class="pi pi-fw pi-search" />
+                    <p:inputText placeholder="Search" 
+                                 valueChangeListener="#{systemManager.doDefaultSearch}"
+                                 value="#{systemManager.searchText}" />
+                </div>
+            </f:facet>
+        </ui:remove>
 
     </p:menubar>
 
