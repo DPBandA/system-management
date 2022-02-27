@@ -37,8 +37,13 @@ Email: info@dpbennett.com.jm
             <p:toolbar>
                 <p:toolbarGroup align="left" >
                     <p:commandButton value="Ok" 
+                                     icon="pi pi-check"
                                      oncomplete="window.location.reload();"
-                                     actionListener="#{systemManager.closeUserProfileDialog}" />        
+                                     actionListener="#{systemManager.closeUserProfileDialog}" />  
+                    <p:spacer width="5" /> 
+                    <p:commandButton value="Cancel" 
+                                     icon="pi pi-times"
+                                     oncomplete="PF('userProfileDialog').hide();" />
                 </p:toolbarGroup>
             </p:toolbar>
             <p:tabView style="margin-top: 1px;margin-bottom: 1px;">
@@ -83,6 +88,23 @@ Email: info@dpbennett.com.jm
                 </p:tab>    
                 <p:tab title="Preferences" >
                     <h:panelGrid columns="2">
+                        <h:outputText value="Theme" style="font-weight: bold;"/>
+                        <p:selectOneMenu id="theme"     
+                                         style="width: 200px;"
+                                         value="#{systemManager.user.userInterfaceThemeName}"
+                                         title="#{systemManager.user.userInterfaceThemeName}" >
+
+                            <f:selectItems  value="#{systemManager.PFThemes}"
+                                            var="theme"                            
+                                            itemValue="#{theme}"
+                                            itemLabel="#{theme}"/>
+
+                            <p:ajax listener="#{systemManager.updatePreferences}"
+                                    global="false"
+                                    process="@this"/>
+
+                        </p:selectOneMenu>
+                        
                         <h:outputText value="Job table view" style="font-weight: bold;"/>
                         <p:selectOneMenu id="workProgress"     
                                          style="width: 200px;"
@@ -94,7 +116,7 @@ Email: info@dpbennett.com.jm
                                             itemValue="#{view}"
                                             itemLabel="#{view}"/>
 
-                            <p:ajax listener="#{jobManager.updatePreferedJobTableView}"
+                            <p:ajax listener="#{systemManager.updatePreferences}"
                                     global="false"
                                     process="@this"/>
 
@@ -106,9 +128,14 @@ Email: info@dpbennett.com.jm
             <p:toolbar>
                 <p:toolbarGroup align="left" >
                     <p:commandButton value="Ok" 
+                                     icon="pi pi-check"
                                      oncomplete="window.location.reload();"
-                                     actionListener="#{systemManager.closeUserProfileDialog}" />        
-                </p:toolbarGroup>
+                                     actionListener="#{systemManager.closeUserProfileDialog}" />   
+                    <p:spacer width="5" /> 
+                    <p:commandButton value="Cancel" 
+                                     icon="pi pi-times"
+                                     oncomplete="PF('userProfileDialog').hide();" />
+                </p:toolbarGroup>                
             </p:toolbar>
         </p:dialog>
 
