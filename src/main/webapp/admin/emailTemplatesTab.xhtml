@@ -51,20 +51,22 @@ Email: info@dpbennett.com.jm
         </p:toolbarGroup>
 
         <p:toolbarGroup align="right">
-            <p:outputLabel for="activeEmailsOnly" value="Active email templates only: " />  
-            <h:panelGroup>
-                <p:selectBooleanCheckbox style="vertical-align: middle"
-                                         id="activeEmailsOnly"
-                                         value="#{systemManager.isActiveEmailsOnly}" >
-                    <p:ajax  update=":appForm:mainTabView:centerTabView:emailsTable"
-                             listener="#{systemManager.doEmailSearch}"
-                             event="change"                                      
-                             process="@this"/>
-                </p:selectBooleanCheckbox>            
-                <p:tooltip for="activeEmailsOnly" value="Check to show active email templates only" 
-                           showEffect="fade" hideEffect="fade" />
-                <p:spacer width="15" />                
-            </h:panelGroup>
+            <h:panelGrid columns="2">
+                <p:outputLabel for="activeEmailsOnly" value="Active email templates only" />  
+                <h:panelGroup>
+                    <p:selectBooleanCheckbox style="vertical-align: middle"
+                                             id="activeEmailsOnly"
+                                             value="#{systemManager.isActiveEmailsOnly}" >
+                        <p:ajax  update=":appForm:mainTabView:centerTabView:emailsTable"
+                                 listener="#{systemManager.doEmailSearch}"
+                                 event="change"                                      
+                                 process="@this"/>
+                    </p:selectBooleanCheckbox>            
+                    <p:tooltip for="activeEmailsOnly" value="Check to show active email templates only" 
+                               showEffect="fade" hideEffect="fade" />
+                    <p:spacer width="15" />                
+                </h:panelGroup>
+            </h:panelGrid>
         </p:toolbarGroup>
     </p:toolbar>    
 
@@ -80,7 +82,7 @@ Email: info@dpbennett.com.jm
         <f:facet name="header">
             Email Templates
         </f:facet>
-        
+
         <p:column>
             <f:facet name="header">
                 <h:outputText value="Name"/>
@@ -101,7 +103,7 @@ Email: info@dpbennett.com.jm
             </f:facet>
             <h:outputText value="#{email.category}" />
         </p:column> 
-        
+
         <p:column>
             <f:facet name="header">
                 <h:outputText value="Description"/>
