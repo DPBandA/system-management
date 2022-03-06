@@ -203,100 +203,43 @@ Email: info@dpbennett.com.jm
                     </p:toolbar>
 
                 </p:tab>
+                
+                <p:tab title="Preferences" >
+                    <h:panelGrid columns="2">
+                        <h:outputText value="Theme" style="font-weight: bold;"/>
+                        <p:selectOneMenu id="theme"     
+                                         style="width: 200px;"
+                                         value="#{systemManager.selectedUser.userInterfaceThemeName}"
+                                         title="#{systemManager.selectedUser.userInterfaceThemeName}" >
 
-                <ui:remove>
-                    <p:tab title="Legacy Privileges (deprecated)">
-                        <h:panelGrid columns="3" cellspacing="10">
-                            <p:selectBooleanCheckbox id="canEnterJob" 
-                                                     itemLabel="Enter any job" 
-                                                     value="#{systemManager.selectedUser.privilege.canEnterJob}" >
+                            <f:selectItems  value="#{systemManager.PFThemes}"
+                                            var="theme"                            
+                                            itemValue="#{theme}"
+                                            itemLabel="#{theme}"/>
 
-                                <p:ajax listener="#{systemManager.updatePrivileges}"   
-                                        event="change"
-                                        update="canEnterOwnJob,canEnterDepartmentJob"
-                                        process="@this"/>
+                            <p:ajax listener="#{systemManager.updateSelectedUserPreferences}"
+                                    global="false"
+                                    process="@this"/>
 
-                            </p:selectBooleanCheckbox>
+                        </p:selectOneMenu>
+                        
+                        <h:outputText value="Job table view" style="font-weight: bold;"/>
+                        <p:selectOneMenu style="width: 200px;"
+                                         value="#{systemManager.selectedUser.jobTableViewPreference}"
+                                         title="#{systemManager.selectedUser.jobTableViewPreference}" >
 
-                            <p:selectBooleanCheckbox id="canEnterDepartmentJob" 
-                                                     itemLabel="Enter department's jobs"
-                                                     disabled="#{systemManager.selectedUser.privilege.canEnterJob}"
-                                                     value="#{systemManager.selectedUser.privilege.canEnterDepartmentJob}" >
+                            <f:selectItems  value="#{systemManager.jobTableViews}"
+                                            var="view"                            
+                                            itemValue="#{view}"
+                                            itemLabel="#{view}"/>
 
-                                <p:ajax listener="#{systemManager.updatePrivileges}"   
-                                        event="change"
-                                        update="canEnterOwnJob"
-                                        process="@this"/>
+                            <p:ajax listener="#{systemManager.updateSelectedUserPreferences}"
+                                    global="false"
+                                    process="@this"/>
 
-                            </p:selectBooleanCheckbox>
-
-                            <p:selectBooleanCheckbox id="canEnterOwnJob" 
-                                                     itemLabel="Enter own jobs"
-                                                     disabled="#{systemManager.selectedUser.privilege.canEnterJob}"
-                                                     value="#{systemManager.selectedUser.privilege.canEnterOwnJob}" >
-
-                                <p:ajax listener="#{systemManager.updatePrivileges}"   
-                                        event="change"
-                                        process="@this"/>
-
-                            </p:selectBooleanCheckbox>
-
-                            <p:selectBooleanCheckbox id="canEditJob"
-                                                     itemLabel="Edit any job"
-                                                     value="#{systemManager.selectedUser.privilege.canEditJob}">
-
-                                <p:ajax listener="#{systemManager.updatePrivileges}"   
-                                        event="change"
-                                        update="canEditOwnJob,canEditDepartmentalJob"
-                                        process="@this"/>
-
-                            </p:selectBooleanCheckbox>
-
-                            <p:selectBooleanCheckbox id="canEditDepartmentalJob" 
-                                                     itemLabel="Edit department's jobs"
-                                                     disabled="#{systemManager.selectedUser.privilege.canEditJob}"
-                                                     value="#{systemManager.selectedUser.privilege.canEditDepartmentJob}" >
-
-                                <p:ajax listener="#{systemManager.updatePrivileges}"   
-                                        event="change"
-                                        process="@this"/>
-
-                            </p:selectBooleanCheckbox>
-
-                            <p:selectBooleanCheckbox id="canEditOwnJob" 
-                                                     itemLabel="Edit own job"
-                                                     disabled="#{systemManager.selectedUser.privilege.canEditJob}"
-                                                     value="#{systemManager.selectedUser.privilege.canEditOwnJob}" >
-
-                                <p:ajax listener="#{systemManager.updatePrivileges}"   
-                                        event="change"
-                                        process="@this"/>
-
-                            </p:selectBooleanCheckbox>
-
-                            <p:selectBooleanCheckbox id="canEditDisabledJobField" 
-                                                     itemLabel="Edit disabled job field"
-                                                     value="#{systemManager.selectedUser.privilege.canEditDisabledJobField}">
-
-                                <p:ajax listener="#{systemManager.updatePrivileges}"   
-                                        event="change"
-                                        process="@this"/>
-
-                            </p:selectBooleanCheckbox>
-
-                            <p:selectBooleanCheckbox id="canApproveJobCosting" 
-                                                     itemLabel="Approve job costing for department"
-                                                     value="#{systemManager.selectedUser.privilege.canApproveJobCosting}">
-
-                                <p:ajax listener="#{systemManager.updatePrivileges}"   
-                                        event="change"
-                                        process="@this"/>
-
-                            </p:selectBooleanCheckbox>
-
-                        </h:panelGrid>
-                    </p:tab>
-                </ui:remove>
+                        </p:selectOneMenu>
+                    </h:panelGrid>                        
+                </p:tab>
 
             </p:tabView>
 
