@@ -2,6 +2,12 @@
 .ui-widget {
     font-size: 80% !important;
 }
+.ui-widget, .ui-widget {
+    font-size: 80% !important;
+}
+.ui-widget, .ui-widget .ui-widget {
+    font-size: 80% !important;
+}
 */
 .jobNumberClass {
     width: 100% !important;
