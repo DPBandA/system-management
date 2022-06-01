@@ -74,9 +74,11 @@
 }
 .read-only-inputfield .ui-inputfield {
     background-color: lightyellow !important;
+    color: blue !important;
 }
 .read-only-right-inputfield .ui-inputfield {
     background-color: lightyellow !important;
+    color: blue !important;
     text-align: right;
 }
 .right-inputfield .ui-inputfield {
@@ -126,6 +128,7 @@
 
 .read-only-calendar input {
     background-color: lightgray !important;
+    color: blue !important;
 }
 
 .debug-mode {
