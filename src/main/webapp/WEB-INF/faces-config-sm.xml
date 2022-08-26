@@ -115,7 +115,14 @@
             <from-outcome>categoryDialog</from-outcome>
             <to-view-id>/admin/categoryDialog.xhtml</to-view-id>
         </navigation-case>
-    </navigation-rule> 
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/index.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>notificationDialog</from-outcome>
+            <to-view-id>/admin/notificationDialog.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
     <navigation-rule>
         <from-view-id>/index.xhtml</from-view-id>
         <navigation-case>
