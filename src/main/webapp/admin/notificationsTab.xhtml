@@ -55,9 +55,7 @@ Email: info@dpbennett.com.jm
     </p:toolbar>  
 
     <p:dataTable id="notificationsTable"                                       
-                 var="notification"     
-                 editable="true" 
-                 editMode="cell"
+                 var="notification"  
                  paginator="true"
                  rows="15"
                  style="margin-top: 1px;margin-bottom: 1px;"
@@ -82,6 +80,13 @@ Email: info@dpbennett.com.jm
             </f:facet>
             <h:outputText value="#{notification.type}" />
         </p:column>    
+
+        <p:column>
+            <f:facet name="header">
+                <h:outputText value="Active"/>
+            </f:facet>
+            <h:outputText value="#{notification.usable}" />
+        </p:column> 
 
         <p:column style="width:32px">
             <p:commandButton title="View or edit notification"   

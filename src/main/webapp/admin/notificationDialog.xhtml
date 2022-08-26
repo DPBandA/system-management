@@ -45,28 +45,30 @@ Email: info@dpbennett.com.jm
             <ui:include src="notificationDialogToolbar.xhtml" /> 
 
             <p:panel style="margin-bottom: 1px;margin-top: 1px;">
-                <h:panelGrid columns="2">
+                <h:panelGrid columns="2" cellspacing="5">
+
+                    <p:outputLabel value="Active" for="active" style="font-weight: bold;" /> 
+                    <p:selectBooleanCheckbox id="active" 
+                                             value="#{systemManager.selectedNotification.active}" />
+
+                    <h:outputLabel value="Owner Id" for="ownerId" style="font-weight: bold;"/>
+                    <h:outputText id="ownerId"                                  
+                                  value="#{systemManager.selectedNotification.ownerId}" />
+
                     <h:outputLabel value="Name" for="name" style="font-weight: bold;"/>
                     <p:inputText id="name"
                                  value="#{systemManager.selectedNotification.name}"  
                                  style="width: 275px;"
-                                 validator="requiredFieldValidator" >       
-
-                        <p:ajax event="change"                                                       
-                                process="@this"/>
-
-                    </p:inputText>
+                                 validatorMessage="A name is required"
+                                 validator="requiredFieldValidator" />   
 
                     <h:outputLabel value="Type" for="type" style="font-weight: bold;"/>
                     <p:inputText id="type"
                                  value="#{systemManager.selectedNotification.type}"   
                                  style="width: 275px;"
-                                 validator="requiredFieldValidator" >
+                                 validatorMessage="A type is required"
+                                 validator="requiredFieldValidator" />
 
-                        <p:ajax event="change"                                                       
-                                process="@this"/>
-
-                    </p:inputText>
                 </h:panelGrid>
             </p:panel>
 
