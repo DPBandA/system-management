@@ -83,6 +83,20 @@ Email: info@dpbennett.com.jm
 
         <p:column>
             <f:facet name="header">
+                <h:outputText value="Owner Id"/>
+            </f:facet>
+            <h:outputText value="#{notification.ownerId}" />
+        </p:column>
+
+        <p:column>
+            <f:facet name="header">
+                <h:outputText value="Issue Time"/>
+            </f:facet>
+            <h:outputText value="#{notification.issueTime}" />
+        </p:column>
+
+        <p:column>
+            <f:facet name="header">
                 <h:outputText value="Active"/>
             </f:facet>
             <h:outputText value="#{notification.usable}" />
@@ -94,6 +108,21 @@ Email: info@dpbennett.com.jm
                              global="true"
                              process="@this"
                              icon="pi pi-pencil">
+
+                <p:ajax event="dialogReturn" 
+                        update=":appForm:mainTabView:centerTabView:notificationsTable" />
+
+                <f:setPropertyActionListener value="#{notification}"                                                                    
+                                             target="#{systemManager.selectedNotification}" />
+            </p:commandButton>           
+        </p:column>
+
+        <p:column style="width:32px">
+            <p:commandButton title="Delete notification"   
+                             actionListener="#{systemManager.deleteNotification}"                            
+                             global="true"
+                             process="@this"
+                             icon="pi pi-trash">
 
                 <p:ajax event="dialogReturn" 
                         update=":appForm:mainTabView:centerTabView:notificationsTable" />
