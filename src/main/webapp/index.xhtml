@@ -88,20 +88,25 @@ Email: info@dpbennett.com.jm
                                 </h:panelGrid>
                                 <h:panelGroup style="float: right;">
                                     <p:badge value="#{systemManager.numberOfActiveNotifications}" 
+                                             id="notificationBadge"
                                              visible="#{systemManager.hasActiveNotifications}" 
                                              severity="danger">
 
                                         <p:commandButton id="notifications" 
                                                          icon="pi pi-bell" />
-                                        <p:overlayPanel for="notifications" 
+                                        <p:overlayPanel for="notifications"   
+                                                        widgetVar="NotificationPanelVar"
                                                         style="width:400px;border: 0;">
                                             <p:orderList value="#{systemManager.notifications}" 
-                                                         var="notification" 
+                                                         var="notification"                                                          
                                                          itemValue="#{notification}"
                                                          converter="#{activeNotificationConverter}" 
                                                          controlsLocation="none" responsive="true" >
 
-                                                <p:ajax event="select" listener="#{systemManager.onNotificationSelect}" update=""/>
+                                                <p:ajax event="select" 
+                                                        update="notificationBadge"
+                                                        oncomplete="PF('NotificationPanelVar').hide()"
+                                                        listener="#{systemManager.onNotificationSelect}" />
            
                                                 <p:column>
                                                     <h:outputText value="#{notification.name}"/>
