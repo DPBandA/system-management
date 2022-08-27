@@ -41,6 +41,10 @@
         <converter-id>activeCategoryConverter</converter-id>
         <converter-class>jm.com.dpbennett.sm.converter.ActiveCategoryConverter</converter-class>
     </converter> 
+    <converter>
+        <converter-id>activeNotificationConverter</converter-id>
+        <converter-class>jm.com.dpbennett.sm.converter.ActiveNotificationConverter</converter-class>
+    </converter> 
     
     <validator>
         <validator-id>jobNumberValidator</validator-id>
@@ -81,7 +85,7 @@
             <to-view-id>/admin/privilegePickListDialog.xhtml</to-view-id>
         </navigation-case>
     </navigation-rule> 
-     <navigation-rule>
+    <navigation-rule>
         <from-view-id>/index.xhtml</from-view-id>
         <navigation-case>
             <from-outcome>modulePickListDialog</from-outcome>
