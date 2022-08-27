@@ -93,16 +93,19 @@ Email: info@dpbennett.com.jm
 
                                         <p:commandButton id="notifications" 
                                                          icon="pi pi-bell" />
-                                        <p:overlayPanel for="notifications" style="width:400px;">
-                                            <p:orderList value="#{systemManager.activeNotifications}" 
+                                        <p:overlayPanel for="notifications" 
+                                                        style="width:400px;border: 0;">
+                                            <p:orderList value="#{systemManager.notifications}" 
                                                          var="notification" 
                                                          itemValue="#{notification}"
                                                          converter="#{activeNotificationConverter}" 
                                                          controlsLocation="none" responsive="true" >
+
+                                                <p:ajax event="select" listener="#{systemManager.onNotificationSelect}" update=""/>
            
                                                 <p:column>
                                                     <h:outputText value="#{notification.name}"/>
-                                                </p:column>
+                                                </p:column>                                           
 
                                             </p:orderList>
                                         </p:overlayPanel>
