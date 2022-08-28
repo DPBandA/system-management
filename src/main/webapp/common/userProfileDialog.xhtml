@@ -37,8 +37,13 @@ Email: info@dpbennett.com.jm
             <p:toolbar>
                 <p:toolbarGroup align="left" >
                     <p:commandButton value="Ok" 
-                                     oncomplete="PF('mainTabViewVar').select(0);"
-                                     actionListener="#{systemManager.closeUserProfileDialog}" />        
+                                     icon="pi pi-check"
+                                     oncomplete="window.location.reload();"
+                                     actionListener="#{systemManager.closeUserProfileDialog}" />  
+                    <p:spacer width="5" /> 
+                    <p:commandButton value="Cancel" 
+                                     icon="pi pi-times"
+                                     oncomplete="PF('userProfileDialog').hide();" />
                 </p:toolbarGroup>
             </p:toolbar>
             <p:tabView style="margin-top: 1px;margin-bottom: 1px;">
@@ -80,15 +85,56 @@ Email: info@dpbennett.com.jm
                                        itemLabel="#{privilege.description}" 
                                        itemValue="#{privilege.description}"/>
                     </p:selectOneRadio> 
-                </p:tab>               
+                </p:tab>    
+                <p:tab title="Preferences" >
+                    <h:panelGrid columns="2">
+                        <h:outputText value="Theme" style="font-weight: bold;"/>
+                        <p:selectOneMenu id="theme"     
+                                         style="width: 200px;"
+                                         value="#{systemManager.user.PFThemeName}"
+                                         title="#{systemManager.user.PFThemeName}" >
+
+                            <f:selectItems  value="#{systemManager.PFThemes}"
+                                            var="theme"                            
+                                            itemValue="#{theme}"
+                                            itemLabel="#{theme}"/>
+
+                            <p:ajax listener="#{systemManager.updatePreferences}"
+                                    global="false"
+                                    process="@this"/>
+
+                        </p:selectOneMenu>
+                        
+                        <h:outputText value="Job table view" style="font-weight: bold;"/>
+                        <p:selectOneMenu style="width: 200px;"
+                                         value="#{systemManager.user.jobTableViewPreference}"
+                                         title="#{systemManager.user.jobTableViewPreference}" >
+
+                            <f:selectItems  value="#{systemManager.jobTableViews}"
+                                            var="view"                            
+                                            itemValue="#{view}"
+                                            itemLabel="#{view}"/>
+
+                            <p:ajax listener="#{systemManager.updatePreferences}"
+                                    global="false"
+                                    process="@this"/>
+
+                        </p:selectOneMenu>
+                    </h:panelGrid>                        
+                </p:tab>
 
             </p:tabView>
             <p:toolbar>
                 <p:toolbarGroup align="left" >
                     <p:commandButton value="Ok" 
-                                     oncomplete="PF('mainTabViewVar').select(0);"
-                                     actionListener="#{systemManager.closeUserProfileDialog}" />        
-                </p:toolbarGroup>
+                                     icon="pi pi-check"
+                                     oncomplete="window.location.reload();"
+                                     actionListener="#{systemManager.closeUserProfileDialog}" />   
+                    <p:spacer width="5" /> 
+                    <p:commandButton value="Cancel" 
+                                     icon="pi pi-times"
+                                     oncomplete="PF('userProfileDialog').hide();" />
+                </p:toolbarGroup>                
             </p:toolbar>
         </p:dialog>
 

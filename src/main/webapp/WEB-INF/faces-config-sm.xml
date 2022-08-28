@@ -41,6 +41,10 @@
         <converter-id>activeCategoryConverter</converter-id>
         <converter-class>jm.com.dpbennett.sm.converter.ActiveCategoryConverter</converter-class>
     </converter> 
+    <converter>
+        <converter-id>activeNotificationConverter</converter-id>
+        <converter-class>jm.com.dpbennett.sm.converter.ActiveNotificationConverter</converter-class>
+    </converter> 
     
     <validator>
         <validator-id>jobNumberValidator</validator-id>
@@ -70,11 +74,18 @@
     <navigation-rule>
         <from-view-id>/index.xhtml</from-view-id>
         <navigation-case>
+            <from-outcome>emailTemplateDialog</from-outcome>
+            <to-view-id>/admin/emailTemplateDialog.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>    
+    <navigation-rule>
+        <from-view-id>/index.xhtml</from-view-id>
+        <navigation-case>
             <from-outcome>privilegePickListDialog</from-outcome>
             <to-view-id>/admin/privilegePickListDialog.xhtml</to-view-id>
         </navigation-case>
     </navigation-rule> 
-     <navigation-rule>
+    <navigation-rule>
         <from-view-id>/index.xhtml</from-view-id>
         <navigation-case>
             <from-outcome>modulePickListDialog</from-outcome>
@@ -108,7 +119,14 @@
             <from-outcome>categoryDialog</from-outcome>
             <to-view-id>/admin/categoryDialog.xhtml</to-view-id>
         </navigation-case>
-    </navigation-rule> 
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/index.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>notificationDialog</from-outcome>
+            <to-view-id>/admin/notificationDialog.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
     <navigation-rule>
         <from-view-id>/index.xhtml</from-view-id>
         <navigation-case>
@@ -127,7 +145,7 @@
         <from-view-id>/index.xhtml</from-view-id>
         <navigation-case>
             <from-outcome>attachmentDialog</from-outcome>
-            <to-view-id>/common/attachmentDialog.xhtml</to-view-id>
+            <to-view-id>/admin/attachmentDialog.xhtml</to-view-id>
         </navigation-case>
     </navigation-rule> 
     <navigation-rule>

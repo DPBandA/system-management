@@ -2,6 +2,12 @@
 .ui-widget {
     font-size: 80% !important;
 }
+.ui-widget, .ui-widget {
+    font-size: 80% !important;
+}
+.ui-widget, .ui-widget .ui-widget {
+    font-size: 80% !important;
+}
 */
 .jobNumberClass {
     width: 100% !important;
@@ -68,9 +74,11 @@
 }
 .read-only-inputfield .ui-inputfield {
     background-color: lightyellow !important;
+    color: blue !important;
 }
 .read-only-right-inputfield .ui-inputfield {
     background-color: lightyellow !important;
+    color: blue !important;
     text-align: right;
 }
 .right-inputfield .ui-inputfield {
@@ -120,6 +128,7 @@
 
 .read-only-calendar input {
     background-color: lightgray !important;
+    color: blue !important;
 }
 
 .debug-mode {
