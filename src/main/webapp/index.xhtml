@@ -104,7 +104,7 @@ Email: info@dpbennett.com.jm
                                                          controlsLocation="none" responsive="true" >
 
                                                 <p:ajax event="select" 
-                                                        update="notificationBadge"
+                                                        update=":appForm:notificationBadge"
                                                         oncomplete="PF('NotificationPanelVar').hide()"
                                                         listener="#{systemManager.onNotificationSelect}" />
            
@@ -219,7 +219,7 @@ Email: info@dpbennett.com.jm
                 </p:splitterPanel>
             </p:splitter>
 
-            <p:poll interval="240" 
+            <p:poll interval="60" 
                     global="false"
                     onerror="PF('connectionErrorDialog').show();"
                     listener="#{systemManager.handleKeepAlive}" />
