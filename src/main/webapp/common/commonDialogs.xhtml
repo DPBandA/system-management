@@ -24,6 +24,28 @@ Email: info@dpbennett.com.jm
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:ui="http://java.sun.com/jsf/facelets">   
 
+    <p:confirmDialog widgetVar="deleteNotificationDialog" 
+                     showEffect="fade" 
+                     width="300"
+                     message="Delete the notification?" 
+                     header="Confirm" 
+                     severity="warn">
+
+            <p:commandButton value="Yes" 
+                             icon="pi pi-check" 
+                             actionListener="#{systemManager.deleteNotification}"                             
+                             process="@this" 
+                             oncomplete="PF('deleteNotificationDialog').hide()" />
+
+            <p:commandButton value="No" 
+                             type="button" 
+                             styleClass="ui-button-secondary" 
+                             icon="pi pi-times"
+                             onclick="PF('deleteNotificationDialog').hide()" />
+
+    </p:confirmDialog>
+
+
     <p:confirmDialog severity="info"
                      message="The browser you are currently using is incompatible with this web application. The user interface may freeze or behave erratically. Please use Firefox, Chrome or the browser recommended by the MIS Department."
                      header="Incompatible Browser"

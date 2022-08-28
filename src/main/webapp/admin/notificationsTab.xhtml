@@ -36,7 +36,7 @@ Email: info@dpbennett.com.jm
 
                 <p:ajax event="dialogReturn" 
                         listener="#{systemManager.doNotificationSearch}"
-                        update=":appForm:mainTabView:centerTabView:notificationsTable" />
+                        update=":appForm:mainTabView:centerTabView:notificationsTable,appForm:notificationBadge" />
 
             </p:commandButton>     
             <p:spacer width="20" />        
@@ -110,7 +110,7 @@ Email: info@dpbennett.com.jm
                              icon="pi pi-pencil">
 
                 <p:ajax event="dialogReturn" 
-                        update=":appForm:mainTabView:centerTabView:notificationsTable" />
+                        update=":appForm:mainTabView:centerTabView:notificationsTable,appForm:notificationBadge" />
 
                 <f:setPropertyActionListener value="#{notification}"                                                                    
                                              target="#{systemManager.selectedNotification}" />
@@ -119,13 +119,9 @@ Email: info@dpbennett.com.jm
 
         <p:column style="width:32px">
             <p:commandButton title="Delete notification"   
-                             actionListener="#{systemManager.deleteNotification}"                            
-                             global="true"
+                             oncomplete="PF('deleteNotificationDialog').show()"  
                              process="@this"
                              icon="pi pi-trash">
-
-                <p:ajax event="dialogReturn" 
-                        update=":appForm:mainTabView:centerTabView:notificationsTable" />
 
                 <f:setPropertyActionListener value="#{notification}"                                                                    
                                              target="#{systemManager.selectedNotification}" />
@@ -145,7 +141,7 @@ Email: info@dpbennett.com.jm
 
                 <p:ajax event="dialogReturn" 
                         listener="#{systemManager.doNotificationSearch}"
-                        update=":appForm:mainTabView:centerTabView:notificationsTable" />
+                        update=":appForm:mainTabView:centerTabView:notificationsTable,appForm:notificationBadge" />
 
             </p:commandButton>     
 
