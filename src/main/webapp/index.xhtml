@@ -87,7 +87,7 @@ Email: info@dpbennett.com.jm
 
                                 </h:panelGrid>
                                 <h:panelGroup style="float: right;">
-                                    <p:badge value="#{systemManager.numberOfActiveNotifications}" 
+                                    <p:badge value="#{systemManager.sizeOfActiveNotifications}" 
                                              id="notificationBadge"
                                              visible="#{systemManager.hasActiveNotifications}" 
                                              severity="danger">
@@ -98,7 +98,7 @@ Email: info@dpbennett.com.jm
                                                         widgetVar="NotificationPanelVar"
                                                         style="width:400px;border: 0;">
                                             <p:orderList value="#{systemManager.notifications}" 
-                                                         var="notification"                                                          
+                                                         var="notification" 
                                                          itemValue="#{notification}"
                                                          converter="#{activeNotificationConverter}" 
                                                          controlsLocation="none" responsive="true" >
@@ -109,7 +109,8 @@ Email: info@dpbennett.com.jm
                                                         listener="#{systemManager.onNotificationSelect}" />
            
                                                 <p:column>
-                                                    <h:outputText value="#{notification.name}"/>
+                                                    <h:outputText value="#{notification.name}" 
+                                                                  style="#{notification.style}"/>
                                                 </p:column>                                           
 
                                             </p:orderList>
