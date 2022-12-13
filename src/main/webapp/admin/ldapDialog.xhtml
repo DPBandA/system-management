@@ -105,12 +105,18 @@ Email: info@dpbennett.com.jm
                         <f:validator validatorId="requiredFieldValidator" />
                     </p:inputText>
 
-                    <h:outputLabel value="Security credentials" style="font-weight: bold;"/>               
+                    <h:outputLabel value="Security credentials" style="font-weight: bold;"/>   
+                    <ui:remove>
                     <p:inputText  value="#{systemManager.selectedLdapContext.securityCredentials}"
                                   id="securityCredentials"
                                   style="width:400px" >
                         <f:validator validatorId="requiredFieldValidator" />
                     </p:inputText>
+                    </ui:remove>
+                    <p:password id="securityCredentials" toggleMask="true" redisplay="true" 
+                                 value="#{systemManager.selectedLdapContext.securityCredentials}" >
+                       <f:validator validatorId="requiredFieldValidator" />
+                    </p:password>
 
                 </h:panelGrid>
             </p:panel>

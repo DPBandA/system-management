@@ -26,7 +26,7 @@ Email: info@dpbennett.com.jm
     <h:form id="userProfileDialogForm">
 
         <p:dialog width="900"
-                  height="350"
+                  height="500"
                   draggable="true"
                   modal="true"
                   widgetVar="userProfileDialog"
@@ -121,6 +121,25 @@ Email: info@dpbennett.com.jm
 
                         </p:selectOneMenu>
                     </h:panelGrid>                        
+                </p:tab>
+                <p:tab id="securityTab" title="Security" rendered="#{systemManager.showUserProfileSecurityTab}">
+                    <h5>Change Password</h5>
+                    <h:panelGrid columns="2">
+                        <p:outputLabel for="newPwd" value="New password" />
+                        <p:password id="newPwd" toggleMask="true" redisplay="true" 
+                                    value="#{systemManager.user.newPassword}" />
+
+                        <p:outputLabel for="confirmedPwd" value="Confirm password" />
+                        <p:password id="confirmedPwd" toggleMask="true" redisplay="true" value="#{systemManager.user.confirmedNewPassword}" />
+                    </h:panelGrid>
+                    <p:divider />
+                    <p:commandButton value="Save" 
+                                     icon="pi pi-disk"
+                                     title="Save security profile"
+                                     process="@form"
+                                     update=":appForm:growl3"
+                                     actionListener="#{systemManager.saveUserSecurityProfile}" />                    
+
                 </p:tab>
 
             </p:tabView>
