@@ -1,6 +1,6 @@
 <!--
 System Management (SM) 
-Copyright (C) 2021  D P Bennett & Associates Limited
+Copyright (C) 2022  D P Bennett & Associates Limited
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU Affero General Public License as published by
@@ -26,7 +26,7 @@ Email: info@dpbennett.com.jm
     <h:form id="userProfileDialogForm">
 
         <p:dialog width="900"
-                  height="350"
+                  height="500"
                   draggable="true"
                   modal="true"
                   widgetVar="userProfileDialog"
@@ -87,7 +87,7 @@ Email: info@dpbennett.com.jm
                     </p:selectOneRadio> 
                 </p:tab>    
                 <p:tab title="Preferences" >
-                    <h:panelGrid columns="2">
+                    <h:panelGrid columns="2" cellpadding="5">
                         <h:outputText value="Theme" style="font-weight: bold;"/>
                         <p:selectOneMenu id="theme"     
                                          style="width: 200px;"
@@ -121,6 +121,29 @@ Email: info@dpbennett.com.jm
 
                         </p:selectOneMenu>
                     </h:panelGrid>                        
+                </p:tab>
+                <p:tab id="securityTab" title="Security" rendered="#{systemManager.showUserProfileSecurityTab}">
+                    <h:panelGrid columns="2" cellpadding="5">
+                        <p:outputLabel value="Authenticated" for="authenticateUser" 
+                                       style="font-weight: bold;" /> 
+                        <p:selectBooleanCheckbox id="authenticateUser" 
+                                           disabled="true"  
+                                           value="#{systemManager.selectedUser.authenticate}" />
+
+                        <p:outputLabel for="newPwd" value="New password" />
+                        <p:password id="newPwd" toggleMask="true" redisplay="true" 
+                                    value="#{systemManager.user.newPassword}" />
+
+                        <p:outputLabel for="confirmedPwd" value="Confirm password" />
+                        <p:password id="confirmedPwd" toggleMask="true" redisplay="true" value="#{systemManager.user.confirmedNewPassword}" />
+                    </h:panelGrid>
+                    <p:divider />
+                    <p:commandButton value="Change password" 
+                                     title="Save changed password"
+                                     process="@form"
+                                     update=":appForm:growl3"
+                                     actionListener="#{systemManager.saveUserSecurityProfile}" />                    
+
                 </p:tab>
 
             </p:tabView>

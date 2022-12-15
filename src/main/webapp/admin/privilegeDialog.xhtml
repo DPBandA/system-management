@@ -45,7 +45,7 @@ Email: info@dpbennett.com.jm
             <ui:include src="privilegeDialogToolbar.xhtml" /> 
 
             <p:panel style="margin-bottom: 1px;margin-top: 1px;">
-                <h:panelGrid columns="2">
+                <h:panelGrid columns="2" cellpadding="5">
 
                     <p:outputLabel value="Active"                                    
                                    for="activePrivilege" 
@@ -58,6 +58,7 @@ Email: info@dpbennett.com.jm
                     <p:inputText id="name"
                                  value="#{systemManager.selectedPrivilege.name}"  
                                  style="width: 275px;"
+                                 validatorMessage="A valid name is required"
                                  validator="requiredFieldValidator" >       
 
                         <p:ajax event="change"                                                       

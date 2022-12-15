@@ -42,8 +42,8 @@
         <converter-class>jm.com.dpbennett.sm.converter.ActiveCategoryConverter</converter-class>
     </converter> 
     <converter>
-        <converter-id>activeNotificationConverter</converter-id>
-        <converter-class>jm.com.dpbennett.sm.converter.ActiveNotificationConverter</converter-class>
+        <converter-id>notificationConverter</converter-id>
+        <converter-class>jm.com.dpbennett.sm.converter.NotificationConverter</converter-class>
     </converter> 
     
     <validator>

@@ -1,6 +1,6 @@
 <!--
 System Management (SM) 
-Copyright (C) 2017  D P Bennett & Associates Limited
+Copyright (C) 2022  D P Bennett & Associates Limited
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU Affero General Public License as published by
@@ -45,10 +45,11 @@ Email: info@dpbennett.com.jm
             <ui:include src="documentTypeDialogToolbar.xhtml" /> 
 
             <p:panel style="margin-bottom: 1px;margin-top: 1px;">
-                <h:panelGrid columns="2">
-                    <h:outputLabel value="Document type" for="newDocumentType" style="font-weight: bold;"/>
+                <h:panelGrid columns="2" cellpadding="5">
+                    <h:outputLabel value="Type" for="newDocumentType" style="font-weight: bold;"/>
                     <p:inputText id="newDocumentType"
-                                 value="#{systemManager.selectedDocumentType.name}"                                 
+                                 value="#{systemManager.selectedDocumentType.name}"    
+                                 validatorMessage="A valid type is required"
                                  validator="requiredFieldValidator" >       
 
                         <p:ajax event="change"                                                       
@@ -56,9 +57,10 @@ Email: info@dpbennett.com.jm
 
                     </p:inputText>
 
-                    <h:outputLabel value="Document code" for="newDocumentCode" style="font-weight: bold;"/>
+                    <h:outputLabel value="Code" for="newDocumentCode" style="font-weight: bold;"/>
                     <p:inputText id="newDocumentCode"
-                                 value="#{systemManager.selectedDocumentType.code}"                                 
+                                 value="#{systemManager.selectedDocumentType.code}"
+                                 validatorMessage="A valid code is required"
                                  validator="requiredFieldValidator" >
 
                         <p:ajax event="change"                                                       

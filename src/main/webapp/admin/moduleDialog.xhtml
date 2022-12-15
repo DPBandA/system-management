@@ -45,7 +45,7 @@ Email: info@dpbennett.com.jm
             <ui:include src="moduleDialogToolbar.xhtml" /> 
 
             <p:panel style="margin-bottom: 1px;margin-top: 1px;">
-                <h:panelGrid columns="2">
+                <h:panelGrid columns="2" cellpadding="5">
 
                     <p:outputLabel value="Active"                                    
                                    for="activeModule" 
@@ -58,6 +58,7 @@ Email: info@dpbennett.com.jm
                     <p:inputText id="name"
                                  value="#{systemManager.selectedModule.name}"  
                                  style="width: 275px;"
+                                 validatorMessage="A valid name is required"
                                  validator="requiredFieldValidator" >       
 
                         <p:ajax event="change"                                                       
@@ -65,10 +66,11 @@ Email: info@dpbennett.com.jm
 
                     </p:inputText>
 
-                    <h:outputLabel value="Dashboard title" for="dashboardTitle" style="font-weight: bold;"/>
+                    <h:outputLabel value="Title" for="dashboardTitle" style="font-weight: bold;"/>
                     <p:inputText id="dashboardTitle"
                                  value="#{systemManager.selectedModule.dashboardTitle}"  
                                  style="width: 275px;"
+                                 validatorMessage="A valid title is required"
                                  validator="requiredFieldValidator" >       
 
                         <p:ajax event="change"                                                       
@@ -80,6 +82,7 @@ Email: info@dpbennett.com.jm
                     <p:inputText id="mainViewTitle"
                                  value="#{systemManager.selectedModule.mainViewTitle}"  
                                  style="width: 275px;"
+                                 validatorMessage="A valid main view title is required"
                                  validator="requiredFieldValidator" >       
 
                         <p:ajax event="change"                                                       
