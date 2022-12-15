@@ -56,7 +56,7 @@ Email: info@dpbennett.com.jm
 
             <p:tabView style="margin-bottom: 1px;margin-bottom: 1px;" >
                 <p:tab title="General" >   
-                    <h:panelGrid columns="2">
+                    <h:panelGrid columns="2" cellpadding="5">
                         <p:outputLabel for="emailActive" value="Active" style="font-weight: bold;" />               
                         <p:selectBooleanCheckbox id="emailActive"
                                                  style="vertical-align: middle"
@@ -86,7 +86,7 @@ Email: info@dpbennett.com.jm
 
                         <h:outputText value="Content template" style="font-weight: bold;" />                            
                         <h:panelGroup>
-                            <h:panelGrid columns="2">                            
+                            <h:panelGrid columns="2" cellpadding="5">                            
                                 <p:inputText value="#{systemManager.selectedEmail.templateFile}"
                                              disabled="#{!systemManager.selectedEmail.usePackagedTemplate}"
                                              style="margin-left: -3px;width: 300px;"

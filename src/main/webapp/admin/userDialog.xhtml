@@ -72,14 +72,10 @@ Email: info@dpbennett.com.jm
             </p:toolbar>
 
             <p:panel style="margin-bottom: 1px;" >             
-                <h:panelGrid columns="2" >
+                <h:panelGrid columns="2" cellpadding="5" >
                     <p:outputLabel value="Active" for="activeUser" style="font-weight: bold;" /> 
                     <p:selectBooleanCheckbox id="activeUser" 
                                              value="#{systemManager.selectedUser.active}" />
-
-                    <p:outputLabel value="Authenticate" for="authenticateUser" style="font-weight: bold;" /> 
-                    <p:selectBooleanCheckbox id="authenticateUser" 
-                                             value="#{systemManager.selectedUser.authenticate}" />
 
                     <h:outputText value="Username" style="font-weight: bold;"/>  
                     <p:inputText id="user"
@@ -206,7 +202,7 @@ Email: info@dpbennett.com.jm
                 </p:tab>
                 
                 <p:tab title="Preferences" >
-                    <h:panelGrid columns="2">
+                    <h:panelGrid columns="2" cellpadding="5">
                         <h:outputText value="Theme" style="font-weight: bold;"/>
                         <p:selectOneMenu id="theme"     
                                          style="width: 200px;"
@@ -239,6 +235,20 @@ Email: info@dpbennett.com.jm
                                     process="@this"/>
 
                         </p:selectOneMenu>
+                    </h:panelGrid>                        
+                </p:tab>
+                <p:tab title="Security" >
+                    <h:panelGrid columns="2" cellpadding="5">
+                        <p:outputLabel value="Authenticate" for="authenticateUser" 
+                                       style="font-weight: bold;" /> 
+                        <p:selectBooleanCheckbox id="authenticateUser" 
+                                             value="#{systemManager.selectedUser.authenticate}" />
+
+                        <p:outputLabel value="Update LDAP user" for="updateLDAPUser" 
+                                       style="font-weight: bold;" /> 
+                        <p:selectBooleanCheckbox id="updateLDAPUser" 
+                                             disabled="true"
+                                             value="#{systemManager.enableUpdateLDAPUser}" />
                     </h:panelGrid>                        
                 </p:tab>
 
