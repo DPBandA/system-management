@@ -141,11 +141,7 @@ Email: info@dpbennett.com.jm
                                 </h:panelGroup>
                             </h:panelGrid> 
 
-                            <ui:include src="menubar.xhtml" />
-
                         </h:panelGrid>
-
-                        <p:sticky target="main_menubar"/>
 
                     </p:splitterPanel>                          
 
@@ -168,9 +164,31 @@ Email: info@dpbennett.com.jm
                                 <p:defaultCommand id="dashboardDefaultCommandButton" 
                                                   scope="dashboardPanel"
                                                   target="doGeneralSearchButton" />
-
+                                <ui:remove>                    
                                 <ui:include src="dashboard/admin/generalAdminTab.xhtml" />
+                                </ui:remove>
 
+                                <p:accordionPanel id="dashboardAccordion" 
+                                      value="#{systemManager.dashboard.tabs}" 
+                                      var="t" 
+                                      widgetVar="dashboardAccordionVar"
+                                      rendered="#{systemManager.dashboard.render}"
+                                      multiple="false">
+
+                                    <p:ajax event="tabChange"       
+                                            immediate="true"
+                                            process="@this"
+                                            listener="#{systemManager.onDashboardTabChange}" />
+
+                                    <p:tab title="#{t.name}" >
+                                       
+                                        <h:panelGroup rendered="#{t.id == 'System Administration'}">
+                                            <ui:include src="dashboard/admin/generalAdminTab.xhtml" />
+                                        </h:panelGroup>
+
+                                    </p:tab>   
+
+                                </p:accordionPanel>
                             </p:panel>
                         </p:splitterPanel>     
                         <p:splitterPanel styleClass="p-d-flex p-ai-center p-jc-center" 
@@ -216,6 +234,9 @@ Email: info@dpbennett.com.jm
                             <p:defaultCommand target=":appForm:doNothingButton" />
                         </p:splitterPanel>
                     </p:splitter>
+
+                    <p:sticky target="dashboardPanel"/>
+
                 </p:splitterPanel>
             </p:splitter>
 
