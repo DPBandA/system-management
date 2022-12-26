@@ -44,7 +44,39 @@
     <converter>
         <converter-id>notificationConverter</converter-id>
         <converter-class>jm.com.dpbennett.sm.converter.NotificationConverter</converter-class>
-    </converter> 
+    </converter>     
+    <converter>
+        <converter-id>activeDepartmentConverter</converter-id>
+        <converter-class>jm.com.dpbennett.sm.converter.ActiveDepartmentConverter</converter-class>
+    </converter>
+    <converter>
+        <converter-id>activeClientConverter</converter-id>
+        <converter-class>jm.com.dpbennett.sm.converter.ActiveClientConverter</converter-class>
+    </converter>
+    <converter>
+        <converter-id>accPacCustomerConverter</converter-id>
+        <converter-class>jm.com.dpbennett.sm.converter.AccPacCustomerConverter</converter-class>
+    </converter>    
+    <converter>
+        <converter-id>accountingCodeConverter</converter-id>
+        <converter-class>jm.com.dpbennett.sm.converter.AccountingCodeConverter</converter-class>
+    </converter>
+    <converter>
+        <converter-id>taxConverter</converter-id>
+        <converter-class>jm.com.dpbennett.sm.converter.TaxConverter</converter-class>
+    </converter>
+    <converter>
+        <converter-id>discountConverter</converter-id>
+        <converter-class>jm.com.dpbennett.sm.converter.DiscountConverter</converter-class>
+    </converter>
+    <converter>
+        <converter-id>serviceConverter</converter-id>
+        <converter-class>jm.com.dpbennett.sm.converter.ServiceConverter</converter-class>
+    </converter>  
+    <converter>
+        <converter-id>activeMarketProductConverter</converter-id>
+        <converter-class>jm.com.dpbennett.sm.converter.ActiveMarketProductConverter</converter-class>
+    </converter>
     
     <validator>
         <validator-id>jobNumberValidator</validator-id>
@@ -70,6 +102,38 @@
         <validator-id>businessEntityListValidator</validator-id>
         <validator-class>jm.com.dpbennett.sm.validator.BusinessEntityListValidator</validator-class>
     </validator> 
+    <validator>
+        <validator-id>addressLineValidator</validator-id>
+        <validator-class>jm.com.dpbennett.sm.validator.AddressLineValidator</validator-class>
+    </validator>
+    <validator>
+        <validator-id>addressValidator</validator-id>
+        <validator-class>jm.com.dpbennett.sm.validator.AddressValidator</validator-class>
+    </validator>   
+    <validator>
+        <validator-id>contactValidator</validator-id>
+        <validator-class>jm.com.dpbennett.sm.validator.ContactValidator</validator-class>
+    </validator> 
+     <validator>
+        <validator-id>accountingCodeValidator</validator-id>
+        <validator-class>jm.com.dpbennett.sm.validator.AccountingCodeValidator</validator-class>
+    </validator>  
+    <validator>
+        <validator-id>taxValidator</validator-id>
+        <validator-class>jm.com.dpbennett.sm.validator.TaxValidator</validator-class>
+    </validator>
+    <validator>
+        <validator-id>currencyValidator</validator-id>
+        <validator-class>jm.com.dpbennett.sm.validator.CurrencyValidator</validator-class>
+    </validator>
+    <validator>
+        <validator-id>discountValidator</validator-id>
+        <validator-class>jm.com.dpbennett.sm.validator.DiscountValidator</validator-class>
+    </validator>
+    <validator>
+        <validator-id>marketProductValidator</validator-id>
+        <validator-class>jm.com.dpbennett.sm.validator.MarketProductValidator</validator-class>
+    </validator>
     
     <navigation-rule>
         <from-view-id>/index.xhtml</from-view-id>
