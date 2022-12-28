@@ -77,6 +77,10 @@
         <converter-id>activeMarketProductConverter</converter-id>
         <converter-class>jm.com.dpbennett.sm.converter.ActiveMarketProductConverter</converter-class>
     </converter>
+    <converter>
+        <converter-id>activeDocumentStandardConverter</converter-id>
+        <converter-class>jm.com.dpbennett.sm.converter.ActiveDocumentStandardConverter</converter-class>
+    </converter>
     
     <validator>
         <validator-id>jobNumberValidator</validator-id>
@@ -134,6 +138,16 @@
         <validator-id>marketProductValidator</validator-id>
         <validator-class>jm.com.dpbennett.sm.validator.MarketProductValidator</validator-class>
     </validator>
+    <validator>
+        <validator-id>documentStandardValidator</validator-id>
+        <validator-class>jm.com.dpbennett.sm.validator.DocumentStandardValidator</validator-class>
+    </validator>   
+    <!-- 
+    <validator>
+        <validator-id>marketProductValidator</validator-id>
+        <validator-class>jm.com.dpbennett.sm.validator.MarketProductValidator</validator-class>
+    </validator>
+    -->    
     
     <navigation-rule>
         <from-view-id>/index.xhtml</from-view-id>
