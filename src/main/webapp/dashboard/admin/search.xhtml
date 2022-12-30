@@ -28,8 +28,7 @@ Email: info@dpbennett.com.jm
 
         <h:panelGrid columns="2" cellpadding="5">
             <h:outputText value="Search type" />
-            <p:selectOneMenu value="#{systemManager.searchType}" 
-                             style="width: 100%;">
+            <p:selectOneMenu value="#{systemManager.searchType}" >
 
                 <f:selectItems value="#{systemManager.groupedSearchTypes}" />
 
@@ -41,8 +40,7 @@ Email: info@dpbennett.com.jm
                           rendered="#{systemManager.renderDateSearchFields}" />
             <p:selectOneMenu value="#{systemManager.dateSearchPeriod.dateField}" 
                              id="dateField"
-                             rendered="#{systemManager.renderDateSearchFields}"
-                             style="width: 100%;" >
+                             rendered="#{systemManager.renderDateSearchFields}" >
                 <p:ajax                        
                     listener="#{systemManager.updateDateSearchField}"
                     global="false"
@@ -55,8 +53,7 @@ Email: info@dpbennett.com.jm
             <h:outputText value="Date period" rendered="#{systemManager.renderDateSearchFields}" />               
             <p:selectOneMenu value= "#{systemManager.dateSearchPeriod.name}" 
                              id="datePeriod"
-                             rendered="#{systemManager.renderDateSearchFields}"
-                             style="width: 100%;" >
+                             rendered="#{systemManager.renderDateSearchFields}" >
 
                 <p:ajax listener="#{systemManager.dateSearchPeriod.initDatePeriod}"
                         global="false"
@@ -87,10 +84,9 @@ Email: info@dpbennett.com.jm
                         pattern="MMM dd, yyyy" />
 
         </h:panelGrid>   
-        <p:toolbar style="width: 65%;">
+        <p:toolbar>
             <p:toolbarGroup align="left" >
                 <p:inputText value="#{systemManager.searchText}"  
-                             style="width: 75%;"
                              id="searchText" />                    
 
                 <p:spacer width="5" />
