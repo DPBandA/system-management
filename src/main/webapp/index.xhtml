@@ -35,16 +35,44 @@ Email: info@dpbennett.com.jm
         <style type="text/css">
 
             body {
-                zoom: 0.65;
+                zoom: 0.70;
+            }
+
+            .ui-outputlabel.subheader-text
+            {
+                font-size: 0.800em !important;
             }
 
             @-moz-document url-prefix() {
-                .pi
+              
+                .ui-selectonemenu-items,
+                .ui-selectonemenu-label,
+                .ui-outputlabel,
+                .ui-inputtext
                 {
-                    font-size: 1.0em !important;
+                    font-size: 0.700em !important;
                 }
-                .ui-widget {
-                    font-size: 0.895em !important;
+
+                .ui-outputlabel.header-text
+                {
+                    font-size: 0.700em !important;
+                }
+
+                .ui-outputlabel.subheader-text
+                {
+                    font-size: 0.600em !important;
+                }
+
+                .ui-button.doSearch  
+                {
+                    width: 30px !important;
+                    height: 30px !important;
+                }
+
+                .logo  
+                {
+                    width: 3em !important;
+                    height: 3em !important;
                 }
             }
             
@@ -62,8 +90,8 @@ Email: info@dpbennett.com.jm
     </h:head>
     <h:body>
 
-        <ui:include src="common/commonDialogs.xhtml" />  
-        <ui:include src="admin/loginDialog.xhtml"/>  
+        <ui:include src="common/commonDialogs.xhtml" />          
+        <ui:include src="admin/loginDialog.xhtml"/>         
         <ui:include src="common/userProfileDialog.xhtml"/> 
 
         <h:form id="appForm" rendered="#{systemManager.renderUserMenu()}">   
@@ -79,16 +107,17 @@ Email: info@dpbennett.com.jm
                                 <div class="col-12 md:col-3">
                                    <h:panelGroup style="float: left;margin-right: 10px;" >
                                        <p:graphicImage value="#{systemManager.logoURL}"
+                                            class="logo"
                                             height="#{systemManager.logoURLImageHeight}" 
                                             width="#{systemManager.logoURLImageWidth}"/>
                                    </h:panelGroup>
-                                   <h:panelGrid columns="1" cellspacing="5" >   
+                                   <h:panelGrid columns="1" cellspacing="0" >   
 
-                                        <h:outputText value="System Manager"
-                                                      style="color: darkgrey; font-size: 14pt; font-weight: bold;" />
+                                        <p:outputLabel value="System Manager"
+                                                       class="header-text" />
 
-                                        <h:outputText value="System Administration &amp; Management"
-                                                      styleClass="#{systemManager.isDebugMode eq true ? 'debug-mode' : 'non-debug-mode'}" />  
+                                        <p:outputLabel value="System Administration &amp; Management"
+                                                       class="subheader-text" />  
 
                                     </h:panelGrid>
                                 </div>    

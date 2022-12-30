@@ -27,7 +27,7 @@ Email: info@dpbennett.com.jm
     <p:panel id="adminSearchPanel" header="Search" >
 
         <h:panelGrid columns="2" cellpadding="5">
-            <h:outputText value="Search type" />
+            <p:outputLabel value="Search type" />
             <p:selectOneMenu value="#{systemManager.searchType}" >
 
                 <f:selectItems value="#{systemManager.groupedSearchTypes}" />
@@ -86,11 +86,13 @@ Email: info@dpbennett.com.jm
         </h:panelGrid>   
         <p:toolbar>
             <p:toolbarGroup align="left" >
-                <p:inputText value="#{systemManager.searchText}"  
+                <p:inputText value="#{systemManager.searchText}"                               
+                             style="width: 75%;"
                              id="searchText" />                    
 
                 <p:spacer width="5" />
                 <p:commandButton id="doSearch"
+                                 class="doSearch"   
                                  actionListener="#{systemManager.doDefaultSearch}"
                                  update=":appForm:mainTabView,:appForm:dashboardDefaultCommandButton"
                                  icon="pi pi-search"
