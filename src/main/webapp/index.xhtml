@@ -53,6 +53,11 @@ Email: info@dpbennett.com.jm
                     font-size: 0.700em !important;
                 }
 
+                .ui-tabs
+                {
+                    font-size: 0.850em !important;
+                }
+
                 .ui-outputlabel.header-text
                 {
                     font-size: 0.700em !important;
@@ -63,10 +68,19 @@ Email: info@dpbennett.com.jm
                     font-size: 0.600em !important;
                 }
 
-                .ui-button.doSearch  
+                .ui-button.search-button
                 {
                     width: 30px !important;
                     height: 30px !important;
+                }
+
+                .ui-button
+                {
+                    height: 30px !important;
+                }
+
+                .ui-button-text {
+                    padding-top: 4px !important;
                 }
 
                 .logo  
@@ -133,6 +147,7 @@ Email: info@dpbennett.com.jm
                                              severity="danger">
 
                                         <p:commandButton id="notifications" 
+                                                         class="notification-button"
                                                          icon="pi pi-bell" />
                                         <p:overlayPanel for="notifications"   
                                                         widgetVar="NotificationPanelVar"
@@ -162,7 +177,7 @@ Email: info@dpbennett.com.jm
                                                   icon="pi pi-user"
                                                   title="#{systemManager.user.employee.firstName} #{systemManager.user.employee.lastName} (#{systemManager.user.username})"
                                                   id="userMenu"
-                                                  style="margin-right: 15px;" >
+                                                  class="usermenu-button" >
 
                                         <p:menuitem actionListener="#{systemManager.viewUserProfile}"                                            
                                                     update=":userProfileDialogForm"
