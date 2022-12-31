@@ -23,63 +23,60 @@ Email: info@dpbennett.com.jm
     xmlns:h="http://xmlns.jcp.org/jsf/html" 
     xmlns:p="http://primefaces.org/ui"
     xmlns:ui="http://java.sun.com/jsf/facelets"
-    xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
-    xmlns:f="http://java.sun.com/jsf/core"> 
+ xmlns:f="http://xmlns.jcp.org/jsf/core"> 
     <h:head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /> 
-        <title>System Manager</title>     
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />    
+        <meta http-equiv="cache-control" content="max-age=0" />
+        <meta http-equiv="cache-control" content="no-cache" />
+        <meta http-equiv="expires" content="0" />
+        <meta http-equiv="expires" content="Tue, 01 Jan 1980 1:00:00 GMT" />
+        <meta http-equiv="pragma" content="no-cache" />
+        <title>#{systemManager.applicationHeader}</title>     
         <link rel="shortcut icon" type="image/x-icon" href="#{systemManager.appShortcutIconURL}" />
         <script type="text/javascript" src="js/javascripts.js" /> 
-        <h:outputStylesheet library="webjars" name="primeflex/3.2.1/primeflex.min.css" />       
-        <link rel="stylesheet" type="text/css" href="css/main.css" />
-        <link rel="stylesheet" type="text/css" href="css/responsive.css" />
+        <link rel="stylesheet" href="css/main.css" />
+                  
     </h:head>
     <h:body>
-        
-        <ui:include src="common/commonDialogs.xhtml" />          
-        <ui:include src="admin/loginDialog.xhtml"/>         
+
+        <ui:include src="common/commonDialogs.xhtml" />
+        <ui:include src="admin/loginDialog.xhtml"/>  
         <ui:include src="common/userProfileDialog.xhtml"/> 
 
-        <h:form id="appForm" rendered="#{systemManager.renderUserMenu()}">   
+        <h:form id="appForm">          
+            <p:splitter layout="vertical" rendered="#{systemManager.renderUserMenu()}">
+                <p:splitterPanel size="100" >
 
-            <p:growl id="growl3" life="5000" showDetail="true" />
-            <p:panel>
-            <div class="grid">
-               
-                <div class="col-12 md:col-12 col-nogutter">
-                    <div class="grid">
-                        <div class="col-12 col-nogutter">
-                            <div class="grid">
-                                <div class="col-12 md:col-3">
-                                   <h:panelGroup style="float: left;margin-right: 10px;" >
-                                       <p:graphicImage value="#{systemManager.logoURL}"
-                                            class="logo"
-                                            height="#{systemManager.logoURLImageHeight}" 
-                                            width="#{systemManager.logoURLImageWidth}"/>
-                                   </h:panelGroup>
-                                   <h:panelGrid columns="1" cellspacing="0" >   
+                    <p:splitterPanel styleClass="p-d-flex p-ai-center p-jc-center" 
+                                     size="20" minSize="20">
 
-                                        <p:outputLabel value="System Manager"
-                                                       class="header-text" />
+                        <p:growl id="growl3" life="5000" showDetail="true" />
 
-                                        <p:outputLabel value="System Administration &amp; Management"
-                                                       class="subheader-text" />  
+                        <h:panelGrid columns="1" border="0" width="100%" >
 
-                                    </h:panelGrid>
-                                </div>    
-                                <div class="col-12 md:col-6">
-                                    
-                                </div>  
-                                <div class="col-12 md:col-3">
-                                    <h:panelGroup style="float: right;" >
+                            <h:panelGrid width="100%" 
+                                         border="0" columns="3" >
 
-                                <p:badge value="#{systemManager.sizeOfActiveNotifications}" 
+                                <p:graphicImage value="#{systemManager.logoURL}"
+                                                height="#{systemManager.logoURLImageHeight}" 
+                                                width="#{systemManager.logoURLImageWidth}"/>
+
+                                <h:panelGrid columns="1">   
+
+                                    <p:outputLabel value="#{systemManager.applicationHeader}"
+                                                  style="color: darkgrey; font-size: 14pt; font-weight: bold;" />
+
+                                    <p:outputLabel value="#{systemManager.applicationSubheader}"
+                                                  styleClass="#{systemManager.isDebugMode eq true ? 'debug-mode' : 'non-debug-mode'}" />  
+
+                                </h:panelGrid>
+                                <h:panelGroup style="float: right;">
+                                    <p:badge value="#{systemManager.sizeOfActiveNotifications}" 
                                              id="notificationBadge"
                                              visible="#{systemManager.hasActiveNotifications}" 
                                              severity="danger">
 
                                         <p:commandButton id="notifications" 
-                                                         class="notification-button"
                                                          icon="pi pi-bell" />
                                         <p:overlayPanel for="notifications"   
                                                         widgetVar="NotificationPanelVar"
@@ -109,50 +106,78 @@ Email: info@dpbennett.com.jm
                                                   icon="pi pi-user"
                                                   title="#{systemManager.user.employee.firstName} #{systemManager.user.employee.lastName} (#{systemManager.user.username})"
                                                   id="userMenu"
-                                                  class="usermenu-button" >
+                                                  style="margin-right: 15px;" >
 
                                         <p:menuitem actionListener="#{systemManager.viewUserProfile}"                                            
                                                     update=":userProfileDialogForm"
                                                     oncomplete="PF('userProfileDialog').show();"
                                                     icon="pi pi-cog"
                                                     value="Profile"
-                                                    process="@this"/>  
+                                                    process="@this"/>
+                                        <p:separator />  
                                         <p:menuitem actionListener="#{systemManager.logout}"                                             
                                                     icon="pi pi-sign-out"
                                                     value="Logout"
-                                                    oncomplete="location.reload();"
+                                                    oncomplete="window.location.reload();"
                                                     process="@this"/>    
 
                                     </p:menuButton>   
-                                   </h:panelGroup>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-12">
-                            <div class="grid">
-                                <div class="col-12 md:col-3">
-                                    <p:panel header="Dashboard">
-                                        <p:commandButton
-                                            id="doGeneralSearchButton"
-                                            style="visibility: hidden;"
-                                            global="false"                                        
-                                            value=""  
-                                            update=":appForm:growl3"
-                                            title="This is the default button that accepts the enter key press" 
-                                            onstart="PF('longProcessDialogVar').show();"                                 
-                                            oncomplete="PF('longProcessDialogVar').hide();"
-                                            actionListener="#{systemManager.doDefaultSearch}"
-                                            process="@form"/>                    
+                                </h:panelGroup>
+                            </h:panelGrid> 
 
-                                        <p:defaultCommand id="dashboardDefaultCommandButton" 
+                        </h:panelGrid>
+
+                    </p:splitterPanel>                          
+
+                </p:splitterPanel>
+                <p:splitterPanel>
+                    <p:splitter>
+                        <p:splitterPanel styleClass="p-d-flex p-ai-center p-jc-center" 
+                                         size="32" minSize="0">
+                            <p:panel id="dashboardPanel" header="Dashboard">
+                                <p:commandButton
+                                    id="doGeneralSearchButton"
+                                    style="visibility: hidden;"
+                                    global="false"                                        
+                                    value=""  
+                                    update=":appForm:growl3"
+                                    title="This is the default button that accepts the enter key press" 
+                                    actionListener="#{systemManager.doDefaultSearch}"
+                                    process="@form"/>                    
+
+                                <p:defaultCommand id="dashboardDefaultCommandButton" 
+                                                  scope="dashboardPanel"
                                                   target="doGeneralSearchButton" />
+                                <ui:remove>                    
+                                <ui:include src="dashboard/admin/generalAdminTab.xhtml" />
+                                </ui:remove>
 
-                                        <ui:include src="dashboard/admin/generalAdminTab.xhtml" />
-                                     
-                                    </p:panel>
-                                </div>    
-                                <div class="col-12 md:col-9">
-                                    <p:tabView id="mainTabView"   
+                                <p:accordionPanel id="dashboardAccordion" 
+                                      value="#{systemManager.dashboard.tabs}" 
+                                      var="t" 
+                                      widgetVar="dashboardAccordionVar"
+                                      rendered="#{systemManager.dashboard.render}"
+                                      multiple="false">
+
+                                    <p:ajax event="tabChange"       
+                                            immediate="true"
+                                            process="@this"
+                                            listener="#{systemManager.onDashboardTabChange}" />
+
+                                    <p:tab title="#{t.name}" >
+                                       
+                                        <h:panelGroup rendered="#{t.id == 'System Administration'}">
+                                            <ui:include src="dashboard/admin/generalAdminTab.xhtml" />
+                                        </h:panelGroup>
+
+                                    </p:tab>   
+
+                                </p:accordionPanel>
+                            </p:panel>
+                        </p:splitterPanel>     
+                        <p:splitterPanel styleClass="p-d-flex p-ai-center p-jc-center" 
+                                         size="68" minSize="0">
+                            <p:tabView id="mainTabView"   
                                        rendered="#{systemManager.mainTabView.render}"
                                        value="#{systemManager.mainTabView.tabs}" 
                                        var="t"         
@@ -176,7 +201,7 @@ Email: info@dpbennett.com.jm
 
                                     <h:panelGroup rendered="#{t.id == 'System Administration'}" >
                                         <ui:include src="admin/generalAdminTab.xhtml" /> 
-                                    </h:panelGroup>  
+                                    </h:panelGroup>                           
 
                                 </p:tab>
 
@@ -191,22 +216,19 @@ Email: info@dpbennett.com.jm
                                 process="@this"/> 
 
                             <p:defaultCommand target=":appForm:doNothingButton" />
-                                </div>                              
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12">
-                    Footer
-                </div>
-            </div>
-            </p:panel>
+                        </p:splitterPanel>
+                    </p:splitter>
+
+                    <p:sticky target="dashboardPanel"/>
+
+                </p:splitterPanel>
+            </p:splitter>
+
             <p:poll interval="60" 
                     global="false"
+                    onerror="PF('connectionErrorDialog').show();"
                     listener="#{systemManager.handleKeepAlive}" />
-
         </h:form>
-
     </h:body>
 </html>
 

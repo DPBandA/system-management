@@ -1,6 +1,6 @@
 <!--
 System Management (SM) 
-Copyright (C) 2021  D P Bennett & Associates Limited
+Copyright (C) 2022  D P Bennett & Associates Limited
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU Affero General Public License as published by
@@ -84,30 +84,42 @@ Email: info@dpbennett.com.jm
             LDAP Options
         </f:facet>
 
-        <p:column headerText="Name">
+        <p:column>
+            <f:facet name="header">
+                <p:outputLabel value="Name"/>
+            </f:facet>
             <p:cellEditor>
-                <f:facet name="output"> <h:outputText value="#{ldap.name}" /></f:facet>
+                <f:facet name="output"> <p:outputLabel value="#{ldap.name}" /></f:facet>
                 <f:facet name="input"><p:inputText value="#{ldap.name}" style="width:96%"/></f:facet>
             </p:cellEditor>                                         
         </p:column>   
 
-        <p:column headerText="Domain/DN">
+        <p:column>
+            <f:facet name="header">
+                <p:outputLabel value="Domain/DN"/>
+            </f:facet>
             <p:cellEditor>
-                <f:facet name="output"> <h:outputText value="#{ldap.domainName}" /></f:facet>
+                <f:facet name="output"> <p:outputLabel value="#{ldap.domainName}" /></f:facet>
                 <f:facet name="input"><p:inputText value="#{ldap.domainName}" style="width:96%"/></f:facet>
             </p:cellEditor>                                           
         </p:column>   
 
-        <p:column headerText="URL">
+        <p:column>
+             <f:facet name="header">
+                <p:outputLabel value="URL"/>
+            </f:facet>
             <p:cellEditor>
-                <f:facet name="output"> <h:outputText value="#{ldap.providerUrl}" /></f:facet>
+                <f:facet name="output"> <p:outputLabel value="#{ldap.providerUrl}" /></f:facet>
                 <f:facet name="input"><p:inputText value="#{ldap.providerUrl}" style="width:96%"/></f:facet>
             </p:cellEditor>                                         
         </p:column>   
 
-        <p:column headerText="Active" >
+        <p:column>
+             <f:facet name="header">
+                <p:outputLabel value="Active"/>
+            </f:facet>
             <p:cellEditor>
-                <f:facet name="output"><h:outputText value="#{ldap.usable}" /></f:facet>
+                <f:facet name="output"><p:outputLabel value="#{ldap.usable}" /></f:facet>
                 <f:facet name="input">
                     <p:selectOneMenu value="#{ldap.usable}" style="width:96%">
                         <f:selectItem itemLabel="Yes" itemValue="Yes"/>
@@ -117,7 +129,7 @@ Email: info@dpbennett.com.jm
             </p:cellEditor>                                         
         </p:column>  
 
-        <p:column style="width:32px">
+        <p:column>
             <p:commandButton title="View or edit LDAP"   
                              actionListener="#{systemManager.editLdapContext}"
                              global="true"

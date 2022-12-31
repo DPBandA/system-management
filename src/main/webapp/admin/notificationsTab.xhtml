@@ -69,40 +69,40 @@ Email: info@dpbennett.com.jm
 
         <p:column>
             <f:facet name="header">
-                <h:outputText value="Name"/>
+                <p:outputLabel value="Name"/>
             </f:facet>
-            <h:outputText value="#{notification.name}" />
+            <p:outputLabel value="#{notification.name}" />
         </p:column>  
 
         <p:column>
             <f:facet name="header">
-                <h:outputText value="Type"/>
+                <p:outputLabel value="Type"/>
             </f:facet>
-            <h:outputText value="#{notification.type}" />
+            <p:outputLabel value="#{notification.type}" />
         </p:column>    
 
         <p:column>
             <f:facet name="header">
-                <h:outputText value="Owner Id"/>
+                <p:outputLabel value="Owner Id"/>
             </f:facet>
-            <h:outputText value="#{notification.ownerId}" />
+            <p:outputLabel value="#{notification.ownerId}" />
         </p:column>
 
         <p:column>
             <f:facet name="header">
-                <h:outputText value="Issue Time"/>
+                <p:outputLabel value="Issue Time"/>
             </f:facet>
-            <h:outputText value="#{notification.issueTime}" />
+            <p:outputLabel value="#{notification.issueTime}" />
         </p:column>
 
         <p:column>
             <f:facet name="header">
-                <h:outputText value="Active"/>
+                <p:outputLabel value="Active"/>
             </f:facet>
-            <h:outputText value="#{notification.usable}" />
+            <p:outputLabel value="#{notification.usable}" />
         </p:column> 
 
-        <p:column style="width:32px">
+        <p:column>
             <p:commandButton title="View or edit notification"   
                              actionListener="#{systemManager.editNotification}"                            
                              global="true"
@@ -117,7 +117,7 @@ Email: info@dpbennett.com.jm
             </p:commandButton>           
         </p:column>
 
-        <p:column style="width:32px">
+        <p:column>
             <p:commandButton title="Delete notification"   
                              oncomplete="PF('deleteNotificationDialog').show()"  
                              process="@this"

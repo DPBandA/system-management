@@ -71,7 +71,7 @@ Email: info@dpbennett.com.jm
 
         <p:column>
             <f:facet name="header">
-                <h:outputText value="Active"/>
+                <p:outputLabel value="Active"/>
             </f:facet>           
             <p:selectBooleanCheckbox 
                 style="display: block;text-align: center;"
@@ -81,33 +81,33 @@ Email: info@dpbennett.com.jm
 
         <p:column>
             <f:facet name="header">
-                <h:outputText value="Name"/>
+                <p:outputLabel value="Name"/>
             </f:facet>
-            <h:outputText value="#{module.name}" />
+            <p:outputLabel value="#{module.name}" />
         </p:column> 
 
         <p:column>
             <f:facet name="header">
-                <h:outputText value="Dashboard title"/>
+                <p:outputLabel value="Dashboard title"/>
             </f:facet>
-            <h:outputText value="#{module.dashboardTitle}" />
+            <p:outputLabel value="#{module.dashboardTitle}" />
         </p:column> 
 
         <p:column>
             <f:facet name="header">
-                <h:outputText value="Main view title"/>
+                <p:outputLabel value="Main view title"/>
             </f:facet>
-            <h:outputText value="#{module.mainViewTitle}" />
+            <p:outputLabel value="#{module.mainViewTitle}" />
         </p:column>
 
         <p:column>
             <f:facet name="header">
-                <h:outputText value="Description"/>
+                <p:outputLabel value="Description"/>
             </f:facet>
-            <h:outputText value="#{module.description}" />
+            <p:outputLabel value="#{module.description}" />
         </p:column>    
 
-        <p:column style="width:32px">
+        <p:column>
             <p:commandButton title="View or edit module"   
                              actionListener="#{systemManager.editModule}"                            
                              global="true"

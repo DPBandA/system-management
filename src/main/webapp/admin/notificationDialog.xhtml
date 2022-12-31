@@ -26,13 +26,10 @@ Email: info@dpbennett.com.jm
 
     <h:head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-        <meta http-equiv="cache-control" content="max-age=0" />
-        <meta http-equiv="cache-control" content="no-cache" />
-        <meta http-equiv="expires" content="0" />
-        <meta http-equiv="expires" content="Tue, 01 Jan 1980 1:00:00 GMT" />
-        <meta http-equiv="pragma" content="no-cache" />
         <title>Notification</title>
-        <link rel="stylesheet" href="../css/main.css" />
+        <h:outputStylesheet library="webjars" name="primeflex/3.2.1/primeflex.min.css" />
+        <link rel="stylesheet" type="text/css" href="../css/main.css" />
+        <link rel="stylesheet" type="text/css" href="../css/responsive.css" />
     </h:head>
     <h:body > 
 
@@ -43,7 +40,7 @@ Email: info@dpbennett.com.jm
             <p:growl id="notification_growl" life="5000" showDetail="true"/>
 
             <ui:include src="notificationDialogToolbar.xhtml" /> 
-
+            <p:scrollPanel style="height: 600px;">
             <p:panel style="margin-bottom: 1px;margin-top: 1px;">
                 <h:panelGrid columns="2" cellspacing="5">
 
@@ -51,37 +48,37 @@ Email: info@dpbennett.com.jm
                     <p:selectBooleanCheckbox id="active" 
                                              value="#{systemManager.selectedNotification.active}" />
 
-                    <h:outputLabel value="Owner Id" for="ownerId" style="font-weight: bold;"/>
+                    <p:outputLabel value="Owner Id" for="ownerId" style="font-weight: bold;"/>
                     <p:inputNumber id="ownerId" 
                                    thousandSeparator=""
                                    value="#{systemManager.selectedNotification.ownerId}" />  
                     
-                    <h:outputLabel value="Issue time" for="issueTime" style="font-weight: bold;"/>
-                    <h:outputText id="issueTime"                                  
+                    <p:outputLabel value="Issue time" for="issueTime" style="font-weight: bold;"/>
+                    <p:outputLabel id="issueTime"                                  
                                   value="#{systemManager.selectedNotification.issueTime}" />
 
-                    <h:outputLabel value="Name" for="name" style="font-weight: bold;"/>
+                    <p:outputLabel value="Name" for="name" style="font-weight: bold;"/>
                     <p:inputText id="name"
                                  value="#{systemManager.selectedNotification.name}"  
                                  style="width: 275px;"
                                  validatorMessage="A name is required"
                                  validator="requiredFieldValidator" />   
 
-                    <h:outputLabel value="Type" for="type" style="font-weight: bold;"/>
+                    <p:outputLabel value="Type" for="type" style="font-weight: bold;"/>
                     <p:inputText id="type"
                                  value="#{systemManager.selectedNotification.type}"   
                                  style="width: 275px;"
                                  validatorMessage="A type is required"
                                  validator="requiredFieldValidator" />
 
-                    <h:outputLabel value="Subject" for="subject" style="font-weight: bold;"/>
+                    <p:outputLabel value="Subject" for="subject" style="font-weight: bold;"/>
                     <p:inputText id="subject"
                                  value="#{systemManager.selectedNotification.subject}"   
                                  style="width: 275px;"
                                  validatorMessage="A subject is required"
                                  validator="requiredFieldValidator" />
 
-                    <h:outputLabel value="Message" for="message" style="font-weight: bold;" />
+                    <p:outputLabel value="Message" for="message" style="font-weight: bold;" />
                     <p:inputTextarea  value="#{systemManager.selectedNotification.message}"
                                    id="message"
                                    maxlength="1000"
@@ -92,7 +89,7 @@ Email: info@dpbennett.com.jm
 
                 </h:panelGrid>
             </p:panel>
-
+            </p:scrollPanel>
             <ui:include src="notificationDialogToolbar.xhtml" /> 
 
         </h:form> 

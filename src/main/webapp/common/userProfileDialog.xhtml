@@ -23,143 +23,147 @@ Email: info@dpbennett.com.jm
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:ui="http://java.sun.com/jsf/facelets">
-    <h:form id="userProfileDialogForm">
 
-        <p:dialog width="900"
-                  height="500"
-                  draggable="true"
-                  modal="true"
-                  widgetVar="userProfileDialog"
-                  maximizable="false"
-                  closable="false"
-                  header="Profile" >
+  
+        <h:form id="userProfileDialogForm">
 
-            <p:toolbar>
-                <p:toolbarGroup align="left" >
-                    <p:commandButton value="Ok" 
-                                     icon="pi pi-check"
-                                     oncomplete="window.location.reload();"
-                                     actionListener="#{systemManager.closeUserProfileDialog}" />  
-                    <p:spacer width="5" /> 
-                    <p:commandButton value="Cancel" 
-                                     icon="pi pi-times"
-                                     oncomplete="PF('userProfileDialog').hide();" />
-                </p:toolbarGroup>
-            </p:toolbar>
-            <p:tabView style="margin-top: 1px;margin-bottom: 1px;">
-                <p:tab title="General" >
-                    <h:panelGrid columns="2" cellspacing="10">
+            <p:dialog width="900"
+                      height="500"
+                      draggable="true"
+                      modal="true"
+                      widgetVar="userProfileDialog"
+                      maximizable="false"
+                      closable="false"
+                      responsive="true"
+                      header="Profile" >
 
-                        <h:outputText value="Username" style="font-weight: bold;"/>  
-                        <h:outputText value="#{systemManager.user.username}" />
+                <p:toolbar>
+                    <p:toolbarGroup align="left" >
+                        <p:commandButton value="Ok" 
+                                         icon="pi pi-check"
+                                         oncomplete="window.location.reload();"
+                                         actionListener="#{systemManager.closeUserProfileDialog}" />  
+                        <p:spacer width="5" /> 
+                        <p:commandButton value="Cancel" 
+                                         icon="pi pi-times"
+                                         oncomplete="PF('userProfileDialog').hide();" />
+                    </p:toolbarGroup>
+                </p:toolbar>
+                <p:tabView style="margin-top: 1px;margin-bottom: 1px;">
+                    <p:tab title="General" >
+                        <h:panelGrid columns="2" cellspacing="5">
 
-                        <h:outputText value="Full name" style="font-weight: bold;" />               
-                        <h:outputText value="#{systemManager.user.employee.firstName} #{systemManager.user.employee.lastName}" />
+                            <p:outputLabel value="Username" style="font-weight: bold;margin-right: 10px;"/>  
+                            <p:outputLabel value="#{systemManager.user.username}" />
 
-                        <h:outputText value="Department" style="font-weight: bold;" />               
-                        <h:outputText value="#{systemManager.user.employee.department.name}" />
+                            <p:outputLabel value="Full name" style="font-weight: bold;margin-right: 10px;" />               
+                            <p:outputLabel value="#{systemManager.user.employee.firstName} #{systemManager.user.employee.lastName}" />
 
-                        <h:outputText value="Position(s)" style="font-weight: bold;" />               
-                        <h:outputText value="#{systemManager.user.employee.employmentPositions}" />
+                            <p:outputLabel value="Department " style="font-weight: bold;margin-right: 10px;" />  
+                            <p:outputLabel value="#{systemManager.user.employee.department.name}"/>
 
-                    </h:panelGrid>
-                </p:tab>
-                <p:tab title="Modules" >
-                    <p:selectOneRadio id="modulesTable"
-                                      style="margin-top: 15px;margin-bottom: 15px;"
-                                      layout="grid" columns="3" styleClass="grid-radio"
-                                      unselectable="true" >
-                        <f:selectItems value="#{systemManager.user.activeModules}" 
-                                       var="module" 
-                                       itemLabel="#{module.description}" 
-                                       itemValue="#{module.description}"/>
-                    </p:selectOneRadio>  
-                </p:tab>
-                <p:tab title="Privileges" >
-                    <p:selectOneRadio id="privilegesTable"
-                                      style="margin-top: 15px;margin-bottom: 15px;"
-                                      layout="grid" columns="4" styleClass="grid-radio"
-                                      unselectable="true" >
-                        <f:selectItems value="#{systemManager.user.privileges}" 
-                                       var="privilege" 
-                                       itemLabel="#{privilege.description}" 
-                                       itemValue="#{privilege.description}"/>
-                    </p:selectOneRadio> 
-                </p:tab>    
-                <p:tab title="Preferences" >
-                    <h:panelGrid columns="2" cellpadding="5">
-                        <h:outputText value="Theme" style="font-weight: bold;"/>
-                        <p:selectOneMenu id="theme"     
-                                         style="width: 200px;"
-                                         value="#{systemManager.user.PFThemeName}"
-                                         title="#{systemManager.user.PFThemeName}" >
+                            <p:outputLabel value="Position(s)" style="font-weight: bold;margin-right: 10px;" />               
+                            <p:outputLabel value="#{systemManager.user.employee.employmentPositions}" />
 
-                            <f:selectItems  value="#{systemManager.PFThemes}"
-                                            var="theme"                            
-                                            itemValue="#{theme}"
-                                            itemLabel="#{theme}"/>
+                        </h:panelGrid>
+                    </p:tab>
+                    <p:tab title="Modules" >
+                        <p:selectOneRadio id="modulesTable"
+                                          style="margin-top: 15px;margin-bottom: 15px;"
+                                          layout="grid" columns="3" styleClass="grid-radio"
+                                          unselectable="true" >
+                            <f:selectItems value="#{systemManager.user.activeModules}" 
+                                           var="module" 
+                                           itemLabel="#{module.description}" 
+                                           itemValue="#{module.description}"/>
+                        </p:selectOneRadio>  
+                    </p:tab>
+                    <p:tab title="Privileges" >
+                        <p:selectOneRadio id="privilegesTable"
+                                          style="margin-top: 15px;margin-bottom: 15px;"
+                                          layout="grid" columns="4" styleClass="grid-radio"
+                                          unselectable="true" >
+                            <f:selectItems value="#{systemManager.user.privileges}" 
+                                           var="privilege" 
+                                           itemLabel="#{privilege.description}" 
+                                           itemValue="#{privilege.description}"/>
+                        </p:selectOneRadio> 
+                    </p:tab>    
+                    <p:tab title="Preferences" >
+                        <h:panelGrid columns="2" cellpadding="5">
+                            <p:outputLabel value="Theme" style="font-weight: bold;margin-right: 10px;"/>
+                            <p:selectOneMenu id="theme"     
+                                             style="width: 200px;"
+                                             value="#{systemManager.user.PFThemeName}"
+                                             title="#{systemManager.user.PFThemeName}" >
 
-                            <p:ajax listener="#{systemManager.updatePreferences}"
-                                    global="false"
-                                    process="@this"/>
+                                <f:selectItems  value="#{systemManager.PFThemes}"
+                                                var="theme"                            
+                                                itemValue="#{theme}"
+                                                itemLabel="#{theme}"/>
 
-                        </p:selectOneMenu>
-                        
-                        <h:outputText value="Job table view" style="font-weight: bold;"/>
-                        <p:selectOneMenu style="width: 200px;"
-                                         value="#{systemManager.user.jobTableViewPreference}"
-                                         title="#{systemManager.user.jobTableViewPreference}" >
+                                <p:ajax listener="#{systemManager.updatePreferences}"
+                                        global="false"
+                                        process="@this"/>
 
-                            <f:selectItems  value="#{systemManager.jobTableViews}"
-                                            var="view"                            
-                                            itemValue="#{view}"
-                                            itemLabel="#{view}"/>
+                            </p:selectOneMenu>
 
-                            <p:ajax listener="#{systemManager.updatePreferences}"
-                                    global="false"
-                                    process="@this"/>
+                            <p:outputLabel value="Job table view" style="font-weight: bold;margin-right: 10px;"/>
+                            <p:selectOneMenu style="width: 200px;"
+                                             value="#{systemManager.user.jobTableViewPreference}"
+                                             title="#{systemManager.user.jobTableViewPreference}" >
 
-                        </p:selectOneMenu>
-                    </h:panelGrid>                        
-                </p:tab>
-                <p:tab id="securityTab" title="Security" rendered="#{systemManager.showUserProfileSecurityTab}">
-                    <h:panelGrid columns="2" cellpadding="5">
-                        <p:outputLabel value="Authenticated" for="authenticateUser" 
-                                       style="font-weight: bold;" /> 
-                        <p:selectBooleanCheckbox id="authenticateUser" 
-                                           disabled="true"  
-                                           value="#{systemManager.selectedUser.authenticate}" />
+                                <f:selectItems  value="#{systemManager.jobTableViews}"
+                                                var="view"                            
+                                                itemValue="#{view}"
+                                                itemLabel="#{view}"/>
 
-                        <p:outputLabel for="newPwd" value="New password" />
-                        <p:password id="newPwd" toggleMask="true" redisplay="true" 
-                                    value="#{systemManager.user.newPassword}" />
+                                <p:ajax listener="#{systemManager.updatePreferences}"
+                                        global="false"
+                                        process="@this"/>
 
-                        <p:outputLabel for="confirmedPwd" value="Confirm password" />
-                        <p:password id="confirmedPwd" toggleMask="true" redisplay="true" value="#{systemManager.user.confirmedNewPassword}" />
-                    </h:panelGrid>
-                    <p:divider />
-                    <p:commandButton value="Change password" 
-                                     title="Save changed password"
-                                     process="@form"
-                                     update=":appForm:growl3"
-                                     actionListener="#{systemManager.saveUserSecurityProfile}" />                    
+                            </p:selectOneMenu>
+                        </h:panelGrid>                        
+                    </p:tab>
+                    <p:tab id="securityTab" title="Security" rendered="#{systemManager.showUserProfileSecurityTab}">
+                        <h:panelGrid columns="2" cellpadding="5">
+                            <p:outputLabel value="Authenticated" for="authenticateUser" 
+                                           style="font-weight: bold;margin-right: 10px;" /> 
+                            <p:selectBooleanCheckbox id="authenticateUser" 
+                                               disabled="true"  
+                                               value="#{systemManager.selectedUser.authenticate}" />
 
-                </p:tab>
+                            <p:outputLabel for="newPwd" value="New password" style="font-weight: bold;margin-right: 10px;" />
+                            <p:password id="newPwd" toggleMask="true" redisplay="true" 
+                                        value="#{systemManager.user.newPassword}" />
 
-            </p:tabView>
-            <p:toolbar>
-                <p:toolbarGroup align="left" >
-                    <p:commandButton value="Ok" 
-                                     icon="pi pi-check"
-                                     oncomplete="window.location.reload();"
-                                     actionListener="#{systemManager.closeUserProfileDialog}" />   
-                    <p:spacer width="5" /> 
-                    <p:commandButton value="Cancel" 
-                                     icon="pi pi-times"
-                                     oncomplete="PF('userProfileDialog').hide();" />
-                </p:toolbarGroup>                
-            </p:toolbar>
-        </p:dialog>
+                            <p:outputLabel for="confirmedPwd" value="Confirm password" style="font-weight: bold;margin-right: 10px;" />
+                            <p:password id="confirmedPwd" toggleMask="true" redisplay="true" value="#{systemManager.user.confirmedNewPassword}" />
+                        </h:panelGrid>
+                        <p:divider />
+                        <p:commandButton value="Change password" 
+                                         title="Save changed password"
+                                         process="@form"
+                                         update=":appForm:growl3"
+                                         actionListener="#{systemManager.saveUserSecurityProfile}" />                    
 
-    </h:form>
+                    </p:tab>
+
+                </p:tabView>
+                <p:toolbar>
+                    <p:toolbarGroup align="left" >
+                        <p:commandButton value="Ok" 
+                                         icon="pi pi-check"
+                                         oncomplete="window.location.reload();"
+                                         actionListener="#{systemManager.closeUserProfileDialog}" />   
+                        <p:spacer width="5" /> 
+                        <p:commandButton value="Cancel" 
+                                         icon="pi pi-times"
+                                         oncomplete="PF('userProfileDialog').hide();" />
+                    </p:toolbarGroup>                
+                </p:toolbar>
+            </p:dialog>
+
+        </h:form>
+
 </html>

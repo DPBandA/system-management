@@ -92,19 +92,26 @@ Email: info@dpbennett.com.jm
 
         <p:column>
             <f:facet name="header">
-                <h:outputText value="Name"/>
+                <p:outputLabel value="Name"/>
             </f:facet>
-            <h:outputText value="#{documentType.name}" />
+            <p:outputLabel value="#{documentType.name}" />
         </p:column>  
 
         <p:column>
             <f:facet name="header">
-                <h:outputText value="Code"/>
+                <p:outputLabel value="Code"/>
             </f:facet>
-            <h:outputText value="#{documentType.code}" />
-        </p:column>    
+            <p:outputLabel value="#{documentType.code}" />
+        </p:column>
 
-        <p:column style="width:32px">
+        <p:column>
+            <f:facet name="header">
+                <p:outputLabel value="Description"/>
+            </f:facet>
+            <p:outputLabel value="#{documentType.description}" />
+        </p:column>
+
+        <p:column>
             <p:commandButton title="View or edit document type"   
                              actionListener="#{systemManager.editDocumentType}"
                              global="true"
