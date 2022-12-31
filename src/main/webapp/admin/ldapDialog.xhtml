@@ -29,74 +29,7 @@ Email: info@dpbennett.com.jm
         <title>LDAP Context</title>
         <h:outputStylesheet library="webjars" name="primeflex/3.2.1/primeflex.min.css" />
         <link rel="stylesheet" href="../css/main.css" />
-        <style type="text/css">
-            body {
-                zoom: 0.70;
-            }
-
-            .ui-outputlabel.subheader-text
-            {
-                font-size: 0.800em !important;
-            }
-
-            @-moz-document url-prefix() {
-              
-                .ui-selectonemenu-items,
-                .ui-selectonemenu-label,
-                .ui-outputlabel,
-                .ui-inputtext
-                {
-                    font-size: 0.700em !important;
-                }
-
-                .ui-tabs
-                {
-                    font-size: 0.850em !important;
-                }
-
-                .ui-outputlabel.header-text
-                {
-                    font-size: 0.700em !important;
-                }
-
-                .ui-outputlabel.subheader-text
-                {
-                    font-size: 0.600em !important;
-                }
-
-                .ui-button.search-button
-                {
-                    width: 30px !important;
-                    height: 30px !important;
-                }
-
-                .ui-button
-                {
-                    height: 30px !important;
-                }
-
-                .ui-button-text {
-                    padding-top: 4px !important;
-                }
-
-                .logo  
-                {
-                    width: 3em !important;
-                    height: 3em !important;
-                }
-            }
-            
-            .ui-sticky {
-                top: 0px !important;
-            }
-
-            @media (max-width: 960px) {
-                .ui-sticky {
-                    top: 0px !important;
-                }
-            }
-
-        </style>
+        <link rel="stylesheet" type="text/css" href="../css/responsive.css" />
     </h:head>
     <h:body >  
 
@@ -119,7 +52,7 @@ Email: info@dpbennett.com.jm
                                      icon="pi pi-times" /> 
                 </p:toolbarGroup>
             </p:toolbar>
-
+            <p:scrollPanel style="height: 600px;">
             <p:panel style="margin-top: 1px;margin-bottom: 1px;">
                 <h:panelGrid columns="2" cellpadding="5">   
                     <p:outputLabel value="Active" for="ldapActive" />               
@@ -127,49 +60,49 @@ Email: info@dpbennett.com.jm
                                              id="ldapActive"
                                              value="#{systemManager.selectedLdapContext.active}" />  
 
-                    <h:outputText value="Name" style="font-weight: bold;" />
+                    <p:outputLabel value="Name" style="font-weight: bold;" />
                     <p:inputText value="#{systemManager.selectedLdapContext.name}"    
                                  id="ldapName"
                                  style="width:400px" >
                         <f:validator validatorId="requiredFieldValidator" />
                     </p:inputText>
 
-                    <h:outputText value="Initial context factory" style="font-weight: bold;" />
+                    <p:outputLabel value="Initial context factory" style="font-weight: bold;" />
                     <p:inputText value="#{systemManager.selectedLdapContext.initialContextFactory}"    
                                  id="initialContextFactory"
                                  style="width:400px" >
                         <f:validator validatorId="requiredFieldValidator" />
                     </p:inputText>
 
-                    <h:outputText value="Domain/DN" style="width: 50%;font-weight: bold;" />
+                    <p:outputLabel value="Domain/DN" style="width: 50%;font-weight: bold;" />
                     <p:inputText  value="#{systemManager.selectedLdapContext.domainName}"
                                   id="ldapDomainName"
                                   style="width:400px" >
                         <f:validator validatorId="requiredFieldValidator" />
                     </p:inputText>  
 
-                    <h:outputLabel value="Provided URL" style="font-weight: bold;"/>               
+                    <p:outputLabel value="Provided URL" style="font-weight: bold;"/>               
                     <p:inputText  value="#{systemManager.selectedLdapContext.providerUrl}"
                                   id="ldapProviderUrl"
                                   style="width:400px" >
                         <f:validator validatorId="requiredFieldValidator" />
                     </p:inputText>
 
-                    <h:outputLabel value="Security authentication" style="font-weight: bold;"/>               
+                    <p:outputLabel value="Security authentication" style="font-weight: bold;"/>               
                     <p:inputText  value="#{systemManager.selectedLdapContext.securityAuthentication}"
                                   id="securityAuthentication"
                                   style="width:400px" >
                         <f:validator validatorId="requiredFieldValidator" />
                     </p:inputText>
 
-                    <h:outputLabel value="Security principal" style="font-weight: bold;"/>               
+                    <p:outputLabel value="Security principal" style="font-weight: bold;"/>               
                     <p:inputText  value="#{systemManager.selectedLdapContext.securityPrincipal}"
                                   id="securityPrincipal"
                                   style="width:400px" >
                         <f:validator validatorId="requiredFieldValidator" />
                     </p:inputText>
 
-                    <h:outputLabel value="Security credentials" style="font-weight: bold;"/>   
+                    <p:outputLabel value="Security credentials" style="font-weight: bold;"/>   
                     <ui:remove>
                     <p:inputText  value="#{systemManager.selectedLdapContext.securityCredentials}"
                                   id="securityCredentials"
@@ -184,7 +117,7 @@ Email: info@dpbennett.com.jm
 
                 </h:panelGrid>
             </p:panel>
-
+            </p:scrollPanel>
             <p:toolbar>
                 <p:toolbarGroup align="left">
                     <p:commandButton value="Ok"

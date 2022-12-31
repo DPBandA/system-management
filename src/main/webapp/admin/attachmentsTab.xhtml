@@ -65,35 +65,35 @@ Email: info@dpbennett.com.jm
 
         <p:column>
             <f:facet name="header">
-                <h:outputText value="Name"/>
+                <p:outputLabel value="Name"/>
             </f:facet>
-            <h:outputText value="#{attachment.name}" />
+            <p:outputLabel value="#{attachment.name}" />
         </p:column>        
         <p:column>
             <f:facet name="header">
-                <h:outputText value="Type"/>
+                <p:outputLabel value="Type"/>
             </f:facet>
-            <h:outputText value="#{attachment.type}"/>
+            <p:outputLabel value="#{attachment.type}"/>
         </p:column>
         <p:column>
             <f:facet name="header">
-                <h:outputText value="Source"/>
+                <p:outputLabel value="Source"/>
             </f:facet>
-            <h:outputText value="#{attachment.sourceURL}"/>
+            <p:outputLabel value="#{attachment.sourceURL}"/>
         </p:column>       
         <p:column>
             <f:facet name="header">
-                <h:outputText value="Destination"/>
+                <p:outputLabel value="Destination"/>
             </f:facet>
-            <h:outputText value="#{attachment.destinationURL}"/>
+            <p:outputLabel value="#{attachment.destinationURL}"/>
         </p:column> 
         <p:column>
             <f:facet name="header">
-                <h:outputText value="Description"/>
+                <p:outputLabel value="Description"/>
             </f:facet>
-            <h:outputText value="#{attachment.description}"/>
+            <p:outputLabel value="#{attachment.description}"/>
         </p:column>
-        <p:column style="width:32px">
+        <p:column>
             <p:commandButton title="View or edit attachment"  
                              actionListener="#{systemManager.openAttachmentDialog}"
                              global="true"

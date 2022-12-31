@@ -84,32 +84,32 @@ Email: info@dpbennett.com.jm
 
         <p:column>
             <f:facet name="header">
-                <h:outputText value="Username"/>
+                <p:outputLabel value="Username"/>
             </f:facet>
-            <h:outputText value="#{user.username}" />
+            <p:outputLabel value="#{user.username}" />
         </p:column>        
         <p:column>
             <f:facet name="header">
-                <h:outputText value="Firstname"/>
+                <p:outputLabel value="Firstname"/>
             </f:facet>
-            <h:outputText value="#{user.employeeFirstname}"/>
+            <p:outputLabel value="#{user.employeeFirstname}"/>
         </p:column>
         <p:column>
             <f:facet name="header">
-                <h:outputText value="Lastname"/>
+                <p:outputLabel value="Lastname"/>
             </f:facet>
-            <h:outputText value="#{user.employeeLastname}"/>
+            <p:outputLabel value="#{user.employeeLastname}"/>
         </p:column>       
         <p:column>
             <f:facet name="header">
-                <h:outputText value="Activity"/>
+                <p:outputLabel value="Activity"/>
             </f:facet>
-            <h:outputText value="#{user.loggedActivity}"
+            <p:outputLabel value="#{user.loggedActivity}"
                           style="font-weight: bold;color: #{user.activity.startsWith('Logged in', 0) ? 'green': 'grey'}" />
         </p:column>  
         <p:column>
             <f:facet name="header">
-                <h:outputText value="Active"/>
+                <p:outputLabel value="Active"/>
             </f:facet>           
             <p:selectBooleanCheckbox 
                 style="display: block;text-align: center;"
@@ -118,14 +118,14 @@ Email: info@dpbennett.com.jm
         </p:column>
         <p:column>
             <f:facet name="header">
-                <h:outputText value="Authenticate"/>
+                <p:outputLabel value="Authenticate"/>
             </f:facet>           
             <p:selectBooleanCheckbox 
                 style="display: block;text-align: center;"
                 disabled="true"
                 value="#{user.authenticate}" />
         </p:column>
-        <p:column style="width:32px">
+        <p:column>
             <p:commandButton title="View or edit user profile"  
                              actionListener="#{systemManager.editUser}"
                              global="true"

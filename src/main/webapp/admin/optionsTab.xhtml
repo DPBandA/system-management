@@ -66,28 +66,37 @@ Email: info@dpbennett.com.jm
             System Options
         </f:facet>
 
-        <p:column headerText="Description">
+        <p:column>
+            <f:facet name="header">
+                <p:outputLabel value="Description"/>
+            </f:facet>
             <p:cellEditor>
-                <f:facet name="output"> <h:outputText value="#{systemOption.comments}" /></f:facet>
+                <f:facet name="output"> <p:outputLabel value="#{systemOption.comments}" /></f:facet>
                 <f:facet name="input"><p:inputText value="#{systemOption.comments}" style="width:96%"/></f:facet>
             </p:cellEditor>                                           
         </p:column>   
 
-        <p:column headerText="Name">
+        <p:column>
+            <f:facet name="header">
+                <p:outputLabel value="Name"/>
+            </f:facet>
             <p:cellEditor>
-                <f:facet name="output"> <h:outputText value="#{systemOption.name}" /></f:facet>
+                <f:facet name="output"> <p:outputLabel value="#{systemOption.name}" /></f:facet>
                 <f:facet name="input"><p:inputText value="#{systemOption.name}" style="width:96%"/></f:facet>
             </p:cellEditor>                                         
         </p:column>   
 
-        <p:column headerText="Value">
+        <p:column>
+            <f:facet name="header">
+                <p:outputLabel value="Value"/>
+            </f:facet>
             <p:cellEditor>
-                <f:facet name="output"> <h:outputText value="#{systemOption.optionValue}" /></f:facet>
+                <f:facet name="output"> <p:outputLabel value="#{systemOption.optionValue}" /></f:facet>
                 <f:facet name="input"><p:inputText value="#{systemOption.optionValue}" style="width:96%"/></f:facet>
             </p:cellEditor>                                         
         </p:column>   
 
-        <p:column style="width:32px">
+        <p:column>
             <p:commandButton title="View or edit system option"   
                              actionListener="#{systemManager.editSystemOption}"
                              global="true"

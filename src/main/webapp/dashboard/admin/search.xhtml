@@ -26,9 +26,9 @@ Email: info@dpbennett.com.jm
 
     <p:panel id="adminSearchPanel" header="Search" >
 
-        <h:panelGrid columns="2" cellpadding="5">
-            <p:outputLabel value="Search type" />
-            <p:selectOneMenu value="#{systemManager.searchType}" >
+        <h:panelGrid columns="2" cellspacing="5">
+            <p:outputLabel value="Search type" />            
+            <p:selectOneMenu value="#{systemManager.searchType}" style="width: 100%;margin-left: 5px;">
 
                 <f:selectItems value="#{systemManager.groupedSearchTypes}" />
 
@@ -36,7 +36,7 @@ Email: info@dpbennett.com.jm
 
             </p:selectOneMenu>
 
-            <h:outputText value="Date field" 
+            <p:outputLabel value="Date field" 
                           rendered="#{systemManager.renderDateSearchFields}" />
             <p:selectOneMenu value="#{systemManager.dateSearchPeriod.dateField}" 
                              id="dateField"
@@ -50,7 +50,7 @@ Email: info@dpbennett.com.jm
 
             </p:selectOneMenu>
 
-            <h:outputText value="Date period" rendered="#{systemManager.renderDateSearchFields}" />               
+            <p:outputLabel value="Date period" rendered="#{systemManager.renderDateSearchFields}" />               
             <p:selectOneMenu value= "#{systemManager.dateSearchPeriod.name}" 
                              id="datePeriod"
                              rendered="#{systemManager.renderDateSearchFields}" >
@@ -63,7 +63,7 @@ Email: info@dpbennett.com.jm
                 <f:selectItems value="#{systemManager.datePeriods}"/>
 
             </p:selectOneMenu>
-            <h:outputText value="Start" rendered="#{systemManager.renderDateSearchFields}" />
+            <p:outputLabel value="Start" rendered="#{systemManager.renderDateSearchFields}" />
             <p:calendar id="startSearchDate"
                         rendered="#{systemManager.renderDateSearchFields}"
                         value="#{systemManager.dateSearchPeriod.startDate}"                    
@@ -73,7 +73,7 @@ Email: info@dpbennett.com.jm
                         disabled="#{systemManager.dateSearchPeriod.startDateDisabled}"
                         pattern="MMM dd, yyyy" />
 
-            <h:outputText value="End" rendered="#{systemManager.renderDateSearchFields}" />
+            <p:outputLabel value="End" rendered="#{systemManager.renderDateSearchFields}" />
             <p:calendar id="endSearchDate"
                         rendered="#{systemManager.renderDateSearchFields}"
                         value="#{systemManager.dateSearchPeriod.endDate}"

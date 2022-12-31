@@ -71,7 +71,7 @@ Email: info@dpbennett.com.jm
         
         <p:column>
             <f:facet name="header">
-                <h:outputText value="Active"/>
+                <p:outputLabel value="Active"/>
             </f:facet>           
             <p:selectBooleanCheckbox 
                 style="display: block;text-align: center;"
@@ -81,19 +81,19 @@ Email: info@dpbennett.com.jm
 
         <p:column>
             <f:facet name="header">
-                <h:outputText value="Name"/>
+                <p:outputLabel value="Name"/>
             </f:facet>
-            <h:outputText value="#{privilege.name}" />
+            <p:outputLabel value="#{privilege.name}" />
         </p:column>  
 
         <p:column>
             <f:facet name="header">
-                <h:outputText value="Description"/>
+                <p:outputLabel value="Description"/>
             </f:facet>
-            <h:outputText value="#{privilege.description}" />
+            <p:outputLabel value="#{privilege.description}" />
         </p:column>    
 
-        <p:column style="width:32px">
+        <p:column>
             <p:commandButton title="View or edit privilege"   
                              actionListener="#{systemManager.editPrivilege}"                            
                              global="true"

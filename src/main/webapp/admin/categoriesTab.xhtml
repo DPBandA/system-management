@@ -71,19 +71,19 @@ Email: info@dpbennett.com.jm
 
         <p:column>
             <f:facet name="header">
-                <h:outputText value="Name"/>
+                <p:outputLabel value="Name"/>
             </f:facet>
-            <h:outputText value="#{category.name}" />
+            <p:outputLabel value="#{category.name}" />
         </p:column>  
 
         <p:column>
             <f:facet name="header">
-                <h:outputText value="Type"/>
+                <p:outputLabel value="Type"/>
             </f:facet>
-            <h:outputText value="#{category.type}" />
+            <p:outputLabel value="#{category.type}" />
         </p:column>    
 
-        <p:column style="width:32px">
+        <p:column>
             <p:commandButton title="View or edit category"   
                              actionListener="#{systemManager.editCategory}"                            
                              global="true"

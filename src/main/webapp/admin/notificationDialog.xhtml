@@ -28,75 +28,8 @@ Email: info@dpbennett.com.jm
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <title>Notification</title>
         <h:outputStylesheet library="webjars" name="primeflex/3.2.1/primeflex.min.css" />
-        <link rel="stylesheet" href="../css/main.css" />
-        <style type="text/css">
-            body {
-                zoom: 0.70;
-            }
-
-            .ui-outputlabel.subheader-text
-            {
-                font-size: 0.800em !important;
-            }
-
-            @-moz-document url-prefix() {
-              
-                .ui-selectonemenu-items,
-                .ui-selectonemenu-label,
-                .ui-outputlabel,
-                .ui-inputtext
-                {
-                    font-size: 0.700em !important;
-                }
-
-                .ui-tabs
-                {
-                    font-size: 0.850em !important;
-                }
-
-                .ui-outputlabel.header-text
-                {
-                    font-size: 0.700em !important;
-                }
-
-                .ui-outputlabel.subheader-text
-                {
-                    font-size: 0.600em !important;
-                }
-
-                .ui-button.search-button
-                {
-                    width: 30px !important;
-                    height: 30px !important;
-                }
-
-                .ui-button
-                {
-                    height: 30px !important;
-                }
-
-                .ui-button-text {
-                    padding-top: 4px !important;
-                }
-
-                .logo  
-                {
-                    width: 3em !important;
-                    height: 3em !important;
-                }
-            }
-            
-            .ui-sticky {
-                top: 0px !important;
-            }
-
-            @media (max-width: 960px) {
-                .ui-sticky {
-                    top: 0px !important;
-                }
-            }
-
-        </style>
+        <link rel="stylesheet" type="text/css" href="../css/main.css" />
+        <link rel="stylesheet" type="text/css" href="../css/responsive.css" />
     </h:head>
     <h:body > 
 
@@ -107,7 +40,7 @@ Email: info@dpbennett.com.jm
             <p:growl id="notification_growl" life="5000" showDetail="true"/>
 
             <ui:include src="notificationDialogToolbar.xhtml" /> 
-
+            <p:scrollPanel style="height: 600px;">
             <p:panel style="margin-bottom: 1px;margin-top: 1px;">
                 <h:panelGrid columns="2" cellspacing="5">
 
@@ -115,37 +48,37 @@ Email: info@dpbennett.com.jm
                     <p:selectBooleanCheckbox id="active" 
                                              value="#{systemManager.selectedNotification.active}" />
 
-                    <h:outputLabel value="Owner Id" for="ownerId" style="font-weight: bold;"/>
+                    <p:outputLabel value="Owner Id" for="ownerId" style="font-weight: bold;"/>
                     <p:inputNumber id="ownerId" 
                                    thousandSeparator=""
                                    value="#{systemManager.selectedNotification.ownerId}" />  
                     
-                    <h:outputLabel value="Issue time" for="issueTime" style="font-weight: bold;"/>
-                    <h:outputText id="issueTime"                                  
+                    <p:outputLabel value="Issue time" for="issueTime" style="font-weight: bold;"/>
+                    <p:outputLabel id="issueTime"                                  
                                   value="#{systemManager.selectedNotification.issueTime}" />
 
-                    <h:outputLabel value="Name" for="name" style="font-weight: bold;"/>
+                    <p:outputLabel value="Name" for="name" style="font-weight: bold;"/>
                     <p:inputText id="name"
                                  value="#{systemManager.selectedNotification.name}"  
                                  style="width: 275px;"
                                  validatorMessage="A name is required"
                                  validator="requiredFieldValidator" />   
 
-                    <h:outputLabel value="Type" for="type" style="font-weight: bold;"/>
+                    <p:outputLabel value="Type" for="type" style="font-weight: bold;"/>
                     <p:inputText id="type"
                                  value="#{systemManager.selectedNotification.type}"   
                                  style="width: 275px;"
                                  validatorMessage="A type is required"
                                  validator="requiredFieldValidator" />
 
-                    <h:outputLabel value="Subject" for="subject" style="font-weight: bold;"/>
+                    <p:outputLabel value="Subject" for="subject" style="font-weight: bold;"/>
                     <p:inputText id="subject"
                                  value="#{systemManager.selectedNotification.subject}"   
                                  style="width: 275px;"
                                  validatorMessage="A subject is required"
                                  validator="requiredFieldValidator" />
 
-                    <h:outputLabel value="Message" for="message" style="font-weight: bold;" />
+                    <p:outputLabel value="Message" for="message" style="font-weight: bold;" />
                     <p:inputTextarea  value="#{systemManager.selectedNotification.message}"
                                    id="message"
                                    maxlength="1000"
@@ -156,7 +89,7 @@ Email: info@dpbennett.com.jm
 
                 </h:panelGrid>
             </p:panel>
-
+            </p:scrollPanel>
             <ui:include src="notificationDialogToolbar.xhtml" /> 
 
         </h:form> 

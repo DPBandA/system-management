@@ -35,33 +35,7 @@ Email: info@dpbennett.com.jm
         <link rel="shortcut icon" type="image/x-icon" href="#{systemManager.appShortcutIconURL}" />
         <script type="text/javascript" src="js/javascripts.js" /> 
         <link rel="stylesheet" href="css/main.css" />
-        <style type="text/css">
-
-            body {
-                zoom: 0.65;
-            }
-
-            @-moz-document url-prefix() {
-                .pi
-                {
-                    font-size: 1.0em !important;
-                }
-                .ui-widget {
-                    font-size: 0.895em !important;
-                }
-            }
-            
-            .ui-sticky {
-                top: 0px !important;
-            }
-
-            @media (max-width: 960px) {
-                .ui-sticky {
-                    top: 0px !important;
-                }
-            }
-
-        </style>
+                  
     </h:head>
     <h:body>
 
@@ -89,10 +63,10 @@ Email: info@dpbennett.com.jm
 
                                 <h:panelGrid columns="1">   
 
-                                    <h:outputText value="#{systemManager.applicationHeader}"
+                                    <p:outputLabel value="#{systemManager.applicationHeader}"
                                                   style="color: darkgrey; font-size: 14pt; font-weight: bold;" />
 
-                                    <h:outputText value="#{systemManager.applicationSubheader}"
+                                    <p:outputLabel value="#{systemManager.applicationSubheader}"
                                                   styleClass="#{systemManager.isDebugMode eq true ? 'debug-mode' : 'non-debug-mode'}" />  
 
                                 </h:panelGrid>
@@ -119,7 +93,7 @@ Email: info@dpbennett.com.jm
                                                         listener="#{systemManager.onNotificationSelect}" />
            
                                                 <p:column>
-                                                    <h:outputText value="#{notification.name}" 
+                                                    <p:outputLabel value="#{notification.name}" 
                                                                   style="#{notification.style}"/>
                                                 </p:column>                                           
 

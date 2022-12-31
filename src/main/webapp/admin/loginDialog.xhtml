@@ -22,6 +22,8 @@ Email: info@dpbennett.com.jm
       xmlns:h="http://java.sun.com/jsf/html" 
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:p="http://primefaces.org/ui">
+    
+   
     <p:dialog header="Login"
               responsive="true"
               position="center"
@@ -33,16 +35,16 @@ Email: info@dpbennett.com.jm
               resizable="false">
         <h:form id="loginForm">
 
-            <h:outputText id="loginMessage" 
+            <p:outputLabel id="loginMessage" 
                           value="#{authentication.logonMessage}" style="font-weight: bold" />
-            <h:panelGrid columns="2" cellpadding="5">
-                <h:outputLabel for="username" value="Username:" style="font-weight: bold" />
+            <h:panelGrid columns="2" cellspacing="10">
+                <p:outputLabel for="username" value="Username" style="font-weight: bold" />
                 <p:inputText value="#{authentication.username}"
                              id="username" 
                              required="true"
-                             label="username"
                              validatorMessage="Please enter a valid username" />
-                <h:outputLabel for="password" value="Password:" style="font-weight: bold" />
+
+                <p:outputLabel for="password" value="Password" style="font-weight: bold" />
                 <p:password id="password"
                             value="#{authentication.password}"
                             maxlength="255" 
@@ -63,4 +65,5 @@ Email: info@dpbennett.com.jm
             </h:panelGrid>
         </h:form>
     </p:dialog>
+
 </html>

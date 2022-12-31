@@ -28,75 +28,8 @@ Email: info@dpbennett.com.jm
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <title>Option</title>
         <h:outputStylesheet library="webjars" name="primeflex/3.2.1/primeflex.min.css" />
-        <link rel="stylesheet" href="../css/main.css" />
-        <style type="text/css">
-            body {
-                zoom: 0.70;
-            }
-
-            .ui-outputlabel.subheader-text
-            {
-                font-size: 0.800em !important;
-            }
-
-            @-moz-document url-prefix() {
-              
-                .ui-selectonemenu-items,
-                .ui-selectonemenu-label,
-                .ui-outputlabel,
-                .ui-inputtext
-                {
-                    font-size: 0.700em !important;
-                }
-
-                .ui-tabs
-                {
-                    font-size: 0.850em !important;
-                }
-
-                .ui-outputlabel.header-text
-                {
-                    font-size: 0.700em !important;
-                }
-
-                .ui-outputlabel.subheader-text
-                {
-                    font-size: 0.600em !important;
-                }
-
-                .ui-button.search-button
-                {
-                    width: 30px !important;
-                    height: 30px !important;
-                }
-
-                .ui-button
-                {
-                    height: 30px !important;
-                }
-
-                .ui-button-text {
-                    padding-top: 4px !important;
-                }
-
-                .logo  
-                {
-                    width: 3em !important;
-                    height: 3em !important;
-                }
-            }
-            
-            .ui-sticky {
-                top: 0px !important;
-            }
-
-            @media (max-width: 960px) {
-                .ui-sticky {
-                    top: 0px !important;
-                }
-            }
-
-        </style>
+        <link rel="stylesheet" type="text/css" href="../css/main.css" />
+        <link rel="stylesheet" type="text/css" href="../css/responsive.css" />
     </h:head>
     <h:body >  
         <ui:include src="../common/commonDialogs.xhtml"/>  
@@ -117,17 +50,17 @@ Email: info@dpbennett.com.jm
                                      icon="pi pi-times" /> 
                 </p:toolbarGroup>
             </p:toolbar>
-
+            <p:scrollPanel style="height: 600px;">
             <p:panel style="margin-top: 1px;margin-bottom: 1px;">
                 <h:panelGrid columns="2" cellpadding="5">                
-                    <h:outputText value="Name" style="font-weight: bold;" />
+                    <p:outputLabel value="Name" style="font-weight: bold;" />
                     <p:inputText value="#{systemManager.selectedSystemOption.name}"    
                                  id="systemOptionName"
                                  style="width:400px;" >
                         <f:validator validatorId="systemOptionValidator" />
                     </p:inputText> 
 
-                    <h:outputText value="Value" style="font-weight: bold;" />
+                    <p:outputLabel value="Value" style="font-weight: bold;" />
                     <p:inputTextarea  value="#{systemManager.selectedSystemOption.optionValue}"
                                       id="systemOptionValue"
                                       counter="valueCharsRemaining"
@@ -139,10 +72,10 @@ Email: info@dpbennett.com.jm
                         <f:validator validatorId="systemOptionValidator" />
                     </p:inputTextarea> 
                     
-                    <h:outputText value="&nbsp;&nbsp;" />
-                    <h:outputText id="valueCharsRemaining" /> 
+                    <p:outputLabel value="&nbsp;&nbsp;" />
+                    <p:outputLabel id="valueCharsRemaining" /> 
 
-                    <h:outputText value="Value Type" style="font-weight: bold;" />                    
+                    <p:outputLabel value="Value Type" style="font-weight: bold;" />                    
                     <p:selectOneMenu id="systemOptionValueType"     
                                      style="width: 400px;"
                                      value="#{systemManager.selectedSystemOption.optionValueType}">
@@ -154,7 +87,7 @@ Email: info@dpbennett.com.jm
 
                     </p:selectOneMenu>
 
-                    <h:outputText value="Category" style="font-weight: bold;" />                    
+                    <p:outputLabel value="Category" style="font-weight: bold;" />                    
                     <p:selectOneMenu id="systemOptionCategory"     
                                      style="width: 400px;"
                                      value="#{systemManager.selectedSystemOption.category}">
@@ -166,7 +99,7 @@ Email: info@dpbennett.com.jm
 
                     </p:selectOneMenu>
 
-                    <h:outputText value="Description" style="width: 50%;font-weight: bold;" />
+                    <p:outputLabel value="Description" style="width: 50%;font-weight: bold;" />
                     <p:inputTextarea  value="#{systemManager.selectedSystemOption.comments}"
                                       id="systemOptionComment"
                                       maxlength="1000"
@@ -180,7 +113,7 @@ Email: info@dpbennett.com.jm
 
                 </h:panelGrid>
             </p:panel>
-
+            </p:scrollPanel>
             <p:toolbar>
                 <p:toolbarGroup align="left">
                     <p:commandButton value="Ok"

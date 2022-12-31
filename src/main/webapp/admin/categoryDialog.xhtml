@@ -29,74 +29,7 @@ Email: info@dpbennett.com.jm
         <title>Category</title>
         <h:outputStylesheet library="webjars" name="primeflex/3.2.1/primeflex.min.css" />
         <link rel="stylesheet" href="../css/main.css" />
-        <style type="text/css">
-            body {
-                zoom: 0.70;
-            }
-
-            .ui-outputlabel.subheader-text
-            {
-                font-size: 0.800em !important;
-            }
-
-            @-moz-document url-prefix() {
-              
-                .ui-selectonemenu-items,
-                .ui-selectonemenu-label,
-                .ui-outputlabel,
-                .ui-inputtext
-                {
-                    font-size: 0.700em !important;
-                }
-
-                .ui-tabs
-                {
-                    font-size: 0.850em !important;
-                }
-
-                .ui-outputlabel.header-text
-                {
-                    font-size: 0.700em !important;
-                }
-
-                .ui-outputlabel.subheader-text
-                {
-                    font-size: 0.600em !important;
-                }
-
-                .ui-button.search-button
-                {
-                    width: 30px !important;
-                    height: 30px !important;
-                }
-
-                .ui-button
-                {
-                    height: 30px !important;
-                }
-
-                .ui-button-text {
-                    padding-top: 4px !important;
-                }
-
-                .logo  
-                {
-                    width: 3em !important;
-                    height: 3em !important;
-                }
-            }
-            
-            .ui-sticky {
-                top: 0px !important;
-            }
-
-            @media (max-width: 960px) {
-                .ui-sticky {
-                    top: 0px !important;
-                }
-            }
-
-        </style>
+        <link rel="stylesheet" type="text/css" href="../css/responsive.css" />
     </h:head>
     <h:body > 
 
@@ -110,7 +43,7 @@ Email: info@dpbennett.com.jm
 
             <p:panel style="margin-bottom: 1px;margin-top: 1px;">
                 <h:panelGrid columns="2"  cellpadding="5">
-                    <h:outputLabel value="Name" for="category" style="font-weight: bold;"/>
+                    <p:outputLabel value="Name" for="category" style="font-weight: bold;"/>
                     <p:inputText id="category"
                                  value="#{systemManager.selectedCategory.name}"  
                                  style="width: 275px;"
@@ -122,7 +55,7 @@ Email: info@dpbennett.com.jm
 
                     </p:inputText>
 
-                    <h:outputLabel value="Type" for="type" style="font-weight: bold;"/>
+                    <p:outputLabel value="Type" for="type" style="font-weight: bold;"/>
                     <p:inputText id="type"
                                  value="#{systemManager.selectedCategory.type}"   
                                  style="width: 275px;"
