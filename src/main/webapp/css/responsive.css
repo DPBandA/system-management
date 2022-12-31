@@ -21,17 +21,17 @@
 
 .ui-button.search-button
 {
-    width: 1.6em !important;
-    height: 1.6em !important;
+    width: 1.9em !important;
+    height: 1.9em !important;
 }
 
 .ui-button
 {
-    height: 1.6em !important;
+    /*height: 1.6em !important;*/
 }
 
 .ui-button-text {
-    padding-top: 0em !important;
+    /*padding-top: 0em !important;*/
 }
 
 .logo  

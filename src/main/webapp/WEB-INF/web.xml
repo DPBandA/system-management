@@ -8,6 +8,11 @@
     </context-param>
     
     <context-param>
+        <param-name>javax.faces.PROJECT_STAGE</param-name>
+        <param-value>Production</param-value>
+    </context-param>
+    
+    <context-param>
         <param-name>primefaces.THEME</param-name>
         <param-value>#{systemManager.user.PFThemeName}</param-value>
     </context-param>
