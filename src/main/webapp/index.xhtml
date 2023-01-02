@@ -133,7 +133,7 @@ Email: info@dpbennett.com.jm
                         <div class="col-12">
                             <div class="grid">
                                 <div class="col-12 md:col-3">
-                                    <p:panel header="Dashboard">
+                                    
                                         <p:commandButton
                                             id="doGeneralSearchButton"
                                             style="visibility: hidden;"
@@ -151,15 +151,13 @@ Email: info@dpbennett.com.jm
 
                                         <ui:include src="dashboard/admin/generalAdminTab.xhtml" />
                                      
-                                    </p:panel>
+                                   
                                 </div>    
                                 <div class="col-12 md:col-9">
-                                    <p:tabView id="mainTabView"   
+                                    <p:tabView id="mainTabView"  
                                        rendered="#{systemManager.mainTabView.render}"
                                        value="#{systemManager.mainTabView.tabs}" 
-                                       var="t"         
-                                       style="border-width: 0px;"
-
+                                       var="t" 
                                        widgetVar="mainTabViewVar">
 
                                 <p:ajax event="tabClose" 

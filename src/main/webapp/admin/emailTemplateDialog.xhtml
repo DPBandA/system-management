@@ -64,7 +64,7 @@ Email: info@dpbennett.com.jm
                                      style="width: 300px;"
                                      id="emailName" 
                                      validator="requiredFieldValidator" /> 
-
+                        <ui:remove>
                         <p:outputLabel value="Category:" style="font-weight: bold;" />
                         <p:selectOneMenu value="#{systemManager.selectedEmail.category}" 
                                          id="emailCategory" >
@@ -74,7 +74,7 @@ Email: info@dpbennett.com.jm
                             <f:selectItems value="#{systemManager.emailCategories}"/>
 
                         </p:selectOneMenu>
-
+                        </ui:remove>
                         <p:outputLabel value="Subject" style="font-weight: bold;" />
                         <p:inputText value="#{systemManager.selectedEmail.subject}"
                                      style="width: 300px;"
