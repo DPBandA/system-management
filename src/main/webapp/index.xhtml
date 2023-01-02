@@ -133,7 +133,7 @@ Email: info@dpbennett.com.jm
                         <div class="col-12">
                             <div class="grid">
                                 <div class="col-12 md:col-3">
-                                    <p:panel header="Dashboard">
+                                    
                                         <p:commandButton
                                             id="doGeneralSearchButton"
                                             style="visibility: hidden;"
@@ -149,92 +149,48 @@ Email: info@dpbennett.com.jm
                                         <p:defaultCommand id="dashboardDefaultCommandButton" 
                                                   target="doGeneralSearchButton" />
 
-                                        
+                                        <ui:include src="dashboard/admin/generalAdminTab.xhtml" />
                                      
-                                    </p:panel>
+                                   
                                 </div>    
                                 <div class="col-12 md:col-9">
-                                
-                                    <p:tabView id="mainTabView" 
-                                       value="#{systemManager.user.activeModules}" 
-                                       var="t"         
-                                       style="border-width: 0px;"
+                                    <p:tabView id="mainTabView"  
+                                       rendered="#{systemManager.mainTabView.render}"
+                                       value="#{systemManager.mainTabView.tabs}" 
+                                       var="t" 
                                        widgetVar="mainTabViewVar">
 
-                                        <p:ajax event="tabClose" 
-                                                process="@this"
-                                                update=""
-                                                listener="#{systemManager.onMainViewTabClose}" />  
+                                <p:ajax event="tabClose" 
+                                        immediate="true"
+                                        process="@this"
+                                        update=""
+                                        listener="#{systemManager.onMainViewTabClose}" />  
 
-                                        <p:ajax event="tabChange" 
-                                                process="@this"                                
-                                                listener="#{systemManager.onMainViewTabChange}" />  
+                                <p:ajax event="tabChange" 
+                                        immediate="true"
+                                        process="@this"                                
+                                        listener="#{systemManager.onMainViewTabChange}" />  
 
 
-                                        <p:tab title="#{t.dashboardTitle}" closable="true"  >
+                                <p:tab title="#{t.name}" closable="true"  >
 
-                                            <p:tabView widgetVar="centerTabVar"
-                                                       id="centerTabView"
-                                                       scrollable="false"
-                                                       dynamic="false">
+                                    <h:panelGroup rendered="#{t.id == 'System Administration'}" >
+                                        <ui:include src="admin/generalAdminTab.xhtml" /> 
+                                    </h:panelGroup>  
 
-                                                <p:ajax event="tabChange" />  
+                                </p:tab>
 
-                                                <p:tab title="User">
-                                                   <ui:include src="admin/usersTab.xhtml"/>  
-                                                </p:tab>
+                            </p:tabView> 
 
-                                                <p:tab title="Privileges">
-                                                     
-                                                </p:tab>        
+                            <p:commandButton
+                                id="doNothingButton"
+                                style="visibility: hidden;"
+                                global="false"                                        
+                                value=""                                       
+                                title="This is the default button that accepts the enter key press"                                       
+                                process="@this"/> 
 
-                                                <p:tab title="Categories">
-                                                      
-                                                </p:tab>
-
-                                                <p:tab title="Document Types">
-                                                     
-                                                </p:tab>
-
-                                                <p:tab title="Options">
-                                                    
-                                                </p:tab>
-
-                                                <p:tab title="Authentication">
-                                                    
-                                                </p:tab>  
-
-                                                <p:tab title="Modules">
-                                                      
-                                                </p:tab>
-
-                                                <p:tab title="Attachments">
-                                                     
-                                                </p:tab>
-
-                                                <p:tab title="Email Templates">
-                                                      
-                                                </p:tab>
-
-                                                <p:tab title="Notifications">
-                                                       
-                                                </p:tab>
-
-                                            </p:tabView>
-
-                                        </p:tab>
-
-                                    </p:tabView> 
-
-                                    <p:commandButton
-                                        id="doNothingButton"
-                                        style="visibility: hidden;"
-                                        global="false"                                        
-                                        value=""                                       
-                                        title="This is the default button that accepts the enter key press"                                       
-                                        process="@this"/> 
-
-                                    <p:defaultCommand target=":appForm:doNothingButton" />
+                            <p:defaultCommand target=":appForm:doNothingButton" />
                                 </div>                              
                             </div>
                         </div>
