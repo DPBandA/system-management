@@ -40,7 +40,6 @@ Email: info@dpbennett.com.jm
     <p:spacer width="20" />        
     <p:inputText id="documentTypeSearchText" 
                  value="#{systemManager.documentTypeSearchText}"
-                 style="width:300px" 
                  placeholder="Enter any part of name">
         <p:ajax event="keyup"
                 global="false"
@@ -72,14 +71,10 @@ Email: info@dpbennett.com.jm
                  editMode="cell"
                  paginator="true"
                  rows="15"
-                 style="margin-top: 1px;"
+                 style="margin-top: 5px;"
                  widgetVar="DocumentTypesTableVar"
                  paginatorTemplate="{FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
                  value="#{systemManager.foundDocumentTypes}">
-
-        <f:facet name="header">
-            Document Types
-        </f:facet>
 
         <p:column>
             <f:facet name="header">
