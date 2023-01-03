@@ -1,6 +1,6 @@
 <!--
 System Management (SM) 
-Copyright (C) 2023  D P Bennett & Associates Limited
+Copyright (C) 2022  D P Bennett & Associates Limited
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU Affero General Public License as published by
@@ -25,51 +25,53 @@ Email: info@dpbennett.com.jm
       xmlns:ui="http://java.sun.com/jsf/facelets"> 
 
     
-    <p:commandButton title="Add new user"    
-                     class="new-user"
-                     value="New"                                                     
-                     actionListener="#{systemManager.createNewUser}"
-                     global="true"
-                     process="@this"
-                     icon="pi pi-plus">
+            <p:commandButton title="Add new user"    
+                             class="new-user"
+                             value="New"                                                     
+                             actionListener="#{systemManager.createNewUser}"
+                             global="true"
+                             process="@this"
+                             icon="pi pi-plus">
 
-        <p:ajax event="dialogReturn" 
-                listener="#{systemManager.doUserSearch}"
-                update=":appForm:mainTabView:centerTabView:usersTable"/>
+                <p:ajax event="dialogReturn" 
+                        listener="#{systemManager.doUserSearch}"
+                        update=":appForm:mainTabView:centerTabView:usersTable"/>
 
-    </p:commandButton>
-    <p:spacer width="20" />
-    <p:inputText id="userSearchText"                          
-                 value="#{systemManager.userSearchText}"
-                 placeholder="Enter any part of name">
-        <p:ajax event="keyup"
-                global="true"
-                update=":appForm:mainTabView:centerTabView:usersTable"
-                listener="#{systemManager.doUserSearch}"
-                process="@this"/>                                   
-    </p:inputText>       
+            </p:commandButton>
+            <p:spacer width="20" />
+            <p:inputText id="userSearchText"                          
+                         value="#{systemManager.userSearchText}"
+                         placeholder="Enter any part of name">
+                <p:ajax event="keyup"
+                        global="true"
+                        update=":appForm:mainTabView:centerTabView:usersTable"
+                        listener="#{systemManager.doUserSearch}"
+                        process="@this"/>                                   
+            </p:inputText>       
+        
+            <h:panelGroup style="float: right;" >
+                <p:outputLabel for="activeUsersOnly" value="Active users only" />  
+                <p:spacer width="10" />
+                <p:selectBooleanCheckbox style="vertical-align: middle"
+                                         id="activeUsersOnly"
+                                         value="#{systemManager.isActiveUsersOnly}" >
+                    <p:ajax  update=":appForm:mainTabView:centerTabView:usersTable"
+                             listener="#{systemManager.doUserSearch}"
+                             event="change"                                      
+                             process="@this"/>
+                </p:selectBooleanCheckbox>    
 
-    <h:panelGroup style="float: right;" >
-        <p:outputLabel for="activeUsersOnly" value="Active users only" />  
-        <p:spacer width="10" />
-        <p:selectBooleanCheckbox style="vertical-align: middle"
-                                 id="activeUsersOnly"
-                                 value="#{systemManager.isActiveUsersOnly}" >
-            <p:ajax  update=":appForm:mainTabView:centerTabView:usersTable"
-                     listener="#{systemManager.doUserSearch}"
-                     event="change"                                      
-                     process="@this"/>
-        </p:selectBooleanCheckbox>    
+                <p:tooltip for="activeUsersOnly" value="Check to show active users only" 
+                           showEffect="fade" hideEffect="fade" />
+            </h:panelGroup>           
 
-        <p:tooltip for="activeUsersOnly" value="Check to show active users only" 
-                   showEffect="fade" hideEffect="fade" />
-    </h:panelGroup>         
+
           
     <p:dataTable id="usersTable"                                       
                  var="user"                                        
                  paginator="true"
                  rows="15"
-                 style="margin-top: 5px;"
+                 style="margin-top: 1px;"
                  paginatorTemplate="{FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
                  value="#{systemManager.foundUsers}">
       

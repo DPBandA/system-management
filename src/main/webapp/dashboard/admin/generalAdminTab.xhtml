@@ -19,12 +19,15 @@ Email: info@dpbennett.com.jm
 -->
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
       xmlns:p="http://primefaces.org/ui"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core"> 
 
-    <p:toolbar style="margin-bottom: 1px;">
-        <p:toolbarGroup align="left">
+    <p:panel header="Dashboard">
+    <p:toolbar>
+        <p:toolbarGroup align="left" >
+
             <p:menuButton value="New" class="new-entity">
                 <p:menuitem 
                     actionListener="#{systemManager.createNewAttachment}" 
@@ -115,7 +118,7 @@ Email: info@dpbennett.com.jm
             </p:menuButton>
         </p:toolbarGroup>
 
-        <p:toolbarGroup align="right">   
+        <p:toolbarGroup align="left" >  
             <p:menuButton value="Tools" >
                 <p:menuitem 
                     actionListener="#{systemManager.selectSystemAdminTab('centerTabVar', 0)}" 
@@ -123,10 +126,10 @@ Email: info@dpbennett.com.jm
                     icon="pi pi-server" /> 
             </p:menuButton>
         </p:toolbarGroup>
-
     </p:toolbar>
 
     <ui:include src="search.xhtml"/>
+    </p:panel>   
 
 </html>
 

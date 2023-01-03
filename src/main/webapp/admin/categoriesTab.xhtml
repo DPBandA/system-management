@@ -1,6 +1,6 @@
 <!--
 System Management (SM) 
-Copyright (C) 2021  D P Bennett & Associates Limited
+Copyright (C) 2023  D P Bennett & Associates Limited
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU Affero General Public License as published by
@@ -23,36 +23,30 @@ Email: info@dpbennett.com.jm
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:ui="http://java.sun.com/jsf/facelets"> 
+      
+    <p:commandButton title="Add new category"                                  
+                     value="New"
+                     actionListener="#{systemManager.createNewCategory}"                            
+                     update=":appForm:mainTabView:centerTabView:categoriesTable"
+                     global="true"
+                     process="@this"
+                     icon="pi pi-plus" >
 
-    <p:toolbar>
-        <p:toolbarGroup align="left" >   
-            <p:commandButton title="Add new category"                                  
-                             value="New"
-                             actionListener="#{systemManager.createNewCategory}"                            
-                             update=":appForm:mainTabView:centerTabView:categoriesTable"
-                             global="true"
-                             process="@this"
-                             icon="pi pi-plus" >
+        <p:ajax event="dialogReturn" 
+                listener="#{systemManager.doCategorySearch}"
+                update=":appForm:mainTabView:centerTabView:categoriesTable" />
 
-                <p:ajax event="dialogReturn" 
-                        listener="#{systemManager.doCategorySearch}"
-                        update=":appForm:mainTabView:centerTabView:categoriesTable" />
-
-            </p:commandButton>     
-            <p:spacer width="20" />        
-            <p:inputText id="categorySearchText" 
-                         value="#{systemManager.categorySearchText}"
-                         style="width:300px" 
-                         placeholder="Enter any part of name">
-                <p:ajax event="keyup"
-                        global="false"
-                        update=":appForm:mainTabView:centerTabView:categoriesTable"
-                        listener="#{systemManager.doCategorySearch}"
-                        process="@this"/>
-            </p:inputText>
-        </p:toolbarGroup>
-
-    </p:toolbar>  
+    </p:commandButton>     
+    <p:spacer width="20" />        
+    <p:inputText id="categorySearchText" 
+                 value="#{systemManager.categorySearchText}"
+                 placeholder="Enter any part of name">
+        <p:ajax event="keyup"
+                global="false"
+                update=":appForm:mainTabView:centerTabView:categoriesTable"
+                listener="#{systemManager.doCategorySearch}"
+                process="@this"/>
+    </p:inputText>       
 
     <p:dataTable id="categoriesTable"                                       
                  var="category"     
@@ -60,14 +54,10 @@ Email: info@dpbennett.com.jm
                  editMode="cell"
                  paginator="true"
                  rows="15"
-                 style="margin-top: 1px;margin-bottom: 1px;"
+                 style="margin-top: 5px;"
                  widgetVar="CategoriesTableVar"
                  paginatorTemplate="{FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
                  value="#{systemManager.foundCategories}">
-
-        <f:facet name="header">
-            Categories
-        </f:facet>
 
         <p:column>
             <f:facet name="header">
@@ -105,26 +95,7 @@ Email: info@dpbennett.com.jm
             </p:commandButton>           
         </p:column>
 
-    </p:dataTable>        
-    <p:toolbar>
-        <p:toolbarGroup align="left" >   
-            <p:commandButton title="Add new category"                                  
-                             value="New"
-                             actionListener="#{systemManager.createNewCategory}"
-                             update=":appForm:mainTabView:centerTabView:categoriesTable"
-                             global="true"
-                             process="@this"
-                             icon="pi pi-plus" >
-
-                <p:ajax event="dialogReturn" 
-                        listener="#{systemManager.doCategorySearch}"
-                        update=":appForm:mainTabView:centerTabView:categoriesTable" />
-
-            </p:commandButton>     
-
-        </p:toolbarGroup>
-
-    </p:toolbar>
+    </p:dataTable> 
 
 </html>
 

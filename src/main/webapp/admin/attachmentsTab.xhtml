@@ -24,8 +24,7 @@ Email: info@dpbennett.com.jm
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:ui="http://java.sun.com/jsf/facelets"> 
 
-    <p:toolbar>
-        <p:toolbarGroup align="left" >   
+      
             <p:commandButton title="Add new attachment"                                  
                              value="New"                                                     
                              actionListener="#{systemManager.createNewAttachment}"
@@ -41,7 +40,6 @@ Email: info@dpbennett.com.jm
             <p:spacer width="20" />
             <p:inputText id="attachmentSearchText"                          
                          value="#{systemManager.attachmentSearchText}"
-                         style="width:300px" 
                          placeholder="Enter any part of name">
                 <p:ajax event="keyup"
                         global="true"
@@ -49,20 +47,15 @@ Email: info@dpbennett.com.jm
                         listener="#{systemManager.doAttachmentSearch}"
                         process="@this"/>                                   
             </p:inputText>       
-        </p:toolbarGroup>
-        
-    </p:toolbar>    
+           
     <p:dataTable id="attachmentsTable"                                       
                  var="attachment"                                        
                  paginator="true"
                  rows="15"
-                 style="margin-top: 1px;"
+                 style="margin-top: 5px;"
                  paginatorTemplate="{FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
                  value="#{systemManager.foundAttachments}">
-        <f:facet name="header">
-            Users
-        </f:facet>
-
+      
         <p:column>
             <f:facet name="header">
                 <p:outputLabel value="Name"/>

@@ -1,6 +1,6 @@
 <!--
 System Management (SM) 
-Copyright (C) 2021  D P Bennett & Associates Limited
+Copyright (C) 2023 D P Bennett & Associates Limited
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU Affero General Public License as published by
@@ -23,57 +23,48 @@ Email: info@dpbennett.com.jm
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:ui="http://java.sun.com/jsf/facelets"> 
+     
+    <p:commandButton title="Add new document type"                                  
+                     value="New"
+                     actionListener="#{systemManager.createNewDocumentType}"
+                     update=":appForm:mainTabView:centerTabView:documentTypesTable"
+                     global="true"
+                     process="@this"
+                     icon="pi pi-plus" >
 
-    <p:toolbar>
-        <p:toolbarGroup align="left" >   
-            <p:commandButton title="Add new document type"                                  
-                             value="New"
-                             actionListener="#{systemManager.createNewDocumentType}"
-                             update=":appForm:mainTabView:centerTabView:documentTypesTable"
-                             global="true"
-                             process="@this"
-                             icon="pi pi-plus" >
+        <p:ajax event="dialogReturn" 
+                listener="#{systemManager.doDocumentTypeSearch}"
+                update=":appForm:mainTabView:centerTabView:documentTypesTable" />
 
-                <p:ajax event="dialogReturn" 
-                        listener="#{systemManager.doDocumentTypeSearch}"
-                        update=":appForm:mainTabView:centerTabView:documentTypesTable" />
+    </p:commandButton>     
+    <p:spacer width="20" />        
+    <p:inputText id="documentTypeSearchText" 
+                 value="#{systemManager.documentTypeSearchText}"
+                 style="width:300px" 
+                 placeholder="Enter any part of name">
+        <p:ajax event="keyup"
+                global="false"
+                update=":appForm:mainTabView:centerTabView:documentTypesTable"
+                listener="#{systemManager.doDocumentTypeSearch}"
+                process="@this"/>
+    </p:inputText>
 
-            </p:commandButton>     
-            <p:spacer width="20" />        
-            <p:inputText id="documentTypeSearchText" 
-                         value="#{systemManager.documentTypeSearchText}"
-                         style="width:300px" 
-                         placeholder="Enter any part of name">
-                <p:ajax event="keyup"
-                        global="false"
-                        update=":appForm:mainTabView:centerTabView:documentTypesTable"
-                        listener="#{systemManager.doDocumentTypeSearch}"
-                        process="@this"/>
-            </p:inputText>
-        </p:toolbarGroup>
-
-        <ui:remove>
-            <p:toolbarGroup align="right">
-                <p:outputLabel for="activeDocumentTypesOnly" value="Active document types only: " />  
-                <h:panelGroup>
-                    <p:selectBooleanCheckbox style="vertical-align: middle"
-                                             id="activeDocumentTypesOnly"
-                                             value="#{systemManager.isActiveDocumentTypesOnly}" >
-                        <p:ajax  update=":appForm:mainTabView:centerTabView:documentTypesTable"
-                                 listener="#{systemManager.doDocumentTypeSearch}"
-                                 event="change"                                      
-                                 process="@this"/>
-                    </p:selectBooleanCheckbox>            
-                    <p:tooltip for="activeDocumentTypesOnly" 
-                               value="Check to show active document types only" 
-                               showEffect="fade" 
-                               hideEffect="fade" />
-                    <p:spacer width="15" />                
-                </h:panelGroup>
-            </p:toolbarGroup>
-        </ui:remove>
-
-    </p:toolbar>  
+    <h:panelGroup style="float: right;">
+    <p:outputLabel for="activeDocumentTypesOnly" value="Active document types only" />   
+    <p:spacer width="10" />
+    <p:selectBooleanCheckbox style="vertical-align: middle"
+                             id="activeDocumentTypesOnly"
+                             value="#{systemManager.isActiveDocumentTypesOnly}" >
+        <p:ajax  update=":appForm:mainTabView:centerTabView:documentTypesTable"
+                 listener="#{systemManager.doDocumentTypeSearch}"
+                 event="change"                                      
+                 process="@this"/>
+    </p:selectBooleanCheckbox>            
+    <p:tooltip for="activeDocumentTypesOnly" 
+               value="Check to show active document types only" 
+               showEffect="fade" 
+               hideEffect="fade" />                    
+    </h:panelGroup>
 
     <p:dataTable id="documentTypesTable"                                       
                  var="documentType"     
