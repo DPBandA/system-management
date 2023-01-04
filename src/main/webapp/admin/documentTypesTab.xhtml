@@ -49,20 +49,20 @@ Email: info@dpbennett.com.jm
     </p:inputText>
 
     <h:panelGroup style="float: right;">
-    <p:outputLabel for="activeDocumentTypesOnly" value="Active document types only" />   
-    <p:spacer width="10" />
-    <p:selectBooleanCheckbox style="vertical-align: middle"
-                             id="activeDocumentTypesOnly"
-                             value="#{systemManager.isActiveDocumentTypesOnly}" >
-        <p:ajax  update=":appForm:mainTabView:centerTabView:documentTypesTable"
-                 listener="#{systemManager.doDocumentTypeSearch}"
-                 event="change"                                      
-                 process="@this"/>
-    </p:selectBooleanCheckbox>            
-    <p:tooltip for="activeDocumentTypesOnly" 
-               value="Check to show active document types only" 
-               showEffect="fade" 
-               hideEffect="fade" />                    
+        <p:outputLabel for="activeDocumentTypesOnly" value="Active" />   
+        <p:spacer width="10" />
+        <p:selectBooleanCheckbox style="vertical-align: middle"
+                                 id="activeDocumentTypesOnly"
+                                 value="#{systemManager.isActiveDocumentTypesOnly}" >
+            <p:ajax  update=":appForm:mainTabView:centerTabView:documentTypesTable"
+                     listener="#{systemManager.doDocumentTypeSearch}"
+                     event="change"                                      
+                     process="@this"/>
+        </p:selectBooleanCheckbox>            
+        <p:tooltip for="activeDocumentTypesOnly" 
+                   value="Check to show active document types only" 
+                   showEffect="fade" 
+                   hideEffect="fade" />                    
     </h:panelGroup>
 
     <p:dataTable id="documentTypesTable"                                       
@@ -70,6 +70,7 @@ Email: info@dpbennett.com.jm
                  editable="true" 
                  editMode="cell"
                  paginator="true"
+                 reflow="true"
                  rows="15"
                  style="margin-top: 5px;"
                  widgetVar="DocumentTypesTableVar"

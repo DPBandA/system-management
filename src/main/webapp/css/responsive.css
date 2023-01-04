@@ -1,4 +1,12 @@
-.ui-widget {
+/*
+.ui-widget, .ui-widget .ui-widget {
+    font-size: 90% !important;
+}
+*/
+
+.ui-widget, 
+.ui-selectonemenu-items
+{
     font-size: 0.850em !important;
 }
 
@@ -7,7 +15,6 @@
     font-size: 1.200em !important;
 }
 
-.ui-selectonemenu-items,
 .ui-selectonemenu-label,
 .ui-inputtext,
 .ui-inputtextarea,

@@ -47,7 +47,7 @@ Email: info@dpbennett.com.jm
 
     <h:panelGroup style="float: right;" >
 
-        <p:outputLabel for="activeLdapOnly" value="Active LDAP options only" /> 
+        <p:outputLabel for="activeLdapOnly" value="Active" /> 
         <p:spacer width="10" />
         <p:selectBooleanCheckbox style="vertical-align: middle"
                                  id="activeLdapOnly"
@@ -68,6 +68,7 @@ Email: info@dpbennett.com.jm
                  editable="true" 
                  editMode="cell"
                  paginator="true"
+                 reflow="true"
                  rows="15"
                  style="margin-top: 5px;"
                  widgetVar="ldapTableVar"
@@ -82,7 +83,7 @@ Email: info@dpbennett.com.jm
             </f:facet>
             <p:cellEditor>
                 <f:facet name="output"> <p:outputLabel value="#{ldap.name}" /></f:facet>
-                <f:facet name="input"><p:inputText value="#{ldap.name}" style="width:96%"/></f:facet>
+                <f:facet name="input"><p:inputText value="#{ldap.name}" /></f:facet>
             </p:cellEditor>                                         
         </p:column>   
 
@@ -92,7 +93,7 @@ Email: info@dpbennett.com.jm
             </f:facet>
             <p:cellEditor>
                 <f:facet name="output"> <p:outputLabel value="#{ldap.domainName}" /></f:facet>
-                <f:facet name="input"><p:inputText value="#{ldap.domainName}" style="width:96%"/></f:facet>
+                <f:facet name="input"><p:inputText value="#{ldap.domainName}" /></f:facet>
             </p:cellEditor>                                           
         </p:column>   
 
@@ -102,7 +103,7 @@ Email: info@dpbennett.com.jm
             </f:facet>
             <p:cellEditor>
                 <f:facet name="output"> <p:outputLabel value="#{ldap.providerUrl}" /></f:facet>
-                <f:facet name="input"><p:inputText value="#{ldap.providerUrl}" style="width:96%"/></f:facet>
+                <f:facet name="input"><p:inputText value="#{ldap.providerUrl}" /></f:facet>
             </p:cellEditor>                                         
         </p:column>   
 
@@ -113,7 +114,7 @@ Email: info@dpbennett.com.jm
             <p:cellEditor>
                 <f:facet name="output"><p:outputLabel value="#{ldap.usable}" /></f:facet>
                 <f:facet name="input">
-                    <p:selectOneMenu value="#{ldap.usable}" style="width:96%">
+                    <p:selectOneMenu value="#{ldap.usable}" >
                         <f:selectItem itemLabel="Yes" itemValue="Yes"/>
                         <f:selectItem itemLabel="No" itemValue="No"/>
                     </p:selectOneMenu>

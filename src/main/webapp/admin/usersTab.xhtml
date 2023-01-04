@@ -50,7 +50,7 @@ Email: info@dpbennett.com.jm
     </p:inputText>       
 
     <h:panelGroup style="float: right;" >
-        <p:outputLabel for="activeUsersOnly" value="Active users only" />  
+        <p:outputLabel for="activeUsersOnly" value="Active" />  
         <p:spacer width="10" />
         <p:selectBooleanCheckbox style="vertical-align: middle"
                                  id="activeUsersOnly"
@@ -68,7 +68,8 @@ Email: info@dpbennett.com.jm
     <p:dataTable id="usersTable"                                       
                  var="user"                                        
                  paginator="true"
-                 rows="15"
+                 reflow="true"
+                 rows="15"                 
                  style="margin-top: 5px;"
                  paginatorTemplate="{FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
                  value="#{systemManager.foundUsers}">

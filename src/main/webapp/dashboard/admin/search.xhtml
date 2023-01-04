@@ -30,7 +30,10 @@ Email: info@dpbennett.com.jm
 
                 <f:selectItems value="#{systemManager.groupedSearchTypes}" />
 
-                <p:ajax update="dateField,datePeriod,startSearchDate,endSearchDate" global="false" process="@this" />
+                <p:ajax update="dateField,datePeriod,startSearchDate,endSearchDate" 
+                        listener="#{systemManager.updateSearchType}"
+                        global="false" 
+                        process="@this" />
 
             </p:selectOneMenu>
 

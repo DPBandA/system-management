@@ -48,7 +48,7 @@ Email: info@dpbennett.com.jm
     </p:inputText>
 
     <h:panelGroup style="float: right;" >          
-            <p:outputLabel for="activeEmailsOnly" value="Active email templates only" />  
+            <p:outputLabel for="activeEmailsOnly" value="Active" />  
             <p:spacer width="10" />
             <p:selectBooleanCheckbox style="vertical-align: middle"
                                      id="activeEmailsOnly"
@@ -65,6 +65,7 @@ Email: info@dpbennett.com.jm
     <p:dataTable id="emailsTable"                                       
                  var="email"                                        
                  paginator="true"
+                 reflow="true"
                  rows="15"
                  style="margin-top: 5px;"
                  widgetVar="emailsTableVar"
