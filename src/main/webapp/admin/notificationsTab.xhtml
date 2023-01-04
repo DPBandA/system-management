@@ -1,6 +1,6 @@
 <!--
 System Management (SM) 
-Copyright (C) 2022  D P Bennett & Associates Limited
+Copyright (C) 2023  D P Bennett & Associates Limited
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU Affero General Public License as published by
@@ -23,49 +23,40 @@ Email: info@dpbennett.com.jm
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:ui="http://java.sun.com/jsf/facelets"> 
+    
+    <p:commandButton title="Add new notification"                                  
+                     value="New"
+                     actionListener="#{systemManager.createNewNotification}"                            
+                     update=":appForm:mainTabView:centerTabView:notificationsTable"
+                     global="true"
+                     process="@this"
+                     icon="pi pi-plus" >
 
-    <p:toolbar>
-        <p:toolbarGroup align="left" >   
-            <p:commandButton title="Add new notification"                                  
-                             value="New"
-                             actionListener="#{systemManager.createNewNotification}"                            
-                             update=":appForm:mainTabView:centerTabView:notificationsTable"
-                             global="true"
-                             process="@this"
-                             icon="pi pi-plus" >
+        <p:ajax event="dialogReturn" 
+                listener="#{systemManager.doNotificationSearch}"
+                update=":appForm:mainTabView:centerTabView:notificationsTable,appForm:notificationBadge" />
 
-                <p:ajax event="dialogReturn" 
-                        listener="#{systemManager.doNotificationSearch}"
-                        update=":appForm:mainTabView:centerTabView:notificationsTable,appForm:notificationBadge" />
-
-            </p:commandButton>     
-            <p:spacer width="20" />        
-            <p:inputText id="notificationSearchText" 
-                         value="#{systemManager.notificationSearchText}"
-                         style="width:300px" 
-                         placeholder="Enter search text">
-                <p:ajax event="keyup"
-                        global="false"
-                        update=":appForm:mainTabView:centerTabView:notificationsTable"
-                        listener="#{systemManager.doNotificationSearch}"
-                        process="@this"/>
-            </p:inputText>
-        </p:toolbarGroup>
-
-    </p:toolbar>  
+    </p:commandButton>     
+    <p:spacer width="20" />        
+    <p:inputText id="notificationSearchText" 
+                 value="#{systemManager.notificationSearchText}"
+                 placeholder="Enter search text">
+        <p:ajax event="keyup"
+                global="false"
+                update=":appForm:mainTabView:centerTabView:notificationsTable"
+                listener="#{systemManager.doNotificationSearch}"
+                process="@this"/>
+    </p:inputText>
 
     <p:dataTable id="notificationsTable"                                       
                  var="notification"  
                  paginator="true"
+                 reflow="true"
                  rows="15"
-                 style="margin-top: 1px;margin-bottom: 1px;"
+                 style="margin-top: 5px;"
                  widgetVar="NotificationsTableVar"
                  paginatorTemplate="{FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
                  value="#{systemManager.foundNotifications}">
-
-        <f:facet name="header">
-            Notifications
-        </f:facet>
 
         <p:column>
             <f:facet name="header">
@@ -128,26 +119,7 @@ Email: info@dpbennett.com.jm
             </p:commandButton>           
         </p:column>
 
-    </p:dataTable>        
-    <p:toolbar>
-        <p:toolbarGroup align="left" >   
-            <p:commandButton title="Add new notification"                                  
-                             value="New"
-                             actionListener="#{systemManager.createNewNotification}"
-                             update=":appForm:mainTabView:centerTabView:notificationsTable"
-                             global="true"
-                             process="@this"
-                             icon="pi pi-plus" >
-
-                <p:ajax event="dialogReturn" 
-                        listener="#{systemManager.doNotificationSearch}"
-                        update=":appForm:mainTabView:centerTabView:notificationsTable,appForm:notificationBadge" />
-
-            </p:commandButton>     
-
-        </p:toolbarGroup>
-
-    </p:toolbar>
+    </p:dataTable>   
 
 </html>
 

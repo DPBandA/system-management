@@ -1,12 +1,32 @@
-.ui-selectonemenu-items,
+/*
+.ui-widget, .ui-widget .ui-widget {
+    font-size: 90% !important;
+}
+*/
+
+.ui-widget, 
+.ui-selectonemenu-items
+{
+    font-size: 0.850em !important;
+}
+
+.ui-button
+{
+    font-size: 1.200em !important;
+}
+
 .ui-selectonemenu-label,
-.ui-outputlabel,
 .ui-inputtext,
 .ui-inputtextarea,
 .ui-selectoneradio,
 .ui-selectoneradio
 {
-    font-size: 0.850em !important;
+    font-size: 1.100em !important;
+}
+
+.ui-outputlabel
+{
+    font-size: 1.000em !important;
 }
 
 .ui-outputlabel.header-text
@@ -16,22 +36,16 @@
 
 .ui-outputlabel.subheader-text
 {
-    font-size: 0.600em !important;
+    font-size: 0.650em !important;
 }
 
 .ui-button.search-button
 {
-    width: 1.9em !important;
-    height: 1.9em !important;
-}
-
-.ui-button
-{
-    /*height: 1.6em !important;*/
+    
 }
 
 .ui-button-text {
-    /*padding-top: 0em !important;*/
+   
 }
 
 .logo  
@@ -46,10 +60,10 @@
 
 .ui-tabs
 {
-    font-size: 0.825em !important;
+    
 }
 
 .ui-datatable
 {
-    font-size: 1.25em !important;
+    font-size: 1.00em !important;
 }

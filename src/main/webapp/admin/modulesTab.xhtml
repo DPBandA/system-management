@@ -1,6 +1,6 @@
 <!--
 System Management (SM) 
-Copyright (C) 2021  D P Bennett & Associates Limited
+Copyright (C) 2023  D P Bennett & Associates Limited
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU Affero General Public License as published by
@@ -23,52 +23,43 @@ Email: info@dpbennett.com.jm
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:ui="http://java.sun.com/jsf/facelets"> 
+    
+    <p:commandButton title="Add new module"                                  
+                     value="New"
+                     actionListener="#{systemManager.createNewModule}"                            
+                     update=":appForm:mainTabView:centerTabView:modulesTable"
+                     global="true"
+                     process="@this"
+                     icon="pi pi-plus" >
 
-    <p:toolbar>
-        <p:toolbarGroup align="left" >   
-            <p:commandButton title="Add new module"                                  
-                             value="New"
-                             actionListener="#{systemManager.createNewModule}"                            
-                             update=":appForm:mainTabView:centerTabView:modulesTable"
-                             global="true"
-                             process="@this"
-                             icon="pi pi-plus" >
+        <p:ajax event="dialogReturn" 
+                listener="#{systemManager.doActiveModuleSearch}"
+                update=":appForm:mainTabView:centerTabView:modulesTable" />
 
-                <p:ajax event="dialogReturn" 
-                        listener="#{systemManager.doActiveModuleSearch}"
-                        update=":appForm:mainTabView:centerTabView:modulesTable" />
-
-            </p:commandButton>     
-            <p:spacer width="20" />        
-            <p:inputText id="moduleSearchText" 
-                         value="#{systemManager.moduleSearchText}"
-                         style="width:300px" 
-                         placeholder="Enter any part of name">
-                <p:ajax event="keyup"
-                        global="false"
-                        update=":appForm:mainTabView:centerTabView:modulesTable"
-                        listener="#{systemManager.doActiveModuleSearch}"
-                        process="@this"/>
-            </p:inputText>
-        </p:toolbarGroup>
-
-    </p:toolbar>  
+    </p:commandButton>     
+    <p:spacer width="20" />        
+    <p:inputText id="moduleSearchText" 
+                 value="#{systemManager.moduleSearchText}"
+                 placeholder="Enter any part of name">
+        <p:ajax event="keyup"
+                global="false"
+                update=":appForm:mainTabView:centerTabView:modulesTable"
+                listener="#{systemManager.doActiveModuleSearch}"
+                process="@this"/>
+    </p:inputText>       
 
     <p:dataTable id="modulesTable"                                       
                  var="module"     
                  editable="true" 
                  editMode="cell"
                  paginator="true"
+                 reflow="true"
                  rows="15"
-                 style="margin-top: 1px;margin-bottom: 1px;"
+                 style="margin-top: 5px;"
                  widgetVar="ModulesTableVar"
                  paginatorTemplate="{FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
                  value="#{systemManager.foundActiveModules}">
-
-        <f:facet name="header">
-            Modules
-        </f:facet>
-
+       
         <p:column>
             <f:facet name="header">
                 <p:outputLabel value="Active"/>
@@ -122,26 +113,7 @@ Email: info@dpbennett.com.jm
             </p:commandButton>           
         </p:column>
 
-    </p:dataTable>        
-    <p:toolbar>
-        <p:toolbarGroup align="left" >   
-            <p:commandButton title="Add new module"                                  
-                             value="New"
-                             actionListener="#{systemManager.createNewModule}"
-                             update=":appForm:mainTabView:centerTabView:modulesTable"
-                             global="true"
-                             process="@this"
-                             icon="pi pi-plus" >
-
-                <p:ajax event="dialogReturn" 
-                        listener="#{systemManager.doActiveModuleSearch}"
-                        update=":appForm:mainTabView:centerTabView:modulesTable" />
-
-            </p:commandButton>     
-
-        </p:toolbarGroup>
-
-    </p:toolbar>
+    </p:dataTable>      
 
 </html>
 

@@ -30,7 +30,10 @@ Email: info@dpbennett.com.jm
 
                 <f:selectItems value="#{systemManager.groupedSearchTypes}" />
 
-                <p:ajax update="dateField,datePeriod,startSearchDate,endSearchDate" global="false" process="@this" />
+                <p:ajax update="dateField,datePeriod,startSearchDate,endSearchDate" 
+                        listener="#{systemManager.updateSearchType}"
+                        global="false" 
+                        process="@this" />
 
             </p:selectOneMenu>
 
@@ -77,10 +80,8 @@ Email: info@dpbennett.com.jm
                         pattern="MMM dd, yyyy" />
 
         </h:panelGrid>   
-        <p:toolbar>
-            <p:toolbarGroup align="left" >
-                <p:inputText value="#{systemManager.searchText}"                               
-                             style="width: 75%;"
+       
+                <p:inputText value="#{systemManager.searchText}"     
                              id="searchText" />                    
 
                 <p:spacer width="5" />
@@ -90,8 +91,7 @@ Email: info@dpbennett.com.jm
                                  update=":appForm:mainTabView,:appForm:dashboardDefaultCommandButton"
                                  icon="pi pi-search"
                                  process="@form"/>
-            </p:toolbarGroup>
-        </p:toolbar>
+            
         <p:watermark value="Enter search text" for="searchText" />
    
 </html>

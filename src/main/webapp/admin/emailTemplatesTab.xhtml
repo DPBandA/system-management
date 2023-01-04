@@ -1,6 +1,6 @@
 <!--
 System Management (SM) 
-Copyright (C) 2022  D P Bennett & Associates Limited
+Copyright (C) 2023  D P Bennett & Associates Limited
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU Affero General Public License as published by
@@ -22,66 +22,55 @@ Email: info@dpbennett.com.jm
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:ui="http://java.sun.com/jsf/facelets"> 
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    
+    <p:commandButton title="Add new email template"                                  
+                     value="New"
+                     actionListener="#{systemManager.createNewEmailTemplate}"
+                     global="true"
+                     process="@this"
+                     icon="pi pi-plus">
 
-    <p:toolbar>
-        <p:toolbarGroup align="left" >   
-            <p:commandButton title="Add new email template"                                  
-                             value="New"
-                             actionListener="#{systemManager.createNewEmailTemplate}"
-                             global="true"
-                             process="@this"
-                             icon="pi pi-plus">
+        <p:ajax event="dialogReturn" 
+                listener="#{systemManager.doEmailSearch}"
+                update=":appForm:mainTabView:centerTabView:emailsTable"/>
 
-                <p:ajax event="dialogReturn" 
-                        listener="#{systemManager.doEmailSearch}"
-                        update=":appForm:mainTabView:centerTabView:emailsTable"/>
+    </p:commandButton> 
+    <p:spacer width="20" />
+    <p:inputText id="emailSearchText" 
+                 value="#{systemManager.emailSearchText}"
+                 placeholder="Enter any part of subject">
+        <p:ajax event="keyup"
+                global="false"
+                update=":appForm:mainTabView:centerTabView:emailsTable"
+                listener="#{systemManager.doEmailSearch}"
+                process="@this"/>
+    </p:inputText>
 
-            </p:commandButton> 
-            <p:spacer width="20" />
-            <p:inputText id="emailSearchText" 
-                         value="#{systemManager.emailSearchText}"
-                         style="width:300px;" placeholder="Enter any part of subject">
-                <p:ajax event="keyup"
-                        global="false"
-                        update=":appForm:mainTabView:centerTabView:emailsTable"
-                        listener="#{systemManager.doEmailSearch}"
-                        process="@this"/>
-            </p:inputText>
-        </p:toolbarGroup>
-
-        <p:toolbarGroup align="right">
-            <h:panelGrid columns="2" cellpadding="5">
-                <p:outputLabel for="activeEmailsOnly" value="Active email templates only" />  
-                <h:panelGroup>
-                    <p:selectBooleanCheckbox style="vertical-align: middle"
-                                             id="activeEmailsOnly"
-                                             value="#{systemManager.isActiveEmailsOnly}" >
-                        <p:ajax  update=":appForm:mainTabView:centerTabView:emailsTable"
-                                 listener="#{systemManager.doEmailSearch}"
-                                 event="change"                                      
-                                 process="@this"/>
-                    </p:selectBooleanCheckbox>            
-                    <p:tooltip for="activeEmailsOnly" value="Check to show active email templates only" 
-                               showEffect="fade" hideEffect="fade" />
-                    <p:spacer width="15" />                
-                </h:panelGroup>
-            </h:panelGrid>
-        </p:toolbarGroup>
-    </p:toolbar>    
+    <h:panelGroup style="float: right;" >          
+            <p:outputLabel for="activeEmailsOnly" value="Active" />  
+            <p:spacer width="10" />
+            <p:selectBooleanCheckbox style="vertical-align: middle"
+                                     id="activeEmailsOnly"
+                                     value="#{systemManager.isActiveEmailsOnly}" >
+                <p:ajax  update=":appForm:mainTabView:centerTabView:emailsTable"
+                         listener="#{systemManager.doEmailSearch}"
+                         event="change"                                      
+                         process="@this"/>
+            </p:selectBooleanCheckbox>            
+            <p:tooltip for="activeEmailsOnly" value="Check to show active email templates only" 
+                       showEffect="fade" hideEffect="fade" />                    
+    </h:panelGroup>
 
     <p:dataTable id="emailsTable"                                       
                  var="email"                                        
                  paginator="true"
+                 reflow="true"
                  rows="15"
-                 style="margin-top: 1px;"
+                 style="margin-top: 5px;"
                  widgetVar="emailsTableVar"
                  paginatorTemplate="{FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
                  value="#{systemManager.foundEmails}">
-
-        <f:facet name="header">
-            Email Templates
-        </f:facet>
 
         <p:column>
             <f:facet name="header">
