@@ -1,6 +1,6 @@
 <!--
 System Management (SM) 
-Copyright (C) 2022  D P Bennett & Associates Limited
+Copyright (C) 2023  D P Bennett & Associates Limited
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU Affero General Public License as published by
@@ -75,82 +75,68 @@ Email: info@dpbennett.com.jm
                                 <div class="col-12 md:col-3">
                                     <h:panelGroup style="float: right;" >
 
-                                <p:badge value="#{systemManager.sizeOfActiveNotifications}" 
-                                             id="notificationBadge"
-                                             visible="#{systemManager.hasActiveNotifications}" 
-                                             severity="danger">
+                                        <p:badge value="#{systemManager.sizeOfActiveNotifications}" 
+                                                 id="notificationBadge"
+                                                 visible="#{systemManager.hasActiveNotifications}" 
+                                                 severity="danger">
 
-                                        <p:commandButton id="notifications" 
-                                                         class="notification-button"
-                                                         icon="pi pi-bell" />
-                                        <p:overlayPanel for="notifications"   
-                                                        widgetVar="NotificationPanelVar"
-                                                        style="width:400px;border: 0;">
-                                            <p:orderList value="#{systemManager.notifications}" 
-                                                         var="notification" 
-                                                         itemValue="#{notification}"
-                                                         converter="#{notificationConverter}" 
-                                                         controlsLocation="none" responsive="true" >
+                                            <p:commandButton id="notifications" 
+                                                             class="notification-button"
+                                                             icon="pi pi-bell" />
+                                            <p:overlayPanel for="notifications"   
+                                                            widgetVar="NotificationPanelVar"
+                                                            style="width:400px;border: 0;">
+                                                <p:orderList value="#{systemManager.notifications}" 
+                                                             var="notification" 
+                                                             itemValue="#{notification}"
+                                                             converter="#{notificationConverter}" 
+                                                             controlsLocation="none" responsive="true" >
 
-                                                <p:ajax event="select" 
-                                                        update=":appForm:notificationBadge"
-                                                        oncomplete="PF('NotificationPanelVar').hide()"
-                                                        listener="#{systemManager.onNotificationSelect}" />
-           
-                                                <p:column>
-                                                    <p:outputLabel value="#{notification.name}" 
-                                                                  style="#{notification.style}"/>
-                                                </p:column>                                           
+                                                    <p:ajax event="select" 
+                                                            update=":appForm:notificationBadge"
+                                                            oncomplete="PF('NotificationPanelVar').hide()"
+                                                            listener="#{systemManager.onNotificationSelect}" />
 
-                                            </p:orderList>
-                                        </p:overlayPanel>
+                                                    <p:column>
+                                                        <p:outputLabel value="#{notification.name}" 
+                                                                      style="#{notification.style}"/>
+                                                    </p:column>                                           
 
-                                    </p:badge>
-                                    <p:spacer width="30"/>
-                                    <p:menuButton iconPos="left"
-                                                  icon="pi pi-user"
-                                                  title="#{systemManager.user.employee.firstName} #{systemManager.user.employee.lastName} (#{systemManager.user.username})"
-                                                  id="userMenu"
-                                                  class="usermenu-button" >
+                                                </p:orderList>
+                                            </p:overlayPanel>
 
-                                        <p:menuitem actionListener="#{systemManager.viewUserProfile}"                                            
-                                                    update=":userProfileDialogForm"
-                                                    oncomplete="PF('userProfileDialog').show();"
-                                                    icon="pi pi-cog"
-                                                    value="Profile"
-                                                    process="@this"/>  
-                                        <p:menuitem actionListener="#{systemManager.logout}"                                             
-                                                    icon="pi pi-sign-out"
-                                                    value="Logout"
-                                                    oncomplete="location.reload();"
-                                                    process="@this"/>    
+                                        </p:badge>
+                                        <p:spacer width="30"/>
+                                        <p:menuButton iconPos="left"
+                                                      icon="pi pi-user"
+                                                      title="#{systemManager.user.employee.firstName} #{systemManager.user.employee.lastName} (#{systemManager.user.username})"
+                                                      id="userMenu"
+                                                      class="usermenu-button" >
 
-                                    </p:menuButton>   
+                                            <p:menuitem actionListener="#{systemManager.viewUserProfile}"                                            
+                                                        update=":userProfileDialogForm"
+                                                        oncomplete="PF('userProfileDialog').show();"
+                                                        icon="pi pi-cog"
+                                                        value="Profile"
+                                                        process="@this"/>  
+                                            <p:menuitem actionListener="#{systemManager.logout}"                                             
+                                                        icon="pi pi-sign-out"
+                                                        value="Logout"
+                                                        oncomplete="location.reload();"
+                                                        process="@this"/>    
+
+                                        </p:menuButton>   
                                    </h:panelGroup>
                                 </div>
                             </div>
                         </div>
                         <div class="col-12">
                             <div class="grid">
-                                <div class="col-12 md:col-4">
-                                    
-                                        <p:commandButton
-                                            id="doGeneralSearchButton"
-                                            style="visibility: hidden;"
-                                            global="false"                                        
-                                            value=""  
-                                            update=":appForm:growl3"
-                                            title="This is the default button that accepts the enter key press" 
-                                            onstart="PF('longProcessDialogVar').show();"                                 
-                                            oncomplete="PF('longProcessDialogVar').hide();"
-                                            actionListener="#{systemManager.doDefaultSearch}"
-                                            process="@form"/>                    
+                                <div class="col-12 md:col-4">                                    
+                                      
+                                    <p:defaultCommand target="doSearch" />
 
-                                        <p:defaultCommand id="dashboardDefaultCommandButton" 
-                                                  target="doGeneralSearchButton" />
-
-                                        <ui:include src="dashboard/admin/generalAdminTab.xhtml" />
-                                     
+                                    <ui:include src="dashboard/admin/generalAdminTab.xhtml" />                                     
                                    
                                 </div>    
                                 <div class="col-12 md:col-8">
