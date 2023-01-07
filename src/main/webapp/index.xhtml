@@ -34,10 +34,10 @@ Email: info@dpbennett.com.jm
         <h:outputStylesheet library="webjars" name="primeflex/3.2.1/primeflex.min.css" />       
         <link rel="stylesheet" type="text/css" href="css/main.css" />
         <link rel="stylesheet" type="text/css" href="css/responsive.css" />
-        
+
     </h:head>
     <h:body>
-        
+
         <ui:include src="common/commonDialogs.xhtml" />          
         <ui:include src="admin/loginDialog.xhtml"/>         
         <ui:include src="common/userProfileDialog.xhtml"/> 
@@ -46,147 +46,145 @@ Email: info@dpbennett.com.jm
 
             <p:growl id="growl3" life="5000" showDetail="true" />
             <p:panel>
-            <div class="grid">
-               
-                <div class="col-12 md:col-12 col-nogutter">
-                    <div class="grid">
-                        <div class="col-12 col-nogutter">
-                            <div class="grid">
-                                <div class="col-12 md:col-3">
-                                   <h:panelGroup style="float: left;margin-right: 10px;" >
-                                       <p:graphicImage value="#{systemManager.logoURL}"
-                                            class="logo"
-                                            height="#{systemManager.logoURLImageHeight}" 
-                                            width="#{systemManager.logoURLImageWidth}"/>
-                                   </h:panelGroup>
-                                   <h:panelGrid columns="1" cellspacing="0" >   
+                <div class="grid">
 
-                                        <p:outputLabel value="System Manager"
-                                                       class="header-text" />
+                    <div class="col-12 md:col-12 col-nogutter">
+                        <div class="grid">
+                            <div class="col-12 col-nogutter">
+                                <div class="grid">
+                                    <div class="col-12 md:col-3">
+                                        <h:panelGroup style="float: left;margin-right: 10px;" >
+                                            <p:graphicImage value="#{systemManager.logoURL}"
+                                                            class="logo"
+                                                            height="#{systemManager.logoURLImageHeight}" 
+                                                            width="#{systemManager.logoURLImageWidth}"/>
+                                        </h:panelGroup>
+                                        <h:panelGrid columns="1" cellspacing="0" >   
 
-                                        <p:outputLabel value="System Administration &amp; Management"
-                                                       class="subheader-text" />  
+                                            <p:outputLabel value="System Manager"
+                                                           class="header-text" />
 
-                                    </h:panelGrid>
-                                </div>    
-                                <div class="col-12 md:col-6">
-                                    
-                                </div>  
-                                <div class="col-12 md:col-3">
-                                    <h:panelGroup style="float: right;" >
+                                            <p:outputLabel value="System Administration &amp; Management"
+                                                           class="subheader-text" />  
 
-                                        <p:badge value="#{systemManager.sizeOfActiveNotifications}" 
-                                                 id="notificationBadge"
-                                                 visible="#{systemManager.hasActiveNotifications}" 
-                                                 severity="danger">
+                                        </h:panelGrid>
+                                    </div>    
+                                   
+                                    <div class="col-12 md:col-9">
+                                        <h:panelGroup style="float: right;" >
 
-                                            <p:commandButton id="notifications" 
-                                                             class="notification-button"
-                                                             icon="pi pi-bell" />
-                                            <p:overlayPanel for="notifications"   
-                                                            widgetVar="NotificationPanelVar"
-                                                            style="width:400px;border: 0;">
-                                                <p:orderList value="#{systemManager.notifications}" 
-                                                             var="notification" 
-                                                             itemValue="#{notification}"
-                                                             converter="#{notificationConverter}" 
-                                                             controlsLocation="none" responsive="true" >
+                                            <p:badge value="#{systemManager.sizeOfActiveNotifications}" 
+                                                     id="notificationBadge"
+                                                     visible="#{systemManager.hasActiveNotifications}" 
+                                                     severity="danger">
 
-                                                    <p:ajax event="select" 
-                                                            update=":appForm:notificationBadge"
-                                                            oncomplete="PF('NotificationPanelVar').hide()"
-                                                            listener="#{systemManager.onNotificationSelect}" />
+                                                <p:commandButton id="notifications" 
+                                                                 class="notification-button"
+                                                                 icon="pi pi-bell" />
+                                                <p:overlayPanel for="notifications"   
+                                                                widgetVar="NotificationPanelVar"
+                                                                style="width:400px;border: 0;">
+                                                    <p:orderList value="#{systemManager.notifications}" 
+                                                                 var="notification" 
+                                                                 itemValue="#{notification}"
+                                                                 converter="#{notificationConverter}" 
+                                                                 controlsLocation="none" responsive="true" >
 
-                                                    <p:column>
-                                                        <p:outputLabel value="#{notification.name}" 
-                                                                      style="#{notification.style}"/>
-                                                    </p:column>                                           
+                                                        <p:ajax event="select" 
+                                                                update=":appForm:notificationBadge"
+                                                                oncomplete="PF('NotificationPanelVar').hide()"
+                                                                listener="#{systemManager.onNotificationSelect}" />
 
-                                                </p:orderList>
-                                            </p:overlayPanel>
+                                                        <p:column>
+                                                            <p:outputLabel value="#{notification.name}" 
+                                                                           style="#{notification.style}"/>
+                                                        </p:column>                                           
 
-                                        </p:badge>
-                                        <p:spacer width="30"/>
-                                        <p:menuButton iconPos="left"
-                                                      icon="pi pi-user"
-                                                      title="#{systemManager.user.employee.firstName} #{systemManager.user.employee.lastName} (#{systemManager.user.username})"
-                                                      id="userMenu"
-                                                      class="usermenu-button" >
+                                                    </p:orderList>
+                                                </p:overlayPanel>
 
-                                            <p:menuitem actionListener="#{systemManager.viewUserProfile}"                                            
-                                                        update=":userProfileDialogForm"
-                                                        oncomplete="PF('userProfileDialog').show();"
-                                                        icon="pi pi-cog"
-                                                        value="Profile"
-                                                        process="@this"/>  
-                                            <p:menuitem actionListener="#{systemManager.logout}"                                             
-                                                        icon="pi pi-sign-out"
-                                                        value="Logout"
-                                                        oncomplete="location.reload();"
-                                                        process="@this"/>    
+                                            </p:badge>
+                                            <p:spacer width="30"/>
+                                            <p:menuButton iconPos="left"
+                                                          icon="pi pi-user"
+                                                          title="#{systemManager.user.employee.firstName} #{systemManager.user.employee.lastName} (#{systemManager.user.username})"
+                                                          id="userMenu"
+                                                          class="usermenu-button" >
 
-                                        </p:menuButton>   
-                                   </h:panelGroup>
+                                                <p:menuitem actionListener="#{systemManager.viewUserProfile}"                                            
+                                                            update=":userProfileDialogForm"
+                                                            oncomplete="PF('userProfileDialog').show();"
+                                                            icon="pi pi-cog"
+                                                            value="Profile"
+                                                            process="@this"/>  
+                                                <p:menuitem actionListener="#{systemManager.logout}"                                             
+                                                            icon="pi pi-sign-out"
+                                                            value="Logout"
+                                                            oncomplete="location.reload();"
+                                                            process="@this"/>    
+
+                                            </p:menuButton>   
+                                        </h:panelGroup>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="grid">
+                                    <div class="col-12 md:col-4">                                    
+
+                                        <p:defaultCommand target="doSearch" />
+
+                                        <ui:include src="dashboard/admin/generalAdminTab.xhtml" />                                     
+
+                                    </div>    
+                                    <div class="col-12 md:col-8">
+                                        <p:tabView id="mainTabView"  
+                                                   rendered="#{systemManager.mainTabView.render}"
+                                                   value="#{systemManager.mainTabView.tabs}" 
+                                                   var="t" 
+                                                   widgetVar="mainTabViewVar">
+
+                                            <p:ajax event="tabClose" 
+                                                    immediate="true"
+                                                    process="@this"
+                                                    update=""
+                                                    listener="#{systemManager.onMainViewTabClose}" />  
+
+                                            <p:ajax event="tabChange" 
+                                                    immediate="true"
+                                                    process="@this"                                
+                                                    listener="#{systemManager.onMainViewTabChange}" />  
+
+
+                                            <p:tab title="#{t.name}" closable="true"  >
+
+                                                <h:panelGroup rendered="#{t.id == 'System Administration'}" >
+                                                    <ui:include src="admin/generalAdminTab.xhtml" /> 
+                                                </h:panelGroup>  
+
+                                            </p:tab>
+
+                                        </p:tabView> 
+
+                                        <p:commandButton
+                                            id="doNothingButton"
+                                            style="visibility: hidden;"
+                                            global="false"                                        
+                                            value=""                                       
+                                            title="This is the default button that accepts the enter key press"                                       
+                                            process="@this"/> 
+
+                                        <p:defaultCommand target=":appForm:doNothingButton" />
+                                    </div>                              
                                 </div>
                             </div>
                         </div>
-                        <div class="col-12">
-                            <div class="grid">
-                                <div class="col-12 md:col-4">                                    
-                                      
-                                    <p:defaultCommand target="doSearch" />
-
-                                    <ui:include src="dashboard/admin/generalAdminTab.xhtml" />                                     
-                                   
-                                </div>    
-                                <div class="col-12 md:col-8">
-                                    <p:tabView id="mainTabView"  
-                                       rendered="#{systemManager.mainTabView.render}"
-                                       value="#{systemManager.mainTabView.tabs}" 
-                                       var="t" 
-                                       widgetVar="mainTabViewVar">
-
-                                <p:ajax event="tabClose" 
-                                        immediate="true"
-                                        process="@this"
-                                        update=""
-                                        listener="#{systemManager.onMainViewTabClose}" />  
-
-                                <p:ajax event="tabChange" 
-                                        immediate="true"
-                                        process="@this"                                
-                                        listener="#{systemManager.onMainViewTabChange}" />  
-
-
-                                <p:tab title="#{t.name}" closable="true"  >
-
-                                    <h:panelGroup rendered="#{t.id == 'System Administration'}" >
-                                        <ui:include src="admin/generalAdminTab.xhtml" /> 
-                                    </h:panelGroup>  
-
-                                </p:tab>
-
-                            </p:tabView> 
-
-                            <p:commandButton
-                                id="doNothingButton"
-                                style="visibility: hidden;"
-                                global="false"                                        
-                                value=""                                       
-                                title="This is the default button that accepts the enter key press"                                       
-                                process="@this"/> 
-
-                            <p:defaultCommand target=":appForm:doNothingButton" />
-                                </div>                              
-                            </div>
-                        </div>
+                    </div>
+                    <div class="col-12">
+                        <p:outputLabel value=" &copy; D P Bennett &amp; Associates"
+                                       class="header-text" />
                     </div>
                 </div>
-                <div class="col-12">
-                    <p:outputLabel value=" &copy; D P Bennett &amp; Associates"
-                                   class="header-text" />
-                </div>
-            </div>
             </p:panel>
             <p:poll interval="60" 
                     global="false"
