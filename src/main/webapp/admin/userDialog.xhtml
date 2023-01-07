@@ -1,6 +1,6 @@
 <!--
 System Management (SM) 
-Copyright (C) 2022  D P Bennett & Associates Limited
+Copyright (C) 2023  D P Bennett & Associates Limited
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU Affero General Public License as published by
@@ -30,13 +30,6 @@ Email: info@dpbennett.com.jm
         <h:outputStylesheet library="webjars" name="primeflex/3.2.1/primeflex.min.css" />
         <link rel="stylesheet" type="text/css" href="../css/main.css" />
         <link rel="stylesheet" type="text/css" href="../css/responsive.css" />
-        <style type="text/css">
-            /*
-            body {
-                transform: scale(0.70);
-            }
-            */
-        </style>
     </h:head>
     <h:body >  
 
@@ -195,8 +188,7 @@ Email: info@dpbennett.com.jm
                 <p:tab title="Preferences" >
                     <h:panelGrid columns="2" cellpadding="5">
                         <p:outputLabel value="Theme" style="font-weight: bold;"/>
-                        <p:selectOneMenu id="theme"     
-                                         style="width: 200px;"
+                        <p:selectOneMenu id="theme" 
                                          value="#{systemManager.selectedUser.PFThemeName}"
                                          title="#{systemManager.selectedUser.PFThemeName}" >
 
@@ -212,8 +204,7 @@ Email: info@dpbennett.com.jm
                         </p:selectOneMenu>
                         
                         <p:outputLabel value="Job table view" style="font-weight: bold;"/>
-                        <p:selectOneMenu style="width: 200px;"
-                                         value="#{systemManager.selectedUser.jobTableViewPreference}"
+                        <p:selectOneMenu value="#{systemManager.selectedUser.jobTableViewPreference}"
                                          title="#{systemManager.selectedUser.jobTableViewPreference}" >
 
                             <f:selectItems  value="#{systemManager.jobTableViews}"
