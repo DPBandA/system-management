@@ -24,7 +24,7 @@ Email: info@dpbennett.com.jm
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:f="http://java.sun.com/jsf/core">
 
-    
+
     <p:commandButton title="Add new option"                                  
                      value="New"
                      actionListener="#{systemManager.createNewSystemOption}" 
@@ -66,8 +66,12 @@ Email: info@dpbennett.com.jm
                 <p:outputLabel value="Description"/>
             </f:facet>
             <p:cellEditor>
-                <f:facet name="output"> <p:outputLabel value="#{systemOption.comments}" /></f:facet>
-                <f:facet name="input"><p:inputText value="#{systemOption.comments}" style="width:96%"/></f:facet>
+                <f:facet name="output"> 
+                    <p:outputLabel value="#{systemOption.comments}" />
+                </f:facet>
+                <f:facet name="input">
+                    <p:inputText value="#{systemOption.comments}" style="width:96%"/>
+                </f:facet>
             </p:cellEditor>                                           
         </p:column>   
 
@@ -76,8 +80,12 @@ Email: info@dpbennett.com.jm
                 <p:outputLabel value="Name"/>
             </f:facet>
             <p:cellEditor>
-                <f:facet name="output"> <p:outputLabel value="#{systemOption.name}" /></f:facet>
-                <f:facet name="input"><p:inputText value="#{systemOption.name}" style="width:96%"/></f:facet>
+                <f:facet name="output"> 
+                    <p:outputLabel value="#{systemOption.name}" />
+                </f:facet>
+                <f:facet name="input">
+                    <p:inputText value="#{systemOption.name}" style="width:96%"/>
+                </f:facet>
             </p:cellEditor>                                         
         </p:column>   
 
@@ -86,8 +94,12 @@ Email: info@dpbennett.com.jm
                 <p:outputLabel value="Value"/>
             </f:facet>
             <p:cellEditor>
-                <f:facet name="output"> <p:outputLabel value="#{systemOption.optionValue}" /></f:facet>
-                <f:facet name="input"><p:inputText value="#{systemOption.optionValue}" style="width:96%"/></f:facet>
+                <f:facet name="output"> 
+                    <p:outputLabel value="#{systemOption.optionValue}" />
+                </f:facet>
+                <f:facet name="input">
+                    <p:inputText value="#{systemOption.optionValue}" style="width:96%"/>
+                </f:facet>
             </p:cellEditor>                                         
         </p:column>   
 
