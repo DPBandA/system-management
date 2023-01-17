@@ -32,7 +32,7 @@ Email: info@dpbennett.com.jm
         <link rel="stylesheet" href="../css/main.css" />
         <link rel="stylesheet" type="text/css" href="../css/responsive.css" />        
     </h:head>
-    
+
     <h:body >  
         <ui:include src="../common/commonDialogs.xhtml"/>           
         <h:form id="emailTemplateDialogForm">                    
@@ -52,7 +52,7 @@ Email: info@dpbennett.com.jm
                                      icon="pi pi-times" />            
                 </p:toolbarGroup>
             </p:toolbar>
-            <p:scrollPanel style="height: 600px;">
+
             <p:tabView style="margin-bottom: 1px;margin-bottom: 1px;" >
                 <p:tab title="General" >   
                     <h:panelGrid columns="2" cellpadding="5">
@@ -67,15 +67,15 @@ Email: info@dpbennett.com.jm
                                      id="emailName" 
                                      validator="requiredFieldValidator" /> 
                         <ui:remove>
-                        <p:outputLabel value="Category:" style="font-weight: bold;" />
-                        <p:selectOneMenu value="#{systemManager.selectedEmail.category}" 
-                                         id="emailCategory" >
+                            <p:outputLabel value="Category:" style="font-weight: bold;" />
+                            <p:selectOneMenu value="#{systemManager.selectedEmail.category}" 
+                                             id="emailCategory" >
 
-                            <f:validator validatorId="requiredFieldValidator" />
+                                <f:validator validatorId="requiredFieldValidator" />
 
-                            <f:selectItems value="#{systemManager.emailCategories}"/>
+                                <f:selectItems value="#{systemManager.emailCategories}"/>
 
-                        </p:selectOneMenu>
+                            </p:selectOneMenu>
                         </ui:remove>
                         <p:outputLabel value="Subject" style="font-weight: bold;" />
                         <p:inputText value="#{systemManager.selectedEmail.subject}"
@@ -106,8 +106,8 @@ Email: info@dpbennett.com.jm
                         </h:panelGroup>
 
                         <p:outputLabel id="emailContentLabel" 
-                                      rendered="#{!systemManager.selectedEmail.usePackagedTemplate}"
-                                      value="Content" />
+                                       rendered="#{!systemManager.selectedEmail.usePackagedTemplate}"
+                                       value="Content" />
                         <p:inputTextarea  value="#{systemManager.selectedEmail.content}"
                                           id="emailContent"
                                           rendered="#{!systemManager.selectedEmail.usePackagedTemplate}"
@@ -141,7 +141,7 @@ Email: info@dpbennett.com.jm
                     </h:panelGrid>
                 </p:tab >
             </p:tabView>
-            </p:scrollPanel>
+
             <p:toolbar>
                 <p:toolbarGroup>
                     <p:commandButton value="Ok"

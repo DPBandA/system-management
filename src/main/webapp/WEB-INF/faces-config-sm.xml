@@ -55,27 +55,27 @@
     </converter>
     <converter>
         <converter-id>accPacCustomerConverter</converter-id>
-        <converter-class>jm.com.dpbennett.sm.converter.AccPacCustomerConverter</converter-class>
+        <converter-class>jm.com.dpbennett.fm.converter.AccPacCustomerConverter</converter-class>
     </converter>    
     <converter>
         <converter-id>accountingCodeConverter</converter-id>
-        <converter-class>jm.com.dpbennett.sm.converter.AccountingCodeConverter</converter-class>
+        <converter-class>jm.com.dpbennett.fm.converter.AccountingCodeConverter</converter-class>
     </converter>
     <converter>
         <converter-id>taxConverter</converter-id>
-        <converter-class>jm.com.dpbennett.sm.converter.TaxConverter</converter-class>
+        <converter-class>jm.com.dpbennett.fm.converter.TaxConverter</converter-class>
     </converter>
     <converter>
         <converter-id>discountConverter</converter-id>
-        <converter-class>jm.com.dpbennett.sm.converter.DiscountConverter</converter-class>
+        <converter-class>jm.com.dpbennett.fm.converter.DiscountConverter</converter-class>
     </converter>
     <converter>
         <converter-id>serviceConverter</converter-id>
-        <converter-class>jm.com.dpbennett.sm.converter.ServiceConverter</converter-class>
+        <converter-class>jm.com.dpbennett.fm.converter.ServiceConverter</converter-class>
     </converter>  
     <converter>
         <converter-id>activeMarketProductConverter</converter-id>
-        <converter-class>jm.com.dpbennett.sm.converter.ActiveMarketProductConverter</converter-class>
+        <converter-class>jm.com.dpbennett.fm.converter.ActiveMarketProductConverter</converter-class>
     </converter>
     <converter>
         <converter-id>activeDocumentStandardConverter</converter-id>

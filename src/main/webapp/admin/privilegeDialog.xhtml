@@ -32,7 +32,7 @@ Email: info@dpbennett.com.jm
         <link rel="stylesheet" type="text/css" href="../css/main.css" />
         <link rel="stylesheet" type="text/css" href="../css/responsive.css" />
     </h:head>
-    
+
     <h:body > 
 
         <ui:include src="../common/commonDialogs.xhtml"/> 
@@ -42,63 +42,63 @@ Email: info@dpbennett.com.jm
             <p:growl id="privilege_growl" life="5000" showDetail="true"/>
 
             <ui:include src="privilegeDialogToolbar.xhtml" /> 
+            <p:scrollPanel style="height: #{financeManager.scrollPanelHeight};">
+                <p:panel style="margin-bottom: 1px;margin-top: 1px;">
+                    <h:panelGrid columns="2" cellpadding="5">
 
-            <p:panel style="margin-bottom: 1px;margin-top: 1px;">
-                <h:panelGrid columns="2" cellpadding="5">
+                        <p:outputLabel value="Active"                                    
+                                       for="activePrivilege" 
+                                       style="font-weight: bold;" /> 
+                        <p:selectBooleanCheckbox id="activePrivilege" 
+                                                 disabled="true"
+                                                 value="#{systemManager.selectedPrivilege.active}" />                    
 
-                    <p:outputLabel value="Active"                                    
-                                   for="activePrivilege" 
-                                   style="font-weight: bold;" /> 
-                    <p:selectBooleanCheckbox id="activePrivilege" 
-                                             disabled="true"
-                                             value="#{systemManager.selectedPrivilege.active}" />                    
-
-                    <p:outputLabel value="Name" for="name" style="font-weight: bold;"/>
-                    <p:inputText id="name"
-                                 value="#{systemManager.selectedPrivilege.name}"  
-                                 style="width: 275px;"
-                                 validatorMessage="A valid name is required"
-                                 validator="requiredFieldValidator" >       
-
-                        <p:ajax event="change"                                                       
-                                process="@this"/>
-
-                    </p:inputText>
-
-                    <p:outputLabel value="Description" for="description" style="font-weight: bold;"/>       
-                    <p:inputText id="description"
-                                 value="#{systemManager.selectedPrivilege.description}"  
-                                 style="width: 275px;"
-                                 validator="requiredFieldValidator" >       
-
-                        <p:ajax event="change"                                                       
-                                process="@this"/>
-
-                    </p:inputText>
-                    <ui:remove>
-                        <p:inputTextarea
-                            id="description"
-                            value="#{systemManager.selectedPrivilege.description}" 
-                            rows="5"
-                            counter="descriptionCharsRemaining"
-                            counterTemplate="{0} characters remaining."
-                            autoResize="true"
-                            maxlength="250" 
-                            styleClass="#{not component.valid ? 'invalid-inputtextarea-field' : ''}" 
-                            style="width: 275px;">
-
-                            <f:validator validatorId="requiredFieldValidator" />
+                        <p:outputLabel value="Name" for="name" style="font-weight: bold;"/>
+                        <p:inputText id="name"
+                                     value="#{systemManager.selectedPrivilege.name}"  
+                                     style="width: 275px;"
+                                     validatorMessage="A valid name is required"
+                                     validator="requiredFieldValidator" >       
 
                             <p:ajax event="change"                                                       
                                     process="@this"/>
 
-                        </p:inputTextarea> 
-                        <p:outputLabel value="&nbsp;&nbsp;" />
-                        <p:outputLabel id="descriptionCharsRemaining" />
-                    </ui:remove>
-                </h:panelGrid>
-            </p:panel>
+                        </p:inputText>
 
+                        <p:outputLabel value="Description" for="description" style="font-weight: bold;"/>       
+                        <p:inputText id="description"
+                                     value="#{systemManager.selectedPrivilege.description}"  
+                                     style="width: 275px;"
+                                     validator="requiredFieldValidator" >       
+
+                            <p:ajax event="change"                                                       
+                                    process="@this"/>
+
+                        </p:inputText>
+                        <ui:remove>
+                            <p:inputTextarea
+                                id="description"
+                                value="#{systemManager.selectedPrivilege.description}" 
+                                rows="5"
+                                counter="descriptionCharsRemaining"
+                                counterTemplate="{0} characters remaining."
+                                autoResize="true"
+                                maxlength="250" 
+                                styleClass="#{not component.valid ? 'invalid-inputtextarea-field' : ''}" 
+                                style="width: 275px;">
+
+                                <f:validator validatorId="requiredFieldValidator" />
+
+                                <p:ajax event="change"                                                       
+                                        process="@this"/>
+
+                            </p:inputTextarea> 
+                            <p:outputLabel value="&nbsp;&nbsp;" />
+                            <p:outputLabel id="descriptionCharsRemaining" />
+                        </ui:remove>
+                    </h:panelGrid>
+                </p:panel>
+            </p:scrollPanel>
             <ui:include src="privilegeDialogToolbar.xhtml" /> 
 
         </h:form> 
