@@ -1,10 +1,8 @@
-/*
-.ui-widget, .ui-widget .ui-widget {
-    font-size: 90% !important;
+html {
+    font-size: 14px;
 }
-*/
 
-.ui-widget, 
+.ui-widget,
 .ui-selectonemenu-items
 {
     font-size: 0.850em !important;
@@ -41,14 +39,14 @@
 
 .ui-button.search-button
 {
-    
+
 }
 
 .ui-button-text {
-   
+
 }
 
-.logo  
+.logo
 {
     width: 3em !important;
     height: 3em !important;
@@ -60,7 +58,7 @@
 
 .ui-tabs
 {
-    
+
 }
 
 .ui-datatable
