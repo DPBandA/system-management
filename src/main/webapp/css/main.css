@@ -1,5 +1,5 @@
 html {
-     font-size: 11px;
+    font-size: 11px;
 }
 
 .jobNumberClass {
@@ -169,4 +169,10 @@ html {
 
 .ui-sticky {
     top: 0px !important;
+}
+
+@media (max-width: 960px) {
+    .ui-sticky {
+        top: 0px !important;
+    }
 }

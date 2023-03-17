@@ -23,75 +23,83 @@ Email: info@dpbennett.com.jm
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:ui="http://java.sun.com/jsf/facelets">
-        
-        <h:panelGrid columns="2" cellspacing="5" >
-            <p:outputLabel value="Search type" />            
-            <p:selectOneMenu value="#{systemManager.searchType}" >
 
-                <f:selectItems value="#{systemManager.groupedSearchTypes}" />
+    <h:panelGrid columns="2" cellspacing="5" >
+        <p:outputLabel value="Search type" />            
+        <p:selectOneMenu value="#{systemManager.searchType}" >
 
-                <p:ajax update="dateField,datePeriod,startSearchDate,endSearchDate" 
-                        listener="#{systemManager.updateSearchType}"
-                        global="false" 
-                        process="@this" />
+            <f:selectItems value="#{systemManager.groupedSearchTypes}" />
 
-            </p:selectOneMenu>
-
-            <p:outputLabel value="Date field" />
-            <p:selectOneMenu value="#{systemManager.dateSearchPeriod.dateField}" 
-                             id="dateField" >
-                <p:ajax                        
-                    listener="#{systemManager.updateDateSearchField}"
-                    global="false"
+            <p:ajax update="dateField,datePeriod,startSearchDate,endSearchDate" 
+                    listener="#{systemManager.updateSearchType}"
+                    global="false" 
                     process="@this" />
 
-                <f:selectItems value="#{systemManager.allDateSearchFields}" />
+        </p:selectOneMenu>
 
-            </p:selectOneMenu>
+        <p:outputLabel value="Date field" />
+        <p:selectOneMenu value="#{systemManager.dateSearchPeriod.dateField}" 
+                         id="dateField" >
+            <p:ajax                        
+                listener="#{systemManager.updateDateSearchField}"
+                global="false"
+                process="@this" />
 
-            <p:outputLabel value="Date period" />               
-            <p:selectOneMenu value= "#{systemManager.dateSearchPeriod.name}" 
-                             id="datePeriod" >
+            <f:selectItems value="#{systemManager.allDateSearchFields}" />
 
-                <p:ajax listener="#{systemManager.dateSearchPeriod.initDatePeriod}"
-                        global="false"
-                        update="startSearchDate,endSearchDate"
-                        process="@this" />
+        </p:selectOneMenu>
 
-                <f:selectItems value="#{systemManager.datePeriods}"/>
+        <p:outputLabel value="Date period" />               
+        <p:selectOneMenu value= "#{systemManager.dateSearchPeriod.name}" 
+                         id="datePeriod" >
 
-            </p:selectOneMenu>
-            <p:outputLabel value="Start" />
-            <p:calendar id="startSearchDate"
-                        value="#{systemManager.dateSearchPeriod.startDate}"                    
-                        size="17"
-                        navigator="true"
-                        validator="requiredFieldValidator"
-                        disabled="#{systemManager.dateSearchPeriod.startDateDisabled}"
-                        pattern="MMM dd, yyyy" />
+            <p:ajax listener="#{systemManager.dateSearchPeriod.initDatePeriod}"
+                    global="false"
+                    update="startSearchDate,endSearchDate"
+                    process="@this" />
 
-            <p:outputLabel value="End" />
-            <p:calendar id="endSearchDate"
-                        value="#{systemManager.dateSearchPeriod.endDate}"
-                        size="17"
-                        navigator="true"
-                        validator="requiredFieldValidator"
-                        disabled="#{systemManager.dateSearchPeriod.endDateDisabled}"
-                        pattern="MMM dd, yyyy" />
+            <f:selectItems value="#{systemManager.datePeriods}"/>
 
-        </h:panelGrid>   
-       
-                <p:inputText value="#{systemManager.searchText}"     
-                             id="searchText" />                    
+        </p:selectOneMenu>
+        <p:outputLabel value="Start" />
+        <p:calendar id="startSearchDate"
+                    value="#{systemManager.dateSearchPeriod.startDate}"                    
+                    size="17"
+                    navigator="true"
+                    validator="requiredFieldValidator"
+                    disabled="#{systemManager.dateSearchPeriod.startDateDisabled}"
+                    pattern="MMM dd, yyyy" />
 
-                <p:spacer width="5" />
-                <p:commandButton id="doSearch"
-                                 class="search-button"   
-                                 actionListener="#{systemManager.doSearch}"
-                                 update=":appForm:mainTabView"
-                                 icon="pi pi-search"
-                                 process="@form"/>
-            
-        <p:watermark value="Enter search text" for="searchText" />
-   
+        <p:outputLabel value="End" />
+        <p:calendar id="endSearchDate"
+                    value="#{systemManager.dateSearchPeriod.endDate}"
+                    size="17"
+                    navigator="true"
+                    validator="requiredFieldValidator"
+                    disabled="#{systemManager.dateSearchPeriod.endDateDisabled}"
+                    pattern="MMM dd, yyyy" />
+
+    </h:panelGrid>   
+
+    <p:inputText value="#{systemManager.searchText}"  
+                 id="searchText" >
+
+        <p:ajax event="keyup"
+                global="false"
+                listener="#{systemManager.updateSearch}"
+                process="@this"/>
+
+    </p:inputText>                     
+
+    <p:spacer width="5" />
+
+    <p:commandButton id="defaultCommand"
+                     class="search-button"   
+                     actionListener="#{systemManager.doDefaultCommand}"
+                     update=":appForm:mainTabView"
+                     icon="pi pi-search"
+                     process="@form" />
+
+    <p:watermark value="Enter search text" for="searchText" />
+
 </html>
