@@ -18,6 +18,18 @@
         </view-handler>
     </application>  
     <converter>
+        <converter-id>activePrivilegeConverter</converter-id>
+        <converter-class>jm.com.dpbennett.sm.converter.ActivePrivilegeConverter</converter-class>
+    </converter>
+    <converter>
+        <converter-id>activeModuleConverter</converter-id>
+        <converter-class>jm.com.dpbennett.sm.converter.ActiveModuleConverter</converter-class>
+    </converter>
+    <converter>
+        <converter-id>activeEmployeeConverter</converter-id>
+        <converter-class>jm.com.dpbennett.sm.converter.ActiveEmployeeConverter</converter-class>
+    </converter>
+    <converter>
         <converter-id>documentTypeConverter</converter-id>
         <converter-class>jm.com.dpbennett.sm.converter.DocumentTypeConverter</converter-class>
     </converter>
@@ -29,6 +41,46 @@
         <converter-id>activeCategoryConverter</converter-id>
         <converter-class>jm.com.dpbennett.sm.converter.ActiveCategoryConverter</converter-class>
     </converter> 
+    <converter>
+        <converter-id>notificationConverter</converter-id>
+        <converter-class>jm.com.dpbennett.sm.converter.NotificationConverter</converter-class>
+    </converter>     
+    <converter>
+        <converter-id>activeDepartmentConverter</converter-id>
+        <converter-class>jm.com.dpbennett.sm.converter.ActiveDepartmentConverter</converter-class>
+    </converter>
+    <converter>
+        <converter-id>activeClientConverter</converter-id>
+        <converter-class>jm.com.dpbennett.sm.converter.ActiveClientConverter</converter-class>
+    </converter>
+    <converter>
+        <converter-id>accPacCustomerConverter</converter-id>
+        <converter-class>jm.com.dpbennett.fm.converter.AccPacCustomerConverter</converter-class>
+    </converter>    
+    <converter>
+        <converter-id>accountingCodeConverter</converter-id>
+        <converter-class>jm.com.dpbennett.fm.converter.AccountingCodeConverter</converter-class>
+    </converter>
+    <converter>
+        <converter-id>taxConverter</converter-id>
+        <converter-class>jm.com.dpbennett.fm.converter.TaxConverter</converter-class>
+    </converter>
+    <converter>
+        <converter-id>discountConverter</converter-id>
+        <converter-class>jm.com.dpbennett.fm.converter.DiscountConverter</converter-class>
+    </converter>
+    <converter>
+        <converter-id>serviceConverter</converter-id>
+        <converter-class>jm.com.dpbennett.fm.converter.ServiceConverter</converter-class>
+    </converter>  
+    <converter>
+        <converter-id>activeMarketProductConverter</converter-id>
+        <converter-class>jm.com.dpbennett.fm.converter.ActiveMarketProductConverter</converter-class>
+    </converter>
+    <converter>
+        <converter-id>activeDocumentStandardConverter</converter-id>
+        <converter-class>jm.com.dpbennett.sm.converter.ActiveDocumentStandardConverter</converter-class>
+    </converter>
     
     <validator>
         <validator-id>jobNumberValidator</validator-id>
@@ -54,13 +106,105 @@
         <validator-id>businessEntityListValidator</validator-id>
         <validator-class>jm.com.dpbennett.sm.validator.BusinessEntityListValidator</validator-class>
     </validator> 
+    <validator>
+        <validator-id>addressLineValidator</validator-id>
+        <validator-class>jm.com.dpbennett.sm.validator.AddressLineValidator</validator-class>
+    </validator>
+    <validator>
+        <validator-id>addressValidator</validator-id>
+        <validator-class>jm.com.dpbennett.sm.validator.AddressValidator</validator-class>
+    </validator>   
+    <validator>
+        <validator-id>contactValidator</validator-id>
+        <validator-class>jm.com.dpbennett.sm.validator.ContactValidator</validator-class>
+    </validator> 
+     <validator>
+        <validator-id>accountingCodeValidator</validator-id>
+        <validator-class>jm.com.dpbennett.sm.validator.AccountingCodeValidator</validator-class>
+    </validator>  
+    <validator>
+        <validator-id>taxValidator</validator-id>
+        <validator-class>jm.com.dpbennett.sm.validator.TaxValidator</validator-class>
+    </validator>
+    <validator>
+        <validator-id>currencyValidator</validator-id>
+        <validator-class>jm.com.dpbennett.sm.validator.CurrencyValidator</validator-class>
+    </validator>
+    <validator>
+        <validator-id>discountValidator</validator-id>
+        <validator-class>jm.com.dpbennett.sm.validator.DiscountValidator</validator-class>
+    </validator>
+    <validator>
+        <validator-id>marketProductValidator</validator-id>
+        <validator-class>jm.com.dpbennett.sm.validator.MarketProductValidator</validator-class>
+    </validator>
+    <validator>
+        <validator-id>documentStandardValidator</validator-id>
+        <validator-class>jm.com.dpbennett.sm.validator.DocumentStandardValidator</validator-class>
+    </validator>   
+    <!-- 
+    <validator>
+        <validator-id>marketProductValidator</validator-id>
+        <validator-class>jm.com.dpbennett.sm.validator.MarketProductValidator</validator-class>
+    </validator>
+    -->    
+    
+    <navigation-rule>
+        <from-view-id>/index.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>emailTemplateDialog</from-outcome>
+            <to-view-id>/admin/emailTemplateDialog.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>    
+    <navigation-rule>
+        <from-view-id>/index.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>privilegePickListDialog</from-outcome>
+            <to-view-id>/admin/privilegePickListDialog.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule> 
+    <navigation-rule>
+        <from-view-id>/index.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>modulePickListDialog</from-outcome>
+            <to-view-id>/admin/modulePickListDialog.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/index.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>moduleDialog</from-outcome>
+            <to-view-id>/admin/moduleDialog.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/index.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>userDialog</from-outcome>
+            <to-view-id>/admin/userDialog.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/index.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>privilegeDialog</from-outcome>
+            <to-view-id>/admin/privilegeDialog.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule> 
     <navigation-rule>
         <from-view-id>/index.xhtml</from-view-id>
         <navigation-case>
             <from-outcome>categoryDialog</from-outcome>
             <to-view-id>/admin/categoryDialog.xhtml</to-view-id>
         </navigation-case>
-    </navigation-rule> 
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/index.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>notificationDialog</from-outcome>
+            <to-view-id>/admin/notificationDialog.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
     <navigation-rule>
         <from-view-id>/index.xhtml</from-view-id>
         <navigation-case>
@@ -74,7 +218,14 @@
             <from-outcome>systemOptionDialog</from-outcome>
             <to-view-id>/admin/systemOptionDialog.xhtml</to-view-id>
         </navigation-case>
-    </navigation-rule>  
+    </navigation-rule> 
+    <navigation-rule>
+        <from-view-id>/index.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>attachmentDialog</from-outcome>
+            <to-view-id>/admin/attachmentDialog.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule> 
     <navigation-rule>
         <from-view-id>/index.xhtml</from-view-id>
         <navigation-case>
@@ -85,13 +236,7 @@
     <lifecycle>
         <phase-listener id="nocache">jm.com.dpbennett.sm.util.CacheControlPhaseListener</phase-listener>
     </lifecycle>
-    
-    <managed-bean>
-        <managed-bean-name>authentication</managed-bean-name>
-        <managed-bean-class>jm.com.dpbennett.sm.Authentication</managed-bean-class>
-        <managed-bean-scope>session</managed-bean-scope>
-    </managed-bean>
-    
+       
     <managed-bean>
         <managed-bean-name>systemManager</managed-bean-name>
         <managed-bean-class>jm.com.dpbennett.sm.manager.SystemManager</managed-bean-class>

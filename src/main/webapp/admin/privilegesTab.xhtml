@@ -23,80 +23,83 @@ Email: info@dpbennett.com.jm
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:ui="http://java.sun.com/jsf/facelets"> 
-      
-    <p:commandButton title="Add new category"                                  
+     
+    <p:commandButton title="Add new privilege"                                  
                      value="New"
-                     actionListener="#{systemManager.createNewCategory}"                            
-                     update=":appForm:mainTabView:centerTabView:categoriesTable"
+                     actionListener="#{systemManager.createNewPrivilege}"                            
+                     update=":appForm:mainTabView:centerTabView:privilegesTable"
                      global="true"
                      process="@this"
                      icon="pi pi-plus" >
 
         <p:ajax event="dialogReturn" 
-                listener="#{systemManager.doCategorySearch}"
-                update=":appForm:mainTabView:centerTabView:categoriesTable" />
+                listener="#{systemManager.doActivePrivilegeSearch}"
+                update=":appForm:mainTabView:centerTabView:privilegesTable" />
 
     </p:commandButton>     
     <p:spacer width="20" />        
-    <p:inputText id="categorySearchText" 
-                 value="#{systemManager.categorySearchText}"
+    <p:inputText id="privilegeSearchText" 
+                 value="#{systemManager.privilegeSearchText}"
                  placeholder="Enter any part of name">
         <p:ajax event="keyup"
                 global="false"
-                update=":appForm:mainTabView:centerTabView:categoriesTable"
-                listener="#{systemManager.doCategorySearch}"
+                update=":appForm:mainTabView:centerTabView:privilegesTable"
+                listener="#{systemManager.doActivePrivilegeSearch}"
                 process="@this"/>
-    </p:inputText>       
+    </p:inputText>
 
-    <p:dataTable id="categoriesTable"                                       
-                 var="category"     
+    <p:dataTable id="privilegesTable"                                       
+                 var="privilege"     
                  editable="true" 
                  editMode="cell"
                  paginator="true"
                  reflow="true"
                  rows="15"
                  style="margin-top: 5px;"
-                 widgetVar="CategoriesTableVar"
+                 widgetVar="PrivilegesTableVar"
                  paginatorTemplate="{FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
-                 value="#{systemManager.foundCategories}">
+                 value="#{systemManager.foundActivePrivileges}">
+        
+        <p:column>
+            <f:facet name="header">
+                <p:outputLabel value="Active"/>
+            </f:facet>           
+            <p:selectBooleanCheckbox 
+                style="display: block;text-align: center;"
+                disabled="true"
+                value="#{privilege.active}" />
+        </p:column>
 
         <p:column>
             <f:facet name="header">
                 <p:outputLabel value="Name"/>
             </f:facet>
-            <p:outputLabel value="#{category.name}" />
+            <p:outputLabel value="#{privilege.name}" />
         </p:column>  
-
-        <p:column>
-            <f:facet name="header">
-                <p:outputLabel value="Type"/>
-            </f:facet>
-            <p:outputLabel value="#{category.type}" />
-        </p:column>   
 
         <p:column>
             <f:facet name="header">
                 <p:outputLabel value="Description"/>
             </f:facet>
-            <p:outputLabel value="#{category.description}" />
-        </p:column>
+            <p:outputLabel value="#{privilege.description}" />
+        </p:column>    
 
         <p:column>
-            <p:commandButton title="View or edit category"   
-                             actionListener="#{systemManager.editCategory}"                            
+            <p:commandButton title="View or edit privilege"   
+                             actionListener="#{systemManager.editPrivilege}"                            
                              global="true"
                              process="@this"
                              icon="pi pi-pencil">
 
                 <p:ajax event="dialogReturn" 
-                        update=":appForm:mainTabView:centerTabView:categoriesTable" />
+                        update=":appForm:mainTabView:centerTabView:privilegesTable" />
 
-                <f:setPropertyActionListener value="#{category}"                                                                    
-                                             target="#{systemManager.selectedCategory}" />
+                <f:setPropertyActionListener value="#{privilege}"                                                                    
+                                             target="#{systemManager.selectedPrivilege}" />
             </p:commandButton>           
         </p:column>
 
-    </p:dataTable> 
+    </p:dataTable>      
 
 </html>
 

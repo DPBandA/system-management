@@ -1,0 +1,98 @@
+<!--
+System Management (SM) 
+Copyright (C) 2023  D P Bennett & Associates Limited
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU Affero General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Affero General Public License for more details.
+
+You should have received a copy of the GNU Affero General Public License
+along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+Email: info@dpbennett.com.jm
+-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Notification</title>
+        <h:outputStylesheet library="webjars" name="primeflex/3.2.1/primeflex.min.css" />
+        <link rel="stylesheet" type="text/css" href="../css/main.css" />
+    </h:head>
+
+    <h:body > 
+
+        <ui:include src="../common/commonDialogs.xhtml"/> 
+
+        <h:form id="notificationDialogForm">    
+
+            <p:growl id="notification_growl" life="5000" showDetail="true"/>
+
+            <ui:include src="notificationDialogToolbar.xhtml" /> 
+
+            <p:panel style="margin-bottom: 1px;margin-top: 1px;">
+                <h:panelGrid columns="2" cellspacing="5">
+
+                    <p:outputLabel value="Active" for="active" style="font-weight: bold;" /> 
+                    <p:selectBooleanCheckbox id="active" 
+                                             value="#{systemManager.selectedNotification.active}" />
+
+                    <p:outputLabel value="Owner Id" for="ownerId" style="font-weight: bold;"/>
+                    <p:inputNumber id="ownerId" 
+                                   thousandSeparator=""
+                                   value="#{systemManager.selectedNotification.ownerId}" />  
+
+                    <p:outputLabel value="Issue time" for="issueTime" style="font-weight: bold;"/>
+                    <p:outputLabel id="issueTime"                                  
+                                   value="#{systemManager.selectedNotification.issueTime}" />
+
+                    <p:outputLabel value="Name" for="name" style="font-weight: bold;"/>
+                    <p:inputText id="name"
+                                 value="#{systemManager.selectedNotification.name}"  
+                                 style="width: 275px;"
+                                 validatorMessage="A name is required"
+                                 validator="requiredFieldValidator" />   
+
+                    <p:outputLabel value="Type" for="type" style="font-weight: bold;"/>
+                    <p:inputText id="type"
+                                 value="#{systemManager.selectedNotification.type}"   
+                                 style="width: 275px;"
+                                 validatorMessage="A type is required"
+                                 validator="requiredFieldValidator" />
+
+                    <p:outputLabel value="Subject" for="subject" style="font-weight: bold;"/>
+                    <p:inputText id="subject"
+                                 value="#{systemManager.selectedNotification.subject}"   
+                                 style="width: 275px;"
+                                 validatorMessage="A subject is required"
+                                 validator="requiredFieldValidator" />
+
+                    <p:outputLabel value="Message" for="message" style="font-weight: bold;" />
+                    <p:inputTextarea  value="#{systemManager.selectedNotification.message}"
+                                      id="message"
+                                      maxlength="1000"
+                                      rows="4"
+                                      validatorMessage="A message is required"
+                                      validator="requiredFieldValidator"
+                                      style="width: 300px;" />
+
+                </h:panelGrid>
+            </p:panel>
+
+            <ui:include src="notificationDialogToolbar.xhtml" /> 
+
+        </h:form> 
+    </h:body>
+</html>

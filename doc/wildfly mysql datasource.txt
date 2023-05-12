@@ -1,0 +1,6 @@
+FINDS Datasource JNDI name: 
+java:/FINDS
+
+
+JMTSDS Datasource JNDI name:
+java:/JMTSDS

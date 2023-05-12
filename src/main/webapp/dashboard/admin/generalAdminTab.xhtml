@@ -1,6 +1,6 @@
 <!--
 System Management (SM) 
-Copyright (C) 2021  D P Bennett & Associates Limited
+Copyright (C) 2022  D P Bennett & Associates Limited
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU Affero General Public License as published by
@@ -19,39 +19,109 @@ Email: info@dpbennett.com.jm
 -->
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
       xmlns:p="http://primefaces.org/ui"
-      xmlns:ui="http://java.sun.com/jsf/facelets"> 
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"> 
 
-    <p:toolbar>
+    <p:panel header="Dashboard">
+        <p:toolbar>
+            <p:toolbarGroup align="left" >
+                <p:menuButton value="New" class="new-entity">
+                    <p:menuitem 
+                        actionListener="#{systemManager.createNewAttachment}" 
+                        value="Attachment" 
+                        icon="pi pi-plus" >
 
-        <p:toolbarGroup align="left">
+                        <p:ajax event="dialogReturn" 
+                                update="" />
 
-            <p:commandButton value="New"
-                             title="Create new system option"
-                             icon="pi pi-plus"                           
-                             actionListener="#{systemManager.createNewSystemOption}" 
-                             process="@this" >
+                    </p:menuitem>
+                    <p:menuitem 
+                        actionListener="#{systemManager.createNewUser}" 
+                        value="User" 
+                        icon="pi pi-plus" >
 
-                <p:ajax event="dialogReturn" 
-                        update=""/>
+                        <p:ajax event="dialogReturn" 
+                                listener="#{systemManager.doUserSearch}"
+                                update=":appForm:mainTabView:centerTabView:usersTable" />
 
-            </p:commandButton>       
+                    </p:menuitem>
+                    <p:menuitem 
+                        actionListener="#{systemManager.createNewPrivilege}" 
+                        value="Privilege" 
+                        icon="pi pi-plus" >
 
-        </p:toolbarGroup>
-        <p:toolbarGroup align="right">
+                        <p:ajax event="dialogReturn" 
+                                listener="#{systemManager.doActivePrivilegeSearch}"
+                                update=":appForm:mainTabView:centerTabView:privilegesTable" />
 
-            <p:menuButton value="Tools" >  
+                    </p:menuitem>             
+                    <p:menuitem 
+                        actionListener="#{systemManager.createNewCategory}" 
+                        value="Category" 
+                        icon="pi pi-plus" >
 
-                <p:menuitem value="System Browser"
-                            title="Open System Browser"
-                            icon="pi pi-cog"
-                            actionListener="#{systemManager.openSystemBrowser}"
-                            process="@this" />
+                        <p:ajax event="dialogReturn" 
+                                listener="#{systemManager.doCategorySearch}"
+                                update=":appForm:mainTabView:centerTabView:categoriesTable" />
 
-            </p:menuButton>         
-        </p:toolbarGroup>
+                    </p:menuitem>
+                    <p:menuitem 
+                        actionListener="#{systemManager.createNewDocumentType}" 
+                        value="Document Type" 
+                        icon="pi pi-plus" >
 
-    </p:toolbar>
+                        <p:ajax event="dialogReturn" 
+                                listener="#{systemManager.doDocumentTypeSearch}"
+                                update=":appForm:mainTabView:centerTabView:documentTypesTable" />
+
+                    </p:menuitem>
+                    <p:menuitem 
+                        actionListener="#{systemManager.createNewSystemOption}" 
+                        value="Option" 
+                        icon="pi pi-plus" >
+
+                        <p:ajax event="dialogReturn" 
+                                listener="#{systemManager.doSystemOptionSearch}"
+                                update=":appForm:mainTabView:centerTabView:systemOptionsTable" />
+
+                    </p:menuitem>
+                    <p:menuitem 
+                        actionListener="#{systemManager.createNewLdapContext}" 
+                        value="Authentication" 
+                        icon="pi pi-plus" >
+
+                        <p:ajax event="dialogReturn" 
+                                listener="#{systemManager.doLdapContextSearch}"
+                                update=":appForm:mainTabView:centerTabView:LDAPTable" />
+
+                    </p:menuitem>
+                    <p:menuitem 
+                        actionListener="#{systemManager.createNewModule}" 
+                        value="Module" 
+                        icon="pi pi-plus" >
+
+                        <p:ajax event="dialogReturn" 
+                                listener="#{systemManager.doActiveModuleSearch}"
+                                update=":appForm:mainTabView:centerTabView:modulesTable" />
+
+                    </p:menuitem>
+                </p:menuButton>
+            </p:toolbarGroup>
+
+            <p:toolbarGroup align="right" >  
+                <p:menuButton value="Tools" >
+                    <p:menuitem 
+                        actionListener="#{systemManager.openSystemBrowser}" 
+                        value="System Administration" 
+                        icon="pi pi-server" /> 
+                </p:menuButton>
+            </p:toolbarGroup>
+        </p:toolbar>
+
+        <ui:include src="search.xhtml"/>
+    </p:panel>   
 
 </html>
 

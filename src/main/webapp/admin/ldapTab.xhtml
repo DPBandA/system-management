@@ -1,6 +1,6 @@
 <!--
 System Management (SM) 
-Copyright (C) 2021  D P Bennett & Associates Limited
+Copyright (C) 2023  D P Bennett & Associates Limited
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU Affero General Public License as published by
@@ -23,92 +23,98 @@ Email: info@dpbennett.com.jm
       xmlns:p="http://primefaces.org/ui"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:f="http://java.sun.com/jsf/core">
-    <p:toolbar>
-        <p:toolbarGroup align="left" >   
-            <p:commandButton title="Add new LDAP Option"                                  
-                             value="New"
-                             actionListener="#{systemManager.createNewLdapContext}"
-                             global="true"
-                             process="@this"
-                             icon="pi pi-plus" >
+       
+    <p:commandButton title="Add new LDAP Option"                                  
+                     value="New"
+                     actionListener="#{systemManager.createNewLdapContext}"
+                     global="true"
+                     process="@this"
+                     icon="pi pi-plus" >
 
-                <p:ajax event="dialogReturn"
-                        update=":appForm:mainTabView:centerTabView:systemConfigurationTabView:LDAPTable" />
+        <p:ajax event="dialogReturn"
+                update=":appForm:mainTabView:centerTabView:LDAPTable" />
 
-            </p:commandButton>
-            <p:spacer width="20" />
-            <p:inputText value="#{systemManager.ldapSearchText}"
-                         style="width:300px" 
-                         placeholder="Enter search text">
-                <p:ajax event="keyup"
-                        global="false"
-                        update=":appForm:mainTabView:centerTabView:systemConfigurationTabView:LDAPTable"
-                        listener="#{systemManager.doLdapContextSearch}"
-                        process="@this"/>
-            </p:inputText>
-        </p:toolbarGroup>
+    </p:commandButton>
+    <p:spacer width="20" />
+    <p:inputText value="#{systemManager.ldapSearchText}"
+                 placeholder="Enter search text">
+        <p:ajax event="keyup"
+                global="false"
+                update=":appForm:mainTabView:centerTabView:LDAPTable"
+                listener="#{systemManager.doLdapContextSearch}"
+                process="@this"/>
+    </p:inputText>
 
-        <p:toolbarGroup align="right">
-            <p:outputLabel for="activeLdapOnly" value="Active LDAP options only: " />  
-            <h:panelGroup>
-                <p:selectBooleanCheckbox style="vertical-align: middle"
-                                         id="activeLdapOnly"
-                                         value="#{systemManager.isActiveLdapsOnly}" >
-                    <p:ajax  update=":appForm:mainTabView:centerTabView:systemConfigurationTabView:LDAPTable"
-                             listener="#{systemManager.doLdapContextSearch}"
-                             event="change"                                      
-                             process="@this"/>
-                </p:selectBooleanCheckbox>            
-                <p:tooltip for="activeLdapOnly" value="Check to show active LDAP options only" 
-                           showEffect="fade" hideEffect="fade" />
-                <p:spacer width="15" />                
-            </h:panelGroup>
-        </p:toolbarGroup>
+    <h:panelGroup style="float: right;" >
 
-    </p:toolbar>    
+        <p:outputLabel for="activeLdapOnly" value="Active" /> 
+        <p:spacer width="10" />
+        <p:selectBooleanCheckbox style="vertical-align: middle"
+                                 id="activeLdapOnly"
+                                 value="#{systemManager.isActiveLdapsOnly}" >
+            <p:ajax  update=":appForm:mainTabView:centerTabView:LDAPTable"
+                     listener="#{systemManager.doLdapContextSearch}"
+                     event="change"                                      
+                     process="@this"/>
+        </p:selectBooleanCheckbox>    
+
+        <p:tooltip for="activeLdapOnly" value="Check to show active LDAP options only" 
+                   showEffect="fade" hideEffect="fade" />
+
+    </h:panelGroup>
+
     <p:dataTable id="LDAPTable"                                       
                  var="ldap"     
-                 editable="true" 
+                 editable="false" 
                  editMode="cell"
                  paginator="true"
+                 reflow="true"
                  rows="15"
-                 style="margin-top: 1px;"
+                 style="margin-top: 5px;"
                  widgetVar="ldapTableVar"
                  paginatorTemplate="{FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
                  value="#{systemManager.foundLdapContexts}">
 
         <p:ajax event="cellEdit" listener="#{systemManager.onLDAPCellEdit}" />
 
-        <f:facet name="header">
-            LDAP Options
-        </f:facet>
-
-        <p:column headerText="Name">
+        <p:column>
+            <f:facet name="header">
+                <p:outputLabel value="Name"/>
+            </f:facet>
             <p:cellEditor>
-                <f:facet name="output"> <h:outputText value="#{ldap.name}" /></f:facet>
-                <f:facet name="input"><p:inputText value="#{ldap.name}" style="width:96%"/></f:facet>
+                <f:facet name="output"> <p:outputLabel value="#{ldap.name}" /></f:facet>
+                <f:facet name="input"><p:inputText value="#{ldap.name}" /></f:facet>
             </p:cellEditor>                                         
         </p:column>   
 
-        <p:column headerText="Domain">
+        <p:column>
+            <f:facet name="header">
+                <p:outputLabel value="Domain/DN"/>
+            </f:facet>
             <p:cellEditor>
-                <f:facet name="output"> <h:outputText value="#{ldap.domainName}" /></f:facet>
-                <f:facet name="input"><p:inputText value="#{ldap.domainName}" style="width:96%"/></f:facet>
+                <f:facet name="output"> <p:outputLabel value="#{ldap.domainName}" /></f:facet>
+                <f:facet name="input"><p:inputText value="#{ldap.domainName}" /></f:facet>
             </p:cellEditor>                                           
         </p:column>   
 
-        <p:column headerText="URL">
+        <p:column>
+             <f:facet name="header">
+                <p:outputLabel value="URL"/>
+            </f:facet>
             <p:cellEditor>
-                <f:facet name="output"> <h:outputText value="#{ldap.providerUrl}" /></f:facet>
-                <f:facet name="input"><p:inputText value="#{ldap.providerUrl}" style="width:96%"/></f:facet>
+                <f:facet name="output"> <p:outputLabel value="#{ldap.providerUrl}" /></f:facet>
+                <f:facet name="input"><p:inputText value="#{ldap.providerUrl}" /></f:facet>
             </p:cellEditor>                                         
         </p:column>   
 
-        <p:column headerText="Active" sortBy="#{ldap.usable}">
+        <p:column>
+             <f:facet name="header">
+                <p:outputLabel value="Active"/>
+            </f:facet>
             <p:cellEditor>
-                <f:facet name="output"><h:outputText value="#{ldap.usable}" /></f:facet>
+                <f:facet name="output"><p:outputLabel value="#{ldap.usable}" /></f:facet>
                 <f:facet name="input">
-                    <p:selectOneMenu value="#{ldap.usable}" style="width:96%">
+                    <p:selectOneMenu value="#{ldap.usable}" >
                         <f:selectItem itemLabel="Yes" itemValue="Yes"/>
                         <f:selectItem itemLabel="No" itemValue="No"/>
                     </p:selectOneMenu>
@@ -116,7 +122,7 @@ Email: info@dpbennett.com.jm
             </p:cellEditor>                                         
         </p:column>  
 
-        <p:column style="width:32px">
+        <p:column>
             <p:commandButton title="View or edit LDAP"   
                              actionListener="#{systemManager.editLdapContext}"
                              global="true"
@@ -124,7 +130,7 @@ Email: info@dpbennett.com.jm
                              icon="pi pi-pencil">
 
                 <p:ajax event="dialogReturn" 
-                        update=":appForm:mainTabView:centerTabView:systemConfigurationTabView:LDAPTable" />
+                        update=":appForm:mainTabView:centerTabView:LDAPTable" />
 
                 <f:setPropertyActionListener value="#{ldap}"                                                                    
                                              target="#{systemManager.selectedLdapContext}" />

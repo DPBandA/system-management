@@ -1,6 +1,6 @@
 <!--
 System Management (SM) 
-Copyright (C) 2021  D P Bennett & Associates Limited
+Copyright (C) 2023  D P Bennett & Associates Limited
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU Affero General Public License as published by
@@ -23,15 +23,17 @@ Email: info@dpbennett.com.jm
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:ui="http://java.sun.com/jsf/facelets">
+    
     <h:form id="preferencesDialogForm">
 
-        <p:dialog width="750"
-                  height="300"
+        <p:dialog width="900"
+                  height="350"
                   draggable="true"
                   modal="true"
                   widgetVar="preferencesDialog"
                   maximizable="false"
                   closable="true"
+                  responsive="true"
                   header="Preferences" >
 
             <p:ajax event="close"  
@@ -48,17 +50,113 @@ Email: info@dpbennett.com.jm
                        style="margin-top: 1px;margin-bottom: 1px;">
                 <p:tab title="General" id="adminGeneralTab">
                     <p:outputPanel deferred="true">
-                        <p>
-                            Various general user preferences go here.
-                        </p>
+                        <p:outputLabel value="Job table view:"/>
+
+                        <p:autoComplete forceSelection="true"                               
+                                        maxlength="250"
+                                        value="#{systemManager.user.jobTableViewPreference}"
+                                        title="#{systemManager.user.jobTableViewPreference}"                                      
+                                        dropdown="true"                                       
+                                        completeMethod="#{systemManager.completePreferenceValue}" >
+
+                            <p:ajax event="itemSelect"
+                                    listener="#{systemManager.updatePreferedJobTableView}"
+                                    global="false"                                    
+                                    process="@this" />
+
+                            <p:ajax event="change"
+                                    listener="#{systemManager.updatePreferedJobTableView}"
+                                    global="false"                                    
+                                    process="@this" />
+
+                        </p:autoComplete> 
                     </p:outputPanel>
                 </p:tab>
-                <p:tab title="Module Access" id="adminModuleAccess">
-                    <p:outputPanel deferred="true">
-                        <p>
-                            Here is where users are granted access to the modules of the system.
-                        </p>
-                    </p:outputPanel>
+                <p:tab title="Module Access" id="modulesTab">
+                    <h:panelGrid columns="3" id="modulesTabPanelGrid" cellspacing="10">
+
+                        <p:selectBooleanCheckbox id="jobManagementAndTrackingUnit" 
+                                                 rendered="#{systemManager.user.privilege.canAccessJobManagementUnit}"
+                                                 itemLabel="Job Management &amp; Tracking"
+                                                 value="#{systemManager.user.modules.jobManagementAndTrackingModule}" >
+                            <p:ajax listener="#{systemManager.updateDashboardTabs}"
+                                    global="false"
+                                    process="@this"/>
+                        </p:selectBooleanCheckbox>                     
+
+                        <p:selectBooleanCheckbox id="adminUnit" 
+                                                 itemLabel="System Administration"
+                                                 rendered="#{systemManager.user.privilege.canBeJMTSAdministrator}"
+                                                 value="#{systemManager.user.modules.adminModule}" >
+                            <p:ajax listener="#{systemManager.updateDashboardTabs}"
+                                    global="false"
+                                    process="@this"/>
+                        </p:selectBooleanCheckbox>
+
+                        <p:selectBooleanCheckbox id="financialAdminUnit" 
+                                                 itemLabel="Financial Administration"
+                                                 rendered="#{systemManager.user.privilege.canBeFinancialAdministrator}"
+                                                 value="#{systemManager.user.modules.financialAdminModule}" >
+                            <p:ajax listener="#{systemManager.updateDashboardTabs}"
+                                    global="false"
+                                    process="@this"/>
+                        </p:selectBooleanCheckbox>    
+
+                        <p:selectBooleanCheckbox id="legalOfficeUnit" 
+                                                 itemLabel="Legal"
+                                                 rendered="#{systemManager.user.privilege.canAccessLegalOfficeUnit}"
+                                                 value="#{systemManager.user.modules.legalOfficeModule}" >
+                            <p:ajax listener="#{systemManager.updateDashboardTabs}"
+                                    global="false"
+                                    process="@this"/>
+                        </p:selectBooleanCheckbox>
+
+                        <p:selectBooleanCheckbox id="crmUnit" 
+                                                 itemLabel="Client Management"
+                                                 rendered="#{systemManager.user.privilege.canAccessCRMUnit}"
+                                                 value="#{systemManager.user.modules.crmModule}" >
+                            <p:ajax listener="#{systemManager.updateDashboardTabs}"
+                                    global="false"
+                                    process="@this"/>
+                        </p:selectBooleanCheckbox>
+
+                        <p:selectBooleanCheckbox id="hrmUnit" 
+                                                 itemLabel="Human Resource Management"
+                                                 rendered="#{systemManager.user.privilege.canAccessHRMUnit}"
+                                                 value="#{systemManager.user.modules.hrmModule}" >
+                            <p:ajax listener="#{systemManager.updateDashboardTabs}"
+                                    global="false"
+                                    process="@this"/>
+                        </p:selectBooleanCheckbox>
+
+                        <p:selectBooleanCheckbox id="complianceUnit" 
+                                                 rendered="#{systemManager.user.privilege.canAccessComplianceUnit}"
+                                                 itemLabel="Standards Compliance"
+                                                 value="#{systemManager.user.modules.complianceModule}" >                            
+                            <p:ajax listener="#{systemManager.updateDashboardTabs}"
+                                    global="false"
+                                    process="@this"/>                            
+                        </p:selectBooleanCheckbox> 
+
+                        <p:selectBooleanCheckbox id="reportUnit" 
+                                                 itemLabel="Report"
+                                                 rendered="#{systemManager.user.privilege.canAccessReportUnit}"
+                                                 value="#{systemManager.user.modules.reportModule}" >
+                            <p:ajax listener="#{systemManager.updateDashboardTabs}"
+                                    global="false"
+                                    process="@this"/>
+                        </p:selectBooleanCheckbox>
+
+                        <p:selectBooleanCheckbox id="purchaseManagementUnit" 
+                                                 itemLabel="Procurement"
+                                                 rendered="#{systemManager.user.privilege.canAccessProcurementUnit}"
+                                                 value="#{systemManager.user.modules.purchaseManagementModule}" >
+                            <p:ajax listener="#{systemManager.updateDashboardTabs}"
+                                    global="false"
+                                    process="@this"/>
+                        </p:selectBooleanCheckbox>
+
+                    </h:panelGrid> 
                 </p:tab>
 
             </p:tabView>

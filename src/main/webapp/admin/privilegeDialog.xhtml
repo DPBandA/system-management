@@ -1,0 +1,105 @@
+<!--
+System Management (SM) 
+Copyright (C) 2023  D P Bennett & Associates Limited
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU Affero General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Affero General Public License for more details.
+
+You should have received a copy of the GNU Affero General Public License
+along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+Email: info@dpbennett.com.jm
+-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />   
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Privilege</title>
+        <h:outputStylesheet library="webjars" name="primeflex/3.2.1/primeflex.min.css" />
+        <link rel="stylesheet" type="text/css" href="../css/main.css" />
+    </h:head>
+
+    <h:body > 
+
+        <ui:include src="../common/commonDialogs.xhtml"/> 
+
+        <h:form id="privilegeDialogForm">    
+
+            <p:growl id="privilege_growl" life="5000" showDetail="true"/>
+
+            <ui:include src="privilegeDialogToolbar.xhtml" /> 
+          
+                <p:panel style="margin-bottom: 1px;margin-top: 1px;">
+                    <h:panelGrid columns="2" cellpadding="5">
+
+                        <p:outputLabel value="Active"                                    
+                                       for="activePrivilege" 
+                                       style="font-weight: bold;" /> 
+                        <p:selectBooleanCheckbox id="activePrivilege" 
+                                                 disabled="true"
+                                                 value="#{systemManager.selectedPrivilege.active}" />                    
+
+                        <p:outputLabel value="Name" for="name" style="font-weight: bold;"/>
+                        <p:inputText id="name"
+                                     value="#{systemManager.selectedPrivilege.name}"  
+                                     style="width: 275px;"
+                                     validatorMessage="A valid name is required"
+                                     validator="requiredFieldValidator" >       
+
+                            <p:ajax event="change"                                                       
+                                    process="@this"/>
+
+                        </p:inputText>
+
+                        <p:outputLabel value="Description" for="description" style="font-weight: bold;"/>       
+                        <p:inputText id="description"
+                                     value="#{systemManager.selectedPrivilege.description}"  
+                                     style="width: 275px;"
+                                     validator="requiredFieldValidator" >       
+
+                            <p:ajax event="change"                                                       
+                                    process="@this"/>
+
+                        </p:inputText>
+                        <ui:remove>
+                            <p:inputTextarea
+                                id="description"
+                                value="#{systemManager.selectedPrivilege.description}" 
+                                rows="5"
+                                counter="descriptionCharsRemaining"
+                                counterTemplate="{0} characters remaining."
+                                autoResize="true"
+                                maxlength="250" 
+                                styleClass="#{not component.valid ? 'invalid-inputtextarea-field' : ''}" 
+                                style="width: 275px;">
+
+                                <f:validator validatorId="requiredFieldValidator" />
+
+                                <p:ajax event="change"                                                       
+                                        process="@this"/>
+
+                            </p:inputTextarea> 
+                            <p:outputLabel value="&nbsp;&nbsp;" />
+                            <p:outputLabel id="descriptionCharsRemaining" />
+                        </ui:remove>
+                    </h:panelGrid>
+                </p:panel>
+       
+            <ui:include src="privilegeDialogToolbar.xhtml" /> 
+
+        </h:form> 
+    </h:body>
+</html>

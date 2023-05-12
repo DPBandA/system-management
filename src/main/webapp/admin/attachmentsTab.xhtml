@@ -24,79 +24,85 @@ Email: info@dpbennett.com.jm
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:ui="http://java.sun.com/jsf/facelets"> 
       
-    <p:commandButton title="Add new category"                                  
-                     value="New"
-                     actionListener="#{systemManager.createNewCategory}"                            
-                     update=":appForm:mainTabView:centerTabView:categoriesTable"
+    <p:commandButton title="Add new attachment"                                  
+                     value="New"                                                     
+                     actionListener="#{systemManager.createNewAttachment}"
                      global="true"
                      process="@this"
-                     icon="pi pi-plus" >
+                     icon="pi pi-plus">
 
         <p:ajax event="dialogReturn" 
-                listener="#{systemManager.doCategorySearch}"
-                update=":appForm:mainTabView:centerTabView:categoriesTable" />
+                listener="#{systemManager.doAttachmentSearch}"
+                update="attachmentsTable,:appForm:growl3"/>
 
-    </p:commandButton>     
-    <p:spacer width="20" />        
-    <p:inputText id="categorySearchText" 
-                 value="#{systemManager.categorySearchText}"
+    </p:commandButton>
+    <p:spacer width="20" />
+    <p:inputText id="attachmentSearchText"                          
+                 value="#{systemManager.attachmentSearchText}"
                  placeholder="Enter any part of name">
         <p:ajax event="keyup"
-                global="false"
-                update=":appForm:mainTabView:centerTabView:categoriesTable"
-                listener="#{systemManager.doCategorySearch}"
-                process="@this"/>
+                global="true"
+                update="attachmentsTable"
+                listener="#{systemManager.doAttachmentSearch}"
+                process="@this"/>                                   
     </p:inputText>       
-
-    <p:dataTable id="categoriesTable"                                       
-                 var="category"     
-                 editable="true" 
-                 editMode="cell"
+           
+    <p:dataTable id="attachmentsTable"                                       
+                 var="attachment"                                        
                  paginator="true"
                  reflow="true"
                  rows="15"
                  style="margin-top: 5px;"
-                 widgetVar="CategoriesTableVar"
                  paginatorTemplate="{FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
-                 value="#{systemManager.foundCategories}">
-
+                 value="#{systemManager.foundAttachments}">
+      
         <p:column>
             <f:facet name="header">
                 <p:outputLabel value="Name"/>
             </f:facet>
-            <p:outputLabel value="#{category.name}" />
-        </p:column>  
-
+            <p:outputLabel value="#{attachment.name}" />
+        </p:column>        
         <p:column>
             <f:facet name="header">
                 <p:outputLabel value="Type"/>
             </f:facet>
-            <p:outputLabel value="#{category.type}" />
-        </p:column>   
-
+            <p:outputLabel value="#{attachment.type}"/>
+        </p:column>
+        <p:column>
+            <f:facet name="header">
+                <p:outputLabel value="Source"/>
+            </f:facet>
+            <p:outputLabel value="#{attachment.sourceURL}"/>
+        </p:column>       
+        <p:column>
+            <f:facet name="header">
+                <p:outputLabel value="Destination"/>
+            </f:facet>
+            <p:outputLabel value="#{attachment.destinationURL}"/>
+        </p:column> 
         <p:column>
             <f:facet name="header">
                 <p:outputLabel value="Description"/>
             </f:facet>
-            <p:outputLabel value="#{category.description}" />
+            <p:outputLabel value="#{attachment.description}"/>
         </p:column>
-
         <p:column>
-            <p:commandButton title="View or edit category"   
-                             actionListener="#{systemManager.editCategory}"                            
+            <p:commandButton title="View or edit attachment"  
+                             actionListener="#{systemManager.openAttachmentDialog}"
                              global="true"
                              process="@this"
                              icon="pi pi-pencil">
 
-                <p:ajax event="dialogReturn" 
-                        update=":appForm:mainTabView:centerTabView:categoriesTable" />
+                <f:setPropertyActionListener value="#{attachment}"                                                                    
+                                             target="#{systemManager.attachment}" />
 
-                <f:setPropertyActionListener value="#{category}"                                                                    
-                                             target="#{systemManager.selectedCategory}" />
+                <p:ajax event="dialogReturn" 
+                        update="attachmentsTable,:appForm:growl3"/>
+
             </p:commandButton>           
         </p:column>
 
-    </p:dataTable> 
+    </p:dataTable>              
 
 </html>
 

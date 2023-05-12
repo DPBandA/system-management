@@ -23,80 +23,97 @@ Email: info@dpbennett.com.jm
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:ui="http://java.sun.com/jsf/facelets"> 
-      
-    <p:commandButton title="Add new category"                                  
+    
+    <p:commandButton title="Add new module"                                  
                      value="New"
-                     actionListener="#{systemManager.createNewCategory}"                            
-                     update=":appForm:mainTabView:centerTabView:categoriesTable"
+                     actionListener="#{systemManager.createNewModule}"                            
+                     update=":appForm:mainTabView:centerTabView:modulesTable"
                      global="true"
                      process="@this"
                      icon="pi pi-plus" >
 
         <p:ajax event="dialogReturn" 
-                listener="#{systemManager.doCategorySearch}"
-                update=":appForm:mainTabView:centerTabView:categoriesTable" />
+                listener="#{systemManager.doActiveModuleSearch}"
+                update=":appForm:mainTabView:centerTabView:modulesTable" />
 
     </p:commandButton>     
     <p:spacer width="20" />        
-    <p:inputText id="categorySearchText" 
-                 value="#{systemManager.categorySearchText}"
+    <p:inputText id="moduleSearchText" 
+                 value="#{systemManager.moduleSearchText}"
                  placeholder="Enter any part of name">
         <p:ajax event="keyup"
                 global="false"
-                update=":appForm:mainTabView:centerTabView:categoriesTable"
-                listener="#{systemManager.doCategorySearch}"
+                update=":appForm:mainTabView:centerTabView:modulesTable"
+                listener="#{systemManager.doActiveModuleSearch}"
                 process="@this"/>
     </p:inputText>       
 
-    <p:dataTable id="categoriesTable"                                       
-                 var="category"     
+    <p:dataTable id="modulesTable"                                       
+                 var="module"     
                  editable="true" 
                  editMode="cell"
                  paginator="true"
                  reflow="true"
                  rows="15"
                  style="margin-top: 5px;"
-                 widgetVar="CategoriesTableVar"
+                 widgetVar="ModulesTableVar"
                  paginatorTemplate="{FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
-                 value="#{systemManager.foundCategories}">
+                 value="#{systemManager.foundActiveModules}">
+       
+        <p:column>
+            <f:facet name="header">
+                <p:outputLabel value="Active"/>
+            </f:facet>           
+            <p:selectBooleanCheckbox 
+                style="display: block;text-align: center;"
+                disabled="true"
+                value="#{module.active}" />
+        </p:column>
 
         <p:column>
             <f:facet name="header">
                 <p:outputLabel value="Name"/>
             </f:facet>
-            <p:outputLabel value="#{category.name}" />
-        </p:column>  
+            <p:outputLabel value="#{module.name}" />
+        </p:column> 
 
         <p:column>
             <f:facet name="header">
-                <p:outputLabel value="Type"/>
+                <p:outputLabel value="Dashboard title"/>
             </f:facet>
-            <p:outputLabel value="#{category.type}" />
-        </p:column>   
+            <p:outputLabel value="#{module.dashboardTitle}" />
+        </p:column> 
+
+        <p:column>
+            <f:facet name="header">
+                <p:outputLabel value="Main view title"/>
+            </f:facet>
+            <p:outputLabel value="#{module.mainViewTitle}" />
+        </p:column>
 
         <p:column>
             <f:facet name="header">
                 <p:outputLabel value="Description"/>
             </f:facet>
-            <p:outputLabel value="#{category.description}" />
-        </p:column>
+            <p:outputLabel value="#{module.description}" />
+        </p:column>    
 
         <p:column>
-            <p:commandButton title="View or edit category"   
-                             actionListener="#{systemManager.editCategory}"                            
+            <p:commandButton title="View or edit module"   
+                             actionListener="#{systemManager.editModule}"                            
                              global="true"
                              process="@this"
                              icon="pi pi-pencil">
 
                 <p:ajax event="dialogReturn" 
-                        update=":appForm:mainTabView:centerTabView:categoriesTable" />
+                        update=":appForm:mainTabView:centerTabView:modulesTable" />
 
-                <f:setPropertyActionListener value="#{category}"                                                                    
-                                             target="#{systemManager.selectedCategory}" />
+                <f:setPropertyActionListener value="#{module}"                                                                    
+                                             target="#{systemManager.selectedModule}" />
             </p:commandButton>           
         </p:column>
 
-    </p:dataTable> 
+    </p:dataTable>      
 
 </html>
 

@@ -1,0 +1,126 @@
+<!--
+System Management (SM) 
+Copyright (C) 2023  D P Bennett & Associates Limited
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU Affero General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Affero General Public License for more details.
+
+You should have received a copy of the GNU Affero General Public License
+along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+Email: info@dpbennett.com.jm
+-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"> 
+    
+    <p:commandButton title="Add new notification"                                  
+                     value="New"
+                     actionListener="#{systemManager.createNewNotification}"                            
+                     update=":appForm:mainTabView:centerTabView:notificationsTable"
+                     global="true"
+                     process="@this"
+                     icon="pi pi-plus" >
+
+        <p:ajax event="dialogReturn" 
+                listener="#{systemManager.doNotificationSearch}"
+                update=":appForm:mainTabView:centerTabView:notificationsTable,appForm:notificationBadge" />
+
+    </p:commandButton>     
+    <p:spacer width="20" />        
+    <p:inputText id="notificationSearchText" 
+                 value="#{systemManager.notificationSearchText}"
+                 placeholder="Enter search text">
+        <p:ajax event="keyup"
+                global="false"
+                update=":appForm:mainTabView:centerTabView:notificationsTable"
+                listener="#{systemManager.doNotificationSearch}"
+                process="@this"/>
+    </p:inputText>
+
+    <p:dataTable id="notificationsTable"                                       
+                 var="notification"  
+                 paginator="true"
+                 reflow="true"
+                 rows="15"
+                 style="margin-top: 5px;"
+                 widgetVar="NotificationsTableVar"
+                 paginatorTemplate="{FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
+                 value="#{systemManager.foundNotifications}">
+
+        <p:column>
+            <f:facet name="header">
+                <p:outputLabel value="Name"/>
+            </f:facet>
+            <p:outputLabel value="#{notification.name}" />
+        </p:column>  
+
+        <p:column>
+            <f:facet name="header">
+                <p:outputLabel value="Type"/>
+            </f:facet>
+            <p:outputLabel value="#{notification.type}" />
+        </p:column>    
+
+        <p:column>
+            <f:facet name="header">
+                <p:outputLabel value="Owner Id"/>
+            </f:facet>
+            <p:outputLabel value="#{notification.ownerId}" />
+        </p:column>
+
+        <p:column>
+            <f:facet name="header">
+                <p:outputLabel value="Issue Time"/>
+            </f:facet>
+            <p:outputLabel value="#{notification.issueTime}" />
+        </p:column>
+
+        <p:column>
+            <f:facet name="header">
+                <p:outputLabel value="Active"/>
+            </f:facet>
+            <p:outputLabel value="#{notification.usable}" />
+        </p:column> 
+
+        <p:column>
+            <p:commandButton title="View or edit notification"   
+                             actionListener="#{systemManager.editNotification}"                            
+                             global="true"
+                             process="@this"
+                             icon="pi pi-pencil">
+
+                <p:ajax event="dialogReturn" 
+                        update=":appForm:mainTabView:centerTabView:notificationsTable,appForm:notificationBadge" />
+
+                <f:setPropertyActionListener value="#{notification}"                                                                    
+                                             target="#{systemManager.selectedNotification}" />
+            </p:commandButton>           
+        </p:column>
+
+        <p:column>
+            <p:commandButton title="Delete notification"   
+                             oncomplete="PF('deleteNotificationDialog').show()"  
+                             process="@this"
+                             icon="pi pi-trash">
+
+                <f:setPropertyActionListener value="#{notification}"                                                                    
+                                             target="#{systemManager.selectedNotification}" />
+            </p:commandButton>           
+        </p:column>
+
+    </p:dataTable>   
+
+</html>
+
+
