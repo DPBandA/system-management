@@ -110,6 +110,8 @@ Email: info@dpbennett.com.jm
                              />
         </h:form>
     </p:confirmDialog>   
+
+    <p:ajaxStatus onstart="PF('statusDialog').show()" onsuccess="PF('statusDialog').hide()"/>
     
     <h:form>
         <p:dialog widgetVar="statusDialog" 
