@@ -1,6 +1,6 @@
 <!--
 System Management (SM) 
-Copyright (C) 2022  D P Bennett & Associates Limited
+Copyright (C) 2023  D P Bennett & Associates Limited
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU Affero General Public License as published by
@@ -26,11 +26,12 @@ Email: info@dpbennett.com.jm
 
     <h:head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Email Template</title>
         <h:outputStylesheet library="webjars" name="primeflex/3.2.1/primeflex.min.css" />
-        <link rel="stylesheet" href="../css/main.css" />
-        <link rel="stylesheet" type="text/css" href="../css/responsive.css" />        
+        <link rel="stylesheet" href="../css/main.css" />       
     </h:head>
+
     <h:body >  
         <ui:include src="../common/commonDialogs.xhtml"/>           
         <h:form id="emailTemplateDialogForm">                    
@@ -50,7 +51,7 @@ Email: info@dpbennett.com.jm
                                      icon="pi pi-times" />            
                 </p:toolbarGroup>
             </p:toolbar>
-            <p:scrollPanel style="height: 600px;">
+
             <p:tabView style="margin-bottom: 1px;margin-bottom: 1px;" >
                 <p:tab title="General" >   
                     <h:panelGrid columns="2" cellpadding="5">
@@ -65,15 +66,15 @@ Email: info@dpbennett.com.jm
                                      id="emailName" 
                                      validator="requiredFieldValidator" /> 
                         <ui:remove>
-                        <p:outputLabel value="Category:" style="font-weight: bold;" />
-                        <p:selectOneMenu value="#{systemManager.selectedEmail.category}" 
-                                         id="emailCategory" >
+                            <p:outputLabel value="Category:" style="font-weight: bold;" />
+                            <p:selectOneMenu value="#{systemManager.selectedEmail.category}" 
+                                             id="emailCategory" >
 
-                            <f:validator validatorId="requiredFieldValidator" />
+                                <f:validator validatorId="requiredFieldValidator" />
 
-                            <f:selectItems value="#{systemManager.emailCategories}"/>
+                                <f:selectItems value="#{systemManager.emailCategories}"/>
 
-                        </p:selectOneMenu>
+                            </p:selectOneMenu>
                         </ui:remove>
                         <p:outputLabel value="Subject" style="font-weight: bold;" />
                         <p:inputText value="#{systemManager.selectedEmail.subject}"
@@ -104,8 +105,8 @@ Email: info@dpbennett.com.jm
                         </h:panelGroup>
 
                         <p:outputLabel id="emailContentLabel" 
-                                      rendered="#{!systemManager.selectedEmail.usePackagedTemplate}"
-                                      value="Content" />
+                                       rendered="#{!systemManager.selectedEmail.usePackagedTemplate}"
+                                       value="Content" />
                         <p:inputTextarea  value="#{systemManager.selectedEmail.content}"
                                           id="emailContent"
                                           rendered="#{!systemManager.selectedEmail.usePackagedTemplate}"
@@ -139,7 +140,7 @@ Email: info@dpbennett.com.jm
                     </h:panelGrid>
                 </p:tab >
             </p:tabView>
-            </p:scrollPanel>
+
             <p:toolbar>
                 <p:toolbarGroup>
                     <p:commandButton value="Ok"

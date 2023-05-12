@@ -23,14 +23,16 @@ Email: info@dpbennett.com.jm
       xmlns:p="http://primefaces.org/ui"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:f="http://java.sun.com/jsf/core">
+    
     <h:head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />      
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />  
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>User</title>         
         <script type="text/javascript" src="../js/javascripts.js" />  
         <h:outputStylesheet library="webjars" name="primeflex/3.2.1/primeflex.min.css" />
         <link rel="stylesheet" type="text/css" href="../css/main.css" />
-        <link rel="stylesheet" type="text/css" href="../css/responsive.css" />
     </h:head>
+    
     <h:body >  
 
         <ui:include src="../common/commonDialogs.xhtml"/> 
@@ -84,7 +86,7 @@ Email: info@dpbennett.com.jm
 
                 </h:panelGrid>
             </p:panel>
-            <p:scrollPanel style="height: 600px;">
+            
             <p:tabView >
            
                 <p:tab title="Module Access">
@@ -235,7 +237,7 @@ Email: info@dpbennett.com.jm
                 </p:tab>
 
             </p:tabView>
-            </p:scrollPanel>
+            
             <p:toolbar style="margin-top: 1px;">
                 <p:toolbarGroup align="left">
                     <p:commandButton value="Ok"

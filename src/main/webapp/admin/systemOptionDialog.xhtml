@@ -1,6 +1,6 @@
 <!--
 System Management (SM) 
-Copyright (C) 2022  D P Bennett & Associates Limited
+Copyright (C) 2023  D P Bennett & Associates Limited
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU Affero General Public License as published by
@@ -26,11 +26,12 @@ Email: info@dpbennett.com.jm
 
     <h:head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Option</title>
         <h:outputStylesheet library="webjars" name="primeflex/3.2.1/primeflex.min.css" />
         <link rel="stylesheet" type="text/css" href="../css/main.css" />
-        <link rel="stylesheet" type="text/css" href="../css/responsive.css" />
     </h:head>
+
     <h:body >  
         <ui:include src="../common/commonDialogs.xhtml"/>  
         <h:form id="systemOptionDialogForm">        
@@ -50,13 +51,12 @@ Email: info@dpbennett.com.jm
                                      icon="pi pi-times" /> 
                 </p:toolbarGroup>
             </p:toolbar>
-            <p:scrollPanel style="height: 600px;">
+
             <p:panel style="margin-top: 1px;margin-bottom: 1px;">
                 <h:panelGrid columns="2" cellpadding="5">                
                     <p:outputLabel value="Name" style="font-weight: bold;" />
                     <p:inputText value="#{systemManager.selectedSystemOption.name}"    
-                                 id="systemOptionName"
-                                 style="width:400px;" >
+                                 id="systemOptionName" >
                         <f:validator validatorId="systemOptionValidator" />
                     </p:inputText> 
 
@@ -67,17 +67,16 @@ Email: info@dpbennett.com.jm
                                       counterTemplate="{0} characters remaining."
                                       maxlength="1000"
                                       rows="6"
-                                      autoResize="false"
-                                      style="width:400px;" >
+                                      autoResize="true"
+                                      style="width:300px;" >
                         <f:validator validatorId="systemOptionValidator" />
                     </p:inputTextarea> 
-                    
+
                     <p:outputLabel value="&nbsp;&nbsp;" />
                     <p:outputLabel id="valueCharsRemaining" /> 
 
                     <p:outputLabel value="Value Type" style="font-weight: bold;" />                    
-                    <p:selectOneMenu id="systemOptionValueType"     
-                                     style="width: 400px;"
+                    <p:selectOneMenu id="systemOptionValueType" 
                                      value="#{systemManager.selectedSystemOption.optionValueType}">
 
                         <f:selectItems  value="#{systemManager.valueTypes}"
@@ -88,8 +87,7 @@ Email: info@dpbennett.com.jm
                     </p:selectOneMenu>
 
                     <p:outputLabel value="Category" style="font-weight: bold;" />                    
-                    <p:selectOneMenu id="systemOptionCategory"     
-                                     style="width: 400px;"
+                    <p:selectOneMenu id="systemOptionCategory"  
                                      value="#{systemManager.selectedSystemOption.category}">
 
                         <f:selectItems  value="#{systemManager.systemOptionCategories}"
@@ -105,15 +103,15 @@ Email: info@dpbennett.com.jm
                                       maxlength="1000"
                                       rows="4"
                                       autoResize="false"
-                                      style="width:400px" >
-                        
+                                      style="width:300px" >
+
                         <f:validator validatorId="systemOptionValidator" />
-                        
+
                     </p:inputTextarea>                           
 
                 </h:panelGrid>
             </p:panel>
-            </p:scrollPanel>
+
             <p:toolbar>
                 <p:toolbarGroup align="left">
                     <p:commandButton value="Ok"

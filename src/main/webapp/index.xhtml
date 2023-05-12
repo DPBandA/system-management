@@ -33,8 +33,6 @@ Email: info@dpbennett.com.jm
         <script type="text/javascript" src="js/javascripts.js" /> 
         <h:outputStylesheet library="webjars" name="primeflex/3.2.1/primeflex.min.css" />       
         <link rel="stylesheet" type="text/css" href="css/main.css" />
-        <link rel="stylesheet" type="text/css" href="css/responsive.css" />
-
     </h:head>
     <h:body>
 
@@ -42,7 +40,7 @@ Email: info@dpbennett.com.jm
         <ui:include src="admin/loginDialog.xhtml"/>         
         <ui:include src="common/userProfileDialog.xhtml"/> 
 
-        <h:form id="appForm" rendered="#{authentication.userLoggedIn}">   
+        <h:form id="appForm" rendered="#{systemManager.userLoggedIn}">   
 
             <p:growl id="growl3" life="5000" showDetail="true" />
             <p:panel>
@@ -69,7 +67,7 @@ Email: info@dpbennett.com.jm
 
                                         </h:panelGrid>
                                     </div>    
-                                   
+
                                     <div class="col-12 md:col-9">
                                         <h:panelGroup style="float: right;" >
 
@@ -126,13 +124,13 @@ Email: info@dpbennett.com.jm
                                             </p:menuButton>   
                                         </h:panelGroup>
                                     </div>
-                                </div>
+                                </div>   
                             </div>
                             <div class="col-12">
                                 <div class="grid">
                                     <div class="col-12 md:col-4">                                    
 
-                                        <p:defaultCommand target="doSearch" />
+                                        <p:defaultCommand target="defaultCommand" />
 
                                         <ui:include src="dashboard/admin/generalAdminTab.xhtml" />                                     
 
@@ -166,15 +164,6 @@ Email: info@dpbennett.com.jm
 
                                         </p:tabView> 
 
-                                        <p:commandButton
-                                            id="doNothingButton"
-                                            style="visibility: hidden;"
-                                            global="false"                                        
-                                            value=""                                       
-                                            title="This is the default button that accepts the enter key press"                                       
-                                            process="@this"/> 
-
-                                        <p:defaultCommand target=":appForm:doNothingButton" />
                                     </div>                              
                                 </div>
                             </div>

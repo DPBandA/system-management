@@ -1,6 +1,6 @@
 <!--
 System Management (SM) 
-Copyright (C) 2022  D P Bennett & Associates Limited
+Copyright (C) 2023  D P Bennett & Associates Limited
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU Affero General Public License as published by
@@ -26,11 +26,12 @@ Email: info@dpbennett.com.jm
 
     <h:head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Attachment</title>
         <h:outputStylesheet library="webjars" name="primeflex/3.2.1/primeflex.min.css" />
-        <link rel="stylesheet" href="../css/main.css" />
-        <link rel="stylesheet" type="text/css" href="../css/responsive.css" />       
+        <link rel="stylesheet" href="../css/main.css" />      
     </h:head>
+
     <h:body >  
         <ui:include src="../common/commonDialogs.xhtml"/>  
         <h:form enctype="multipart/form-data" id="attachmentDialogForm">        
@@ -38,7 +39,7 @@ Email: info@dpbennett.com.jm
 
             <p:toolbar>
                 <p:toolbarGroup align="left">
-                     <p:commandButton value="Ok"
+                    <p:commandButton value="Ok"
                                      actionListener="#{systemManager.okAttachment}"
                                      ajax="true"
                                      icon="pi pi-check"
@@ -51,67 +52,65 @@ Email: info@dpbennett.com.jm
                                      icon="pi pi-times" /> 
                 </p:toolbarGroup>
             </p:toolbar>
-            <p:scrollPanel style="height: 600px;">
-            <p:panel style="margin-top: 1px;margin-bottom: 1px;">
-                <p:fileUpload value="#{systemManager.uploadedFile}"  
+            
+                <p:panel style="margin-top: 1px;margin-bottom: 1px;">
+                    <p:fileUpload value="#{systemManager.uploadedFile}"  
                                   update="name"   
                                   chooseIcon="pi pi-file"
                                   mode="simple" 
                                   skinSimple="true"
                                   label="Choose file" />
-                <p:divider />
-                <h:panelGrid columns="2" cellpadding="5">   
-                    
-                    <p:outputLabel value="Name" />
-                    <p:inputText value="#{systemManager.attachment.name}"    
-                                 id="name"
-                                 style="width:400px;" >
-                                                
-                    </p:inputText>
-                    
-                    <p:outputLabel value="Purpose" style="font-weight: bold;" />
-                    <p:selectOneMenu id="type"    
-                                     editable="true"
-                                     style="width: 200px;"
-                                     value="#{systemManager.attachment.type}" >
+                    <p:divider />
+                    <h:panelGrid columns="2" cellpadding="5">   
 
-                        <f:selectItems  value="#{systemManager.attachmentTypeList}"
-                                        var="type"                            
-                                        itemValue="#{type}"
-                                        itemLabel="#{type}"/>   
-                        
-                        <f:validator validatorId="requiredFieldValidator" />
+                        <p:outputLabel value="Name" />
+                        <p:inputText value="#{systemManager.attachment.name}"    
+                                     id="name" >
 
-                    </p:selectOneMenu>
+                        </p:inputText>
 
-                    <p:outputLabel value="File destination" style="font-weight: bold;" />
-                    <p:inputText value="#{systemManager.attachment.destinationURL}"    
-                                 id="destinationURL"
-                                 style="width:400px;" >
-                        
-                        <f:validator validatorId="requiredFieldValidator" />
-                        
-                    </p:inputText>
+                        <p:outputLabel value="Purpose" style="font-weight: bold;" />
+                        <p:selectOneMenu id="type"    
+                                         editable="true"
+                                         style="width: 200px;"
+                                         value="#{systemManager.attachment.type}" >
 
-                    <p:outputLabel value="Description" style="width: 50%;font-weight: bold;" />
-                    <p:inputTextarea  value="#{systemManager.attachment.description}"
-                                      id="sescription"
-                                      counter="valueCharsRemaining"
-                                      counterTemplate="{0} characters remaining."
-                                      maxlength="250"
-                                      rows="5"
-                                      autoResize="false"
-                                      style="width:400px" >
+                            <f:selectItems  value="#{systemManager.attachmentTypeList}"
+                                            var="type"                            
+                                            itemValue="#{type}"
+                                            itemLabel="#{type}"/>   
 
-                        <f:validator validatorId="requiredFieldValidator" />
+                            <f:validator validatorId="requiredFieldValidator" />
 
-                    </p:inputTextarea>   
-                    <p:outputLabel value="&nbsp;&nbsp;" />
-                    <p:outputLabel id="valueCharsRemaining" />
+                        </p:selectOneMenu>
 
-                </h:panelGrid>
-            </p:panel>
-            </p:scrollPanel>
+                        <p:outputLabel value="File destination" style="font-weight: bold;" />
+                        <p:inputText value="#{systemManager.attachment.destinationURL}"    
+                                     id="destinationURL" >
+
+                            <f:validator validatorId="requiredFieldValidator" />
+
+                        </p:inputText>
+
+                        <p:outputLabel value="Description" style="width: 50%;font-weight: bold;" />
+                        <p:inputTextarea  value="#{systemManager.attachment.description}"
+                                          id="sescription"
+                                          counter="valueCharsRemaining"
+                                          counterTemplate="{0} characters remaining."
+                                          maxlength="250"
+                                          rows="5"
+                                          autoResize="false"
+                                          style="width:300px;" >
+
+                            <f:validator validatorId="requiredFieldValidator" />
+
+                        </p:inputTextarea>   
+                        <p:outputLabel value="&nbsp;&nbsp;" />
+                        <p:outputLabel id="valueCharsRemaining" />
+
+                    </h:panelGrid>
+                </p:panel>
+           
             <p:toolbar>
                 <p:toolbarGroup align="left">
                     <p:commandButton value="Ok"

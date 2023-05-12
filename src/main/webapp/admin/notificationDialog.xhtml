@@ -1,6 +1,6 @@
 <!--
 System Management (SM) 
-Copyright (C) 2022  D P Bennett & Associates Limited
+Copyright (C) 2023  D P Bennett & Associates Limited
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU Affero General Public License as published by
@@ -26,11 +26,12 @@ Email: info@dpbennett.com.jm
 
     <h:head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Notification</title>
         <h:outputStylesheet library="webjars" name="primeflex/3.2.1/primeflex.min.css" />
         <link rel="stylesheet" type="text/css" href="../css/main.css" />
-        <link rel="stylesheet" type="text/css" href="../css/responsive.css" />
     </h:head>
+
     <h:body > 
 
         <ui:include src="../common/commonDialogs.xhtml"/> 
@@ -40,7 +41,7 @@ Email: info@dpbennett.com.jm
             <p:growl id="notification_growl" life="5000" showDetail="true"/>
 
             <ui:include src="notificationDialogToolbar.xhtml" /> 
-            <p:scrollPanel style="height: 600px;">
+
             <p:panel style="margin-bottom: 1px;margin-top: 1px;">
                 <h:panelGrid columns="2" cellspacing="5">
 
@@ -52,10 +53,10 @@ Email: info@dpbennett.com.jm
                     <p:inputNumber id="ownerId" 
                                    thousandSeparator=""
                                    value="#{systemManager.selectedNotification.ownerId}" />  
-                    
+
                     <p:outputLabel value="Issue time" for="issueTime" style="font-weight: bold;"/>
                     <p:outputLabel id="issueTime"                                  
-                                  value="#{systemManager.selectedNotification.issueTime}" />
+                                   value="#{systemManager.selectedNotification.issueTime}" />
 
                     <p:outputLabel value="Name" for="name" style="font-weight: bold;"/>
                     <p:inputText id="name"
@@ -80,16 +81,16 @@ Email: info@dpbennett.com.jm
 
                     <p:outputLabel value="Message" for="message" style="font-weight: bold;" />
                     <p:inputTextarea  value="#{systemManager.selectedNotification.message}"
-                                   id="message"
-                                   maxlength="1000"
-                                   rows="4"
-                                   validatorMessage="A message is required"
-                                   validator="requiredFieldValidator"
-                                   style="width: 300px;" />
+                                      id="message"
+                                      maxlength="1000"
+                                      rows="4"
+                                      validatorMessage="A message is required"
+                                      validator="requiredFieldValidator"
+                                      style="width: 300px;" />
 
                 </h:panelGrid>
             </p:panel>
-            </p:scrollPanel>
+
             <ui:include src="notificationDialogToolbar.xhtml" /> 
 
         </h:form> 
