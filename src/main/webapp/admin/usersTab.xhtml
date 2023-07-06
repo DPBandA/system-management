@@ -96,8 +96,7 @@ Email: info@dpbennett.com.jm
             <f:facet name="header">
                 <p:outputLabel value="Activity"/>
             </f:facet>
-            <p:outputLabel value="#{user.loggedActivity}"
-                          style="font-weight: bold;color: #{user.activity.startsWith('Logged in', 0) ? 'green': 'grey'}" />
+            <p:outputLabel value="#{user.activity}" />
         </p:column>  
         <p:column>
             <f:facet name="header">
