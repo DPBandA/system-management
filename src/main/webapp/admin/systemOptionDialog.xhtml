@@ -37,6 +37,17 @@ Email: info@dpbennett.com.jm
         <h:form id="systemOptionDialogForm">        
             <p:growl id="growl" life="5000" />
 
+            <p:dialog header="Edit Item" widgetVar="stringListItemDialog" minHeight="40" width="350" showEffect="fade">
+                
+                <p:inputText value="#{systemManager.stringListItem}"   />
+                
+                <f:facet name="footer">
+                    <p:commandButton type="button" value="No" styleClass="ui-button-flat mr-2" style="width: 6rem" />
+                    <p:commandButton type="button" value="Yes" style="width: 5rem" />
+                </f:facet>
+                
+            </p:dialog>
+
             <p:toolbar>
                 <p:toolbarGroup align="left">
                     <p:commandButton value="Ok"
@@ -65,6 +76,24 @@ Email: info@dpbennett.com.jm
 
                     </p:inputText> 
 
+                    <p:outputLabel value="Value type" 
+                                   rendered="#{systemManager.user.can('BeSuperUser')}"
+                                   style="font-weight: bold;" />                    
+                    <p:selectOneMenu id="systemOptionValueType" 
+                                     rendered="#{systemManager.user.can('BeSuperUser')}"
+                                     value="#{systemManager.selectedSystemOption.optionValueType}">
+
+                        <f:selectItems  value="#{systemManager.valueTypes}"
+                                        var="type"                            
+                                        itemValue="#{type}"
+                                        itemLabel="#{type}"/>
+
+                        <p:ajax global="false"
+                                update=":systemOptionDialogForm"
+                                process="@this"/>
+
+                    </p:selectOneMenu>
+
                     <p:outputLabel value="Value" 
                                    style="font-weight: bold;" />
                     <p:inputTextarea  value="#{systemManager.selectedSystemOption.optionValue}"
@@ -80,39 +109,45 @@ Email: info@dpbennett.com.jm
                         <f:validator validatorId="systemOptionValidator" />
 
                     </p:inputTextarea>
-                    <p:selectOneMenu value="#{systemManager.selectedSystemOption.booleanValue}" 
+                    <p:outputLabel value="&nbsp;&nbsp;" 
+                                   rendered="#{systemManager.isSelectedSystemOptionValueType('String')}"/>
+                    <p:outputLabel id="valueCharsRemaining"
+                                   rendered="#{systemManager.isSelectedSystemOptionValueType('String')}" />   
+                    <p:selectOneMenu value="#{systemManager.selectedSystemOption.optionValue}" 
                                      rendered="#{systemManager.isSelectedSystemOptionValueType('Boolean')}" >
 
-                        <f:selectItem itemLabel="Yes" itemValue="Yes"/>
-                        <f:selectItem itemLabel="No" itemValue="No"/>
-
-                        <p:ajax listener="#{systemManager.updateSystemOptionValue}"
-                                global="false"
-                                update=":systemOptionDialogForm"
-                                process="@this"/>
+                        <f:selectItems  value="#{systemManager.booleanValues}"
+                                        var="value"                            
+                                        itemValue="#{value}"
+                                        itemLabel="#{value}"/>
 
                     </p:selectOneMenu>
+                    <p:inputNumber value="#{systemManager.selectedSystemOption.optionValue}" 
+                                   rendered="#{systemManager.isSelectedSystemOptionValueType('Integer')}"
+                                   decimalPlaces="0" />
+                    <p:inputNumber value="#{systemManager.selectedSystemOption.optionValue}" 
+                                   rendered="#{systemManager.isSelectedSystemOptionValueType('Long')}"
+                                   decimalPlaces="0" />
+                    <p:inputNumber value="#{systemManager.selectedSystemOption.optionValue}" 
+                                   decimalPlaces="15"
+                                   rendered="#{systemManager.isSelectedSystemOptionValueType('Double')}" />
+                    <p:orderList value="#{systemManager.selectedSystemOptionTextList}" 
+                                 rendered="#{systemManager.isSelectedSystemOptionValueType('StringList')}"
+                                 var="item" 
+                                 controlsLocation="none" 
+                                 itemLabel="#{item}" 
+                                 itemValue="#{item}" >
 
-                    <p:outputLabel value="&nbsp;&nbsp;" />
-                    <p:outputLabel id="valueCharsRemaining" /> 
-
-                    <p:outputLabel value="Value type" 
-                                   rendered="#{systemManager.user.can('BeSuperUser')}"
-                                   style="font-weight: bold;" />                    
-                    <p:selectOneMenu id="systemOptionValueType" 
-                                     rendered="#{systemManager.user.can('BeSuperUser')}"
-                                     value="#{systemManager.selectedSystemOption.optionValueType}">
-
-                        <f:selectItems  value="#{systemManager.valueTypes}"
-                                        var="type"                            
-                                        itemValue="#{type}"
-                                        itemLabel="#{type}"/>
+                        <p:ajax event="select" 
+                                listener="#{systemManager.onStringListItemSelect}" 
+                                oncomplete="PF('stringListItemDialog').show()"
+                                update="@form"/>
                         
-                        <p:ajax global="false"
-                                update=":systemOptionDialogForm"
-                                process="@this"/>
+                        <p:ajax event="unselect" 
+                                listener="#{systemManager.onStringListItemUnselect}" 
+                                update="@form"/>                    
 
-                    </p:selectOneMenu>
+                    </p:orderList>
 
                     <p:outputLabel value="Category" 
                                    rendered="#{systemManager.user.can('BeSuperUser')}"
