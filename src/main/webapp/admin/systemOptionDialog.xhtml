@@ -60,14 +60,15 @@ Email: info@dpbennett.com.jm
                     <p:inputText value="#{systemManager.selectedSystemOption.name}"    
                                  rendered="#{systemManager.user.can('BeSuperUser')}"
                                  id="systemOptionName" >
-                        
+
                         <f:validator validatorId="systemOptionValidator" />
-                        
+
                     </p:inputText> 
 
                     <p:outputLabel value="Value" 
                                    style="font-weight: bold;" />
                     <p:inputTextarea  value="#{systemManager.selectedSystemOption.optionValue}"
+                                      rendered="#{systemManager.isSelectedSystemOptionValueType('String')}"
                                       id="systemOptionValue"
                                       counter="valueCharsRemaining"
                                       counterTemplate="{0} characters remaining."
@@ -75,15 +76,27 @@ Email: info@dpbennett.com.jm
                                       rows="6"
                                       autoResize="true"
                                       style="width:300px;" >
-                        
+
                         <f:validator validatorId="systemOptionValidator" />
-                        
-                    </p:inputTextarea> 
+
+                    </p:inputTextarea>
+                    <p:selectOneMenu value="#{systemManager.selectedSystemOption.booleanValue}" 
+                                     rendered="#{systemManager.isSelectedSystemOptionValueType('Boolean')}" >
+
+                        <f:selectItem itemLabel="Yes" itemValue="Yes"/>
+                        <f:selectItem itemLabel="No" itemValue="No"/>
+
+                        <p:ajax listener="#{systemManager.updateSystemOptionValue}"
+                                global="false"
+                                update=":systemOptionDialogForm"
+                                process="@this"/>
+
+                    </p:selectOneMenu>
 
                     <p:outputLabel value="&nbsp;&nbsp;" />
                     <p:outputLabel id="valueCharsRemaining" /> 
 
-                    <p:outputLabel value="Value Type" 
+                    <p:outputLabel value="Value type" 
                                    rendered="#{systemManager.user.can('BeSuperUser')}"
                                    style="font-weight: bold;" />                    
                     <p:selectOneMenu id="systemOptionValueType" 
@@ -94,6 +107,10 @@ Email: info@dpbennett.com.jm
                                         var="type"                            
                                         itemValue="#{type}"
                                         itemLabel="#{type}"/>
+                        
+                        <p:ajax global="false"
+                                update=":systemOptionDialogForm"
+                                process="@this"/>
 
                     </p:selectOneMenu>
 
