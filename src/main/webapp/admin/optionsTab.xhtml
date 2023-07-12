@@ -76,8 +76,8 @@ Email: info@dpbennett.com.jm
             </p:cellEditor>                                           
         </p:column>   
 
-        <p:column>
-            <f:facet name="header">
+        <p:column rendered="#{systemManager.user.can('BeSuperUser')}">
+            <f:facet name="header" >
                 <p:outputLabel value="Name"/>
             </f:facet>
             <p:cellEditor>

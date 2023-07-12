@@ -54,13 +54,19 @@ Email: info@dpbennett.com.jm
 
             <p:panel style="margin-top: 1px;margin-bottom: 1px;">
                 <h:panelGrid columns="2" cellpadding="5">                
-                    <p:outputLabel value="Name" style="font-weight: bold;" />
+                    <p:outputLabel value="Name" 
+                                   rendered="#{systemManager.user.can('BeSuperUser')}"
+                                   style="font-weight: bold;" />
                     <p:inputText value="#{systemManager.selectedSystemOption.name}"    
+                                 rendered="#{systemManager.user.can('BeSuperUser')}"
                                  id="systemOptionName" >
+                        
                         <f:validator validatorId="systemOptionValidator" />
+                        
                     </p:inputText> 
 
-                    <p:outputLabel value="Value" style="font-weight: bold;" />
+                    <p:outputLabel value="Value" 
+                                   style="font-weight: bold;" />
                     <p:inputTextarea  value="#{systemManager.selectedSystemOption.optionValue}"
                                       id="systemOptionValue"
                                       counter="valueCharsRemaining"
@@ -69,14 +75,19 @@ Email: info@dpbennett.com.jm
                                       rows="6"
                                       autoResize="true"
                                       style="width:300px;" >
+                        
                         <f:validator validatorId="systemOptionValidator" />
+                        
                     </p:inputTextarea> 
 
                     <p:outputLabel value="&nbsp;&nbsp;" />
                     <p:outputLabel id="valueCharsRemaining" /> 
 
-                    <p:outputLabel value="Value Type" style="font-weight: bold;" />                    
+                    <p:outputLabel value="Value Type" 
+                                   rendered="#{systemManager.user.can('BeSuperUser')}"
+                                   style="font-weight: bold;" />                    
                     <p:selectOneMenu id="systemOptionValueType" 
+                                     rendered="#{systemManager.user.can('BeSuperUser')}"
                                      value="#{systemManager.selectedSystemOption.optionValueType}">
 
                         <f:selectItems  value="#{systemManager.valueTypes}"
@@ -86,8 +97,11 @@ Email: info@dpbennett.com.jm
 
                     </p:selectOneMenu>
 
-                    <p:outputLabel value="Category" style="font-weight: bold;" />                    
-                    <p:selectOneMenu id="systemOptionCategory"  
+                    <p:outputLabel value="Category" 
+                                   rendered="#{systemManager.user.can('BeSuperUser')}"
+                                   style="font-weight: bold;" />                    
+                    <p:selectOneMenu id="systemOptionCategory" 
+                                     rendered="#{systemManager.user.can('BeSuperUser')}"
                                      value="#{systemManager.selectedSystemOption.category}">
 
                         <f:selectItems  value="#{systemManager.systemOptionCategories}"
