@@ -120,7 +120,7 @@ Email: info@dpbennett.com.jm
                     </ui:remove>
                 </h:panelGrid>
             </p:panel>
-
+          
             <p:tabView id="privileges">
                 <p:tab title="Privileges">
                     <p:toolbar>
@@ -140,17 +140,19 @@ Email: info@dpbennett.com.jm
                             </p:commandButton> 
                         </p:toolbarGroup>  
 
-                    </p:toolbar> 
+                    </p:toolbar>   
                     
-                    <p:dataTable var="privilege"                                  
-                                 id="privilegesTable"                                 
-                                 value="#{systemManager.selectedModule.privileges}">
-
-                        <p:column>
-                            <h:outputText value="#{privilege.description}"/>
-                        </p:column>
-
-                    </p:dataTable>
+                    <p:selectOneRadio id="privilegesTable"
+                                      style="margin-top: 15px;margin-bottom: 15px;"
+                                      layout="grid" columns="3" styleClass="grid-radio"
+                                      unselectable="true" >
+                        
+                        <f:selectItems value="#{systemManager.selectedModule.privileges}" 
+                                       var="privilege" 
+                                       itemLabel="#{privilege.description}" 
+                                       itemValue="#{privilege.description}"/>
+                        
+                    </p:selectOneRadio>  
 
                     <p:toolbar>
                         <p:toolbarGroup align="left" >  
@@ -172,7 +174,7 @@ Email: info@dpbennett.com.jm
                 </p:tab>                           
 
             </p:tabView>
-
+          
             <ui:include src="moduleDialogToolbar.xhtml" /> 
 
         </h:form> 
