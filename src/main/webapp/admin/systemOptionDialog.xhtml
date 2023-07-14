@@ -37,17 +37,6 @@ Email: info@dpbennett.com.jm
         <h:form id="systemOptionDialogForm">        
             <p:growl id="growl" life="5000" />
 
-            <p:dialog header="Edit Item" widgetVar="stringListItemDialog" minHeight="40" width="350" showEffect="fade">
-                
-                <p:inputText value="#{systemManager.stringListItem}"   />
-                
-                <f:facet name="footer">
-                    <p:commandButton type="button" value="No" styleClass="ui-button-flat mr-2" style="width: 6rem" />
-                    <p:commandButton type="button" value="Yes" style="width: 5rem" />
-                </f:facet>
-                
-            </p:dialog>
-
             <p:toolbar>
                 <p:toolbarGroup align="left">
                     <p:commandButton value="Ok"
@@ -131,23 +120,27 @@ Email: info@dpbennett.com.jm
                     <p:inputNumber value="#{systemManager.selectedSystemOption.optionValue}" 
                                    decimalPlaces="15"
                                    rendered="#{systemManager.isSelectedSystemOptionValueType('Double')}" />
-                    <p:orderList value="#{systemManager.selectedSystemOptionTextList}" 
-                                 rendered="#{systemManager.isSelectedSystemOptionValueType('StringList')}"
-                                 var="item" 
-                                 controlsLocation="none" 
-                                 itemLabel="#{item}" 
-                                 itemValue="#{item}" >
 
-                        <p:ajax event="select" 
-                                listener="#{systemManager.onStringListItemSelect}" 
-                                oncomplete="PF('stringListItemDialog').show()"
-                                update="@form"/>
-                        
-                        <p:ajax event="unselect" 
-                                listener="#{systemManager.onStringListItemUnselect}" 
-                                update="@form"/>                    
+                    <p:dataTable var="systemOption"   
+                                 editable="true" 
+                                 editMode="cell"
+                                 value="#{systemManager.selectedSystemOptionTextList}" >
 
-                    </p:orderList>
+                        <p:ajax event="cellEdit" listener="#{systemManager.onTextListItemCellEdit}" />
+
+                        <p:column>                            
+                            <p:cellEditor>
+                                <f:facet name="output"> 
+                                    <h:outputText value="#{systemOption.optionValue}"/>
+                                </f:facet>
+                                <f:facet name="input">
+                                    <p:inputText value="#{systemOption.optionValue}" 
+                                                 style="width:100%;"/>
+                                </f:facet>
+                            </p:cellEditor>
+                        </p:column>
+
+                    </p:dataTable>
 
                     <p:outputLabel value="Category" 
                                    rendered="#{systemManager.user.can('BeSuperUser')}"
