@@ -27,13 +27,16 @@ Email: info@dpbennett.com.jm
     <h:head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Option</title>
+        <title>Setting</title>
         <h:outputStylesheet library="webjars" name="primeflex/3.2.1/primeflex.min.css" />
         <link rel="stylesheet" type="text/css" href="../css/main.css" />
     </h:head>
 
     <h:body >  
-        <ui:include src="../common/commonDialogs.xhtml"/>  
+        
+        <ui:include src="../common/commonDialogs.xhtml"/> 
+        <ui:include src="deleteSystemOptionConfirmationDialog.xhtml"/> 
+        
         <h:form id="systemOptionDialogForm">        
             <p:growl id="growl" life="5000" />
 
@@ -78,6 +81,7 @@ Email: info@dpbennett.com.jm
                                         itemLabel="#{type}"/>
 
                         <p:ajax global="false"
+                                listener="#{systemManager.updateOptionValueType}"
                                 update=":systemOptionDialogForm"
                                 process="@this"/>
 
@@ -120,28 +124,51 @@ Email: info@dpbennett.com.jm
                     <p:inputNumber value="#{systemManager.selectedSystemOption.optionValue}" 
                                    decimalPlaces="15"
                                    rendered="#{systemManager.isSelectedSystemOptionValueType('Double')}" />
-                    <p:dataTable var="sysOption"   
-                                 editable="true" 
-                                 editMode="cell"
-                                 rendered="#{systemManager.isSelectedSystemOptionValueType('StringList')}" 
-                                 value="#{systemManager.selectedSystemOption.selectedSystemOptionTextList}" >
+                    <h:panelGroup>
+                        <p:dataTable var="sysOption"   
+                                     id="sysOptionTable"
+                                     editable="true" 
+                                     editMode="cell"
+                                     rendered="#{systemManager.isSelectedSystemOptionValueType('StringList')}" 
+                                     value="#{systemManager.selectedSystemOption.textList}" >
 
-                        <p:ajax event="cellEdit" 
-                                listener="#{systemManager.onTextListItemCellEdit}" />
+                            <p:ajax event="cellEdit" 
+                                    listener="#{systemManager.onTextListItemCellEdit}" />
 
-                        <p:column>                            
-                            <p:cellEditor>
-                                <f:facet name="output"> 
-                                    <h:outputText value="#{sysOption.optionValue}"/>
-                                </f:facet>
-                                <f:facet name="input">
-                                    <p:inputText value="#{sysOption.optionValue}" 
-                                                 style="width:100%;"/>
-                                </f:facet>
-                            </p:cellEditor>
-                        </p:column>
+                            <p:column>                            
+                                <p:cellEditor>
+                                    <f:facet name="output"> 
+                                        <h:outputText value="#{sysOption.optionValue}"/>
+                                    </f:facet>
+                                    <f:facet name="input">
+                                        <p:inputText value="#{sysOption.optionValue}" 
+                                                     style="width:100%;"/>
+                                    </f:facet>
+                                </p:cellEditor>
+                            </p:column>
 
-                    </p:dataTable>
+                            <p:column>
+
+                                <p:commandButton
+                                    icon="pi pi-trash"                                            
+                                    process="@this"
+                                    update=":systemOptionDialogForm"
+                                    oncomplete="PF('deleteSystemOptionDialog').show();"  
+                                    title="Delete this text">
+
+                                    <f:setPropertyActionListener value="#{sysOption}"
+                                                                 target="#{systemManager.selectedSystemOptionText}" />
+                                </p:commandButton>
+
+                            </p:column>
+
+                        </p:dataTable>
+                        <p:commandButton value="Add text" 
+                                         process="@this" 
+                                         style="margin-top: 5px;"
+                                         update="sysOptionTable"
+                                         action="#{systemManager.onAddSystemOptionText()}"/>
+                    </h:panelGroup>
 
                     <p:outputLabel value="Category" 
                                    rendered="#{systemManager.user.can('BeSuperUser')}"
