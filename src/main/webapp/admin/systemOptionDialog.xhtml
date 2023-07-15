@@ -120,21 +120,22 @@ Email: info@dpbennett.com.jm
                     <p:inputNumber value="#{systemManager.selectedSystemOption.optionValue}" 
                                    decimalPlaces="15"
                                    rendered="#{systemManager.isSelectedSystemOptionValueType('Double')}" />
-
-                    <p:dataTable var="systemOption"   
+                    <p:dataTable var="sysOption"   
                                  editable="true" 
                                  editMode="cell"
-                                 value="#{systemManager.selectedSystemOptionTextList}" >
+                                 rendered="#{systemManager.isSelectedSystemOptionValueType('StringList')}" 
+                                 value="#{systemManager.selectedSystemOption.selectedSystemOptionTextList}" >
 
-                        <p:ajax event="cellEdit" listener="#{systemManager.onTextListItemCellEdit}" />
+                        <p:ajax event="cellEdit" 
+                                listener="#{systemManager.onTextListItemCellEdit}" />
 
                         <p:column>                            
                             <p:cellEditor>
                                 <f:facet name="output"> 
-                                    <h:outputText value="#{systemOption.optionValue}"/>
+                                    <h:outputText value="#{sysOption.optionValue}"/>
                                 </f:facet>
                                 <f:facet name="input">
-                                    <p:inputText value="#{systemOption.optionValue}" 
+                                    <p:inputText value="#{sysOption.optionValue}" 
                                                  style="width:100%;"/>
                                 </f:facet>
                             </p:cellEditor>
