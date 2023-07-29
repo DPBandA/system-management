@@ -45,14 +45,14 @@ Email: info@dpbennett.com.jm
                 <p:panel style="margin-bottom: 1px;margin-top: 1px;">
                     <h:panelGrid columns="2" cellpadding="5">
 
-                        <p:outputLabel value="Active"                                    
+                        <p:outputLabel value="Active *"                                    
                                        for="activePrivilege" 
                                        style="font-weight: bold;" /> 
                         <p:selectBooleanCheckbox id="activePrivilege" 
                                                  disabled="true"
                                                  value="#{systemManager.selectedPrivilege.active}" />                    
 
-                        <p:outputLabel value="Name" for="name" style="font-weight: bold;"/>
+                        <p:outputLabel value="Name *" for="name" style="font-weight: bold;"/>
                         <p:inputText id="name"
                                      value="#{systemManager.selectedPrivilege.name}"  
                                      style="width: 275px;"
@@ -64,7 +64,7 @@ Email: info@dpbennett.com.jm
 
                         </p:inputText>
 
-                        <p:outputLabel value="Description" for="description" style="font-weight: bold;"/>       
+                        <p:outputLabel value="Description *" for="description" style="font-weight: bold;"/>       
                         <p:inputText id="description"
                                      value="#{systemManager.selectedPrivilege.description}"  
                                      style="width: 275px;"

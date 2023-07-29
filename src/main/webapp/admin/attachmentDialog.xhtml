@@ -35,9 +35,10 @@ Email: info@dpbennett.com.jm
     <h:body >  
         <ui:include src="../common/commonDialogs.xhtml"/>  
         <h:form enctype="multipart/form-data" id="attachmentDialogForm">        
-            <p:growl id="growl" life="5000" showDetail="true"/>
+            <p:growl id="growl" life="5000" showDetail="false"/>
 
             <p:toolbar>
+
                 <p:toolbarGroup align="left">
                     <p:commandButton value="Ok"
                                      actionListener="#{systemManager.okAttachment}"
@@ -51,67 +52,83 @@ Email: info@dpbennett.com.jm
                                      immediate="true" 
                                      icon="pi pi-times" /> 
                 </p:toolbarGroup>
+
+                <p:toolbarGroup align="right">
+
+                    <h:outputText value="* Fields with bold labels are required." 
+                                  style="font-weight: bold;" /> 
+
+                </p:toolbarGroup>
+
             </p:toolbar>
-            
-                <p:panel style="margin-top: 1px;margin-bottom: 1px;">
-                    <p:fileUpload value="#{systemManager.uploadedFile}"  
-                                  update="name"   
-                                  chooseIcon="pi pi-file"
-                                  mode="simple" 
-                                  skinSimple="true"
-                                  label="Choose file" />
-                    <p:divider />
-                    <h:panelGrid columns="2" cellpadding="5">   
 
-                        <p:outputLabel value="Name" />
-                        <p:inputText value="#{systemManager.attachment.name}"    
-                                     id="name" >
+            <p:panel style="margin-top: 1px;margin-bottom: 1px;">
+                <p:fileUpload value="#{systemManager.uploadedFile}"  
+                              update="name"   
+                              chooseIcon="pi pi-file"
+                              mode="simple" 
+                              skinSimple="true"
+                              label="Choose file" />
+                <p:divider />
+                <h:panelGrid columns="2" cellpadding="5">   
 
-                        </p:inputText>
+                    <p:outputLabel value="Name *" style="font-weight: bold;" />
+                    <p:inputText value="#{systemManager.attachment.name}"    
+                                 required="true"
+                                 requiredMessage="Name Required"
+                                 id="name" >
+                    </p:inputText>
 
-                        <p:outputLabel value="Purpose" style="font-weight: bold;" />
-                        <p:selectOneMenu id="type"    
-                                         editable="true"
-                                         style="width: 200px;"
-                                         value="#{systemManager.attachment.type}" >
+                    <p:outputLabel value="Purpose *" style="font-weight: bold;" />
+                    <p:selectOneMenu id="type"    
+                                     editable="true"
+                                     style="width: 200px;"
+                                     required="true"
+                                     requiredMessage="Purpose Required"
+                                     value="#{systemManager.attachment.type}" >
 
-                            <f:selectItems  value="#{systemManager.attachmentTypeList}"
-                                            var="type"                            
-                                            itemValue="#{type}"
-                                            itemLabel="#{type}"/>   
+                        <f:selectItems  value="#{systemManager.attachmentTypeList}"
+                                        var="type"                            
+                                        itemValue="#{type}"
+                                        itemLabel="#{type}"/>   
 
-                            <f:validator validatorId="requiredFieldValidator" />
+                        <f:validator validatorId="requiredFieldValidator" />
 
-                        </p:selectOneMenu>
+                    </p:selectOneMenu>
 
-                        <p:outputLabel value="File destination" style="font-weight: bold;" />
-                        <p:inputText value="#{systemManager.attachment.destinationURL}"    
-                                     id="destinationURL" >
+                    <p:outputLabel value="File destination *" style="font-weight: bold;" />
+                    <p:inputText value="#{systemManager.attachment.destinationURL}"   
+                                 required="true"
+                                 requiredMessage="File Destination Required"
+                                 id="destinationURL" >
 
-                            <f:validator validatorId="requiredFieldValidator" />
+                        <f:validator validatorId="requiredFieldValidator" />
 
-                        </p:inputText>
+                    </p:inputText>
 
-                        <p:outputLabel value="Description" style="width: 50%;font-weight: bold;" />
-                        <p:inputTextarea  value="#{systemManager.attachment.description}"
-                                          id="sescription"
-                                          counter="valueCharsRemaining"
-                                          counterTemplate="{0} characters remaining."
-                                          maxlength="250"
-                                          rows="5"
-                                          autoResize="false"
-                                          style="width:300px;" >
+                    <p:outputLabel value="Description *" style="width: 50%;font-weight: bold;" />
+                    <p:inputTextarea  value="#{systemManager.attachment.description}"
+                                      id="sescription"
+                                      counter="valueCharsRemaining"
+                                      counterTemplate="{0} characters remaining."
+                                      maxlength="250"
+                                      rows="5"
+                                      required="true"
+                                      requiredMessage="Description Required"
+                                      autoResize="false"
+                                      style="width:300px;" >
 
-                            <f:validator validatorId="requiredFieldValidator" />
+                        <f:validator validatorId="requiredFieldValidator" />
 
-                        </p:inputTextarea>   
-                        <p:outputLabel value="&nbsp;&nbsp;" />
-                        <p:outputLabel id="valueCharsRemaining" />
+                    </p:inputTextarea>   
+                    <p:outputLabel value="&nbsp;&nbsp;" />
+                    <p:outputLabel id="valueCharsRemaining" />
 
-                    </h:panelGrid>
-                </p:panel>
-           
+                </h:panelGrid>
+            </p:panel>
+
             <p:toolbar>
+
                 <p:toolbarGroup align="left">
                     <p:commandButton value="Ok"
                                      actionListener="#{systemManager.okAttachment}"
@@ -125,6 +142,14 @@ Email: info@dpbennett.com.jm
                                      immediate="true" 
                                      icon="pi pi-times" /> 
                 </p:toolbarGroup>
+
+                <p:toolbarGroup align="right">
+
+                    <h:outputText value="* Fields with bold labels are required." 
+                                  style="font-weight: bold;" /> 
+
+                </p:toolbarGroup>
+
             </p:toolbar>
         </h:form> 
     </h:body>

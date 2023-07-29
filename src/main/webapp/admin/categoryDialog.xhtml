@@ -31,25 +31,27 @@ Email: info@dpbennett.com.jm
         <h:outputStylesheet library="webjars" name="primeflex/3.2.1/primeflex.min.css" />
         <link rel="stylesheet" href="../css/main.css" />
     </h:head>
-    
+
     <h:body > 
 
         <ui:include src="../common/commonDialogs.xhtml"/> 
 
         <h:form id="categoryDialogForm">    
 
-            <p:growl id="category_growl" life="5000" showDetail="true"/>
+            <p:growl id="category_growl" life="5000" showDetail="false"/>
 
             <ui:include src="categoryDialogToolbar.xhtml" /> 
-            
+
             <p:panel style="margin-bottom: 1px;margin-top: 1px;">
                 <h:panelGrid columns="2"  cellpadding="5" style="width: 100%;">
                     <p:outputLabel value="Name" for="category" style="font-weight: bold;"/>
                     <p:inputText id="category"
                                  value="#{systemManager.selectedCategory.name}"  
                                  style="width: 100%;"
-                                 validatorMessage="A valid name is required"
-                                 validator="requiredFieldValidator" >       
+                                 required="true"
+                                 requiredMessage="Name Required" >  
+                        
+                        <f:validator validatorId="requiredFieldValidator" />
 
                         <p:ajax event="change"                                                       
                                 process="@this"/>
@@ -60,7 +62,8 @@ Email: info@dpbennett.com.jm
                     <p:inputText id="type"
                                  value="#{systemManager.selectedCategory.type}"   
                                  style="width: 100%;"
-                                 validatorMessage="A valid type is required"
+                                 required="true"
+                                 requiredMessage="Type Required"
                                  validator="requiredFieldValidator" >
 
                         <p:ajax event="change"                                                       
@@ -68,17 +71,20 @@ Email: info@dpbennett.com.jm
 
                     </p:inputText>
 
-                    <p:outputLabel value="Description" />
+                    <p:outputLabel value="Description" style="font-weight: bold;" />
                     <p:inputTextarea  value="#{systemManager.selectedCategory.description}"
                                       style="width: 100%;"
                                       id="description"
                                       maxlength="1000"
                                       rows="4"
+                                      required="true"
+                                      requiredMessage="Description Required"
+                                      validator="requiredFieldValidator"
                                       autoResize="false" >
 
-                       <p:ajax event="change"                                                       
+                        <p:ajax event="change"                                                       
                                 process="@this"/>
-                        
+
                     </p:inputTextarea>
                 </h:panelGrid>
             </p:panel>

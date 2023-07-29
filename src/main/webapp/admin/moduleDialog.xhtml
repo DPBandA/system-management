@@ -44,14 +44,14 @@ Email: info@dpbennett.com.jm
             <p:panel style="margin-bottom: 1px;margin-top: 1px;">
                 <h:panelGrid columns="2" cellpadding="5">
 
-                    <p:outputLabel value="Active"                                    
+                    <p:outputLabel value="Active *"                                    
                                    for="activeModule" 
                                    style="font-weight: bold;" /> 
                     <p:selectBooleanCheckbox id="activeModule" 
                                              disabled="true"
                                              value="#{systemManager.selectedModule.active}" />                    
 
-                    <p:outputLabel value="Name" for="name" style="font-weight: bold;"/>
+                    <p:outputLabel value="Name *" for="name" style="font-weight: bold;"/>
                     <p:inputText id="name"
                                  value="#{systemManager.selectedModule.name}"  
                                  style="width: 275px;"
@@ -63,7 +63,7 @@ Email: info@dpbennett.com.jm
 
                     </p:inputText>
 
-                    <p:outputLabel value="Title" for="dashboardTitle" style="font-weight: bold;"/>
+                    <p:outputLabel value="Title *" for="dashboardTitle" style="font-weight: bold;"/>
                     <p:inputText id="dashboardTitle"
                                  value="#{systemManager.selectedModule.dashboardTitle}"  
                                  style="width: 275px;"
@@ -75,7 +75,7 @@ Email: info@dpbennett.com.jm
 
                     </p:inputText>
 
-                    <p:outputLabel value="Main view title" for="mainViewTitle" style="font-weight: bold;"/>
+                    <p:outputLabel value="Main view title *" for="mainViewTitle" style="font-weight: bold;"/>
                     <p:inputText id="mainViewTitle"
                                  value="#{systemManager.selectedModule.mainViewTitle}"  
                                  style="width: 275px;"
@@ -87,7 +87,7 @@ Email: info@dpbennett.com.jm
 
                     </p:inputText>
 
-                    <p:outputLabel value="Description" for="description" style="font-weight: bold;"/>       
+                    <p:outputLabel value="Description *" for="description" style="font-weight: bold;"/>       
                     <p:inputText id="description"
                                  value="#{systemManager.selectedModule.description}"  
                                  style="width: 275px;"

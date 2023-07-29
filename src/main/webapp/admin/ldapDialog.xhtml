@@ -27,11 +27,11 @@ Email: info@dpbennett.com.jm
     <h:head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />     
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>LDAP Context</title>
+        <title>Authentication</title>
         <h:outputStylesheet library="webjars" name="primeflex/3.2.1/primeflex.min.css" />
         <link rel="stylesheet" href="../css/main.css" />
     </h:head>
-    
+
     <h:body >  
 
         <ui:include src="../common/commonDialogs.xhtml"/>  
@@ -40,6 +40,7 @@ Email: info@dpbennett.com.jm
             <p:growl id="growl" life="5000" />
 
             <p:toolbar>
+
                 <p:toolbarGroup align="left">
                     <p:commandButton value="Ok"
                                      actionListener="#{systemManager.saveSelectedLdapContext}"
@@ -52,74 +53,109 @@ Email: info@dpbennett.com.jm
                                      immediate="true" 
                                      icon="pi pi-times" /> 
                 </p:toolbarGroup>
+
+                <p:toolbarGroup align="right">
+
+                    <h:outputText value="* Fields with bold labels are required." 
+                                  style="font-weight: bold;" /> 
+
+                </p:toolbarGroup>
+
             </p:toolbar>
-            
+
             <p:panel style="margin-top: 1px;margin-bottom: 1px;">
-                <h:panelGrid columns="2" cellpadding="5">   
-                    <p:outputLabel value="Active" for="ldapActive" />               
+                <h:panelGrid columns="2" cellpadding="5" >   
+                    <p:outputLabel value="Active *" 
+                                   style="font-weight: bold;"
+                                   for="ldapActive" />               
                     <p:selectBooleanCheckbox style="vertical-align: middle"
                                              id="ldapActive"
                                              value="#{systemManager.selectedLdapContext.active}" />  
 
-                    <p:outputLabel value="Name" style="font-weight: bold;" />
+                    <p:outputLabel value="Name *" 
+                                   for="ldapName"
+                                   style="font-weight: bold;" />
                     <p:inputText value="#{systemManager.selectedLdapContext.name}"    
                                  id="ldapName"
-                                 style="width:400px" >
+                                 
+                                 style="width: 150%;" >
+                        
                         <f:validator validatorId="requiredFieldValidator" />
+                        
                     </p:inputText>
 
-                    <p:outputLabel value="Initial context factory" style="font-weight: bold;" />
+                    <p:outputLabel value="Initial context factory *" style="font-weight: bold;" />
                     <p:inputText value="#{systemManager.selectedLdapContext.initialContextFactory}"    
                                  id="initialContextFactory"
-                                 style="width:400px" >
+                                 required="true"
+                                 requiredMessage="Initial Context Factory Required"
+                                 style="width: 150%;" >
+
                         <f:validator validatorId="requiredFieldValidator" />
+
                     </p:inputText>
 
-                    <p:outputLabel value="Domain/DN" style="width: 50%;font-weight: bold;" />
+                    <p:outputLabel value="Domain/DN *" style="width: 50%;font-weight: bold;" />
                     <p:inputText  value="#{systemManager.selectedLdapContext.domainName}"
                                   id="ldapDomainName"
-                                  style="width:400px" >
+                                  required="true"
+                                  requiredMessage="Domain/DN Required"
+                                  style="width: 150%;" >
+
                         <f:validator validatorId="requiredFieldValidator" />
+
                     </p:inputText>  
 
-                    <p:outputLabel value="Provided URL" style="font-weight: bold;"/>               
+                    <p:outputLabel value="Provided URL *" style="font-weight: bold;"/>               
                     <p:inputText  value="#{systemManager.selectedLdapContext.providerUrl}"
                                   id="ldapProviderUrl"
-                                  style="width:400px" >
+                                  required="true"
+                                  requiredMessage="Provided URL Required"
+                                  style="width: 150%;" >
+
                         <f:validator validatorId="requiredFieldValidator" />
+
                     </p:inputText>
 
-                    <p:outputLabel value="Security authentication" style="font-weight: bold;"/>               
+                    <p:outputLabel value="Security authentication *" style="font-weight: bold;"/>               
                     <p:inputText  value="#{systemManager.selectedLdapContext.securityAuthentication}"
                                   id="securityAuthentication"
-                                  style="width:400px" >
+                                  required="true"
+                                  requiredMessage="Security Authentication Required"
+                                  style="width: 150%;" >
+
                         <f:validator validatorId="requiredFieldValidator" />
+
                     </p:inputText>
 
-                    <p:outputLabel value="Security principal" style="font-weight: bold;"/>               
+                    <p:outputLabel value="Security principal *" style="font-weight: bold;"/>               
                     <p:inputText  value="#{systemManager.selectedLdapContext.securityPrincipal}"
                                   id="securityPrincipal"
-                                  style="width:400px" >
+                                  required="true"
+                                  requiredMessage="Security Principal Required"
+                                  style="width: 150%;" >
+
                         <f:validator validatorId="requiredFieldValidator" />
+
                     </p:inputText>
 
-                    <p:outputLabel value="Security credentials" style="font-weight: bold;"/>   
-                    <ui:remove>
-                    <p:inputText  value="#{systemManager.selectedLdapContext.securityCredentials}"
-                                  id="securityCredentials"
-                                  style="width:400px" >
+                    <p:outputLabel value="Security credentials *" style="font-weight: bold;"/>   
+                    <p:password id="securityCredentials" 
+                                toggleMask="true" 
+                                redisplay="true" 
+                                required="true"
+                                requiredMessage="Security Credentials Required"
+                                value="#{systemManager.selectedLdapContext.securityCredentials}" >
+
                         <f:validator validatorId="requiredFieldValidator" />
-                    </p:inputText>
-                    </ui:remove>
-                    <p:password id="securityCredentials" toggleMask="true" redisplay="true" 
-                                 value="#{systemManager.selectedLdapContext.securityCredentials}" >
-                       <f:validator validatorId="requiredFieldValidator" />
+
                     </p:password>
 
                 </h:panelGrid>
             </p:panel>
-          
+
             <p:toolbar>
+
                 <p:toolbarGroup align="left">
                     <p:commandButton value="Ok"
                                      actionListener="#{systemManager.saveSelectedLdapContext}"
@@ -132,6 +168,14 @@ Email: info@dpbennett.com.jm
                                      immediate="true" 
                                      icon="pi pi-times" /> 
                 </p:toolbarGroup>
+
+                <p:toolbarGroup align="right">
+
+                    <h:outputText value="* Fields with bold labels are required." 
+                                  style="font-weight: bold;" /> 
+
+                </p:toolbarGroup>
+
             </p:toolbar>
         </h:form> 
     </h:body>
