@@ -39,9 +39,10 @@ Email: info@dpbennett.com.jm
 
         <h:form id="userDialogForm" >    
 
-            <p:growl id="userdialog_growl" life="5000" showDetail="true"/>
+            <p:growl id="userdialog_growl" life="5000" showDetail="false"/>
 
             <p:toolbar style="margin-bottom: 1px;">
+                
                 <p:toolbarGroup align="left">
                     <p:commandButton value="Ok"
                                      actionListener="#{systemManager.saveSelectedUser}"                            
@@ -54,6 +55,13 @@ Email: info@dpbennett.com.jm
                                      immediate="true"
                                      icon="pi pi-times" />    
                 </p:toolbarGroup>
+                
+                <p:toolbarGroup align="right">
+
+                    <h:outputText value="* Fields with bold labels are required." 
+                                  style="font-weight: bold;" /> 
+
+                </p:toolbarGroup>
             </p:toolbar>
 
 
@@ -63,13 +71,18 @@ Email: info@dpbennett.com.jm
                     <p:selectBooleanCheckbox id="activeUser" 
                                              value="#{systemManager.selectedUser.active}" />
 
-                    <p:outputLabel value="Username *" style="font-weight: bold;"/>  
-                    <p:inputText id="user"
+                    <p:outputLabel value="Username" 
+                                   for="username"
+                                   style="font-weight: bold;"/>  
+                    <p:inputText id="username"
+                                 required="true"
+                                 requiredMessage="Username Required"
                                  validator="requiredFieldValidator"
                                  value="#{systemManager.selectedUser.username}" />    
 
-                    <p:outputLabel value="Employee *" style="font-weight: bold;" />               
+                    <p:outputLabel value="Employee" for="employee" style="font-weight: bold;" />               
                     <p:autoComplete var="employee"
+                                    id="employee"
                                     scrollHeight="175"
                                     dropdown="true"
                                     maxlength="250"
@@ -77,6 +90,8 @@ Email: info@dpbennett.com.jm
                                     title="#{systemManager.selectedUser.employee}"
                                     itemLabel="#{employee.name}"
                                     itemValue="#{employee}"
+                                    required="true"
+                                    requiredMessage="Employee Required"
                                     validator="businessEntityValidator"
                                     validatorMessage="Select a valid employee"
                                     converter="activeEmployeeConverter"
