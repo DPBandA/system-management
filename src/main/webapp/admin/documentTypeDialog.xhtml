@@ -31,23 +31,25 @@ Email: info@dpbennett.com.jm
         <h:outputStylesheet library="webjars" name="primeflex/3.2.1/primeflex.min.css" />
         <link rel="stylesheet" type="text/css" href="../css/main.css" />      
     </h:head>
-    
+
     <h:body >  
-        
+
         <ui:include src="../common/commonDialogs.xhtml"/>  
-        
+
         <h:form id="documentTypeDialogForm">    
 
-            <p:growl id="documenttype_growl" life="5000" showDetail="true"/>
+            <p:growl id="documenttype_growl" life="5000" showDetail="false"/>
 
             <ui:include src="documentTypeDialogToolbar.xhtml" /> 
 
             <p:panel style="margin-bottom: 1px;margin-top: 1px;">
                 <h:panelGrid columns="2" cellpadding="5" style="width: 70%;">
-                    <p:outputLabel value="Type *" for="newDocumentType" style="font-weight: bold;"/>
+                    <p:outputLabel value="Type" for="newDocumentType" style="font-weight: bold;"/>
                     <p:inputText id="newDocumentType"
                                  style="width: 100%;"
                                  value="#{systemManager.selectedDocumentType.name}"    
+                                 required="true"
+                                 requiredMessage="Type Required"
                                  validatorMessage="A valid type is required"
                                  validator="requiredFieldValidator" >       
 
@@ -56,10 +58,12 @@ Email: info@dpbennett.com.jm
 
                     </p:inputText>
 
-                    <p:outputLabel value="Code *" for="newDocumentCode" style="font-weight: bold;"/>
+                    <p:outputLabel value="Code" for="newDocumentCode" style="font-weight: bold;"/>
                     <p:inputText id="newDocumentCode"
                                  style="width: 100%;"
                                  value="#{systemManager.selectedDocumentType.code}"
+                                 required="true"
+                                 requiredMessage="Code Required"
                                  validatorMessage="A valid code is required"
                                  validator="requiredFieldValidator" >
 
@@ -68,18 +72,22 @@ Email: info@dpbennett.com.jm
 
                     </p:inputText>
 
-                    <p:outputLabel value="Description *" style="font-weight: bold;" />
+                    <p:outputLabel value="Description" 
+                                   for="description"
+                                   style="font-weight: bold;" />
                     <p:inputTextarea  value="#{systemManager.selectedDocumentType.description}"
                                       style="width: 100%;"
                                       id="description"
                                       maxlength="1000"
                                       rows="4"
+                                      required="true"
+                                      requiredMessage="Description Required"
                                       validator="requiredFieldValidator"
                                       autoResize="false" >
 
-                       <p:ajax event="change"                                                       
+                        <p:ajax event="change"                                                       
                                 process="@this"/>
-                        
+
                     </p:inputTextarea>
                 </h:panelGrid>
             </p:panel>

@@ -38,23 +38,25 @@ Email: info@dpbennett.com.jm
 
         <h:form id="notificationDialogForm">    
 
-            <p:growl id="notification_growl" life="5000" showDetail="true"/>
+            <p:growl id="notification_growl" life="5000" showDetail="false"/>
 
             <ui:include src="notificationDialogToolbar.xhtml" /> 
 
             <p:panel style="margin-bottom: 1px;margin-top: 1px;">
                 <h:panelGrid columns="2" cellspacing="5">
 
-                    <p:outputLabel value="Active" for="active" style="font-weight: bold;" /> 
+                    <p:outputLabel value="Active *" for="active" style="font-weight: bold;" /> 
                     <p:selectBooleanCheckbox id="active" 
                                              value="#{systemManager.selectedNotification.active}" />
 
                     <p:outputLabel value="Owner Id" for="ownerId" style="font-weight: bold;"/>
                     <p:inputNumber id="ownerId" 
                                    thousandSeparator=""
-                                   value="#{systemManager.selectedNotification.ownerId}" />  
+                                   value="#{systemManager.selectedNotification.ownerId}" 
+                                   required="true"
+                                   requiredMessage="Owner Id Required" />  
 
-                    <p:outputLabel value="Issue time" for="issueTime" style="font-weight: bold;"/>
+                    <p:outputLabel value="Issue time *" for="issueTime" style="font-weight: bold;"/>
                     <p:outputLabel id="issueTime"                                  
                                    value="#{systemManager.selectedNotification.issueTime}" />
 
@@ -62,6 +64,8 @@ Email: info@dpbennett.com.jm
                     <p:inputText id="name"
                                  value="#{systemManager.selectedNotification.name}"  
                                  style="width: 275px;"
+                                 required="true"
+                                 requiredMessage="Name Required"
                                  validatorMessage="A name is required"
                                  validator="requiredFieldValidator" />   
 
@@ -69,6 +73,8 @@ Email: info@dpbennett.com.jm
                     <p:inputText id="type"
                                  value="#{systemManager.selectedNotification.type}"   
                                  style="width: 275px;"
+                                 required="true"
+                                 requiredMessage="Type Required"
                                  validatorMessage="A type is required"
                                  validator="requiredFieldValidator" />
 
@@ -76,6 +82,8 @@ Email: info@dpbennett.com.jm
                     <p:inputText id="subject"
                                  value="#{systemManager.selectedNotification.subject}"   
                                  style="width: 275px;"
+                                 required="true"
+                                 requiredMessage="Subject Required"
                                  validatorMessage="A subject is required"
                                  validator="requiredFieldValidator" />
 
@@ -84,6 +92,8 @@ Email: info@dpbennett.com.jm
                                       id="message"
                                       maxlength="1000"
                                       rows="4"
+                                      required="true"
+                                      requiredMessage="Message Required"
                                       validatorMessage="A message is required"
                                       validator="requiredFieldValidator"
                                       style="width: 300px;" />

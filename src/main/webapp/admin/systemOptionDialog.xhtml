@@ -33,14 +33,15 @@ Email: info@dpbennett.com.jm
     </h:head>
 
     <h:body >  
-        
+
         <ui:include src="../common/commonDialogs.xhtml"/> 
         <ui:include src="deleteSystemOptionConfirmationDialog.xhtml"/> 
-        
+
         <h:form id="systemOptionDialogForm">        
             <p:growl id="growl" life="5000" />
 
             <p:toolbar>
+
                 <p:toolbarGroup align="left">
                     <p:commandButton value="Ok"
                                      actionListener="#{systemManager.saveSelectedSystemOption}"
@@ -53,22 +54,33 @@ Email: info@dpbennett.com.jm
                                      immediate="true" 
                                      icon="pi pi-times" /> 
                 </p:toolbarGroup>
+
+                <p:toolbarGroup align="right">
+
+                    <h:outputText value="* Fields with bold labels are required." 
+                                  style="font-weight: bold;" /> 
+
+                </p:toolbarGroup>
+
             </p:toolbar>
 
             <p:panel style="margin-top: 1px;margin-bottom: 1px;">
                 <h:panelGrid columns="2" cellpadding="5">                
                     <p:outputLabel value="Name" 
+                                   for="systemOptionName"
                                    rendered="#{systemManager.user.can('BeSuperUser')}"
                                    style="font-weight: bold;" />
                     <p:inputText value="#{systemManager.selectedSystemOption.name}"    
                                  rendered="#{systemManager.user.can('BeSuperUser')}"
-                                 id="systemOptionName" >
+                                 id="systemOptionName"
+                                 required="true"
+                                 requiredMessage="Name Required" >
 
                         <f:validator validatorId="systemOptionValidator" />
 
                     </p:inputText> 
 
-                    <p:outputLabel value="Value type" 
+                    <p:outputLabel value="Value type *" 
                                    rendered="#{systemManager.user.can('BeSuperUser')}"
                                    style="font-weight: bold;" />                    
                     <p:selectOneMenu id="systemOptionValueType" 
@@ -87,7 +99,7 @@ Email: info@dpbennett.com.jm
 
                     </p:selectOneMenu>
 
-                    <p:outputLabel value="Value" 
+                    <p:outputLabel value="Value *" 
                                    style="font-weight: bold;" />
                     <p:inputTextarea  value="#{systemManager.selectedSystemOption.optionValue}"
                                       rendered="#{systemManager.isSelectedSystemOptionValueType('String')}"
@@ -97,7 +109,9 @@ Email: info@dpbennett.com.jm
                                       maxlength="1000"
                                       rows="6"
                                       autoResize="true"
-                                      style="width:300px;" >
+                                      style="width:300px;"
+                                      required="true"
+                                      requiredMessage="Value Required" >
 
                         <f:validator validatorId="systemOptionValidator" />
 
@@ -117,13 +131,19 @@ Email: info@dpbennett.com.jm
                     </p:selectOneMenu>
                     <p:inputNumber value="#{systemManager.selectedSystemOption.optionValue}" 
                                    rendered="#{systemManager.isSelectedSystemOptionValueType('Integer')}"
-                                   decimalPlaces="0" />
+                                   decimalPlaces="0" 
+                                   required="true"
+                                   requiredMessage="Value Required" />
                     <p:inputNumber value="#{systemManager.selectedSystemOption.optionValue}" 
                                    rendered="#{systemManager.isSelectedSystemOptionValueType('Long')}"
-                                   decimalPlaces="0" />
+                                   decimalPlaces="0"
+                                   required="true"
+                                   requiredMessage="Value Required" />
                     <p:inputNumber value="#{systemManager.selectedSystemOption.optionValue}" 
                                    decimalPlaces="15"
-                                   rendered="#{systemManager.isSelectedSystemOptionValueType('Double')}" />
+                                   rendered="#{systemManager.isSelectedSystemOptionValueType('Double')}"
+                                   required="true"
+                                   requiredMessage="Value Required" />
                     <h:panelGroup rendered="#{systemManager.isSelectedSystemOptionValueType('StringList')}">
                         <p:dataTable var="sysOption"   
                                      id="sysOptionTable"
@@ -136,7 +156,7 @@ Email: info@dpbennett.com.jm
                                     listener="#{systemManager.onTextListItemCellEdit}" />
 
                             <p:column style="width: 90%;">      
-                                
+
                                 <p:cellEditor>
                                     <f:facet name="output"> 
                                         <h:outputText value="#{sysOption.optionValue}"/>
@@ -146,7 +166,7 @@ Email: info@dpbennett.com.jm
                                                      style="width:100%;"/>
                                     </f:facet>
                                 </p:cellEditor>
-                                
+
                             </p:column>
 
                             <p:column style="width: 10%;">
@@ -173,7 +193,7 @@ Email: info@dpbennett.com.jm
                                          action="#{systemManager.onAddSystemOptionText()}"/>
                     </h:panelGroup>
 
-                    <p:outputLabel value="Category" 
+                    <p:outputLabel value="Category *" 
                                    rendered="#{systemManager.user.can('BeSuperUser')}"
                                    style="font-weight: bold;" />                    
                     <p:selectOneMenu id="systemOptionCategory" 
@@ -187,13 +207,17 @@ Email: info@dpbennett.com.jm
 
                     </p:selectOneMenu>
 
-                    <p:outputLabel value="Description" style="width: 50%;font-weight: bold;" />
+                    <p:outputLabel value="Description" 
+                                   for="systemOptionComment"
+                                   style="width: 50%;font-weight: bold;" />
                     <p:inputTextarea  value="#{systemManager.selectedSystemOption.comments}"
                                       id="systemOptionComment"
                                       maxlength="1000"
                                       rows="4"
                                       autoResize="false"
-                                      style="width:300px" >
+                                      style="width:300px" 
+                                      required="true"
+                                      requiredMessage="Description Required" >
 
                         <f:validator validatorId="systemOptionValidator" />
 
@@ -203,6 +227,7 @@ Email: info@dpbennett.com.jm
             </p:panel>
 
             <p:toolbar>
+
                 <p:toolbarGroup align="left">
                     <p:commandButton value="Ok"
                                      actionListener="#{systemManager.saveSelectedSystemOption}"
@@ -215,6 +240,14 @@ Email: info@dpbennett.com.jm
                                      immediate="true" 
                                      icon="pi pi-times" /> 
                 </p:toolbarGroup>
+
+                <p:toolbarGroup align="right">
+
+                    <h:outputText value="* Fields with bold labels are required." 
+                                  style="font-weight: bold;" /> 
+
+                </p:toolbarGroup>
+
             </p:toolbar>
         </h:form> 
     </h:body>

@@ -37,7 +37,7 @@ Email: info@dpbennett.com.jm
 
         <h:form id="moduleDialogForm">    
 
-            <p:growl id="module_growl" life="5000" showDetail="true"/>
+            <p:growl id="module_growl" life="5000" showDetail="false"/>
 
             <ui:include src="moduleDialogToolbar.xhtml" /> 
 
@@ -51,10 +51,12 @@ Email: info@dpbennett.com.jm
                                              disabled="true"
                                              value="#{systemManager.selectedModule.active}" />                    
 
-                    <p:outputLabel value="Name *" for="name" style="font-weight: bold;"/>
+                    <p:outputLabel value="Name" for="name" style="font-weight: bold;"/>
                     <p:inputText id="name"
                                  value="#{systemManager.selectedModule.name}"  
                                  style="width: 275px;"
+                                 required="true"
+                                 requiredMessage="Name Required"
                                  validatorMessage="A valid name is required"
                                  validator="requiredFieldValidator" >       
 
@@ -63,10 +65,12 @@ Email: info@dpbennett.com.jm
 
                     </p:inputText>
 
-                    <p:outputLabel value="Title *" for="dashboardTitle" style="font-weight: bold;"/>
+                    <p:outputLabel value="Title" for="dashboardTitle" style="font-weight: bold;"/>
                     <p:inputText id="dashboardTitle"
                                  value="#{systemManager.selectedModule.dashboardTitle}"  
                                  style="width: 275px;"
+                                 required="true"
+                                 requiredMessage="Title Required"
                                  validatorMessage="A valid title is required"
                                  validator="requiredFieldValidator" >       
 
@@ -75,10 +79,12 @@ Email: info@dpbennett.com.jm
 
                     </p:inputText>
 
-                    <p:outputLabel value="Main view title *" for="mainViewTitle" style="font-weight: bold;"/>
+                    <p:outputLabel value="Main view title" for="mainViewTitle" style="font-weight: bold;"/>
                     <p:inputText id="mainViewTitle"
                                  value="#{systemManager.selectedModule.mainViewTitle}"  
                                  style="width: 275px;"
+                                 required="true"
+                                 requiredMessage="Main View Title Required"
                                  validatorMessage="A valid main view title is required"
                                  validator="requiredFieldValidator" >       
 
@@ -87,37 +93,18 @@ Email: info@dpbennett.com.jm
 
                     </p:inputText>
 
-                    <p:outputLabel value="Description *" for="description" style="font-weight: bold;"/>       
+                    <p:outputLabel value="Description" for="description" style="font-weight: bold;"/>       
                     <p:inputText id="description"
                                  value="#{systemManager.selectedModule.description}"  
                                  style="width: 275px;"
+                                 required="true"
+                                 requiredMessage="Description Required"
                                  validator="requiredFieldValidator" >       
 
                         <p:ajax event="change"                                                       
                                 process="@this"/>
 
-                    </p:inputText>
-                    <ui:remove>
-                        <p:inputTextarea
-                            id="description"
-                            value="#{systemManager.selectedModule.description}" 
-                            rows="5"
-                            counter="descriptionCharsRemaining"
-                            counterTemplate="{0} characters remaining."
-                            autoResize="true"
-                            maxlength="250" 
-                            styleClass="#{not component.valid ? 'invalid-inputtextarea-field' : ''}" 
-                            style="width: 400px;">
-
-                            <f:validator validatorId="requiredFieldValidator" />
-
-                            <p:ajax event="change"                                                       
-                                    process="@this"/>
-
-                        </p:inputTextarea> 
-                        <p:outputLabel value="&nbsp;&nbsp;" />
-                        <p:outputLabel id="descriptionCharsRemaining" />
-                    </ui:remove>
+                    </p:inputText>                   
                 </h:panelGrid>
             </p:panel>
 
@@ -141,7 +128,7 @@ Email: info@dpbennett.com.jm
                         </p:toolbarGroup>  
 
                     </p:toolbar> 
-                    
+
                     <p:dataTable var="privilege"                                  
                                  id="privilegesTable"                                 
                                  value="#{systemManager.selectedModule.privileges}">

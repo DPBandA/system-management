@@ -38,66 +38,49 @@ Email: info@dpbennett.com.jm
 
         <h:form id="privilegeDialogForm">    
 
-            <p:growl id="privilege_growl" life="5000" showDetail="true"/>
+            <p:growl id="privilege_growl" life="5000" showDetail="false"/>
 
             <ui:include src="privilegeDialogToolbar.xhtml" /> 
-          
-                <p:panel style="margin-bottom: 1px;margin-top: 1px;">
-                    <h:panelGrid columns="2" cellpadding="5">
 
-                        <p:outputLabel value="Active *"                                    
-                                       for="activePrivilege" 
-                                       style="font-weight: bold;" /> 
-                        <p:selectBooleanCheckbox id="activePrivilege" 
-                                                 disabled="true"
-                                                 value="#{systemManager.selectedPrivilege.active}" />                    
+            <p:panel style="margin-bottom: 1px;margin-top: 1px;">
+                <h:panelGrid columns="2" cellpadding="5">
 
-                        <p:outputLabel value="Name *" for="name" style="font-weight: bold;"/>
-                        <p:inputText id="name"
-                                     value="#{systemManager.selectedPrivilege.name}"  
-                                     style="width: 275px;"
-                                     validatorMessage="A valid name is required"
-                                     validator="requiredFieldValidator" >       
+                    <p:outputLabel value="Active *"                                    
+                                   for="activePrivilege" 
+                                   style="font-weight: bold;" /> 
+                    <p:selectBooleanCheckbox id="activePrivilege" 
+                                             disabled="true"
+                                             value="#{systemManager.selectedPrivilege.active}" />                    
 
-                            <p:ajax event="change"                                                       
-                                    process="@this"/>
+                    <p:outputLabel value="Name" for="name" style="font-weight: bold;"/>
+                    <p:inputText id="name"
+                                 value="#{systemManager.selectedPrivilege.name}"  
+                                 style="width: 275px;"
+                                 required="true"
+                                 requiredMessage="Name Required"
+                                 validatorMessage="A valid name is required"
+                                 validator="requiredFieldValidator" >       
 
-                        </p:inputText>
+                        <p:ajax event="change"                                                       
+                                process="@this"/>
 
-                        <p:outputLabel value="Description *" for="description" style="font-weight: bold;"/>       
-                        <p:inputText id="description"
-                                     value="#{systemManager.selectedPrivilege.description}"  
-                                     style="width: 275px;"
-                                     validator="requiredFieldValidator" >       
+                    </p:inputText>
 
-                            <p:ajax event="change"                                                       
-                                    process="@this"/>
+                    <p:outputLabel value="Description" for="description" style="font-weight: bold;"/>       
+                    <p:inputText id="description"
+                                 value="#{systemManager.selectedPrivilege.description}"  
+                                 style="width: 275px;"
+                                 required="true"
+                                 requiredMessage="Description Required"
+                                 validator="requiredFieldValidator" >       
 
-                        </p:inputText>
-                        <ui:remove>
-                            <p:inputTextarea
-                                id="description"
-                                value="#{systemManager.selectedPrivilege.description}" 
-                                rows="5"
-                                counter="descriptionCharsRemaining"
-                                counterTemplate="{0} characters remaining."
-                                autoResize="true"
-                                maxlength="250" 
-                                styleClass="#{not component.valid ? 'invalid-inputtextarea-field' : ''}" 
-                                style="width: 275px;">
+                        <p:ajax event="change"                                                       
+                                process="@this"/>
 
-                                <f:validator validatorId="requiredFieldValidator" />
+                    </p:inputText>                    
+                </h:panelGrid>
+            </p:panel>
 
-                                <p:ajax event="change"                                                       
-                                        process="@this"/>
-
-                            </p:inputTextarea> 
-                            <p:outputLabel value="&nbsp;&nbsp;" />
-                            <p:outputLabel id="descriptionCharsRemaining" />
-                        </ui:remove>
-                    </h:panelGrid>
-                </p:panel>
-       
             <ui:include src="privilegeDialogToolbar.xhtml" /> 
 
         </h:form> 

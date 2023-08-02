@@ -35,9 +35,10 @@ Email: info@dpbennett.com.jm
     <h:body >  
         <ui:include src="../common/commonDialogs.xhtml"/>           
         <h:form id="emailTemplateDialogForm">                    
-            <p:growl id="email_template_growl" life="5000" showDetail="true"/>
+            <p:growl id="email_template_growl" life="5000" showDetail="false"/>
 
             <p:toolbar style="margin-bottom: 1px;">
+                
                 <p:toolbarGroup>
                     <p:commandButton value="Ok"
                                      actionListener="#{systemManager.saveSelectedEmail}"
@@ -50,6 +51,14 @@ Email: info@dpbennett.com.jm
                                      immediate="true"
                                      icon="pi pi-times" />            
                 </p:toolbarGroup>
+
+                <p:toolbarGroup align="right">
+
+                    <h:outputText value="* Fields with bold labels are required." 
+                                  style="font-weight: bold;" /> 
+
+                </p:toolbarGroup>
+                
             </p:toolbar>
 
             <p:tabView style="margin-bottom: 1px;margin-bottom: 1px;" >
@@ -60,35 +69,37 @@ Email: info@dpbennett.com.jm
                                                  style="vertical-align: middle"
                                                  value="#{systemManager.selectedEmail.active}" />                       
 
-                        <p:outputLabel value="Name:" style="font-weight: bold;" />
+                        <p:outputLabel value="Name" 
+                                       for="emailName"
+                                       style="font-weight: bold;" />
                         <p:inputText value="#{systemManager.selectedEmail.name}"
                                      style="width: 300px;"
                                      id="emailName" 
+                                     required="true"
+                                     requiredMessage="Name Required"
                                      validator="requiredFieldValidator" /> 
-                        <ui:remove>
-                            <p:outputLabel value="Category:" style="font-weight: bold;" />
-                            <p:selectOneMenu value="#{systemManager.selectedEmail.category}" 
-                                             id="emailCategory" >
 
-                                <f:validator validatorId="requiredFieldValidator" />
-
-                                <f:selectItems value="#{systemManager.emailCategories}"/>
-
-                            </p:selectOneMenu>
-                        </ui:remove>
-                        <p:outputLabel value="Subject" style="font-weight: bold;" />
+                        <p:outputLabel value="Subject" 
+                                       for="emailSubject"
+                                       style="font-weight: bold;" />
                         <p:inputText value="#{systemManager.selectedEmail.subject}"
                                      style="width: 300px;"
                                      id="emailSubject" 
+                                     required="true"
+                                     requiredMessage="Subject Required"
                                      validator="requiredFieldValidator" /> 
 
-                        <p:outputLabel value="Content template" style="font-weight: bold;" />                            
+                        <p:outputLabel value="Content template" 
+                                       for="emailTemplate"
+                                       style="font-weight: bold;" />                            
                         <h:panelGroup>
                             <h:panelGrid columns="2" cellpadding="5">                            
                                 <p:inputText value="#{systemManager.selectedEmail.templateFile}"
                                              disabled="#{!systemManager.selectedEmail.usePackagedTemplate}"
                                              style="margin-left: -3px;width: 300px;"
                                              id="emailTemplate" 
+                                             required="true"
+                                             requiredMessage="Content Template Required"
                                              validator="requiredFieldValidator" />
 
                                 <p:selectBooleanCheckbox itemLabel="use template"                                                         
@@ -105,6 +116,8 @@ Email: info@dpbennett.com.jm
                         </h:panelGroup>
 
                         <p:outputLabel id="emailContentLabel" 
+                                       style="font-weight: bold;"
+                                       for="emailContent"
                                        rendered="#{!systemManager.selectedEmail.usePackagedTemplate}"
                                        value="Content" />
                         <p:inputTextarea  value="#{systemManager.selectedEmail.content}"
@@ -113,9 +126,13 @@ Email: info@dpbennett.com.jm
                                           maxlength="2000"
                                           autoResize="false"
                                           rows="4"
-                                          style="width:300px;" />
+                                          style="width:300px;"
+                                          required="true"
+                                          requiredMessage="Content Required" />
 
-                        <p:outputLabel value="Content type" style="font-weight: bold;" />                   
+                        <p:outputLabel value="Content type *" 
+                                       for="emailContentType"
+                                       style="font-weight: bold;" />                   
                         <p:selectOneMenu value="#{systemManager.selectedEmail.contentType}" 
                                          id="emailContentType" >
 
@@ -125,13 +142,17 @@ Email: info@dpbennett.com.jm
 
                         </p:selectOneMenu>
 
-                        <p:outputLabel value="Description" style="font-weight: bold;" />
+                        <p:outputLabel value="Description" 
+                                       for="emailDescription"
+                                       style="font-weight: bold;" />
                         <p:inputTextarea  value="#{systemManager.selectedEmail.description}"
                                           id="emailDescription"
                                           maxlength="1000"
                                           autoResize="false"
                                           rows="4"
-                                          style="width:300px;" >
+                                          style="width:300px;"
+                                          required="true"
+                                          requiredMessage="Description Required" >
 
                             <f:validator validatorId="requiredFieldValidator" />
 
@@ -142,6 +163,7 @@ Email: info@dpbennett.com.jm
             </p:tabView>
 
             <p:toolbar>
+                
                 <p:toolbarGroup>
                     <p:commandButton value="Ok"
                                      actionListener="#{systemManager.saveSelectedEmail}"
@@ -154,6 +176,14 @@ Email: info@dpbennett.com.jm
                                      immediate="true"
                                      icon="pi pi-times" />            
                 </p:toolbarGroup>
+
+                <p:toolbarGroup align="right">
+
+                    <h:outputText value="* Fields with bold labels are required." 
+                                  style="font-weight: bold;" /> 
+
+                </p:toolbarGroup>
+                
             </p:toolbar> 
         </h:form> 
     </h:body>
