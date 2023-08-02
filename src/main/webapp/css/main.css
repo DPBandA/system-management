@@ -176,3 +176,13 @@ html {
         top: 0px !important;
     }
 }
+
+.ui-outputlabel
+{
+    font-size: 1.000em !important;
+}
+
+.ui-outputlabel.header-text
+{
+    font-size: 0.800em !important;
+}
