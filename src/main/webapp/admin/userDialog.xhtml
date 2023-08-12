@@ -213,8 +213,8 @@ Email: info@dpbennett.com.jm
 
                             <f:selectItems  value="#{systemManager.PFThemes2}"
                                             var="theme"                            
-                                            itemValue="#{theme}"
-                                            itemLabel="#{theme}"/>
+                                            itemValue="#{theme.value}"
+                                            itemLabel="#{theme.label}"/>
 
                             <p:ajax listener="#{systemManager.updateSelectedUserPreferences}"
                                     global="false"
@@ -227,9 +227,9 @@ Email: info@dpbennett.com.jm
                                          title="#{systemManager.selectedUser.jobTableViewPreference}" >
 
                             <f:selectItems  value="#{systemManager.jobTableViews}"
-                                            var="view"                            
-                                            itemValue="#{view}"
-                                            itemLabel="#{view}"/>
+                                            var="v"                            
+                                            itemValue="#{v.value}"
+                                            itemLabel="#{v.label}"/>
 
                             <p:ajax listener="#{systemManager.updateSelectedUserPreferences}"
                                     global="false"
