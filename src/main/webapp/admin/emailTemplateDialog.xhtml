@@ -64,7 +64,9 @@ Email: info@dpbennett.com.jm
             <p:tabView style="margin-bottom: 1px;margin-bottom: 1px;" >
                 <p:tab title="General" >   
                     <h:panelGrid columns="2" cellpadding="5">
-                        <p:outputLabel for="emailActive" value="Active" style="font-weight: bold;" />               
+                        <p:outputLabel for="emailActive" 
+                                       value="Active *" 
+                                       style="font-weight: bold;" />               
                         <p:selectBooleanCheckbox id="emailActive"
                                                  style="vertical-align: middle"
                                                  value="#{systemManager.selectedEmail.active}" />                       
