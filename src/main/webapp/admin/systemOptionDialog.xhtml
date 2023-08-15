@@ -89,8 +89,8 @@ Email: info@dpbennett.com.jm
 
                         <f:selectItems  value="#{systemManager.valueTypes}"
                                         var="type"                            
-                                        itemValue="#{type}"
-                                        itemLabel="#{type}"/>
+                                        itemValue="#{type.value}"
+                                        itemLabel="#{type.label}"/>
 
                         <p:ajax global="false"
                                 listener="#{systemManager.updateOptionValueType}"
@@ -202,8 +202,8 @@ Email: info@dpbennett.com.jm
 
                         <f:selectItems  value="#{systemManager.systemOptionCategories}"
                                         var="category"                            
-                                        itemValue="#{category}"
-                                        itemLabel="#{category}"/>
+                                        itemValue="#{category.value}"
+                                        itemLabel="#{category.label}"/>
 
                     </p:selectOneMenu>
 
