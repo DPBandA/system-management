@@ -124,9 +124,9 @@ Email: info@dpbennett.com.jm
                                      rendered="#{systemManager.isSelectedSystemOptionValueType('Boolean')}" >
 
                         <f:selectItems  value="#{systemManager.booleanValues}"
-                                        var="value"                            
-                                        itemValue="#{value}"
-                                        itemLabel="#{value}"/>
+                                        var="val"                            
+                                        itemValue="#{val.value}"
+                                        itemLabel="#{val.label}"/>
 
                     </p:selectOneMenu>
                     <p:inputNumber value="#{systemManager.selectedSystemOption.optionValue}" 
