@@ -82,15 +82,14 @@ Email: info@dpbennett.com.jm
                     <p:outputLabel value="Purpose *" style="font-weight: bold;" />
                     <p:selectOneMenu id="type"    
                                      editable="true"
-                                     style="width: 200px;"
                                      required="true"
                                      requiredMessage="Purpose Required"
                                      value="#{systemManager.attachment.type}" >
 
                         <f:selectItems  value="#{systemManager.attachmentTypeList}"
                                         var="type"                            
-                                        itemValue="#{type}"
-                                        itemLabel="#{type}"/>   
+                                        itemValue="#{type.value}"
+                                        itemLabel="#{type.label}"/>   
 
                         <f:validator validatorId="requiredFieldValidator" />
 
@@ -116,7 +115,7 @@ Email: info@dpbennett.com.jm
                                       required="true"
                                       requiredMessage="Description Required"
                                       autoResize="false"
-                                      style="width:300px;" >
+                                      style="width:100%;" >
 
                         <f:validator validatorId="requiredFieldValidator" />
 
