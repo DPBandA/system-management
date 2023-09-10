@@ -67,7 +67,9 @@ Email: info@dpbennett.com.jm
 
             <p:panel style="margin-bottom: 1px;" >             
                 <h:panelGrid columns="2" cellpadding="5" >
-                    <p:outputLabel value="Active *" for="activeUser" style="font-weight: bold;" /> 
+                    <p:outputLabel value="Active *" 
+                                   for="activeUser" 
+                                   style="font-weight: bold;" /> 
                     <p:selectBooleanCheckbox id="activeUser" 
                                              value="#{systemManager.selectedUser.active}" />
 

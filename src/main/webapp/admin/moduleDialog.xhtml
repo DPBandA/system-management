@@ -42,7 +42,7 @@ Email: info@dpbennett.com.jm
             <ui:include src="moduleDialogToolbar.xhtml" /> 
 
             <p:panel style="margin-bottom: 1px;margin-top: 1px;">
-                <h:panelGrid columns="2" cellpadding="5">
+                <h:panelGrid columns="2" cellpadding="5" >
 
                     <p:outputLabel value="Active *"                                    
                                    for="activeModule" 
@@ -54,7 +54,6 @@ Email: info@dpbennett.com.jm
                     <p:outputLabel value="Name" for="name" style="font-weight: bold;"/>
                     <p:inputText id="name"
                                  value="#{systemManager.selectedModule.name}"  
-                                 style="width: 275px;"
                                  required="true"
                                  requiredMessage="Name Required"
                                  validatorMessage="A valid name is required"
@@ -68,7 +67,6 @@ Email: info@dpbennett.com.jm
                     <p:outputLabel value="Title" for="dashboardTitle" style="font-weight: bold;"/>
                     <p:inputText id="dashboardTitle"
                                  value="#{systemManager.selectedModule.dashboardTitle}"  
-                                 style="width: 275px;"
                                  required="true"
                                  requiredMessage="Title Required"
                                  validatorMessage="A valid title is required"
@@ -79,10 +77,10 @@ Email: info@dpbennett.com.jm
 
                     </p:inputText>
 
-                    <p:outputLabel value="Main view title" for="mainViewTitle" style="font-weight: bold;"/>
+                    <p:outputLabel value="Main view title" for="mainViewTitle" 
+                                   style="font-weight: bold;"/>
                     <p:inputText id="mainViewTitle"
                                  value="#{systemManager.selectedModule.mainViewTitle}"  
-                                 style="width: 275px;"
                                  required="true"
                                  requiredMessage="Main View Title Required"
                                  validatorMessage="A valid main view title is required"
@@ -96,7 +94,7 @@ Email: info@dpbennett.com.jm
                     <p:outputLabel value="Description" for="description" style="font-weight: bold;"/>       
                     <p:inputText id="description"
                                  value="#{systemManager.selectedModule.description}"  
-                                 style="width: 275px;"
+                                 style="width: 125%;"
                                  required="true"
                                  requiredMessage="Description Required"
                                  validator="requiredFieldValidator" >       
