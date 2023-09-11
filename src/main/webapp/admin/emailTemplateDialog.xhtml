@@ -75,7 +75,6 @@ Email: info@dpbennett.com.jm
                                        for="emailName"
                                        style="font-weight: bold;" />
                         <p:inputText value="#{systemManager.selectedEmail.name}"
-                                     style="width: 300px;"
                                      id="emailName" 
                                      required="true"
                                      requiredMessage="Name Required"
@@ -85,7 +84,6 @@ Email: info@dpbennett.com.jm
                                        for="emailSubject"
                                        style="font-weight: bold;" />
                         <p:inputText value="#{systemManager.selectedEmail.subject}"
-                                     style="width: 300px;"
                                      id="emailSubject" 
                                      required="true"
                                      requiredMessage="Subject Required"
@@ -98,7 +96,6 @@ Email: info@dpbennett.com.jm
                             <h:panelGrid columns="2" cellpadding="5">                            
                                 <p:inputText value="#{systemManager.selectedEmail.templateFile}"
                                              disabled="#{!systemManager.selectedEmail.usePackagedTemplate}"
-                                             style="margin-left: -3px;width: 300px;"
                                              id="emailTemplate" 
                                              required="true"
                                              requiredMessage="Content Template Required"
@@ -128,7 +125,7 @@ Email: info@dpbennett.com.jm
                                           maxlength="2000"
                                           autoResize="false"
                                           rows="4"
-                                          style="width:300px;"
+                                          style="width:125%;"
                                           required="true"
                                           requiredMessage="Content Required" />
 
@@ -152,7 +149,7 @@ Email: info@dpbennett.com.jm
                                           maxlength="1000"
                                           autoResize="false"
                                           rows="4"
-                                          style="width:300px;"
+                                          style="width:100%;"
                                           required="true"
                                           requiredMessage="Description Required" >
 

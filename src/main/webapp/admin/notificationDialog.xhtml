@@ -45,7 +45,8 @@ Email: info@dpbennett.com.jm
             <p:panel style="margin-bottom: 1px;margin-top: 1px;">
                 <h:panelGrid columns="2" cellspacing="5">
 
-                    <p:outputLabel value="Active *" for="active" style="font-weight: bold;" /> 
+                    <p:outputLabel value="Active *" for="active" 
+                                   style="font-weight: bold;" /> 
                     <p:selectBooleanCheckbox id="active" 
                                              value="#{systemManager.selectedNotification.active}" />
 
@@ -62,8 +63,7 @@ Email: info@dpbennett.com.jm
 
                     <p:outputLabel value="Name" for="name" style="font-weight: bold;"/>
                     <p:inputText id="name"
-                                 value="#{systemManager.selectedNotification.name}"  
-                                 style="width: 275px;"
+                                 value="#{systemManager.selectedNotification.name}" 
                                  required="true"
                                  requiredMessage="Name Required"
                                  validatorMessage="A name is required"
@@ -72,7 +72,6 @@ Email: info@dpbennett.com.jm
                     <p:outputLabel value="Type" for="type" style="font-weight: bold;"/>
                     <p:inputText id="type"
                                  value="#{systemManager.selectedNotification.type}"   
-                                 style="width: 275px;"
                                  required="true"
                                  requiredMessage="Type Required"
                                  validatorMessage="A type is required"
@@ -80,8 +79,7 @@ Email: info@dpbennett.com.jm
 
                     <p:outputLabel value="Subject" for="subject" style="font-weight: bold;"/>
                     <p:inputText id="subject"
-                                 value="#{systemManager.selectedNotification.subject}"   
-                                 style="width: 275px;"
+                                 value="#{systemManager.selectedNotification.subject}" 
                                  required="true"
                                  requiredMessage="Subject Required"
                                  validatorMessage="A subject is required"
@@ -96,7 +94,7 @@ Email: info@dpbennett.com.jm
                                       requiredMessage="Message Required"
                                       validatorMessage="A message is required"
                                       validator="requiredFieldValidator"
-                                      style="width: 300px;" />
+                                      style="width: 125%;" />
 
                 </h:panelGrid>
             </p:panel>

@@ -43,11 +43,10 @@ Email: info@dpbennett.com.jm
             <ui:include src="categoryDialogToolbar.xhtml" /> 
 
             <p:panel style="margin-bottom: 1px;margin-top: 1px;">
-                <h:panelGrid columns="2"  cellpadding="5" style="width: 100%;">
+                <h:panelGrid columns="2"  cellpadding="5" >
                     <p:outputLabel value="Name" for="category" style="font-weight: bold;"/>
                     <p:inputText id="category"
-                                 value="#{systemManager.selectedCategory.name}"  
-                                 style="width: 100%;"
+                                 value="#{systemManager.selectedCategory.name}" 
                                  required="true"
                                  requiredMessage="Name Required" >  
                         
@@ -60,8 +59,7 @@ Email: info@dpbennett.com.jm
 
                     <p:outputLabel value="Type" for="type" style="font-weight: bold;"/>
                     <p:inputText id="type"
-                                 value="#{systemManager.selectedCategory.type}"   
-                                 style="width: 100%;"
+                                 value="#{systemManager.selectedCategory.type}"
                                  required="true"
                                  requiredMessage="Type Required"
                                  validator="requiredFieldValidator" >
@@ -75,7 +73,7 @@ Email: info@dpbennett.com.jm
                                    for="description"
                                    style="font-weight: bold;" />
                     <p:inputTextarea  value="#{systemManager.selectedCategory.description}"
-                                      style="width: 100%;"
+                                      style="width: 125%;"
                                       id="description"
                                       maxlength="1000"
                                       rows="4"
