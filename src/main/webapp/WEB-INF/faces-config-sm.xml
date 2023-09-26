@@ -243,4 +243,10 @@
         <managed-bean-scope>session</managed-bean-scope>
     </managed-bean> 
     
+    <factory>
+        <exception-handler-factory>
+            jm.com.dpbennett.sm.exception.CustomExceptionHandlerFactory
+        </exception-handler-factory>
+    </factory>
+    
 </faces-config>
