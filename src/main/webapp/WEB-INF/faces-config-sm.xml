@@ -27,7 +27,7 @@
     </converter>
     <converter>
         <converter-id>activeEmployeeConverter</converter-id>
-        <converter-class>jm.com.dpbennett.sm.converter.ActiveEmployeeConverter</converter-class>
+        <converter-class>jm.com.dpbennett.hrm.converter.ActiveEmployeeConverter</converter-class>
     </converter>
     <converter>
         <converter-id>documentTypeConverter</converter-id>
@@ -47,11 +47,11 @@
     </converter>     
     <converter>
         <converter-id>activeDepartmentConverter</converter-id>
-        <converter-class>jm.com.dpbennett.sm.converter.ActiveDepartmentConverter</converter-class>
+        <converter-class>jm.com.dpbennett.hrm.converter.ActiveDepartmentConverter</converter-class>
     </converter>
     <converter>
         <converter-id>activeClientConverter</converter-id>
-        <converter-class>jm.com.dpbennett.sm.converter.ActiveClientConverter</converter-class>
+        <converter-class>jm.com.dpbennett.cm.converter.ActiveClientConverter</converter-class>
     </converter>
     <converter>
         <converter-id>accPacCustomerConverter</converter-id>
@@ -79,7 +79,7 @@
     </converter>
     <converter>
         <converter-id>activeDocumentStandardConverter</converter-id>
-        <converter-class>jm.com.dpbennett.sm.converter.ActiveDocumentStandardConverter</converter-class>
+        <converter-class>jm.com.dpbennett.sc.converter.ActiveDocumentStandardConverter</converter-class>
     </converter>
     
     <validator>
