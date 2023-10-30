@@ -1,7 +1,4 @@
 <?xml version='1.0' encoding='UTF-8'?>
-
-<!-- =========== FULL CONFIGURATION FILE ================================== -->
-
 <faces-config version="2.0"
               xmlns="http://java.sun.com/xml/ns/javaee" 
               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
@@ -142,12 +139,6 @@
         <validator-id>documentStandardValidator</validator-id>
         <validator-class>jm.com.dpbennett.sm.validator.DocumentStandardValidator</validator-class>
     </validator>   
-    <!-- 
-    <validator>
-        <validator-id>marketProductValidator</validator-id>
-        <validator-class>jm.com.dpbennett.sm.validator.MarketProductValidator</validator-class>
-    </validator>
-    -->    
     
     <navigation-rule>
         <from-view-id>/index.xhtml</from-view-id>
@@ -192,7 +183,7 @@
         </navigation-case>
     </navigation-rule> 
     <navigation-rule>
-        <from-view-id>/index.xhtml</from-view-id>
+        <from-view-id>*</from-view-id>
         <navigation-case>
             <from-outcome>categoryDialog</from-outcome>
             <to-view-id>/admin/categoryDialog.xhtml</to-view-id>
