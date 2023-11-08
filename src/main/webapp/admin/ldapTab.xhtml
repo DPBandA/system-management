@@ -39,7 +39,7 @@ Email: info@dpbennett.com.jm
     <p:inputText value="#{systemManager.ldapSearchText}"
                  placeholder="Enter search text">
         <p:ajax event="keyup"
-                global="false"
+                global="true"
                 update=":appForm:mainTabView:centerTabView:LDAPTable"
                 listener="#{systemManager.doLdapContextSearch}"
                 process="@this"/>

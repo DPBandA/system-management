@@ -42,7 +42,7 @@ Email: info@dpbennett.com.jm
                  value="#{systemManager.categorySearchText}"
                  placeholder="Enter search text">
         <p:ajax event="keyup"
-                global="false"
+                global="true"
                 update=":appForm:mainTabView:centerTabView:categoriesTable"
                 listener="#{systemManager.doCategorySearch}"
                 process="@this"/>

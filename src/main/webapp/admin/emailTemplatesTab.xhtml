@@ -41,7 +41,7 @@ Email: info@dpbennett.com.jm
                  value="#{systemManager.emailSearchText}"
                  placeholder="Enter search text">
         <p:ajax event="keyup"
-                global="false"
+                global="true"
                 update=":appForm:mainTabView:centerTabView:emailsTable"
                 listener="#{systemManager.doEmailSearch}"
                 process="@this"/>

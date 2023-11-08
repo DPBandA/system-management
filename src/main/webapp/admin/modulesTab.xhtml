@@ -42,7 +42,7 @@ Email: info@dpbennett.com.jm
                  value="#{systemManager.moduleSearchText}"
                  placeholder="Enter search text">
         <p:ajax event="keyup"
-                global="false"
+                global="true"
                 update=":appForm:mainTabView:centerTabView:modulesTable"
                 listener="#{systemManager.doActiveModuleSearch}"
                 process="@this"/>
