@@ -37,7 +37,7 @@ Email: info@dpbennett.com.jm
 
                 <p:ajax event="dialogReturn" 
                         listener="#{documentManager.doPostSearch}"
-                        update=":appForm:mainTabView:postsTable,:appForm:growl3"/>
+                        update=":appForm:mainTabView:centerTabView:postsTable,:appForm:growl3"/>
 
             </p:commandButton>
             <p:spacer width="20" />
@@ -47,8 +47,8 @@ Email: info@dpbennett.com.jm
 
                 <p:ajax event="keyup"                            
                         global="true"
-                        update=":appForm:mainTabView:postsTable"
-                        listener="#{documentManager.postSearchText}"
+                        update=":appForm:mainTabView:centerTabView:postsTable"
+                        listener="#{documentManager.doPostSearch}"
                         process="@this"/>
 
             </p:inputText>
@@ -61,19 +61,19 @@ Email: info@dpbennett.com.jm
                 <p:selectBooleanCheckbox style="vertical-align: middle"
                                          id="isActivePostsOnly"
                                          value="#{documentManager.isActivePostsOnly}" >
-                    <p:ajax  update=":appForm:mainTabView:standardsTable"
-                             listener="#{complianceManager.doDocumentStandardSearch}"
+                    <p:ajax  update=":appForm:mainTabView:centerTabView:postsTable"
+                             listener="#{documentManager.doPostSearch}"
                              event="change"                                      
                              process="@this"/>
                 </p:selectBooleanCheckbox>            
-                <p:tooltip for="isActiveDocumentStandardsOnly" value="Check to search for activate standards only" 
+                <p:tooltip for="isActivePostsOnly" value="Check to search for activate posts only" 
                            showEffect="fade" hideEffect="fade" />
                 <p:spacer width="15" />                
             </h:panelGroup>
         </p:toolbarGroup>
     </p:toolbar>
-    <p:dataTable id="standardsTable"
-                 var="standard"
+    <p:dataTable id="postsTable"
+                 var="post"
                  style="margin-bottom: 1px;margin-top: 1px;"
                  editable="true" 
                  editMode="cell"
@@ -81,35 +81,33 @@ Email: info@dpbennett.com.jm
                  rows="15"
                  reflow="true"
                  paginatorTemplate="{FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
-                 value="#{complianceManager.documentStandards}">                        
-
-        <p:ajax event="cellEdit" listener="#{complianceManager.onDocumentStandardCellEdit}" />
+                 value="#{documentManager.foundPosts}">                        
 
         <f:facet name="header">
-            <h:outputText value="Search Results (found: #{complianceManager.numDocumentStandards})" />
+            <h:outputText value="Search Results (found: #{documentManager.numberOfPosts})" />
         </f:facet>
         
-        <p:column sortBy="#{standard.number}">
+        <p:column sortBy="#{post.number}">
             <f:facet name="header">
                 <h:outputText value="Code/Number"/>
             </f:facet>
-            <h:outputText value="#{standard.number}" />
+            <h:outputText value="#{post.number}" />
         </p:column>
 
-        <p:column sortBy="#{standard.name}">
+        <p:column sortBy="#{post.name}">
             <f:facet name="header">
                 <h:outputText value="Name"/>
             </f:facet>
-            <h:outputText value="#{standard.name}" />
+            <h:outputText value="#{post.name}" />
         </p:column>
 
         <p:column headerText="Active?" >                                                                         
             <p:cellEditor>                
                 <f:facet name="output">
-                    <h:outputText value="#{standard.isActive}" />
+                    <h:outputText value="#{post.isActive}" />
                 </f:facet>
                 <f:facet name="input">
-                    <p:selectOneMenu value="#{standard.isActive}">
+                    <p:selectOneMenu value="#{post.isActive}">
                         <f:selectItem itemLabel="Yes" itemValue="Yes"/>
                         <f:selectItem itemLabel="No" itemValue="No"/>
                     </p:selectOneMenu>
@@ -119,16 +117,16 @@ Email: info@dpbennett.com.jm
 
         <p:column>
             <p:commandButton icon="pi pi-pencil"
-                             actionListener="#{complianceManager.editCurrentDocumentStandard}"
+                             actionListener="#{documentManager.editSelectedPost}"
                              process="@this"
-                             title="View or edit this standard's detail">
+                             title="View or edit this post's detail">
 
-                <f:setPropertyActionListener value="#{standard}" 
-                                             target="#{complianceManager.currentDocumentStandard}" />
+                <f:setPropertyActionListener value="#{post}" 
+                                             target="#{documentManager.selectedPost}" />
 
                 <p:ajax event="dialogReturn" 
-                        listener="#{complianceManager.doDocumentStandardSearch}"
-                        update=":appForm:mainTabView:standardsTable"/>
+                        listener="#{documentManager.doPostSearch}"
+                        update=":appForm:mainTabView:centerTabView:postsTable"/>
 
             </p:commandButton>
         </p:column>
@@ -139,13 +137,13 @@ Email: info@dpbennett.com.jm
             <p:commandButton 
                 value="New"
                 icon="pi pi-plus" 
-                actionListener="#{complianceManager.createNewDocumentStandard}"                                            
+                actionListener="#{documentManager.createNewPost}"                                            
                 process="@this"
-                title="Add a new standard to the standard database" >
+                title="Create a new post" >
 
                 <p:ajax event="dialogReturn" 
-                        listener="#{complianceManager.doDocumentStandardSearch}"
-                        update=":appForm:mainTabView:standardsTable"/>
+                        listener="#{documentManager.doPostSearch}"
+                        update=":appForm:mainTabView:centerTabView:postsTable"/>
 
             </p:commandButton>            
         </p:toolbarGroup>
