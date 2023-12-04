@@ -1,5 +1,5 @@
 <!--
-Standards Compliance 
+System Management  
 Copyright (C) 2023  D P Bennett & Associates Limited
 
 This program is free software: you can redistribute it and/or modify
@@ -23,78 +23,89 @@ Email: info@dpbennett.com.jm
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:ui="http://java.sun.com/jsf/facelets"> 
+
     <h:panelGrid id="generalDetailsPanelGrid" columns="3" cellspacing="5" >
 
-        <p:outputLabel for="documentStandardActive" value="Active *" style="font-weight: bold;" />  
+        <p:outputLabel for="postActive" value="Active *" style="font-weight: bold;" />  
         <h:panelGroup>
             <p:selectBooleanCheckbox style="vertical-align: middle"
-                                     id="documentStandardActive"
-                                     value="#{complianceManager.currentDocumentStandard.active}" >
+                                     id="postActive"
+                                     value="#{documentManager.selectedPost.active}" >
 
-                <p:ajax listener="#{complianceManager.updateDocumentStandard}"
+                <p:ajax listener="#{documentManager.updatePost}"
                         event="change"                                      
                         process="@this"/>
 
             </p:selectBooleanCheckbox>     
 
-            <p:tooltip for="documentStandardActive" value="Check to activate this standard" 
-                       showEffect="fade" hideEffect="fade" />            
+            <p:tooltip for="postActive" value="Check to activate this post" 
+                       showEffect="fade" hideEffect="fade" />     
+
         </h:panelGroup>
         <h:outputText value="" />
 
-        <h:outputText value="Code/Number *" style="font-weight: bold;" />       
-        <p:inputText value="#{complianceManager.currentDocumentStandard.number}"                     
-                     id="documentStandardNumber"
+        <h:outputText value="Number *" style="font-weight: bold;" />       
+        <p:inputText value="#{documentManager.selectedPost.number}"                     
+                     id="postNumber"
                      required="true"
-                     requiredMessage="Code/Number Required"
-                     validator="documentStandardValidator">
+                     requiredMessage="Number Required" >
 
             <p:ajax event="change"
-                    global="true"      
-                    update="documentStandardNumber"
-                    listener="#{complianceManager.updateDocumentStandardName}"
+                    listener="#{documentManager.updatePost}"
                     process="@this"/>
 
         </p:inputText>     
         <h:outputText value="" />
 
         <h:outputText value="Name *" style="font-weight: bold;" />       
-        <p:inputText value="#{complianceManager.currentDocumentStandard.name}"
-                     id="documentStandardName"
+        <p:inputText value="#{documentManager.selectedPost.name}"
+                     id="postName"
                      required="true"
-                     requiredMessage="Name Required"
-                     validator="documentStandardValidator">
+                     requiredMessage="Name Required">
 
-            <p:ajax event="change"
-                    global="true"      
-                    update="documentStandardName"
-                    listener="#{complianceManager.updateDocumentStandardName}"
+            <p:ajax event="change"                   
+                    listener="#{documentManager.updatePost}"
                     process="@this"/>
 
         </p:inputText>     
         <h:outputText value="" />
 
-        <h:outputText value="Synopsis" />                        
+        <h:outputText value="URL *" style="font-weight: bold;" />       
+        <p:inputText value="#{documentManager.selectedPost.url}"
+                     id="postURL"
+                     required="true"
+                     requiredMessage="URL Required">
+
+            <p:ajax event="change"                   
+                    listener="#{documentManager.updatePost}"
+                    process="@this"/>
+
+        </p:inputText>     
+        <h:outputText value="" />
+
+        <h:outputText value="Description *" style="font-weight: bold;" />                        
         <p:inputTextarea
-            id="synopsis"
-            value="#{complianceManager.currentDocumentStandard.synopsis}"
+            id="description"
+            value="#{documentManager.selectedPost.description}"
             rows="3"
-            counter="synopsisCharsRemaining"
+            counter="descriptionCharsRemaining"
             counterTemplate="{0} characters remaining."
             autoResize="false"
             maxlength="1000" 
+            required="true"
+            requiredMessage="Description Required"
             style="width: 125%;"
             styleClass="#{not component.valid ? 'invalid-inputtextarea-field' : ''}" >
 
             <p:ajax event="change"
-                    listener="#{complianceManager.updateDocumentStandard}"
+                    listener="#{documentManager.updatePost}"
                     process="@this"/>
 
         </p:inputTextarea> 
         <h:outputText value="" />
 
         <h:outputText value="" />
-        <h:outputText id="synopsisCharsRemaining" />
+        <h:outputText id="descriptionCharsRemaining" />
 
     </h:panelGrid>                    
 

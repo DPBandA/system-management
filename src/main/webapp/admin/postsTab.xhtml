@@ -89,7 +89,7 @@ Email: info@dpbennett.com.jm
         
         <p:column sortBy="#{post.number}">
             <f:facet name="header">
-                <h:outputText value="Code/Number"/>
+                <h:outputText value="Number"/>
             </f:facet>
             <h:outputText value="#{post.number}" />
         </p:column>
@@ -99,6 +99,13 @@ Email: info@dpbennett.com.jm
                 <h:outputText value="Name"/>
             </f:facet>
             <h:outputText value="#{post.name}" />
+        </p:column>
+        
+        <p:column sortBy="#{post.description}">
+            <f:facet name="header">
+                <h:outputText value="Description"/>
+            </f:facet>
+            <h:outputText value="#{post.description}" />
         </p:column>
 
         <p:column headerText="Active?" >                                                                         
