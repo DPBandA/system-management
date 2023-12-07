@@ -27,7 +27,7 @@ Email: info@dpbennett.com.jm
 
     <p:toolbar>
         <p:toolbarGroup align="left" >  
-           
+
             <p:commandButton 
                 value="New"
                 icon="pi pi-plus" 
@@ -86,13 +86,6 @@ Email: info@dpbennett.com.jm
         <f:facet name="header">
             <h:outputText value="Search Results (found: #{documentManager.numberOfPosts})" />
         </f:facet>
-        
-        <p:column sortBy="#{post.number}">
-            <f:facet name="header">
-                <h:outputText value="Number"/>
-            </f:facet>
-            <h:outputText value="#{post.number}" />
-        </p:column>
 
         <p:column sortBy="#{post.name}">
             <f:facet name="header">
@@ -100,12 +93,19 @@ Email: info@dpbennett.com.jm
             </f:facet>
             <h:outputText value="#{post.name}" />
         </p:column>
-        
+
         <p:column sortBy="#{post.description}">
             <f:facet name="header">
                 <h:outputText value="Description"/>
             </f:facet>
             <h:outputText value="#{post.description}" />
+        </p:column>
+
+        <p:column sortBy="#{post.url}">
+            <f:facet name="header">
+                <h:outputText value="URL"/>
+            </f:facet>
+            <h:outputText value="#{post.url}" />
         </p:column>
 
         <p:column headerText="Active?" >                                                                         
@@ -140,7 +140,7 @@ Email: info@dpbennett.com.jm
     </p:dataTable>
     <p:toolbar>
         <p:toolbarGroup align="left" >  
-           
+
             <p:commandButton 
                 value="New"
                 icon="pi pi-plus" 
