@@ -29,9 +29,13 @@ Email: info@dpbennett.com.jm
                scrollable="false"
                dynamic="false">
 
-        <p:ajax event="tabChange" />  
+        <p:ajax event="tabChange" 
+                immediate="true"
+                process="@this"                                
+                listener="#{systemManager.onMainViewTabChange}" /> 
 
         <p:tab title="Users">
+
             <ui:include src="usersTab.xhtml"/>  
         </p:tab>
 
@@ -66,7 +70,7 @@ Email: info@dpbennett.com.jm
         <p:tab title="Notifications">
             <ui:include src="notificationsTab.xhtml" />   
         </p:tab>
-        
+
         <p:tab title="Posts">
             <ui:include src="postsTab.xhtml" />   
         </p:tab>
