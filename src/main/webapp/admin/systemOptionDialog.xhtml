@@ -66,20 +66,7 @@ Email: info@dpbennett.com.jm
 
             <p:panel style="margin-top: 1px;margin-bottom: 1px;">
                 <h:panelGrid columns="2" cellpadding="5">                
-                    <p:outputLabel value="Name" 
-                                   for="systemOptionName"
-                                   rendered="#{systemManager.user.can('BeSuperUser')}"
-                                   style="font-weight: bold;" />
-                    <p:inputText value="#{systemManager.selectedSystemOption.name}"    
-                                 rendered="#{systemManager.user.can('BeSuperUser')}"
-                                 id="systemOptionName"
-                                 required="true"
-                                 requiredMessage="Name Required" >
-
-                        <f:validator validatorId="systemOptionValidator" />
-
-                    </p:inputText> 
-
+                    
                     <p:outputLabel value="Value type *" 
                                    rendered="#{systemManager.user.can('BeSuperUser')}"
                                    style="font-weight: bold;" />                    
@@ -192,6 +179,20 @@ Email: info@dpbennett.com.jm
                                          update="sysOptionTable"
                                          action="#{systemManager.onAddSystemOptionText()}"/>
                     </h:panelGroup>
+                    
+                    <p:outputLabel value="Name" 
+                                   for="systemOptionName"
+                                   rendered="#{systemManager.user.can('BeSuperUser')}"
+                                   style="font-weight: bold;" />
+                    <p:inputText value="#{systemManager.selectedSystemOption.name}"    
+                                 rendered="#{systemManager.user.can('BeSuperUser')}"
+                                 id="systemOptionName"
+                                 required="true"
+                                 requiredMessage="Name Required" >
+
+                        <f:validator validatorId="systemOptionValidator" />
+
+                    </p:inputText>
 
                     <p:outputLabel value="Category *" 
                                    rendered="#{systemManager.user.can('BeSuperUser')}"

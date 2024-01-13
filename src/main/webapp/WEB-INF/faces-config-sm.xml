@@ -96,6 +96,10 @@
         <validator-class>jm.com.dpbennett.sm.validator.RequiredFieldValidator</validator-class>
     </validator>
     <validator>
+        <validator-id>nameFieldValidator</validator-id>
+        <validator-class>jm.com.dpbennett.sm.validator.NameFieldValidator</validator-class>
+    </validator>
+    <validator>
         <validator-id>businessEntityValidator</validator-id>
         <validator-class>jm.com.dpbennett.sm.validator.BusinessEntityValidator</validator-class>
     </validator>  

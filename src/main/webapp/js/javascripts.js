@@ -43,12 +43,4 @@ function hideStatusDialog() {
     PF('statusDialog').hide();
 }
 
-function allSearch() {
-
-    if (event.keyCode === 13) {
-        defaultCommand();
-    }
-
-}
-
 

@@ -1,6 +1,6 @@
 <!--
 System Management (SM) 
-Copyright (C) 2023  D P Bennett & Associates Limited
+Copyright (C) 2024  D P Bennett & Associates Limited
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU Affero General Public License as published by
@@ -41,11 +41,11 @@ Email: info@dpbennett.com.jm
     <p:spacer width="20" />        
     <p:inputText id="moduleSearchText" 
                  value="#{systemManager.moduleSearchText}"
-                 placeholder="Enter search text">
+                 placeholder="Filter search result">
         <p:ajax event="keyup"
                 global="true"
                 update=":appForm:mainTabView:centerTabView:modulesTable"
-                listener="#{systemManager.doActiveModuleSearch}"
+                listener="#{systemManager.doActiveModuleFilter}"
                 process="@this"/>
     </p:inputText>       
 

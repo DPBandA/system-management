@@ -1,6 +1,6 @@
 <!--
 System Management (SM) 
-Copyright (C) 2023  D P Bennett & Associates Limited
+Copyright (C) 2024  D P Bennett & Associates Limited
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU Affero General Public License as published by
@@ -38,7 +38,7 @@ Email: info@dpbennett.com.jm
 
         <h:form id="privilegeDialogForm">    
 
-            <p:growl id="privilege_growl" life="5000" showDetail="false"/>
+            <p:growl id="privilege_growl" life="5000" showDetail="true"/>
 
             <ui:include src="privilegeDialogToolbar.xhtml" /> 
 
@@ -52,13 +52,12 @@ Email: info@dpbennett.com.jm
                                              disabled="true"
                                              value="#{systemManager.selectedPrivilege.active}" />                    
 
-                    <p:outputLabel value="Name" for="name" style="font-weight: bold;"/>
-                    <p:inputText id="name"
+                    <p:outputLabel value="Name" for="privilegeName" style="font-weight: bold;"/>
+                    <p:inputText id="privilegeName"
                                  value="#{systemManager.selectedPrivilege.name}" 
                                  required="true"
                                  requiredMessage="Name Required"
-                                 validatorMessage="A valid name is required"
-                                 validator="requiredFieldValidator" >       
+                                 validator="nameFieldValidator" >       
 
                         <p:ajax event="change"                                                       
                                 process="@this"/>

@@ -1,6 +1,6 @@
 <!--
 System Management (SM) 
-Copyright (C) 2024  D P Bennett & Associates Limited
+Copyright (C) 2023  D P Bennett & Associates Limited
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU Affero General Public License as published by
@@ -43,7 +43,6 @@ Email: info@dpbennett.com.jm
         <h:form id="appForm" rendered="#{systemManager.userLoggedIn}">   
 
             <p:growl id="growl3" life="5000" showDetail="true" />
-
             <p:panel>
                 <div class="grid">
 
@@ -72,10 +71,8 @@ Email: info@dpbennett.com.jm
                                     <div class="col-12 md:col-9">
                                         <h:panelGroup style="float: right;" >
 
-
                                             <p:badge value="#{systemManager.sizeOfActiveNotifications}" 
                                                      id="notificationBadge"
-                                                     rendered="false"
                                                      visible="#{systemManager.hasActiveNotifications}" 
                                                      severity="danger">
 
@@ -106,7 +103,6 @@ Email: info@dpbennett.com.jm
 
                                             </p:badge>
                                             <p:spacer width="30"/>
-
                                             <p:menuButton iconPos="left"
                                                           icon="pi pi-user"
                                                           title="#{systemManager.user.employee.firstName} #{systemManager.user.employee.lastName} (#{systemManager.user.username})"
@@ -132,11 +128,9 @@ Email: info@dpbennett.com.jm
                             </div>
                             <div class="col-12">
                                 <div class="grid">
-                                    <div class="col-12 md:col-4">  
+                                    <div class="col-12 md:col-4">                                    
 
-                                        <p:remoteCommand name="defaultCommand" 
-                                                         action="#{systemManager.doDefaultCommand}"                                                          
-                                                         update=":appForm:mainTabView" />
+                                        <p:defaultCommand target="defaultCommand" />
 
                                         <ui:include src="dashboard/admin/generalAdminTab.xhtml" />                                     
 
