@@ -38,7 +38,7 @@ Email: info@dpbennett.com.jm
 
         <h:form id="categoryDialogForm">    
 
-            <p:growl id="category_growl" life="5000" showDetail="false"/>
+            <p:growl id="category_growl" life="5000" showDetail="true"/>
 
             <ui:include src="categoryDialogToolbar.xhtml" /> 
 
@@ -50,7 +50,7 @@ Email: info@dpbennett.com.jm
                                  required="true"
                                  requiredMessage="Name Required" >  
                         
-                        <f:validator validatorId="requiredFieldValidator" />
+                        <f:validator validatorId="nameFieldValidator" />
 
                         <p:ajax event="change"                                                       
                                 process="@this"/>

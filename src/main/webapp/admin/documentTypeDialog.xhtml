@@ -38,7 +38,7 @@ Email: info@dpbennett.com.jm
 
         <h:form id="documentTypeDialogForm">    
 
-            <p:growl id="documenttype_growl" life="5000" showDetail="false"/>
+            <p:growl id="documenttype_growl" life="5000" showDetail="true"/>
 
             <ui:include src="documentTypeDialogToolbar.xhtml" /> 
 
@@ -48,9 +48,9 @@ Email: info@dpbennett.com.jm
                     <p:inputText id="newDocumentType"
                                  value="#{systemManager.selectedDocumentType.name}"    
                                  required="true"
-                                 requiredMessage="Type Required"
-                                 validatorMessage="A valid type is required"
-                                 validator="requiredFieldValidator" >       
+                                 requiredMessage="Type Required">    
+                        
+                        <f:validator validatorId="nameFieldValidator" />
 
                         <p:ajax event="change"                                                       
                                 process="@this"/>

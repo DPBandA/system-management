@@ -1,6 +1,6 @@
 <!--
 System Management (SM) 
-Copyright (C) 2023  D P Bennett & Associates Limited
+Copyright (C) 2024  D P Bennett & Associates Limited
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU Affero General Public License as published by
@@ -38,7 +38,7 @@ Email: info@dpbennett.com.jm
         <ui:include src="deleteSystemOptionConfirmationDialog.xhtml"/> 
 
         <h:form id="systemOptionDialogForm">        
-            <p:growl id="growl" life="5000" />
+            <p:growl id="growl" life="5000" showDetail="true"/>
 
             <p:toolbar>
 
@@ -190,7 +190,7 @@ Email: info@dpbennett.com.jm
                                  required="true"
                                  requiredMessage="Name Required" >
 
-                        <f:validator validatorId="systemOptionValidator" />
+                        <f:validator validatorId="nameFieldValidator" />
 
                     </p:inputText>
 

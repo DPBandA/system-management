@@ -1,6 +1,6 @@
 <!--
 System Management (SM) 
-Copyright (C) 2023  D P Bennett & Associates Limited
+Copyright (C) 2024  D P Bennett & Associates Limited
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU Affero General Public License as published by
@@ -37,7 +37,7 @@ Email: info@dpbennett.com.jm
         <ui:include src="../common/commonDialogs.xhtml"/>  
 
         <h:form id="ldapDialogForm">        
-            <p:growl id="growl" life="5000" />
+            <p:growl id="growl" life="5000" showDetail="true"/>
 
             <p:toolbar>
 
@@ -79,7 +79,7 @@ Email: info@dpbennett.com.jm
                                  id="ldapName"                                 
                                  style="width: 100%;" >
                         
-                        <f:validator validatorId="requiredFieldValidator" />
+                        <f:validator validatorId="nameFieldValidator" />
                         
                     </p:inputText>
 

@@ -35,7 +35,7 @@ Email: info@dpbennett.com.jm
     <h:body >  
         <ui:include src="../common/commonDialogs.xhtml"/>  
         <h:form enctype="multipart/form-data" id="attachmentDialogForm">        
-            <p:growl id="growl" life="5000" showDetail="false"/>
+            <p:growl id="growl" life="5000" showDetail="true"/>
 
             <p:toolbar>
 
@@ -77,6 +77,9 @@ Email: info@dpbennett.com.jm
                                  required="true"
                                  requiredMessage="Name Required"
                                  id="name" >
+                        
+                        <f:validator validatorId="nameFieldValidator" />
+                        
                     </p:inputText>
 
                     <p:outputLabel value="Purpose *" style="font-weight: bold;" />

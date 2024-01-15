@@ -38,7 +38,7 @@ Email: info@dpbennett.com.jm
 
         <h:form id="notificationDialogForm">    
 
-            <p:growl id="notification_growl" life="5000" showDetail="false"/>
+            <p:growl id="notification_growl" life="5000" showDetail="true"/>
 
             <ui:include src="notificationDialogToolbar.xhtml" /> 
 
@@ -66,8 +66,7 @@ Email: info@dpbennett.com.jm
                                  value="#{systemManager.selectedNotification.name}" 
                                  required="true"
                                  requiredMessage="Name Required"
-                                 validatorMessage="A name is required"
-                                 validator="requiredFieldValidator" />   
+                                 validator="nameFieldValidator" />   
 
                     <p:outputLabel value="Type" for="type" style="font-weight: bold;"/>
                     <p:inputText id="type"
