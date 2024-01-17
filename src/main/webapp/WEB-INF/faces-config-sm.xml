@@ -142,6 +142,10 @@
     <validator>
         <validator-id>documentStandardValidator</validator-id>
         <validator-class>jm.com.dpbennett.sm.validator.DocumentStandardValidator</validator-class>
+    </validator> 
+    <validator>
+        <validator-id>identifierValidator</validator-id>
+        <validator-class>jm.com.dpbennett.sm.validator.IdentifierValidator</validator-class>
     </validator>   
     
     <navigation-rule>
