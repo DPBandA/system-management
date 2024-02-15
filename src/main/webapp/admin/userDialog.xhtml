@@ -42,7 +42,7 @@ Email: info@dpbennett.com.jm
             <p:growl id="userdialog_growl" life="5000" showDetail="true"/>
 
             <p:toolbar style="margin-bottom: 1px;">
-                
+
                 <p:toolbarGroup align="left">
                     <p:commandButton value="Ok"
                                      actionListener="#{systemManager.saveSelectedUser}"                            
@@ -55,7 +55,7 @@ Email: info@dpbennett.com.jm
                                      immediate="true"
                                      icon="pi pi-times" />    
                 </p:toolbarGroup>
-                
+
                 <p:toolbarGroup align="right">
 
                     <h:outputText value="* Fields with bold labels are required." 
@@ -250,8 +250,23 @@ Email: info@dpbennett.com.jm
                         <p:outputLabel value="Update LDAP user" for="updateLDAPUser" 
                                        style="font-weight: bold;" /> 
                         <p:selectBooleanCheckbox id="updateLDAPUser" 
-                                                 disabled="true"
-                                                 value="#{systemManager.enableUpdateLDAPUser}" />
+                                                 value="#{systemManager.selectedUser.updateLDAPUser}" />
+
+                        <p:outputLabel for="newPwd" value="New password" style="font-weight: bold;margin-right: 10px;" />
+                        <p:password id="newPwd" toggleMask="true" redisplay="true" 
+                                    value="#{systemManager.selectedUser.newPassword}" />
+
+                        <p:outputLabel for="confirmedPwd" value="Confirm password" 
+                                       style="font-weight: bold;margin-right: 10px;" />
+                        <p:password id="confirmedPwd" toggleMask="true" redisplay="true" 
+                                    value="#{systemManager.selectedUser.confirmedNewPassword}" />
+
+                        <p:divider />
+                        <p:commandButton value="Change password" 
+                                         title="Save changed password"
+                                         process="@form"
+                                         update=":appForm:growl3"
+                                         actionListener="#{systemManager.saveUserSecurityProfile}" />
                     </h:panelGrid>                        
                 </p:tab>
 
