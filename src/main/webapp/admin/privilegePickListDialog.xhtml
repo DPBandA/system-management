@@ -25,13 +25,12 @@ Email: info@dpbennett.com.jm
       xmlns:ui="http://java.sun.com/jsf/facelets">
 
     <h:head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <ui:include src="../head.xhtml" />
         <title>Add/Remove Privileges</title>
         <h:outputStylesheet library="webjars" name="primeflex/3.2.1/primeflex.min.css" />
         <link rel="stylesheet" type="text/css" href="../css/main.css" />
     </h:head>
-    
+
     <h:body >  
 
         <ui:include src="../common/commonDialogs.xhtml"/> 
@@ -39,7 +38,7 @@ Email: info@dpbennett.com.jm
         <h:form id="privilegePickListDialogForm">           
 
             <ui:include src="privilegePickListDialogToolbar.xhtml"/>
-        
+
             <p:panel style="margin-top: 1px;margin-bottom: 1px;">
 
                 <p:pickList value="#{systemManager.privilegeDualList}" 
@@ -59,7 +58,7 @@ Email: info@dpbennett.com.jm
                 </p:pickList>
 
             </p:panel>      
-      
+
             <ui:include src="privilegePickListDialogToolbar.xhtml"/>  
             <p/>       
         </h:form>    
