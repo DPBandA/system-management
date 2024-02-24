@@ -38,16 +38,19 @@ Email: info@dpbennett.com.jm
                 update=":appForm:mainTabView:centerTabView:modulesTable" />
 
     </p:commandButton>     
-    <p:spacer width="20" />        
-    <p:inputText id="moduleSearchText" 
-                 value="#{systemManager.moduleSearchText}"
-                 placeholder="Filter search result">
-        <p:ajax event="keyup"
-                global="true"
-                update=":appForm:mainTabView:centerTabView:modulesTable"
-                listener="#{systemManager.doActiveModuleFilter}"
-                process="@this"/>
-    </p:inputText>       
+    <p:spacer width="20" />   
+
+    <h:panelGroup>
+        <p:inputText id="moduleSearchText" 
+                     value="#{systemManager.moduleSearchText}"
+                     placeholder="Filter search result" />            
+        <p:commandButton id="moduleSearchButton"
+                         class="search-button"   
+                         actionListener="#{systemManager.doActiveModuleSearch}"
+                         update=":appForm:mainTabView:centerTabView:modulesTable"
+                         icon="pi pi-search"
+                         process="@form" />
+    </h:panelGroup>
 
     <p:dataTable id="modulesTable"                                       
                  var="module"     

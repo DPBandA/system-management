@@ -23,6 +23,7 @@ Email: info@dpbennett.com.jm
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:ui="http://java.sun.com/jsf/facelets"> 
+    
 
     <p:tabView id="centerTabView"   
                widgetVar="centerTabVar"
@@ -30,12 +31,11 @@ Email: info@dpbennett.com.jm
                dynamic="false">
 
         <p:ajax event="tabChange" 
-                immediate="true"
-                process="@this"                                
+                update=":appForm"
+                process="@form"                                
                 listener="#{systemManager.onMainViewTabChange}" /> 
 
         <p:tab title="Users">
-
             <ui:include src="usersTab.xhtml"/>  
         </p:tab>
 

@@ -24,7 +24,7 @@ Email: info@dpbennett.com.jm
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:ui="http://java.sun.com/jsf/facelets"> 
 
-    
+
     <p:commandButton title="Add new user"    
                      class="new-user"
                      value="New"                                                     
@@ -39,15 +39,18 @@ Email: info@dpbennett.com.jm
 
     </p:commandButton>
     <p:spacer width="20" />
-    <p:inputText id="userSearchText"                          
-                 value="#{systemManager.userSearchText}"
-                 placeholder="Filter search result">
-        <p:ajax event="keyup"
-                global="true"
-                update=":appForm:mainTabView:centerTabView:usersTable"
-                listener="#{systemManager.doUserFilter}"
-                process="@this"/>                                   
-    </p:inputText>       
+    <h:panelGroup>
+        <p:inputText id="userSearchText"                          
+                     value="#{systemManager.userSearchText}"
+                     placeholder="Filter search result" />
+          
+        <p:commandButton id="userSearchButton"
+                         class="search-button"   
+                         actionListener="#{systemManager.doUserFilter}"
+                         update=":appForm:mainTabView:centerTabView:usersTable"
+                         icon="pi pi-search"
+                         process="@form" />
+    </h:panelGroup>
 
     <h:panelGroup style="float: right;" >
         <p:outputLabel for="activeUsersOnly" value="Active" />  
@@ -55,16 +58,18 @@ Email: info@dpbennett.com.jm
         <p:selectBooleanCheckbox style="vertical-align: middle"
                                  id="activeUsersOnly"
                                  value="#{systemManager.isActiveUsersOnly}" >
+            
             <p:ajax  update=":appForm:mainTabView:centerTabView:usersTable"
-                     listener="#{systemManager.doUserFilter}"
+                     listener="#{systemManager.doUserSearch}"
                      event="change"                                      
                      process="@this"/>
+            
         </p:selectBooleanCheckbox>    
 
         <p:tooltip for="activeUsersOnly" value="Check to show active users only" 
                    showEffect="fade" hideEffect="fade" />
     </h:panelGroup>         
-          
+
     <p:dataTable id="usersTable"                                       
                  var="user"                                        
                  paginator="true"
@@ -73,7 +78,7 @@ Email: info@dpbennett.com.jm
                  style="margin-top: 5px;"
                  paginatorTemplate="{FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
                  value="#{systemManager.foundUsers}">
-      
+
         <p:column>
             <f:facet name="header">
                 <p:outputLabel value="Username"/>
