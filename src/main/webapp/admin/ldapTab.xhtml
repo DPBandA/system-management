@@ -1,6 +1,6 @@
 <!--
 System Management (SM) 
-Copyright (C) 2023  D P Bennett & Associates Limited
+Copyright (C) 2024  D P Bennett & Associates Limited
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU Affero General Public License as published by
@@ -23,7 +23,7 @@ Email: info@dpbennett.com.jm
       xmlns:p="http://primefaces.org/ui"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:f="http://java.sun.com/jsf/core">
-       
+
     <p:commandButton title="Add new LDAP Option"                                  
                      value="New"
                      actionListener="#{systemManager.createNewLdapContext}"
@@ -36,14 +36,16 @@ Email: info@dpbennett.com.jm
 
     </p:commandButton>
     <p:spacer width="20" />
-    <p:inputText value="#{systemManager.ldapSearchText}"
-                 placeholder="Enter search text">
-        <p:ajax event="keyup"
-                global="true"
-                update=":appForm:mainTabView:centerTabView:LDAPTable"
-                listener="#{systemManager.doLdapContextSearch}"
-                process="@this"/>
-    </p:inputText>
+    <h:panelGroup>
+        <p:inputText value="#{systemManager.ldapSearchText}"
+                     placeholder="Enter search text" />
+        <p:commandButton id="ldapSearchButton"
+                         class="search-button"   
+                         actionListener="#{systemManager.doLdapContextSearch}"
+                         update=":appForm:mainTabView:centerTabView:LDAPTable"
+                         icon="pi pi-search"
+                         process="@form" />
+    </h:panelGroup>
 
     <h:panelGroup style="float: right;" >
 
@@ -98,7 +100,7 @@ Email: info@dpbennett.com.jm
         </p:column>   
 
         <p:column>
-             <f:facet name="header">
+            <f:facet name="header">
                 <p:outputLabel value="URL"/>
             </f:facet>
             <p:cellEditor>
@@ -108,7 +110,7 @@ Email: info@dpbennett.com.jm
         </p:column>   
 
         <p:column>
-             <f:facet name="header">
+            <f:facet name="header">
                 <p:outputLabel value="Active"/>
             </f:facet>
             <p:cellEditor>

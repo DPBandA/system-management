@@ -1,6 +1,6 @@
 <!--
 System Management (SM) 
-Copyright (C) 2023  D P Bennett & Associates Limited
+Copyright (C) 2024  D P Bennett & Associates Limited
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU Affero General Public License as published by
@@ -37,15 +37,17 @@ Email: info@dpbennett.com.jm
 
     </p:commandButton>
     <p:spacer width="20" />
-    <p:inputText value="#{systemManager.systemOptionSearchText}"
-                 id="systemOptionSearchTextId"
-                 placeholder="Enter search text">
-        <p:ajax event="keyup"
-                global="true"
-                update=":appForm:mainTabView:centerTabView:systemOptionsTable"
-                listener="#{systemManager.doSystemOptionSearch}"
-                process="@this"/>
-    </p:inputText>
+    <h:panelGroup>
+        <p:inputText value="#{systemManager.systemOptionSearchText}"
+                     id="systemOptionSearchTextId"
+                     placeholder="Enter search text" />
+        <p:commandButton id="systemOptionSearchButton"
+                         class="search-button"   
+                         actionListener="#{systemManager.doSystemSettingSearch}"
+                         update=":appForm:mainTabView:centerTabView:systemOptionsTable"
+                         icon="pi pi-search"
+                         process="@form" />
+    </h:panelGroup>
 
     <p:dataTable id="systemOptionsTable"                                       
                  var="systemOption"     

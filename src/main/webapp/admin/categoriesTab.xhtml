@@ -1,6 +1,6 @@
 <!--
 System Management (SM) 
-Copyright (C) 2023  D P Bennett & Associates Limited
+Copyright (C) 2024 D P Bennett & Associates Limited
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU Affero General Public License as published by
@@ -23,7 +23,7 @@ Email: info@dpbennett.com.jm
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:ui="http://java.sun.com/jsf/facelets"> 
-      
+
     <p:commandButton title="Add new category"                                  
                      value="New"
                      actionListener="#{systemManager.createNewCategory}"                            
@@ -37,16 +37,18 @@ Email: info@dpbennett.com.jm
                 update=":appForm:mainTabView:centerTabView:categoriesTable" />
 
     </p:commandButton>     
-    <p:spacer width="20" />        
-    <p:inputText id="categorySearchText" 
-                 value="#{systemManager.categorySearchText}"
-                 placeholder="Enter search text">
-        <p:ajax event="keyup"
-                global="true"
-                update=":appForm:mainTabView:centerTabView:categoriesTable"
-                listener="#{systemManager.doCategorySearch}"
-                process="@this"/>
-    </p:inputText>       
+    <p:spacer width="20" />  
+    <h:panelGroup>
+        <p:inputText id="categorySearchText" 
+                     value="#{systemManager.categorySearchText}"
+                     placeholder="Enter search text" /> 
+        <p:commandButton id="categorySearchButton"
+                         class="search-button"   
+                         actionListener="#{systemManager.doCategorySearch}"
+                         update=":appForm:mainTabView:centerTabView:categoriesTable"
+                         icon="pi pi-search"
+                         process="@form" />
+    </h:panelGroup>
 
     <p:dataTable id="categoriesTable"                                       
                  var="category"     

@@ -1,6 +1,6 @@
 <!--
 Document Management 
-Copyright (C) 2023  D P Bennett & Associates Limited
+Copyright (C) 2024  D P Bennett & Associates Limited
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU Affero General Public License as published by
@@ -41,17 +41,17 @@ Email: info@dpbennett.com.jm
 
             </p:commandButton>
             <p:spacer width="20" />
-            <p:inputText id="postSearchText" 
-                         placeholder="Enter search text"
-                         value="#{documentManager.postSearchText}" >
-
-                <p:ajax event="keyup"                            
-                        global="true"
-                        update=":appForm:mainTabView:centerTabView:postsTable"
-                        listener="#{documentManager.doPostSearch}"
-                        process="@this"/>
-
-            </p:inputText>
+            <h:panelGroup>
+                <p:inputText id="postSearchText" 
+                             placeholder="Enter search text"
+                             value="#{documentManager.postSearchText}" />
+                <p:commandButton id="postSearchButton"
+                                 class="search-button"   
+                                 actionListener="#{documentManager.doPostSearch}"
+                                 update=":appForm:mainTabView:centerTabView:postsTable"
+                                 icon="pi pi-search"
+                                 process="@form" />
+            </h:panelGroup>
         </p:toolbarGroup>
 
         <p:toolbarGroup align="right" >

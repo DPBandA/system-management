@@ -1,6 +1,6 @@
 <!--
 System Management (SM) 
-Copyright (C) 2023  D P Bennett & Associates Limited
+Copyright (C) 2024  D P Bennett & Associates Limited
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU Affero General Public License as published by
@@ -23,7 +23,7 @@ Email: info@dpbennett.com.jm
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:ui="http://java.sun.com/jsf/facelets"> 
-     
+
     <p:commandButton title="Add new privilege"                                  
                      value="New"
                      actionListener="#{systemManager.createNewPrivilege}"                            
@@ -37,16 +37,18 @@ Email: info@dpbennett.com.jm
                 update=":appForm:mainTabView:centerTabView:privilegesTable" />
 
     </p:commandButton>     
-    <p:spacer width="20" />        
-    <p:inputText id="privilegeSearchText" 
-                 value="#{systemManager.privilegeSearchText}"
-                 placeholder="Enter search text">
-        <p:ajax event="keyup"
-                global="true"
-                update=":appForm:mainTabView:centerTabView:privilegesTable"
-                listener="#{systemManager.doActivePrivilegeSearch}"
-                process="@this"/>
-    </p:inputText>
+    <p:spacer width="20" />
+    <h:panelGroup>
+        <p:inputText id="privilegeSearchText" 
+                     value="#{systemManager.privilegeSearchText}"
+                     placeholder="Enter search text" />
+        <p:commandButton id="privilegeSearchButton"
+                         class="search-button"   
+                         actionListener="#{systemManager.doActivePrivilegeSearch}"
+                         update=":appForm:mainTabView:centerTabView:privilegesTable"
+                         icon="pi pi-search"
+                         process="@form" />
+    </h:panelGroup>
 
     <p:dataTable id="privilegesTable"                                       
                  var="privilege"     
@@ -59,7 +61,7 @@ Email: info@dpbennett.com.jm
                  widgetVar="PrivilegesTableVar"
                  paginatorTemplate="{FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
                  value="#{systemManager.foundActivePrivileges}">
-        
+
         <p:column>
             <f:facet name="header">
                 <p:outputLabel value="Active"/>
