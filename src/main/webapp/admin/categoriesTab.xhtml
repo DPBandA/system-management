@@ -24,31 +24,35 @@ Email: info@dpbennett.com.jm
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:ui="http://java.sun.com/jsf/facelets"> 
 
-    <p:commandButton title="Add new category"                                  
-                     value="New"
-                     actionListener="#{systemManager.createNewCategory}"                            
-                     update=":appForm:mainTabView:centerTabView:categoriesTable"
-                     global="true"
-                     process="@this"
-                     icon="pi pi-plus" >
+    <p:toolbar>
+        <p:toolbarGroup align="left" >
+            <p:commandButton title="Add new category"                                  
+                             value="New"
+                             actionListener="#{systemManager.createNewCategory}"                            
+                             update=":appForm:mainTabView:centerTabView:categoriesTable"
+                             global="true"
+                             process="@this"
+                             icon="pi pi-plus" >
 
-        <p:ajax event="dialogReturn" 
-                listener="#{systemManager.doCategorySearch}"
-                update=":appForm:mainTabView:centerTabView:categoriesTable" />
+                <p:ajax event="dialogReturn" 
+                        listener="#{systemManager.doCategorySearch}"
+                        update=":appForm:mainTabView:centerTabView:categoriesTable" />
 
-    </p:commandButton>     
-    <p:spacer width="20" />  
-    <h:panelGroup>
-        <p:inputText id="categorySearchText" 
-                     value="#{systemManager.categorySearchText}"
-                     placeholder="Enter search text" /> 
-        <p:commandButton id="categorySearchButton"
-                         class="search-button"   
-                         actionListener="#{systemManager.doCategorySearch}"
-                         update=":appForm:mainTabView:centerTabView:categoriesTable"
-                         icon="pi pi-search"
-                         process="@form" />
-    </h:panelGroup>
+            </p:commandButton>     
+            <p:spacer width="20" />  
+            <h:panelGroup>
+                <p:inputText id="categorySearchText" 
+                             value="#{systemManager.categorySearchText}"
+                             placeholder="Enter search text" /> 
+                <p:commandButton id="categorySearchButton"
+                                 class="search-button"   
+                                 actionListener="#{systemManager.doCategorySearch}"
+                                 update=":appForm:mainTabView:centerTabView:categoriesTable"
+                                 icon="pi pi-search"
+                                 process="@form" />
+            </h:panelGroup>
+        </p:toolbarGroup>
+    </p:toolbar>
 
     <p:dataTable id="categoriesTable"                                       
                  var="category"     
