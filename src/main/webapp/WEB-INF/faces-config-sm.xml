@@ -100,6 +100,10 @@
         <validator-class>jm.com.dpbennett.sm.validator.NameFieldValidator</validator-class>
     </validator>
     <validator>
+        <validator-id>newUsernameValidator</validator-id>
+        <validator-class>jm.com.dpbennett.sm.validator.NewUsernameValidator</validator-class>
+    </validator>
+    <validator>
         <validator-id>businessEntityValidator</validator-id>
         <validator-class>jm.com.dpbennett.sm.validator.BusinessEntityValidator</validator-class>
     </validator>  
@@ -119,7 +123,7 @@
         <validator-id>contactValidator</validator-id>
         <validator-class>jm.com.dpbennett.sm.validator.ContactValidator</validator-class>
     </validator> 
-     <validator>
+    <validator>
         <validator-id>accountingCodeValidator</validator-id>
         <validator-class>jm.com.dpbennett.sm.validator.AccountingCodeValidator</validator-class>
     </validator>  
@@ -146,6 +150,10 @@
     <validator>
         <validator-id>identifierValidator</validator-id>
         <validator-class>jm.com.dpbennett.sm.validator.IdentifierValidator</validator-class>
+    </validator>   
+    <validator>
+        <validator-id>emailAddressValidator</validator-id>
+        <validator-class>jm.com.dpbennett.sm.validator.EmailAddressValidator</validator-class>
     </validator>   
     
     <navigation-rule>
@@ -239,6 +247,14 @@
             <to-view-id>/admin/ldapDialog.xhtml</to-view-id>
         </navigation-case>
     </navigation-rule>
+    <navigation-rule>
+        <from-view-id>*</from-view-id>
+        <navigation-case>
+            <from-outcome>registrationDialog</from-outcome>
+            <to-view-id>/admin/registrationDialog.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    
     <lifecycle>
         <phase-listener id="nocache">jm.com.dpbennett.sm.util.CacheControlPhaseListener</phase-listener>
     </lifecycle>

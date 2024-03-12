@@ -26,7 +26,7 @@ Email: info@dpbennett.com.jm
 
     <h:head>
         <ui:include src="../head.xhtml" />
-        <title>User</title>         
+        <title>User Registration</title>         
         <script type="text/javascript" src="../js/javascripts.js" />  
         <h:outputStylesheet library="webjars" name="primeflex/3.2.1/primeflex.min.css" />
         <link rel="stylesheet" type="text/css" href="../css/main.css" />
@@ -36,17 +36,17 @@ Email: info@dpbennett.com.jm
 
         <ui:include src="../common/commonDialogs.xhtml"/> 
 
-        <h:form id="userDialogForm" >    
+        <h:form id="userRegistrationForm" >    
 
-            <p:growl id="userdialog_growl" life="5000" showDetail="true"/>
+            <p:growl id="user_registration_dialog_growl" life="5000" showDetail="true"/>
 
             <p:toolbar style="margin-bottom: 1px;">
 
                 <p:toolbarGroup align="left">
-                    <p:commandButton value="Ok"
-                                     actionListener="#{systemManager.saveSelectedUser}"                            
-                                     icon="pi pi-check" 
-                                     update="userdialog_growl"
+                    <p:commandButton value="Register"
+                                     actionListener="#{systemManager.registerSelectedUser}"                            
+                                     icon="pi pi-user-plus"
+                                     update="user_registration_dialog_growl"
                                      process="@form" />
                     <p:spacer width="5" />
                     <p:commandButton value="Cancel"                                
@@ -57,48 +57,52 @@ Email: info@dpbennett.com.jm
 
                 <p:toolbarGroup align="right">
 
-                    <h:outputText value="* Fields with bold labels are required." 
+                    <h:outputText value="* Field required." 
                                   style="font-weight: bold;" /> 
 
                 </p:toolbarGroup>
             </p:toolbar>
 
-
             <p:panel style="margin-bottom: 1px;" >             
                 <h:panelGrid columns="2" cellpadding="5" >
-                    <p:outputLabel value="Active *" 
-                                   for="activeUser" 
-                                   style="font-weight: bold;" /> 
-                    <p:selectBooleanCheckbox id="activeUser" 
-                                             value="#{systemManager.selectedUser.active}" />
 
-                    <p:outputLabel value="Username" 
+                    <p:outputLabel value="Authenticate *" 
+                                   for="authenticateUser" 
+                                   style="font-weight: bold;" /> 
+                    <p:selectBooleanCheckbox id="authenticateUser" 
+                                             value="#{systemManager.selectedUser.authenticate}" />
+
+                    <p:outputLabel value="Update LDAP user *" 
+                                   for="updateLDAPUser" 
+                                   style="font-weight: bold;" /> 
+                    <p:selectBooleanCheckbox id="updateLDAPUser" 
+                                             value="#{systemManager.selectedUser.updateLDAPUser}" />
+
+                    <p:outputLabel value="Username *" 
                                    for="username"
                                    style="font-weight: bold;"/>  
                     <p:inputText id="username"
-                                 required="true"
-                                 requiredMessage="Username Required"
-                                 validator="identifierValidator"
-                                 value="#{systemManager.selectedUser.username}" />    
+                                 validator="newUsernameValidator"
+                                 value="#{systemManager.selectedUser.username}" />   
 
-                    <p:outputLabel value="Employee" for="employee" style="font-weight: bold;" />               
-                    <p:autoComplete var="employee"
-                                    id="employee"
-                                    scrollHeight="175"
-                                    dropdown="true"
-                                    maxlength="250"
-                                    value="#{systemManager.selectedUser.employee}"
-                                    title="#{systemManager.selectedUser.employee}"
-                                    itemLabel="#{employee.name}"
-                                    itemValue="#{employee}"
-                                    required="true"
-                                    requiredMessage="Employee Required"
-                                    validator="businessEntityValidator"
-                                    validatorMessage="Select a valid employee"
-                                    converter="activeEmployeeConverter"
-                                    forceSelection="true"
-                                    completeMethod="#{systemManager.completeActiveEmployee}" >                       
-                    </p:autoComplete>   
+                    <p:outputLabel value="Email" 
+                                   for="email"
+                                   style="font-weight: bold;"/>  
+                    <p:inputText id="email" 
+                                 value="#{systemManager.selectedUser.email}" 
+                                 validator="emailAddressValidator" />
+                     
+                    <p:outputLabel for="newPwd" 
+                                   value="Password *" 
+                                   style="font-weight: bold;margin-right: 10px;" />
+                    <p:password id="newPwd" toggleMask="true" redisplay="true" 
+                                value="#{systemManager.selectedUser.newPassword}" />
+
+                    <p:outputLabel for="confirmedPwd" 
+                                   value="Confirm password *" 
+                                   style="font-weight: bold;margin-right: 10px;" />
+                    <p:password id="confirmedPwd" toggleMask="true" redisplay="true" 
+                                value="#{systemManager.selectedUser.confirmedNewPassword}" />
 
                 </h:panelGrid>
             </p:panel>
@@ -111,7 +115,7 @@ Email: info@dpbennett.com.jm
                             <p:commandButton title="Edit module list"                                  
                                              value="Add/Remove"
                                              actionListener="#{systemManager.addUserModules}"
-                                             update=":userDialogForm:userdialog_growl"                                                
+                                             update=":userRegistrationForm:user_registration_dialog_growl"                                                
                                              global="true"
                                              process="@this"
                                              icon="pi pi-pencil">
@@ -140,7 +144,7 @@ Email: info@dpbennett.com.jm
                             <p:commandButton title="Edit module list"                                  
                                              value="Add/Remove"
                                              actionListener="#{systemManager.addUserModules}"
-                                             update=":userDialogForm:userdialog_growl"                                                
+                                             update=":userRegistrationForm:user_registration_dialog_growl"                                                
                                              global="true"
                                              process="@this"
                                              icon="pi pi-pencil">
@@ -161,7 +165,7 @@ Email: info@dpbennett.com.jm
                             <p:commandButton title="Edit privilege list"                                  
                                              value="Add/Remove"
                                              actionListener="#{systemManager.addUserPrivileges}"
-                                             update=":userDialogForm:userdialog_growl"                                                
+                                             update=":userRegistrationForm:user_registration_dialog_growl"                                                
                                              global="true"
                                              process="@this"
                                              icon="pi pi-pencil">
@@ -190,7 +194,7 @@ Email: info@dpbennett.com.jm
                             <p:commandButton title="Edit privilege list"                                  
                                              value="Add/Remove"
                                              actionListener="#{systemManager.addUserPrivileges}"
-                                             update=":userDialogForm:userdialog_growl"                                                
+                                             update=":userRegistrationForm:user_registration_dialog_growl"                                                
                                              global="true"
                                              process="@this"
                                              icon="pi pi-pencil">
@@ -239,59 +243,30 @@ Email: info@dpbennett.com.jm
                         </p:selectOneMenu>
                     </h:panelGrid>                        
                 </p:tab>
-                <p:tab title="Security" >
-                    <h:panelGrid columns="2" cellpadding="5">
-                        <p:outputLabel value="Authenticate" for="authenticateUser" 
-                                       style="font-weight: bold;" /> 
-                        <p:selectBooleanCheckbox id="authenticateUser" 
-                                                 value="#{systemManager.selectedUser.authenticate}" />
-
-                        <p:outputLabel value="Update LDAP user" for="updateLDAPUser" 
-                                       style="font-weight: bold;" /> 
-                        <p:selectBooleanCheckbox id="updateLDAPUser" 
-                                                 value="#{systemManager.selectedUser.updateLDAPUser}" />
-
-                        <p:outputLabel for="newPwd" value="New password" style="font-weight: bold;margin-right: 10px;" />
-                        <p:password id="newPwd" toggleMask="true" redisplay="true" 
-                                    value="#{systemManager.selectedUser.newPassword}" />
-
-                        <p:outputLabel for="confirmedPwd" value="Confirm password" 
-                                       style="font-weight: bold;margin-right: 10px;" />
-                        <p:password id="confirmedPwd" toggleMask="true" redisplay="true" 
-                                    value="#{systemManager.selectedUser.confirmedNewPassword}" />
-
-                        <p:divider />
-                        <p:commandButton value="Change password" 
-                                         title="Save changed password"
-                                         process="@form"
-                                         update=":userDialogForm:userdialog_growl"
-                                         actionListener="#{systemManager.saveUserSecurityProfile}" />
-                    </h:panelGrid>                        
-                </p:tab>
 
             </p:tabView>
 
-            <p:toolbar style="margin-top: 1px;">
+            <p:toolbar style="margin-bottom: 1px;">
+
                 <p:toolbarGroup align="left">
-                    <p:commandButton value="Ok"
-                                     actionListener="#{systemManager.saveSelectedUser}"                            
-                                     icon="pi pi-check" 
-                                     update="userdialog_growl"
+                    <p:commandButton value="Register"
+                                     actionListener="#{systemManager.registerSelectedUser}"                            
+                                     icon="pi pi-user-plus"
+                                     update="user_registration_dialog_growl"
                                      process="@form" />
                     <p:spacer width="5" />
                     <p:commandButton value="Cancel"                                
                                      actionListener="#{systemManager.cancelUserEdit}"
                                      immediate="true"
-                                     icon="pi pi-times" />  
+                                     icon="pi pi-times" />    
                 </p:toolbarGroup>
 
                 <p:toolbarGroup align="right">
 
-                    <h:outputText value="* Fields with bold labels are required." 
+                    <h:outputText value="* Field required." 
                                   style="font-weight: bold;" /> 
 
                 </p:toolbarGroup>
-
             </p:toolbar>
 
         </h:form>

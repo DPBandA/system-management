@@ -119,7 +119,12 @@ Email: info@dpbennett.com.jm
                                                 icon="pi pi-sign-out"
                                                 value="Logout"
                                                 oncomplete="location.reload();"
-                                                process="@this"/>    
+                                                process="@this"/>  
+                                    <p:divider />
+                                    <p:menuitem actionListener="#{systemManager.createNewUserRegistration}"                                             
+                                                icon="pi pi-user-plus"
+                                                value="Register"
+                                                process="@this"/> 
 
                                 </p:menuButton>   
                             </h:panelGroup>
@@ -131,7 +136,7 @@ Email: info@dpbennett.com.jm
                     <div class="col-12">
 
                         <ui:include src="menubar.xhtml" />   
-                        
+
                         <p:tabView id="mainTabView"  
                                    rendered="#{systemManager.mainTabView.render}"
                                    value="#{systemManager.mainTabView.tabs}" 
@@ -150,7 +155,7 @@ Email: info@dpbennett.com.jm
                                     listener="#{systemManager.onMainViewTabChange}" />  
 
                             <p:tab title="#{t.name}" closable="true"  >
-                                
+
                                 <p:defaultCommand id="defaultCmd"
                                                   target="#{systemManager.defaultCommandTarget}" />
 
