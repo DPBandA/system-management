@@ -246,7 +246,7 @@ Email: info@dpbennett.com.jm
                         <p:selectBooleanCheckbox id="authenticateUser" 
                                                  value="#{systemManager.selectedUser.authenticate}" />
 
-                        <p:outputLabel value="Update LDAP user" for="updateLDAPUser" 
+                        <p:outputLabel value="Update security profile" for="updateLDAPUser" 
                                        style="font-weight: bold;" /> 
                         <p:selectBooleanCheckbox id="updateLDAPUser" 
                                                  value="#{systemManager.selectedUser.updateLDAPUser}" />
@@ -259,14 +259,15 @@ Email: info@dpbennett.com.jm
                                        style="font-weight: bold;margin-right: 10px;" />
                         <p:password id="confirmedPwd" toggleMask="true" redisplay="true" 
                                     value="#{systemManager.selectedUser.confirmedNewPassword}" />
-
-                        <p:divider />
-                        <p:commandButton value="Change password" 
-                                         title="Save changed password"
-                                         process="@form"
-                                         update=":userDialogForm:userdialog_growl"
-                                         actionListener="#{systemManager.saveUserSecurityProfile}" />
-                    </h:panelGrid>                        
+                    </h:panelGrid>  
+                    
+                    <p:divider/>
+                    
+                    <p:commandButton value="Change password" 
+                                     title="Save changed password"
+                                     process="@form"
+                                     update=":userDialogForm:userdialog_growl"
+                                     actionListener="#{systemManager.saveSelectedUserSecurityProfile}" />                    
                 </p:tab>
 
             </p:tabView>
