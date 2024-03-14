@@ -154,6 +154,10 @@
     <validator>
         <validator-id>emailAddressValidator</validator-id>
         <validator-class>jm.com.dpbennett.sm.validator.EmailAddressValidator</validator-class>
+    </validator>
+    <validator>
+        <validator-id>passwordValidator</validator-id>
+        <validator-class>jm.com.dpbennett.sm.validator.PasswordValidator</validator-class>
     </validator>   
     
     <navigation-rule>

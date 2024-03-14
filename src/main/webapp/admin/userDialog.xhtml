@@ -57,7 +57,7 @@ Email: info@dpbennett.com.jm
 
                 <p:toolbarGroup align="right">
 
-                    <h:outputText value="* Fields with bold labels are required." 
+                    <h:outputText value="* Fields required." 
                                   style="font-weight: bold;" /> 
 
                 </p:toolbarGroup>
@@ -251,13 +251,16 @@ Email: info@dpbennett.com.jm
                         <p:selectBooleanCheckbox id="updateLDAPUser" 
                                                  value="#{systemManager.selectedUser.updateLDAPUser}" />
 
-                        <p:outputLabel for="newPwd" value="New password" style="font-weight: bold;margin-right: 10px;" />
-                        <p:password id="newPwd" toggleMask="true" redisplay="true" 
+                        <p:outputLabel for="newPwd" value="New password" 
+                                       style="font-weight: bold;margin-right: 10px;" />
+                        <p:password id="newPwd" toggleMask="true"
+                                    validator="passwordValidator"
                                     value="#{systemManager.selectedUser.newPassword}" />
 
                         <p:outputLabel for="confirmedPwd" value="Confirm password" 
                                        style="font-weight: bold;margin-right: 10px;" />
-                        <p:password id="confirmedPwd" toggleMask="true" redisplay="true" 
+                        <p:password id="confirmedPwd" toggleMask="true"
+                                    validator="passwordValidator"
                                     value="#{systemManager.selectedUser.confirmedNewPassword}" />
                     </h:panelGrid>  
                     
@@ -288,7 +291,7 @@ Email: info@dpbennett.com.jm
 
                 <p:toolbarGroup align="right">
 
-                    <h:outputText value="* Fields with bold labels are required." 
+                    <h:outputText value="* Fields required." 
                                   style="font-weight: bold;" /> 
 
                 </p:toolbarGroup>
