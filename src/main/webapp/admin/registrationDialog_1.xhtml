@@ -1,0 +1,274 @@
+<!--
+System Management (SM) 
+Copyright (C) 2024  D P Bennett & Associates Limited
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU Affero General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Affero General Public License for more details.
+
+You should have received a copy of the GNU Affero General Public License
+along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+Email: info@dpbennett.com.jm
+-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <h:head>
+        <ui:include src="../head.xhtml" />
+        <title>User Registration</title>         
+        <script type="text/javascript" src="../js/javascripts.js" />  
+        <h:outputStylesheet library="webjars" name="primeflex/3.2.1/primeflex.min.css" />
+        <link rel="stylesheet" type="text/css" href="../css/main.css" />
+    </h:head>
+
+    <h:body >  
+
+        <ui:include src="../common/commonDialogs.xhtml"/> 
+
+        <h:form id="userRegistrationForm" >    
+
+            <p:growl id="user_registration_dialog_growl" life="5000" showDetail="true"/>
+
+            <p:toolbar style="margin-bottom: 1px;">
+
+                <p:toolbarGroup align="left">
+                    <p:commandButton value="Register"
+                                     actionListener="#{systemManager.registerSelectedUser}"                            
+                                     icon="pi pi-user-plus"
+                                     update="user_registration_dialog_growl"
+                                     process="@form" />
+                    <p:spacer width="5" />
+                    <p:commandButton value="Cancel"                                
+                                     actionListener="#{systemManager.cancelUserEdit}"
+                                     immediate="true"
+                                     icon="pi pi-times" />    
+                </p:toolbarGroup>
+
+                <p:toolbarGroup align="right">
+
+                    <h:outputText value="* Field required." 
+                                  style="font-weight: bold;" /> 
+
+                </p:toolbarGroup>
+            </p:toolbar>
+
+            <p:panel style="margin-bottom: 1px;" >             
+                <h:panelGrid columns="2" cellpadding="5" >
+
+                    <p:outputLabel value="Authenticate *" 
+                                   for="authenticateUser" 
+                                   style="font-weight: bold;" /> 
+                    <p:selectBooleanCheckbox id="authenticateUser" 
+                                             value="#{systemManager.selectedUser.authenticate}" />
+
+                    <p:outputLabel value="Update LDAP user *" 
+                                   for="updateLDAPUser" 
+                                   style="font-weight: bold;" /> 
+                    <p:selectBooleanCheckbox id="updateLDAPUser" 
+                                             value="#{systemManager.selectedUser.updateLDAPUser}" />
+
+                    <p:outputLabel value="Username *" 
+                                   for="username"
+                                   style="font-weight: bold;"/>  
+                    <p:inputText id="username"
+                                 validator="newUsernameValidator"
+                                 value="#{systemManager.selectedUser.username}" />   
+
+                    <p:outputLabel value="Email" 
+                                   for="email"
+                                   style="font-weight: bold;"/>  
+                    <p:inputText id="email" 
+                                 value="#{systemManager.selectedUser.email}" 
+                                 validator="emailAddressValidator" />
+                     
+                    <p:outputLabel for="newPwd" 
+                                   value="Password *" 
+                                   style="font-weight: bold;margin-right: 10px;" />
+                    <p:password id="newPwd" toggleMask="true" redisplay="true" 
+                                value="#{systemManager.selectedUser.newPassword}" />
+
+                    <p:outputLabel for="confirmedPwd" 
+                                   value="Confirm password *" 
+                                   style="font-weight: bold;margin-right: 10px;" />
+                    <p:password id="confirmedPwd" toggleMask="true" redisplay="true" 
+                                value="#{systemManager.selectedUser.confirmedNewPassword}" />
+
+                </h:panelGrid>
+            </p:panel>
+
+            <p:tabView >
+
+                <p:tab title="Module Access">
+                    <p:toolbar>
+                        <p:toolbarGroup align="left" >  
+                            <p:commandButton title="Edit module list"                                  
+                                             value="Add/Remove"
+                                             actionListener="#{systemManager.addUserModules}"
+                                             update=":userRegistrationForm:user_registration_dialog_growl"                                                
+                                             global="true"
+                                             process="@this"
+                                             icon="pi pi-pencil">
+
+                                <p:ajax event="dialogReturn" 
+                                        listener="#{systemManager.addUserModulesDialogReturn}"
+                                        update="modulesTable"/>
+
+                            </p:commandButton> 
+                        </p:toolbarGroup>  
+
+                    </p:toolbar>    
+
+                    <p:dataTable var="module"                                  
+                                 id="modulesTable"                                 
+                                 value="#{systemManager.selectedUser.activeModules}" >
+
+                        <p:column>
+                            <h:outputText value="#{module.description}"/>
+                        </p:column>
+
+                    </p:dataTable>
+
+                    <p:toolbar>
+                        <p:toolbarGroup align="left" >  
+                            <p:commandButton title="Edit module list"                                  
+                                             value="Add/Remove"
+                                             actionListener="#{systemManager.addUserModules}"
+                                             update=":userRegistrationForm:user_registration_dialog_growl"                                                
+                                             global="true"
+                                             process="@this"
+                                             icon="pi pi-pencil">
+
+                                <p:ajax event="dialogReturn" 
+                                        listener="#{systemManager.addUserModulesDialogReturn}"
+                                        update="modulesTable"/>
+
+                            </p:commandButton> 
+                        </p:toolbarGroup>                      
+                    </p:toolbar>                    
+                </p:tab>
+
+                <p:tab title="Privileges">
+
+                    <p:toolbar>
+                        <p:toolbarGroup align="left" >  
+                            <p:commandButton title="Edit privilege list"                                  
+                                             value="Add/Remove"
+                                             actionListener="#{systemManager.addUserPrivileges}"
+                                             update=":userRegistrationForm:user_registration_dialog_growl"                                                
+                                             global="true"
+                                             process="@this"
+                                             icon="pi pi-pencil">
+
+                                <p:ajax event="dialogReturn" 
+                                        listener="#{systemManager.addUserPrivilegesDialogReturn}"
+                                        update="privilegesTable"/>
+
+                            </p:commandButton> 
+                        </p:toolbarGroup>  
+
+                    </p:toolbar> 
+
+                    <p:dataTable var="privilege"                                  
+                                 id="privilegesTable" 
+                                 value="#{systemManager.selectedUser.privileges}" >
+
+                        <p:column>
+                            <h:outputText value="#{privilege.description}"/>
+                        </p:column>
+
+                    </p:dataTable>
+
+                    <p:toolbar>
+                        <p:toolbarGroup align="left" >  
+                            <p:commandButton title="Edit privilege list"                                  
+                                             value="Add/Remove"
+                                             actionListener="#{systemManager.addUserPrivileges}"
+                                             update=":userRegistrationForm:user_registration_dialog_growl"                                                
+                                             global="true"
+                                             process="@this"
+                                             icon="pi pi-pencil">
+
+                                <p:ajax event="dialogReturn" 
+                                        listener="#{systemManager.addUserPrivilegesDialogReturn}"
+                                        update="privilegesTable"/>
+
+                            </p:commandButton> 
+                        </p:toolbarGroup>                      
+                    </p:toolbar>
+
+                </p:tab>
+
+                <p:tab title="Preferences" >
+                    <h:panelGrid columns="2" cellpadding="5">
+                        <p:outputLabel value="Theme" style="font-weight: bold;"/>
+                        <p:selectOneMenu id="theme" 
+                                         value="#{systemManager.selectedUser.PFThemeName}"
+                                         title="#{systemManager.selectedUser.PFThemeName}" >
+
+                            <f:selectItems  value="#{systemManager.PFThemes2}"
+                                            var="theme"                            
+                                            itemValue="#{theme.value}"
+                                            itemLabel="#{theme.label}"/>
+
+                            <p:ajax listener="#{systemManager.updateSelectedUserPreferences}"
+                                    global="false"
+                                    process="@this"/>
+
+                        </p:selectOneMenu>
+
+                        <p:outputLabel value="Job table view" style="font-weight: bold;"/>
+                        <p:selectOneMenu value="#{systemManager.selectedUser.jobTableViewPreference}"
+                                         title="#{systemManager.selectedUser.jobTableViewPreference}" >
+
+                            <f:selectItems  value="#{systemManager.jobTableViews}"
+                                            var="v"                            
+                                            itemValue="#{v.value}"
+                                            itemLabel="#{v.label}"/>
+
+                            <p:ajax listener="#{systemManager.updateSelectedUserPreferences}"
+                                    global="false"
+                                    process="@this"/>
+
+                        </p:selectOneMenu>
+                    </h:panelGrid>                        
+                </p:tab>
+
+            </p:tabView>
+
+            <p:toolbar style="margin-bottom: 1px;">
+
+                <p:toolbarGroup align="left">
+                    <p:commandButton value="Register"
+                                     actionListener="#{systemManager.registerSelectedUser}"                            
+                                     icon="pi pi-user-plus"
+                                     update="user_registration_dialog_growl"
+                                     process="@form" />
+                    <p:spacer width="5" />
+                    <p:commandButton value="Cancel"                                
+                                     actionListener="#{systemManager.cancelUserEdit}"
+                                     immediate="true"
+                                     icon="pi pi-times" />    
+                </p:toolbarGroup>
+
+                <p:toolbarGroup align="right">
+
+                    <h:outputText value="* Field required." 
+                                  style="font-weight: bold;" /> 
+
+                </p:toolbarGroup>
+            </p:toolbar>
+
+        </h:form>
+    </h:body>
+</html>

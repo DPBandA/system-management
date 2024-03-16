@@ -64,7 +64,13 @@ Email: info@dpbennett.com.jm
             </p:toolbar>
 
             <p:panel style="margin-top: 1px;margin-bottom: 1px;">
-                <h:panelGrid columns="2" cellpadding="5">                
+                <h:panelGrid columns="2" cellpadding="5">    
+
+                    <p:outputLabel value="Owner Id" for="ownerId" style="font-weight: bold;"/>
+                    <p:inputNumber id="ownerId" 
+                                   thousandSeparator=""
+                                   readonly="true"
+                                   value="#{systemManager.selectedSystemOption.ownerId}" />  
 
                     <p:outputLabel value="Value type *" 
                                    rendered="#{systemManager.user.can('BeSuperUser')}"
