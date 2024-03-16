@@ -217,6 +217,13 @@
         </navigation-case>
     </navigation-rule>
     <navigation-rule>
+        <from-view-id>*</from-view-id>
+        <navigation-case>
+            <from-outcome>countryDialog</from-outcome>
+            <to-view-id>/admin/countryDialog.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
         <from-view-id>/index.xhtml</from-view-id>
         <navigation-case>
             <from-outcome>notificationDialog</from-outcome>

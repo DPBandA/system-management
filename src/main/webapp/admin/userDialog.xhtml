@@ -263,14 +263,106 @@ Email: info@dpbennett.com.jm
                                     validator="passwordValidator"
                                     value="#{systemManager.selectedUser.confirmedNewPassword}" />
                     </h:panelGrid>  
-                    
+
                     <p:divider/>
-                    
+
                     <p:commandButton value="Change password" 
                                      title="Save changed password"
                                      process="@form"
                                      update=":userDialogForm:userdialog_growl"
                                      actionListener="#{systemManager.saveSelectedUserSecurityProfile}" />                    
+                </p:tab>
+
+                <p:tab title="Options" 
+                       rendered="#{systemManager.user.can('BeJMTSAdministrator')}" >
+
+                    <p:toolbar>
+                        <p:toolbarGroup align="left" >
+                            <p:commandButton title="Add new option"                                  
+                                             value="New"
+                                             disabled="#{systemManager.selectedUser.id == null}"
+                                             actionListener="#{systemManager.createNewSelectedUserSystemOption()}" 
+                                             global="true"
+                                             process="@this"
+                                             icon="pi pi-plus" >
+
+                                <p:ajax event="dialogReturn" 
+                                        update="userSystemOptionsTable"/>
+
+                            </p:commandButton>                           
+                        </p:toolbarGroup>
+                    </p:toolbar>
+
+                    <p:dataTable id="userSystemOptionsTable"                                       
+                                 var="systemOption"     
+                                 editable="false" 
+                                 editMode="cell"
+                                 paginator="true"
+                                 reflow="true"
+                                 rows="15"
+                                 style="margin-top: 5px;"
+                                 widgetVar="systemOptionsTableVar"
+                                 paginatorTemplate="{FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
+                                 value="#{systemManager.selectedUserSystemOptions}">
+
+                        <p:column>
+                            <f:facet name="header">
+                                <p:outputLabel value="Description"/>
+                            </f:facet>
+                            <p:cellEditor>
+                                <f:facet name="output"> 
+                                    <p:outputLabel value="#{systemOption.comments}" />
+                                </f:facet>
+                                <f:facet name="input">
+                                    <p:inputText value="#{systemOption.comments}" style="width:96%"/>
+                                </f:facet>
+                            </p:cellEditor>                                           
+                        </p:column>   
+
+                        <p:column>
+                            <f:facet name="header" >
+                                <p:outputLabel value="Name"/>
+                            </f:facet>
+                            <p:cellEditor>
+                                <f:facet name="output"> 
+                                    <p:outputLabel value="#{systemOption.name}" />
+                                </f:facet>
+                                <f:facet name="input">
+                                    <p:inputText value="#{systemOption.name}" style="width:96%"/>
+                                </f:facet>
+                            </p:cellEditor>                                         
+                        </p:column>   
+
+                        <p:column>
+                            <f:facet name="header">
+                                <p:outputLabel value="Value"/>
+                            </f:facet>
+                            <p:cellEditor>
+                                <f:facet name="output"> 
+                                    <p:outputLabel value="#{systemOption.optionValueDisplay}" />
+                                </f:facet>
+                                <f:facet name="input">
+                                    <p:inputText value="#{systemOption.optionValue}" style="width:96%"/>
+                                </f:facet>
+                            </p:cellEditor>                                         
+                        </p:column>   
+
+                        <p:column>
+                            <p:commandButton title="View or edit system option"   
+                                             actionListener="#{systemManager.editSystemOption}"
+                                             global="true"
+                                             process="@this"
+                                             icon="pi pi-pencil">
+
+                                <p:ajax event="dialogReturn" 
+                                        update="userSystemOptionsTable"/>
+
+                                <f:setPropertyActionListener value="#{systemOption}"                                                                    
+                                                             target="#{systemManager.selectedSystemOption}" />
+                            </p:commandButton>           
+                        </p:column>
+                    </p:dataTable> 
+
                 </p:tab>
 
             </p:tabView>
