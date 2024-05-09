@@ -1,8 +1,10 @@
 Dear {firstname} {lastname},<br><br>
 A purchase requisition with the following details was <span style='font-weight:bold'>{action}</span> via the
-<a href='{JMTSURL}'>Job Management & Tracking System (JMTS)</a>:<br>
+<a href='{JMTSURL}'>Job Management & Tracking System (JMTS)</a>:<br><br>
 
 <span style='font-weight:bold'>Purchase requisition number: </span>{purchaseRequisitionNumber}<br>
+
+<span style='font-weight:bold'>Supplier: </span>{supplier}<br>
 
 <span style='font-weight:bold'>Originator: </span>{originator}<br>
 
@@ -12,7 +14,9 @@ A purchase requisition with the following details was <span style='font-weight:b
 
 <span style='font-weight:bold'>Description: </span>{description}<br>
 
-<span style='font-weight:bold'>Approved/Recommended by: </span>{approversAndRecommendersList}<br><br>
+<span style='font-weight:bold'>Approved/Recommended by: </span>{approversAndRecommendersList}<br>
+
+<span style='font-weight:bold'>Work progress: </span>{workProgress}<br><br>
 
 As {role}, you are being informed so that you may take the required action.<br><br>
 
