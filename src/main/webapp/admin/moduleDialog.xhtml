@@ -89,17 +89,22 @@ Email: info@dpbennett.com.jm
                     </p:inputText>
 
                     <p:outputLabel value="Description" for="description" style="font-weight: bold;"/>       
-                    <p:inputText id="description"
-                                 value="#{systemManager.selectedModule.description}"  
-                                 style="width: 125%;"
-                                 required="true"
-                                 requiredMessage="Description Required"
-                                 validator="requiredFieldValidator" >       
+                    <p:inputTextarea  value="#{systemManager.selectedModule.description}" 
+                                      id="description"
+                                      counter="valueCharsRemaining"
+                                      counterTemplate="{0} characters remaining."
+                                      maxlength="250"
+                                      rows="3"
+                                      required="true"
+                                      requiredMessage="Description Required"
+                                      autoResize="false"
+                                      style="width:100%;" >
 
-                        <p:ajax event="change"                                                       
-                                process="@this"/>
+                        <f:validator validatorId="requiredFieldValidator" />
 
-                    </p:inputText>                   
+                    </p:inputTextarea>
+                    <p:outputLabel value="&nbsp;&nbsp;" />
+                    <p:outputLabel id="valueCharsRemaining" />
                 </h:panelGrid>
             </p:panel>
 
