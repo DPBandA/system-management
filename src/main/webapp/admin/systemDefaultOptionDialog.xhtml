@@ -1,0 +1,260 @@
+<!--
+System Management (SM) 
+Copyright (C) 2024  D P Bennett & Associates Limited
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU Affero General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Affero General Public License for more details.
+
+You should have received a copy of the GNU Affero General Public License
+along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+Email: info@dpbennett.com.jm
+-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <h:head>
+        <ui:include src="../head.xhtml" />
+        <title>Setting</title>
+        <ui:include src="header.xhtml" />
+    </h:head>
+
+    <h:body >  
+
+        <ui:include src="../common/commonDialogs.xhtml"/> 
+        <ui:include src="deleteSystemOptionConfirmationDialog.xhtml"/> 
+
+        <h:form id="systemOptionDialogForm">        
+            <p:growl id="growl" life="5000" showDetail="true"/>
+
+            <p:toolbar>
+
+                <p:toolbarGroup align="left">
+                    <p:commandButton value="Ok"
+                                     actionListener="#{systemManager.saveDefaultSelectedSystemOption}"
+                                     icon="pi pi-check"
+                                     update="growl"
+                                     process="@form"/>
+                    <p:spacer width="5" />
+                    <p:commandButton value="Cancel"
+                                     actionListener="#{systemManager.cancelSystemOptionEdit}" 
+                                     immediate="true" 
+                                     icon="pi pi-times" /> 
+                </p:toolbarGroup>
+
+                <p:toolbarGroup align="right">
+
+                    <h:outputText value="* Fields required." 
+                                  style="font-weight: bold;" /> 
+
+                </p:toolbarGroup>
+
+            </p:toolbar>
+
+            <p:panel style="margin-top: 1px;margin-bottom: 1px;">
+                <h:panelGrid columns="2" cellpadding="5">    
+
+                    <p:outputLabel value="Owner Id" for="ownerId" style="font-weight: bold;"/>
+                    <p:inputNumber id="ownerId" 
+                                   thousandSeparator=""
+                                   inputStyle="background: lightyellow;"
+                                   readonly="true"
+                                   value="#{systemManager.selectedSystemOption.ownerId}" />  
+
+                    <p:outputLabel value="Value type *" 
+                                   rendered="#{systemManager.user.can('BeSuperUser')}"
+                                   style="font-weight: bold;" />                    
+                    <p:selectOneMenu id="systemOptionValueType" 
+                                     rendered="#{systemManager.user.can('BeSuperUser')}"
+                                     value="#{systemManager.selectedSystemOption.optionValueType}">
+
+                        <f:selectItems  value="#{systemManager.valueTypes}"
+                                        var="type"                            
+                                        itemValue="#{type.value}"
+                                        itemLabel="#{type.label}"/>
+
+                        <p:ajax global="false"
+                                listener="#{systemManager.updateOptionValueType}"
+                                update=":systemOptionDialogForm"
+                                process="@this"/>
+
+                    </p:selectOneMenu>
+
+                    <p:outputLabel value="Name" 
+                                   for="systemOptionName"
+                                   rendered="#{systemManager.user.can('BeSuperUser')}"
+                                   style="font-weight: bold;" />
+                    <p:inputText value="#{systemManager.selectedSystemOption.name}"    
+                                 rendered="#{systemManager.user.can('BeSuperUser')}"
+                                 id="systemOptionName"
+                                 required="true"
+                                 requiredMessage="Name Required" >
+
+                        <f:validator validatorId="nameFieldValidator" />
+
+                    </p:inputText>
+
+                    <p:outputLabel value="Category *" 
+                                   rendered="#{systemManager.user.can('BeSuperUser')}"
+                                   style="font-weight: bold;" />                    
+                    <p:selectOneMenu id="systemOptionCategory" 
+                                     rendered="#{systemManager.user.can('BeSuperUser')}"
+                                     value="#{systemManager.selectedSystemOption.category}">
+
+                        <f:selectItems  value="#{systemManager.systemOptionCategories}"
+                                        var="category"                            
+                                        itemValue="#{category.value}"
+                                        itemLabel="#{category.label}"/>
+
+                    </p:selectOneMenu>
+
+                    <p:outputLabel value="Value *" 
+                                   style="font-weight: bold;" />
+                    <p:inputTextarea  value="#{systemManager.selectedSystemOption.optionValue}"
+                                      rendered="#{systemManager.isSelectedSystemOptionValueType('String')}"
+                                      id="systemOptionValue"
+                                      counter="valueCharsRemaining"
+                                      counterTemplate="{0} characters remaining."
+                                      maxlength="1000"
+                                      rows="6"
+                                      autoResize="true"
+                                      style="width:125%;"
+                                      required="true"
+                                      requiredMessage="Value Required" >
+
+                        <f:validator validatorId="systemOptionValidator" />
+
+                    </p:inputTextarea>
+                    <p:outputLabel value="&nbsp;&nbsp;" 
+                                   rendered="#{systemManager.isSelectedSystemOptionValueType('String')}"/>
+                    <p:outputLabel id="valueCharsRemaining"
+                                   rendered="#{systemManager.isSelectedSystemOptionValueType('String')}" />   
+                    <p:selectOneMenu value="#{systemManager.selectedSystemOption.optionValue}" 
+                                     rendered="#{systemManager.isSelectedSystemOptionValueType('Boolean')}" >
+
+                        <f:selectItems  value="#{systemManager.booleanValues}"
+                                        var="val"                            
+                                        itemValue="#{val.value}"
+                                        itemLabel="#{val.label}"/>
+
+                    </p:selectOneMenu>
+                    <p:inputNumber value="#{systemManager.selectedSystemOption.optionValue}" 
+                                   rendered="#{systemManager.isSelectedSystemOptionValueType('Integer')}"
+                                   decimalPlaces="0" 
+                                   required="true"
+                                   requiredMessage="Value Required" />
+                    <p:inputNumber value="#{systemManager.selectedSystemOption.optionValue}" 
+                                   rendered="#{systemManager.isSelectedSystemOptionValueType('Long')}"
+                                   decimalPlaces="0"
+                                   required="true"
+                                   requiredMessage="Value Required" />
+                    <p:inputNumber value="#{systemManager.selectedSystemOption.optionValue}" 
+                                   decimalPlaces="15"
+                                   rendered="#{systemManager.isSelectedSystemOptionValueType('Double')}"
+                                   required="true"
+                                   requiredMessage="Value Required" />
+                    <h:panelGroup rendered="#{systemManager.isSelectedSystemOptionValueType('StringList')}">
+                        <p:dataTable var="sysOption"   
+                                     id="sysOptionTable"
+                                     editable="true" 
+                                     editMode="cell"
+                                     rendered="#{systemManager.isSelectedSystemOptionValueType('StringList')}" 
+                                     value="#{systemManager.selectedSystemOption.textList}" >
+
+                            <p:ajax event="cellEdit" 
+                                    listener="#{systemManager.onTextListItemCellEdit}" />
+
+                            <p:column style="width: 90%;">      
+
+                                <p:cellEditor>
+                                    <f:facet name="output"> 
+                                        <h:outputText value="#{sysOption.optionValue}"/>
+                                    </f:facet>
+                                    <f:facet name="input">
+                                        <p:inputText value="#{sysOption.optionValue}" 
+                                                     style="width:100%;"/>
+                                    </f:facet>
+                                </p:cellEditor>
+
+                            </p:column>
+
+                            <p:column style="width: 10%;">
+
+                                <p:commandButton
+                                    icon="pi pi-trash"                                            
+                                    process="@this"
+                                    update=":systemOptionDialogForm"
+                                    oncomplete="PF('deleteSystemOptionDialog').show();"  
+                                    title="Delete this text">
+
+                                    <f:setPropertyActionListener value="#{sysOption}"
+                                                                 target="#{systemManager.selectedSystemOptionText}" />
+                                </p:commandButton>
+
+                            </p:column>
+
+                        </p:dataTable>
+                        <p:commandButton value="Add text" 
+                                         rendered="#{systemManager.isSelectedSystemOptionValueType('StringList')}"
+                                         process="@this" 
+                                         style="margin-top: 5px;"
+                                         update="sysOptionTable"
+                                         action="#{systemManager.onAddSystemOptionText()}"/>
+                    </h:panelGroup>
+
+                    <p:outputLabel value="Description" 
+                                   for="systemOptionComment"
+                                   style="width: 50%;font-weight: bold;" />
+                    <p:inputTextarea  value="#{systemManager.selectedSystemOption.comments}"
+                                      id="systemOptionComment"
+                                      maxlength="1000"
+                                      rows="4"
+                                      autoResize="false"
+                                      style="width:125%;" 
+                                      required="true"
+                                      requiredMessage="Description Required" >
+
+                        <f:validator validatorId="systemOptionValidator" />
+
+                    </p:inputTextarea>                           
+
+                </h:panelGrid>
+            </p:panel>
+
+            <p:toolbar>
+
+                <p:toolbarGroup align="left">
+                    <p:commandButton value="Ok"
+                                     actionListener="#{systemManager.saveDefaultSelectedSystemOption}"
+                                     icon="pi pi-check"
+                                     update="growl"
+                                     process="@form"/>
+                    <p:spacer width="5" />
+                    <p:commandButton value="Cancel"
+                                     actionListener="#{systemManager.cancelSystemOptionEdit}" 
+                                     immediate="true" 
+                                     icon="pi pi-times" /> 
+                </p:toolbarGroup>
+
+                <p:toolbarGroup align="right">
+
+                    <h:outputText value="* Fields required." 
+                                  style="font-weight: bold;" /> 
+
+                </p:toolbarGroup>
+
+            </p:toolbar>
+        </h:form> 
+    </h:body>
+</html>
