@@ -48,8 +48,10 @@ Email: info@dpbennett.com.jm
                             showTargetFilter="true"
                             sourceFilterPlaceholder="Filter available privileges"
                             targetFilterPlaceholder="Filter assigned privileges"
-                            filterMatchMode="contains"
-                            converter="activePrivilegeConverter" >
+                            filterMatchMode="contains" >
+
+                    <f:converter converterId="activePrivilegeConverter"/>
+                    <f:attribute name="em" value="#{systemManager.entityManager1}"/>
 
                     <f:facet name="sourceCaption">Available</f:facet>
                     <f:facet name="targetCaption">Assigned</f:facet>

@@ -93,9 +93,12 @@ Email: info@dpbennett.com.jm
                                     requiredMessage="Employee Required"
                                     validator="businessEntityValidator"
                                     validatorMessage="Select a valid employee"
-                                    converter="activeEmployeeConverter"
                                     forceSelection="true"
                                     completeMethod="#{systemManager.completeActiveEmployee}" >                       
+
+                        <f:converter converterId="activeEmployeeConverter"/>
+                        <f:attribute name="em" value="#{systemManager.entityManager1}"/>
+
                     </p:autoComplete>   
 
                 </h:panelGrid>

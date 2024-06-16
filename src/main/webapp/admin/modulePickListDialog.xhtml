@@ -29,7 +29,7 @@ Email: info@dpbennett.com.jm
         <title>Add/Remove Modules</title>
         <ui:include src="header.xhtml" />
     </h:head>
-    
+
     <h:body >  
 
         <ui:include src="../common/commonDialogs.xhtml"/> 
@@ -37,7 +37,7 @@ Email: info@dpbennett.com.jm
         <h:form id="modulePickListDialogForm">           
 
             <ui:include src="modulePickListDialogToolbar.xhtml"/>
-          
+
             <p:panel style="margin-top: 1px;margin-bottom: 1px;">
 
                 <p:pickList value="#{systemManager.moduleDualList}" 
@@ -48,8 +48,10 @@ Email: info@dpbennett.com.jm
                             showTargetFilter="true"
                             sourceFilterPlaceholder="Filter available modules"
                             targetFilterPlaceholder="Filter assigned modules"
-                            filterMatchMode="contains"
-                            converter="activeModuleConverter" >
+                            filterMatchMode="contains" >
+
+                    <f:converter converterId="activeModuleConverter"/>
+                    <f:attribute name="em" value="#{systemManager.entityManager1}"/>
 
                     <f:facet name="sourceCaption">Available</f:facet>
                     <f:facet name="targetCaption">Assigned</f:facet>
@@ -57,7 +59,7 @@ Email: info@dpbennett.com.jm
                 </p:pickList>
 
             </p:panel>      
-         
+
             <ui:include src="modulePickListDialogToolbar.xhtml"/>  
             <p/>       
         </h:form>    
