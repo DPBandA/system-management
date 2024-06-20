@@ -42,6 +42,13 @@ Email: info@dpbennett.com.jm
 
             <p:panel style="margin-bottom: 1px;margin-top: 1px;">
                 <h:panelGrid columns="2" cellpadding="5" >
+
+                    <p:outputLabel value="Active *" 
+                                   for="active" 
+                                   style="font-weight: bold;" /> 
+                    <p:selectBooleanCheckbox id="active" 
+                                             value="#{systemManager.selectedDocumentType.active}" />
+
                     <p:outputLabel value="Type" for="newDocumentType" style="font-weight: bold;"/>
                     <p:inputText id="newDocumentType"
                                  value="#{systemManager.selectedDocumentType.name}"    

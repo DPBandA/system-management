@@ -60,10 +60,12 @@ Email: info@dpbennett.com.jm
                 <p:selectBooleanCheckbox style="vertical-align: middle"
                                          id="activeDocumentTypesOnly"
                                          value="#{systemManager.isActiveDocumentTypesOnly}" >
+                    
                     <p:ajax  update=":appForm:mainTabView:centerTabView:documentTypesTable"
                              listener="#{systemManager.doDocumentTypeSearch}"
                              event="change"                                      
                              process="@this"/>
+                    
                 </p:selectBooleanCheckbox>            
                 <p:tooltip for="activeDocumentTypesOnly" 
                            value="Check to show active document types only" 
@@ -84,6 +86,16 @@ Email: info@dpbennett.com.jm
                  widgetVar="DocumentTypesTableVar"
                  paginatorTemplate="{FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
                  value="#{systemManager.foundDocumentTypes}">
+        
+        <p:column>
+            <f:facet name="header">
+                <p:outputLabel value="Active"/>
+            </f:facet>           
+            <p:selectBooleanCheckbox 
+                style="display: block;text-align: center;"
+                disabled="true"
+                value="#{documentType.active}" />
+        </p:column>
 
         <p:column>
             <f:facet name="header">
