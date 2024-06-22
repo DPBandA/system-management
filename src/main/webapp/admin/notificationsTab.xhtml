@@ -64,6 +64,16 @@ Email: info@dpbennett.com.jm
                  paginatorTemplate="{FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
                  value="#{systemManager.foundNotifications}">
 
+        <p:column style="width: 30px;">
+            <f:facet name="header">
+                <p:outputLabel value="Active"/>
+            </f:facet>           
+            <p:selectBooleanCheckbox 
+                style="display: block;text-align: center;"
+                disabled="true"
+                value="#{notification.active}" />
+        </p:column>
+        
         <p:column>
             <f:facet name="header">
                 <p:outputLabel value="Name"/>
@@ -91,13 +101,6 @@ Email: info@dpbennett.com.jm
             </f:facet>
             <p:outputLabel value="#{notification.issueTime}" />
         </p:column>
-
-        <p:column>
-            <f:facet name="header">
-                <p:outputLabel value="Active"/>
-            </f:facet>
-            <p:outputLabel value="#{notification.usable}" />
-        </p:column> 
 
         <p:column>
             <p:commandButton title="View or edit notification"   

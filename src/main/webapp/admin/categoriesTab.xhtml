@@ -52,6 +52,26 @@ Email: info@dpbennett.com.jm
                                  process="@form" />
             </h:panelGroup>
         </p:toolbarGroup>
+
+        <p:toolbarGroup align="right" >
+            <h:panelGroup style="float: right;" >
+                <p:outputLabel for="activeCategoriesOnly" value="Active" />  
+                <p:spacer width="10" />
+                <p:selectBooleanCheckbox style="vertical-align: middle"
+                                         id="activeCategoriesOnly"
+                                         value="#{systemManager.isActiveCategoriesOnly}" >
+
+                    <p:ajax  update=":appForm:mainTabView:centerTabView:categoriesTable"
+                             listener="#{systemManager.doCategorySearch}"
+                             event="change"                                      
+                             process="@this"/>
+
+                </p:selectBooleanCheckbox>    
+
+                <p:tooltip for="activeCategoriesOnly" value="Check to show active categories only" 
+                           showEffect="fade" hideEffect="fade" />
+            </h:panelGroup>   
+        </p:toolbarGroup>
     </p:toolbar>
 
     <p:dataTable id="categoriesTable"                                       
@@ -66,6 +86,16 @@ Email: info@dpbennett.com.jm
                  paginatorTemplate="{FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
                  value="#{systemManager.foundCategories}">
 
+        <p:column style="width: 30px;">
+            <f:facet name="header">
+                <p:outputLabel value="Active"/>
+            </f:facet>           
+            <p:selectBooleanCheckbox 
+                style="display: block;text-align: center;"
+                disabled="true"
+                value="#{category.active}" />
+        </p:column>
+        
         <p:column>
             <f:facet name="header">
                 <p:outputLabel value="Name"/>
