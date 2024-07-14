@@ -49,12 +49,68 @@ Email: info@dpbennett.com.jm
                                  icon="pi pi-search"
                                  process="@form" />
             </h:panelGroup>
-            
+
         </p:toolbarGroup>
         <p:toolbarGroup align="right" >
-            
-           <h:outputText value="#{systemManager.entityManagerSettings}" />
-            
+
+            <h:panelGroup >
+
+                <p:commandButton 
+                    style="margin-top: 5px;"
+                    title="Entity manager: #{systemManager.entityManagerSetting('SMEM')}"
+                    actionListener="#{systemManager.editEM('SMEM')}" 
+                    value="SMEM" />
+                <p:spacer width="5"/>
+                <p:commandButton 
+                    style="margin-top: 5px;"
+                    title="Entity manager: #{systemManager.entityManagerSetting('FMEM')}"
+                    actionListener="#{systemManager.editEM('FMEM')}" 
+                    value="FMEM" />
+                <p:spacer width="5"/>
+                <p:commandButton 
+                    style="margin-top: 5px;"
+                    title="Entity manager: #{systemManager.entityManagerSetting('JMTSEM')}"
+                    actionListener="#{systemManager.editEM('JMTSEM')}" 
+                    value="JMTSEM" />
+                <p:spacer width="5"/>
+                <p:commandButton 
+                    style="margin-top: 5px;"
+                    title="Entity manager: #{systemManager.entityManagerSetting('CMEM')}"
+                    actionListener="#{systemManager.editEM('CMEM')}" 
+                    value="CMEM" />
+                <p:spacer width="5"/>
+                <p:commandButton 
+                    style="margin-top: 5px;"
+                    title="Entity manager: #{systemManager.entityManagerSetting('HRMEM')}"
+                    actionListener="#{systemManager.editEM('HRMEM')}" 
+                    value="HRMEM" />
+                <p:spacer width="5"/>
+                <p:commandButton 
+                    style="margin-top: 5px;"
+                    title="Entity manager: #{systemManager.entityManagerSetting('RMEM')}"
+                    actionListener="#{systemManager.editEM('RMEM')}" 
+                    value="RMEM" />
+                <p:spacer width="5"/>
+                <p:commandButton 
+                    style="margin-top: 5px;"
+                    title="Entity manager: #{systemManager.entityManagerSetting('SCEM')}"
+                    actionListener="#{systemManager.editEM('SCEM')}" 
+                    value="SCEM" />
+                <p:spacer width="5"/>
+                <p:commandButton 
+                    style="margin-top: 5px;"
+                    title="Entity manager: #{systemManager.entityManagerSetting('LOEM')}"
+                    actionListener="#{systemManager.editEM('LOEM')}" 
+                    value="LOEM" />
+                <p:spacer width="5"/>
+                <p:commandButton 
+                    style="margin-top: 5px;"
+                    title="Entity manager: #{systemManager.entityManagerSetting('LPEM')}"
+                    actionListener="#{systemManager.editEM('LPEM')}" 
+                    value="LPEM" />
+
+            </h:panelGroup>
+
         </p:toolbarGroup>
     </p:toolbar>
 
@@ -100,6 +156,20 @@ Email: info@dpbennett.com.jm
                 </f:facet>
             </p:cellEditor>                                         
         </p:column>   
+        
+        <p:column>
+            <f:facet name="header">
+                <p:outputLabel value="Category"/>
+            </f:facet>
+            <p:cellEditor>
+                <f:facet name="output"> 
+                    <p:outputLabel value="#{systemOption.category}" />
+                </f:facet>
+                <f:facet name="input">
+                    <p:inputText value="#{systemOption.category}" style="width:96%"/>
+                </f:facet>
+            </p:cellEditor>                                         
+        </p:column> 
 
         <p:column>
             <f:facet name="header">
