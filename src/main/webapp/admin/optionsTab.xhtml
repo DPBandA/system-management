@@ -53,61 +53,106 @@ Email: info@dpbennett.com.jm
         </p:toolbarGroup>
         <p:toolbarGroup align="right" >
 
-            <h:panelGroup >
+            <h:panelGroup id="emButtonPanelGroup">
 
                 <p:commandButton 
                     style="margin-top: 5px;"
                     title="Entity manager: #{systemManager.entityManagerSetting('SMEM')}"
                     actionListener="#{systemManager.editEM('SMEM')}" 
-                    value="SMEM" />
+                    value="SMEM" >
+
+                    <p:ajax event="dialogReturn" 
+                            update=":appForm:mainTabView:centerTabView:emButtonPanelGroup"/>
+
+                </p:commandButton>
                 <p:spacer width="5"/>
                 <p:commandButton 
                     style="margin-top: 5px;"
                     title="Entity manager: #{systemManager.entityManagerSetting('FMEM')}"
                     actionListener="#{systemManager.editEM('FMEM')}" 
-                    value="FMEM" />
+                    value="FMEM" >
+
+                    <p:ajax event="dialogReturn" 
+                            update=":appForm:mainTabView:centerTabView:emButtonPanelGroup"/>
+
+                </p:commandButton>
                 <p:spacer width="5"/>
                 <p:commandButton 
                     style="margin-top: 5px;"
                     title="Entity manager: #{systemManager.entityManagerSetting('JMTSEM')}"
                     actionListener="#{systemManager.editEM('JMTSEM')}" 
-                    value="JMTSEM" />
+                    value="JMTSEM" >
+
+                    <p:ajax event="dialogReturn" 
+                            update=":appForm:mainTabView:centerTabView:emButtonPanelGroup"/>
+
+                </p:commandButton>
                 <p:spacer width="5"/>
                 <p:commandButton 
                     style="margin-top: 5px;"
                     title="Entity manager: #{systemManager.entityManagerSetting('CMEM')}"
                     actionListener="#{systemManager.editEM('CMEM')}" 
-                    value="CMEM" />
+                    value="CMEM" >
+
+                    <p:ajax event="dialogReturn" 
+                            update=":appForm:mainTabView:centerTabView:emButtonPanelGroup"/>
+
+                </p:commandButton>
                 <p:spacer width="5"/>
                 <p:commandButton 
                     style="margin-top: 5px;"
                     title="Entity manager: #{systemManager.entityManagerSetting('HRMEM')}"
                     actionListener="#{systemManager.editEM('HRMEM')}" 
-                    value="HRMEM" />
+                    value="HRMEM" >
+
+                    <p:ajax event="dialogReturn" 
+                            update=":appForm:mainTabView:centerTabView:emButtonPanelGroup"/>
+
+                </p:commandButton>
                 <p:spacer width="5"/>
                 <p:commandButton 
                     style="margin-top: 5px;"
                     title="Entity manager: #{systemManager.entityManagerSetting('RMEM')}"
                     actionListener="#{systemManager.editEM('RMEM')}" 
-                    value="RMEM" />
+                    value="RMEM" >
+
+                    <p:ajax event="dialogReturn" 
+                            update=":appForm:mainTabView:centerTabView:emButtonPanelGroup"/>
+
+                </p:commandButton>
                 <p:spacer width="5"/>
                 <p:commandButton 
                     style="margin-top: 5px;"
                     title="Entity manager: #{systemManager.entityManagerSetting('SCEM')}"
                     actionListener="#{systemManager.editEM('SCEM')}" 
-                    value="SCEM" />
+                    value="SCEM" >
+
+                    <p:ajax event="dialogReturn" 
+                            update=":appForm:mainTabView:centerTabView:emButtonPanelGroup"/>
+
+                </p:commandButton>
                 <p:spacer width="5"/>
                 <p:commandButton 
                     style="margin-top: 5px;"
                     title="Entity manager: #{systemManager.entityManagerSetting('LOEM')}"
                     actionListener="#{systemManager.editEM('LOEM')}" 
-                    value="LOEM" />
+                    value="LOEM" >
+
+                    <p:ajax event="dialogReturn" 
+                            update=":appForm:mainTabView:centerTabView:emButtonPanelGroup"/>
+
+                </p:commandButton>
                 <p:spacer width="5"/>
                 <p:commandButton 
                     style="margin-top: 5px;"
                     title="Entity manager: #{systemManager.entityManagerSetting('LPEM')}"
                     actionListener="#{systemManager.editEM('LPEM')}" 
-                    value="LPEM" />
+                    value="LPEM" >
+
+                    <p:ajax event="dialogReturn" 
+                            update=":appForm:mainTabView:centerTabView:emButtonPanelGroup"/>
+
+                </p:commandButton>
 
             </h:panelGroup>
 
@@ -156,7 +201,7 @@ Email: info@dpbennett.com.jm
                 </f:facet>
             </p:cellEditor>                                         
         </p:column>   
-        
+
         <p:column>
             <f:facet name="header">
                 <p:outputLabel value="Category"/>
