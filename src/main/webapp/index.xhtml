@@ -1,35 +1,32 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<html
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://xmlns.jcp.org/jsf/html" 
+    xmlns:p="http://primefaces.org/ui"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+    xmlns:f="http://java.sun.com/jsf/core"> 
+
     <h:head>  
-        <title>Google Sign-In</title>
+        <ui:include src="head.xhtml" />
+        <title>Login with GitHub</title>        
+        <script type="text/javascript" src="js/javascripts.js" /> 
+        <h:outputStylesheet library="webjars" name="primeflex/3.2.1/primeflex.min.css" />       
+        <link rel="stylesheet" type="text/css" href="css/main.css" />   
     </h:head>
-    <body>
-        <script src="https://accounts.google.com/gsi/client" async="async" defer="defer"></script>
-        <script src="https://cdn.jsdelivr.net/npm/jwt-decode/build/jwt-decode.min.js"></script>
+    <h:body id="appBody">
 
-        <div id="g_id_onload"
-             data-auto_prompt="false"
-             data-client_id="159457181495-uepofgktdpcpr47ls0l9ntpskg55g3bu.apps.googleusercontent.com"
-             data-callback="handleCredentialResponse">
-        </div>
-        <div class="g_id_signin" data-type="standard"></div>
-        <script>
-            function handleCredentialResponse(response) {
-                // Extract the credential (JWT ID token)
-                const idToken = response.credential;
+        <h:form id="appForm">
 
-                // Decode the JWT token to get its payload
-                const decodedToken = jwt_decode(idToken);
-                //console.log('Decoded Token:', decodedToken);
+            <h:commandButton value="Login with GitHub" action="#{systemManager.redirectToGitHub}" />
 
-                // Now you can access the fields in the decoded token
-                const email = decodedToken.email;
-                const name = decodedToken.sub; // tk sub could be stored in the database as userId field.
-                
-                alert('Yes!: ' + email + " name: " + name);
-            }
-        </script>
-    </body>
+            <f:event type="preRenderView" listener="#{systemManager.handleGitHubCallback}"/>
+            <h:outputText value="Processing GitHub authentication..."/>
+
+            <h:outputText value="Welcome, #{sessionScope.username}"/>
+            <h:graphicImage value="#{sessionScope.avatarUrl}" width="100" height="100"/>
+            
+        </h:form> 
+
+    </h:body>
 </html>
