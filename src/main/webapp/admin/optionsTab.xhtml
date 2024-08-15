@@ -174,7 +174,7 @@ Email: info@dpbennett.com.jm
         <p:ajax event="cellEdit" listener="#{systemManager.onSystemOptionCellEdit}" />
         <p:ajax event="rowSelect" listener="#{systemManager.onRowSelect}" />
 
-        <p:column rendered="#{systemManager.user.can('BeSuperUser')}">
+        <p:column>
             <f:facet name="header" >
                 <p:outputLabel value="Name"/>
             </f:facet>
