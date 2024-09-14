@@ -79,17 +79,17 @@ Email: info@dpbennett.com.jm
                     </p:selectOneRadio>  
                 </p:tab>
                 <p:tab title="Privileges" >
-                    <p:selectOneRadio id="privilegesTable"
-                                      style="margin-top: 15px;margin-bottom: 15px;"
-                                      layout="grid" columns="4" styleClass="grid-radio"
-                                      unselectable="true" >
-                        <f:selectItems value="#{systemManager.user.privileges}" 
-                                       var="privilege" 
-                                       itemLabel="#{privilege.description}" 
-                                       itemValue="#{privilege.description}"/>
-                    </p:selectOneRadio> 
+                    <p:dataTable var="privilege"                                  
+                                 id="privilegesTable" 
+                                 value="#{systemManager.user.privileges}" >
+
+                        <p:column>
+                            <h:outputText value="#{privilege.description}"/>
+                        </p:column>
+
+                    </p:dataTable>                  
                 </p:tab>    
-                <p:tab title="Preferences" >
+                <p:tab title="Settings" >
                     <h:panelGrid columns="2" cellpadding="5">
                         <p:outputLabel value="Theme" style="font-weight: bold;margin-right: 10px;"/>
                         <p:selectOneMenu id="theme" 
