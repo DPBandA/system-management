@@ -1,6 +1,6 @@
 <!--
 System Management (SM) 
-Copyright (C) 2024  D P Bennett & Associates Limited
+Copyright (C) 2025  D P Bennett & Associates Limited
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU Affero General Public License as published by
@@ -34,7 +34,7 @@ Email: info@dpbennett.com.jm
                              icon="pi pi-plus" >
 
                 <p:ajax event="dialogReturn"
-                        update=":appForm:mainTabView:centerTabView:LDAPTable" />
+                        update=":mainTabViewForm:mainTabView:centerTabView:LDAPTable" />
 
             </p:commandButton>
             <p:spacer width="20" />
@@ -44,7 +44,7 @@ Email: info@dpbennett.com.jm
                 <p:commandButton id="ldapSearchButton"
                                  class="search-button"   
                                  actionListener="#{systemManager.doLdapContextSearch}"
-                                 update=":appForm:mainTabView:centerTabView:LDAPTable"
+                                 update=":mainTabViewForm:mainTabView:centerTabView:LDAPTable"
                                  icon="pi pi-search"
                                  process="@form" />
             </h:panelGroup>
@@ -58,7 +58,7 @@ Email: info@dpbennett.com.jm
                 <p:selectBooleanCheckbox style="vertical-align: middle"
                                          id="activeLdapOnly"
                                          value="#{systemManager.isActiveLdapsOnly}" >
-                    <p:ajax  update=":appForm:mainTabView:centerTabView:LDAPTable"
+                    <p:ajax  update=":mainTabViewForm:mainTabView:centerTabView:LDAPTable"
                              listener="#{systemManager.doLdapContextSearch}"
                              event="change"                                      
                              process="@this"/>
@@ -134,7 +134,7 @@ Email: info@dpbennett.com.jm
                              icon="pi pi-pencil">
 
                 <p:ajax event="dialogReturn" 
-                        update=":appForm:mainTabView:centerTabView:LDAPTable" />
+                        update=":mainTabViewForm:mainTabView:centerTabView:LDAPTable" />
 
                 <f:setPropertyActionListener value="#{ldap}"                                                                    
                                              target="#{systemManager.selectedLdapContext}" />

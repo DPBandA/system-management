@@ -1,6 +1,6 @@
 <!--
 System Management (SM) 
-Copyright (C) 2024 D P Bennett & Associates Limited
+Copyright (C) 2025 D P Bennett & Associates Limited
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU Affero General Public License as published by
@@ -29,14 +29,14 @@ Email: info@dpbennett.com.jm
             <p:commandButton title="Add new country"                                  
                              value="New"
                              actionListener="#{systemManager.createNewCountry}"                            
-                             update=":appForm:mainTabView:centerTabView:countriesTable"
+                             update=":mainTabViewForm:mainTabView:centerTabView:countriesTable"
                              global="true"
                              process="@this"
                              icon="pi pi-plus" >
 
                 <p:ajax event="dialogReturn" 
                         listener="#{systemManager.doCountrySearch}"
-                        update=":appForm:mainTabView:centerTabView:countriesTable" />
+                        update=":mainTabViewForm:mainTabView:centerTabView:countriesTable" />
 
             </p:commandButton>     
             <p:spacer width="20" />  
@@ -47,7 +47,7 @@ Email: info@dpbennett.com.jm
                 <p:commandButton id="countrySearchButton"
                                  class="search-button"   
                                  actionListener="#{systemManager.doCountrySearch}"
-                                 update=":appForm:mainTabView:centerTabView:countriesTable"
+                                 update=":mainTabViewForm:mainTabView:centerTabView:countriesTable"
                                  icon="pi pi-search"
                                  process="@form" />
             </h:panelGroup>
@@ -88,7 +88,7 @@ Email: info@dpbennett.com.jm
                              icon="pi pi-pencil">
 
                 <p:ajax event="dialogReturn" 
-                        update=":appForm:mainTabView:centerTabView:countriesTable" />
+                        update=":mainTabViewForm:mainTabView:centerTabView:countriesTable" />
 
                 <f:setPropertyActionListener value="#{country}"                                                                    
                                              target="#{systemManager.selectedCountry}" />

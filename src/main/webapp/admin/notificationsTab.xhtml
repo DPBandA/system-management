@@ -1,6 +1,6 @@
 <!--
 System Management (SM) 
-Copyright (C) 2024  D P Bennett & Associates Limited
+Copyright (C) 2025  D P Bennett & Associates Limited
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU Affero General Public License as published by
@@ -29,14 +29,14 @@ Email: info@dpbennett.com.jm
             <p:commandButton title="Add new notification"                                  
                              value="New"
                              actionListener="#{systemManager.createNewNotification}"                            
-                             update=":appForm:mainTabView:centerTabView:notificationsTable"
+                             update=":mainTabViewForm:mainTabView:centerTabView:notificationsTable"
                              global="true"
                              process="@this"
                              icon="pi pi-plus" >
 
                 <p:ajax event="dialogReturn" 
                         listener="#{systemManager.doNotificationSearch}"
-                        update=":appForm:mainTabView:centerTabView:notificationsTable,appForm:notificationBadge" />
+                        update=":mainTabViewForm:mainTabView:centerTabView:notificationsTable,headerForm:notificationBadge" />
 
             </p:commandButton>     
             <p:spacer width="20" />   
@@ -47,7 +47,7 @@ Email: info@dpbennett.com.jm
                 <p:commandButton id="notificationSearchButton"
                                  class="search-button"   
                                  actionListener="#{systemManager.doNotificationSearch}"
-                                 update=":appForm:mainTabView:centerTabView:notificationsTable"
+                                 update=":mainTabViewForm:mainTabView:centerTabView:notificationsTable"
                                  icon="pi pi-search"
                                  process="@form" />
             </h:panelGroup>
@@ -110,7 +110,7 @@ Email: info@dpbennett.com.jm
                              icon="pi pi-pencil">
 
                 <p:ajax event="dialogReturn" 
-                        update=":appForm:mainTabView:centerTabView:notificationsTable,appForm:notificationBadge" />
+                        update=":mainTabViewForm:mainTabView:centerTabView:notificationsTable,headerForm:notificationBadge" />
 
                 <f:setPropertyActionListener value="#{notification}"                                                                    
                                              target="#{systemManager.selectedNotification}" />

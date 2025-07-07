@@ -29,14 +29,14 @@ Email: info@dpbennett.com.jm
             <p:commandButton title="Add new privilege"                                  
                              value="New"
                              actionListener="#{systemManager.createNewPrivilege}"                            
-                             update=":appForm:mainTabView:centerTabView:privilegesTable"
+                             update=":mainTabViewForm:mainTabView:centerTabView:privilegesTable"
                              global="true"
                              process="@this"
                              icon="pi pi-plus" >
 
                 <p:ajax event="dialogReturn" 
                         listener="#{systemManager.doPrivilegeSearch}"
-                        update=":appForm:mainTabView:centerTabView:privilegesTable" />
+                        update=":mainTabViewForm:mainTabView:centerTabView:privilegesTable" />
 
             </p:commandButton>     
             <p:spacer width="20" />
@@ -47,7 +47,7 @@ Email: info@dpbennett.com.jm
                 <p:commandButton id="privilegeSearchButton"
                                  class="search-button"   
                                  actionListener="#{systemManager.doPrivilegeSearch}"
-                                 update=":appForm:mainTabView:centerTabView:privilegesTable"
+                                 update=":mainTabViewForm:mainTabView:centerTabView:privilegesTable"
                                  icon="pi pi-search"
                                  process="@form" />
             </h:panelGroup>
@@ -61,7 +61,7 @@ Email: info@dpbennett.com.jm
                                          id="activePrivilegesOnly"
                                          value="#{systemManager.isActivePrivilegesOnly}" >
 
-                    <p:ajax  update=":appForm:mainTabView:centerTabView:privilegesTable"
+                    <p:ajax  update=":mainTabViewForm:mainTabView:centerTabView:privilegesTable"
                              listener="#{systemManager.doPrivilegeSearch}"
                              event="change"                                      
                              process="@this"/>
@@ -118,7 +118,7 @@ Email: info@dpbennett.com.jm
                              icon="pi pi-pencil">
 
                 <p:ajax event="dialogReturn" 
-                        update=":appForm:mainTabView:centerTabView:privilegesTable" />
+                        update=":mainTabViewForm:mainTabView:centerTabView:privilegesTable" />
 
                 <f:setPropertyActionListener value="#{privilege}"                                                                    
                                              target="#{systemManager.selectedPrivilege}" />

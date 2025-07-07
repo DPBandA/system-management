@@ -1,6 +1,6 @@
 <!--
 System Management (SM) 
-Copyright (C) 2024 D P Bennett & Associates Limited
+Copyright (C) 2025 D P Bennett & Associates Limited
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU Affero General Public License as published by
@@ -29,14 +29,14 @@ Email: info@dpbennett.com.jm
             <p:commandButton title="Add new document type"                                  
                              value="New"
                              actionListener="#{systemManager.createNewDocumentType}"
-                             update=":appForm:mainTabView:centerTabView:documentTypesTable"
+                             update=":mainTabViewForm:mainTabView:centerTabView:documentTypesTable"
                              global="true"
                              process="@this"
                              icon="pi pi-plus" >
 
                 <p:ajax event="dialogReturn" 
                         listener="#{systemManager.doDocumentTypeSearch}"
-                        update=":appForm:mainTabView:centerTabView:documentTypesTable" />
+                        update=":mainTabViewForm:mainTabView:centerTabView:documentTypesTable" />
 
             </p:commandButton>     
             <p:spacer width="20" />     
@@ -47,7 +47,7 @@ Email: info@dpbennett.com.jm
                 <p:commandButton id="documentTypeSearchButton"
                                  class="search-button"   
                                  actionListener="#{systemManager.doDocumentTypeSearch}"
-                                 update=":appForm:mainTabView:centerTabView:documentTypesTable"
+                                 update=":mainTabViewForm:mainTabView:centerTabView:documentTypesTable"
                                  icon="pi pi-search"
                                  process="@form" />
             </h:panelGroup>   
@@ -61,7 +61,7 @@ Email: info@dpbennett.com.jm
                                          id="activeDocumentTypesOnly"
                                          value="#{systemManager.isActiveDocumentTypesOnly}" >
                     
-                    <p:ajax  update=":appForm:mainTabView:centerTabView:documentTypesTable"
+                    <p:ajax  update=":mainTabViewForm:mainTabView:centerTabView:documentTypesTable"
                              listener="#{systemManager.doDocumentTypeSearch}"
                              event="change"                                      
                              process="@this"/>
@@ -126,7 +126,7 @@ Email: info@dpbennett.com.jm
                              icon="pi pi-pencil">
 
                 <p:ajax event="dialogReturn" 
-                        update=":appForm:mainTabView:centerTabView:documentTypesTable" />
+                        update=":mainTabViewForm:mainTabView:centerTabView:documentTypesTable" />
 
                 <f:setPropertyActionListener value="#{documentType}"                                                                    
                                              target="#{systemManager.selectedDocumentType}" />

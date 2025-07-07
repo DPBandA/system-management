@@ -1,6 +1,6 @@
 <!--
 System Management (SM) 
-Copyright (C) 2024  D P Bennett & Associates Limited
+Copyright (C) 2025  D P Bennett & Associates Limited
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU Affero General Public License as published by
@@ -35,7 +35,7 @@ Email: info@dpbennett.com.jm
 
                 <p:ajax event="dialogReturn" 
                         listener="#{systemManager.doEmailSearch}"
-                        update=":appForm:mainTabView:centerTabView:emailsTable"/>
+                        update=":mainTabViewForm:mainTabView:centerTabView:emailsTable"/>
 
             </p:commandButton> 
             <p:spacer width="20" />
@@ -46,7 +46,7 @@ Email: info@dpbennett.com.jm
                 <p:commandButton id="emailTemplateSearchButton"
                                  class="search-button"   
                                  actionListener="#{systemManager.doEmailSearch}"
-                                 update=":appForm:mainTabView:centerTabView:emailsTable"
+                                 update=":mainTabViewForm:mainTabView:centerTabView:emailsTable"
                                  icon="pi pi-search"
                                  process="@form" />
             </h:panelGroup>
@@ -59,7 +59,7 @@ Email: info@dpbennett.com.jm
                 <p:selectBooleanCheckbox style="vertical-align: middle"
                                          id="activeEmailsOnly"
                                          value="#{systemManager.isActiveEmailsOnly}" >
-                    <p:ajax  update=":appForm:mainTabView:centerTabView:emailsTable"
+                    <p:ajax  update=":mainTabViewForm:mainTabView:centerTabView:emailsTable"
                              listener="#{systemManager.doEmailSearch}"
                              event="change"                                      
                              process="@this"/>
@@ -117,7 +117,7 @@ Email: info@dpbennett.com.jm
                 <f:setPropertyActionListener value="#{email}"                                                                    
                                              target="#{systemManager.selectedEmail}" />
                 <p:ajax event="dialogReturn" 
-                        update=":appForm:mainTabView:centerTabView:emailsTable"/>
+                        update=":mainTabViewForm:mainTabView:centerTabView:emailsTable"/>
 
             </p:commandButton>           
         </p:column>

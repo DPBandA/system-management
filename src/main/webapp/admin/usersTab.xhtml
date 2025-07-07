@@ -37,7 +37,7 @@ Email: info@dpbennett.com.jm
 
                 <p:ajax event="dialogReturn" 
                         listener="#{systemManager.doUserSearch}"
-                        update=":appForm:mainTabView:centerTabView:usersTable"/>
+                        update=":mainTabViewForm:mainTabView:centerTabView:usersTable"/>
 
             </p:commandButton>
             <p:spacer width="20" />
@@ -49,7 +49,7 @@ Email: info@dpbennett.com.jm
                 <p:commandButton id="userSearchButton"
                                  class="search-button"   
                                  actionListener="#{systemManager.doUserSearch}"
-                                 update=":appForm:mainTabView:centerTabView:usersTable"
+                                 update=":mainTabViewForm:mainTabView:centerTabView:usersTable"
                                  icon="pi pi-search"
                                  process="@form" />
             </h:panelGroup>
@@ -63,7 +63,7 @@ Email: info@dpbennett.com.jm
                                          id="activeUsersOnly"
                                          value="#{systemManager.isActiveUsersOnly}" >
 
-                    <p:ajax  update=":appForm:mainTabView:centerTabView:usersTable"
+                    <p:ajax  update=":mainTabViewForm:mainTabView:centerTabView:usersTable"
                              listener="#{systemManager.doUserSearch}"
                              event="change"                                      
                              process="@this"/>
@@ -152,7 +152,7 @@ Email: info@dpbennett.com.jm
                                              target="#{systemManager.selectedUser}" />
 
                 <p:ajax event="dialogReturn" 
-                        update=":appForm:mainTabView:centerTabView:usersTable"/>
+                        update=":mainTabViewForm:mainTabView:centerTabView:usersTable"/>
 
             </p:commandButton>           
         </p:column>

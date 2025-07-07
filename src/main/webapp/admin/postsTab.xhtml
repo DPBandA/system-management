@@ -1,6 +1,6 @@
 <!--
 Document Management 
-Copyright (C) 2024  D P Bennett & Associates Limited
+Copyright (C) 2025  D P Bennett & Associates Limited
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU Affero General Public License as published by
@@ -37,7 +37,7 @@ Email: info@dpbennett.com.jm
 
                 <p:ajax event="dialogReturn" 
                         listener="#{documentManager.doPostSearch}"
-                        update=":appForm:mainTabView:centerTabView:postsTable,:appForm:growl3"/>
+                        update=":mainTabViewForm:mainTabView:centerTabView:postsTable,:headerForm:growl3"/>
 
             </p:commandButton>
             <p:spacer width="20" />
@@ -48,7 +48,7 @@ Email: info@dpbennett.com.jm
                 <p:commandButton id="postSearchButton"
                                  class="search-button"   
                                  actionListener="#{documentManager.doPostSearch}"
-                                 update=":appForm:mainTabView:centerTabView:postsTable"
+                                 update=":mainTabViewForm:mainTabView:centerTabView:postsTable"
                                  icon="pi pi-search"
                                  process="@form" />
             </h:panelGroup>
@@ -61,7 +61,7 @@ Email: info@dpbennett.com.jm
                 <p:selectBooleanCheckbox style="vertical-align: middle"
                                          id="isActivePostsOnly"
                                          value="#{documentManager.isActivePostsOnly}" >
-                    <p:ajax  update=":appForm:mainTabView:centerTabView:postsTable"
+                    <p:ajax  update=":mainTabViewForm:mainTabView:centerTabView:postsTable"
                              listener="#{documentManager.doPostSearch}"
                              event="change"                                      
                              process="@this"/>
@@ -129,7 +129,7 @@ Email: info@dpbennett.com.jm
 
                 <p:ajax event="dialogReturn" 
                         listener="#{documentManager.doPostSearch}"
-                        update=":appForm:mainTabView:centerTabView:postsTable"/>
+                        update=":mainTabViewForm:mainTabView:centerTabView:postsTable"/>
 
             </p:commandButton>
         </p:column>
@@ -146,7 +146,7 @@ Email: info@dpbennett.com.jm
 
                 <p:ajax event="dialogReturn" 
                         listener="#{documentManager.doPostSearch}"
-                        update=":appForm:mainTabView:centerTabView:postsTable"/>
+                        update=":mainTabViewForm:mainTabView:centerTabView:postsTable"/>
 
             </p:commandButton>            
         </p:toolbarGroup>

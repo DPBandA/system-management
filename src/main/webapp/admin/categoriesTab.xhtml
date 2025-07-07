@@ -1,6 +1,6 @@
 <!--
 System Management (SM) 
-Copyright (C) 2024 D P Bennett & Associates Limited
+Copyright (C) 2025 D P Bennett & Associates Limited
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU Affero General Public License as published by
@@ -29,14 +29,14 @@ Email: info@dpbennett.com.jm
             <p:commandButton title="Add new category"                                  
                              value="New"
                              actionListener="#{systemManager.createNewCategory}"                            
-                             update=":appForm:mainTabView:centerTabView:categoriesTable"
+                             update=":mainTabViewForm:mainTabView:centerTabView:categoriesTable"
                              global="true"
                              process="@this"
                              icon="pi pi-plus" >
 
                 <p:ajax event="dialogReturn" 
                         listener="#{systemManager.doCategorySearch}"
-                        update=":appForm:mainTabView:centerTabView:categoriesTable" />
+                        update=":mainTabViewForm:mainTabView:centerTabView:categoriesTable" />
 
             </p:commandButton>     
             <p:spacer width="20" />  
@@ -47,7 +47,7 @@ Email: info@dpbennett.com.jm
                 <p:commandButton id="categorySearchButton"
                                  class="search-button"   
                                  actionListener="#{systemManager.doCategorySearch}"
-                                 update=":appForm:mainTabView:centerTabView:categoriesTable"
+                                 update=":mainTabViewForm:mainTabView:centerTabView:categoriesTable"
                                  icon="pi pi-search"
                                  process="@form" />
             </h:panelGroup>
@@ -61,7 +61,7 @@ Email: info@dpbennett.com.jm
                                          id="activeCategoriesOnly"
                                          value="#{systemManager.isActiveCategoriesOnly}" >
 
-                    <p:ajax  update=":appForm:mainTabView:centerTabView:categoriesTable"
+                    <p:ajax  update=":mainTabViewForm:mainTabView:centerTabView:categoriesTable"
                              listener="#{systemManager.doCategorySearch}"
                              event="change"                                      
                              process="@this"/>
@@ -125,7 +125,7 @@ Email: info@dpbennett.com.jm
                              icon="pi pi-pencil">
 
                 <p:ajax event="dialogReturn" 
-                        update=":appForm:mainTabView:centerTabView:categoriesTable" />
+                        update=":mainTabViewForm:mainTabView:centerTabView:categoriesTable" />
 
                 <f:setPropertyActionListener value="#{category}"                                                                    
                                              target="#{systemManager.selectedCategory}" />

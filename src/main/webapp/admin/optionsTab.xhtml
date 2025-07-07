@@ -34,7 +34,7 @@ Email: info@dpbennett.com.jm
                              icon="pi pi-plus" >
 
                 <p:ajax event="dialogReturn" 
-                        update=":appForm:mainTabView:centerTabView:systemOptionsTable"/>
+                        update=":mainTabViewForm:mainTabView:centerTabView:systemOptionsTable"/>
 
             </p:commandButton>
             <p:spacer width="20" />
@@ -45,7 +45,7 @@ Email: info@dpbennett.com.jm
                 <p:commandButton id="systemOptionSearchButton"
                                  class="search-button"   
                                  actionListener="#{systemManager.doSystemSettingSearch}"
-                                 update=":appForm:mainTabView:centerTabView:systemOptionsTable"
+                                 update=":mainTabViewForm:mainTabView:centerTabView:systemOptionsTable"
                                  icon="pi pi-search"
                                  process="@form" />
             </h:panelGroup>
@@ -62,7 +62,7 @@ Email: info@dpbennett.com.jm
                     value="SMEM" >
 
                     <p:ajax event="dialogReturn" 
-                            update=":appForm:mainTabView:centerTabView:emButtonPanelGroup"/>
+                            update=":mainTabViewForm:mainTabView:centerTabView:emButtonPanelGroup"/>
 
                 </p:commandButton>
                 <p:spacer width="5"/>
@@ -73,7 +73,7 @@ Email: info@dpbennett.com.jm
                     value="FMEM" >
 
                     <p:ajax event="dialogReturn" 
-                            update=":appForm:mainTabView:centerTabView:emButtonPanelGroup"/>
+                            update=":mainTabViewForm:mainTabView:centerTabView:emButtonPanelGroup"/>
 
                 </p:commandButton>
                 <p:spacer width="5"/>
@@ -84,7 +84,7 @@ Email: info@dpbennett.com.jm
                     value="JMTSEM" >
 
                     <p:ajax event="dialogReturn" 
-                            update=":appForm:mainTabView:centerTabView:emButtonPanelGroup"/>
+                            update=":mainTabViewForm:mainTabView:centerTabView:emButtonPanelGroup"/>
 
                 </p:commandButton>
                 <p:spacer width="5"/>
@@ -95,7 +95,7 @@ Email: info@dpbennett.com.jm
                     value="CMEM" >
 
                     <p:ajax event="dialogReturn" 
-                            update=":appForm:mainTabView:centerTabView:emButtonPanelGroup"/>
+                            update=":mainTabViewForm:mainTabView:centerTabView:emButtonPanelGroup"/>
 
                 </p:commandButton>
                 <p:spacer width="5"/>
@@ -106,7 +106,7 @@ Email: info@dpbennett.com.jm
                     value="HRMEM" >
 
                     <p:ajax event="dialogReturn" 
-                            update=":appForm:mainTabView:centerTabView:emButtonPanelGroup"/>
+                            update=":mainTabViewForm:mainTabView:centerTabView:emButtonPanelGroup"/>
 
                 </p:commandButton>
                 <p:spacer width="5"/>
@@ -117,7 +117,7 @@ Email: info@dpbennett.com.jm
                     value="RMEM" >
 
                     <p:ajax event="dialogReturn" 
-                            update=":appForm:mainTabView:centerTabView:emButtonPanelGroup"/>
+                            update=":mainTabViewForm:mainTabView:centerTabView:emButtonPanelGroup"/>
 
                 </p:commandButton>
                 <p:spacer width="5"/>
@@ -128,7 +128,7 @@ Email: info@dpbennett.com.jm
                     value="SCEM" >
 
                     <p:ajax event="dialogReturn" 
-                            update=":appForm:mainTabView:centerTabView:emButtonPanelGroup"/>
+                            update=":mainTabViewForm:mainTabView:centerTabView:emButtonPanelGroup"/>
 
                 </p:commandButton>
                 <p:spacer width="5"/>
@@ -139,7 +139,7 @@ Email: info@dpbennett.com.jm
                     value="LOEM" >
 
                     <p:ajax event="dialogReturn" 
-                            update=":appForm:mainTabView:centerTabView:emButtonPanelGroup"/>
+                            update=":mainTabViewForm:mainTabView:centerTabView:emButtonPanelGroup"/>
 
                 </p:commandButton>
                 <p:spacer width="5"/>
@@ -150,7 +150,7 @@ Email: info@dpbennett.com.jm
                     value="LPEM" >
 
                     <p:ajax event="dialogReturn" 
-                            update=":appForm:mainTabView:centerTabView:emButtonPanelGroup"/>
+                            update=":mainTabViewForm:mainTabView:centerTabView:emButtonPanelGroup"/>
 
                 </p:commandButton>
 
@@ -238,7 +238,7 @@ Email: info@dpbennett.com.jm
                              icon="pi pi-pencil">
 
                 <p:ajax event="dialogReturn" 
-                        update=":appForm:mainTabView:centerTabView:systemOptionsTable"/>
+                        update=":mainTabViewForm:mainTabView:centerTabView:systemOptionsTable"/>
 
                 <f:setPropertyActionListener value="#{systemOption}"                                                                    
                                              target="#{systemManager.selectedSystemOption}" />

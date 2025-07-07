@@ -27,120 +27,76 @@ Email: info@dpbennett.com.jm
         <p:toolbarGroup align="left" >
 
             <p:menuButton value="New" >  
-                <p:menuitem value="Job"
-                            title="Create new job"
-                            icon="ui-icon-plus"
-                            onstart="PF('longProcessDialogVar').show();" 
-                            oncomplete="longProcessDialogVar.hide();"
-                            actionListener="#{jobManager.createNewJob}"  
+
+                <p:menuitem value="User"
+                            title="Create new user"
+                            icon="pi pi-plus"
+                            actionListener="#{systemManager.createNewUser}" 
                             process="@this" >
 
                     <p:ajax event="dialogReturn" 
-                            update=":mainTabViewForm:mainTabView"
-                            listener="#{jobManager.jobDialogReturn}" />
+                            listener="#{systemManager.doUserSearch}"
+                            update=":mainTabViewForm:mainTabView:centerTabView:usersTable"/>
 
-                </p:menuitem>    
-                <p:separator />
-                <p:menuitem
-                    actionListener="#{clientManager.createNewClient}"                
-                    disabled="#{!clientManager.user.can('AddClient')}"
-                    global="true"                                        
-                    onstart="PF('longProcessDialogVar').show();"                 
-                    oncomplete="PF('longProcessDialogVar').hide();"
-                    onerror="PF('connectionErrorDialog').show();"
-                    value="Client"       
-                    update="headerForm:growl3"
-                    title="Create new client"
-                    icon="ui-icon-plus"
-                    process="@this" >
+                </p:menuitem>  
 
-                    <p:ajax event="dialogReturn" 
-                            update="" />
-
-                </p:menuitem>
-                <p:separator />
-                <p:menuitem value="Proforma Invoice"
-                            title="Create new proforma invoice"
-                            icon="ui-icon-plus"
-                            disabled="false"
-                            onstart="PF('longProcessDialogVar').show();" 
-                            oncomplete="longProcessDialogVar.hide();"
-                            actionListener="#{jobFinanceManager.openNewProformaInvoiceDialog}" 
+                <p:menuitem value="Module"
+                            title="Create new module"
+                            icon="pi pi-plus"
+                            actionListener="#{systemManager.createNewModule}" 
                             process="@this" >
 
                     <p:ajax event="dialogReturn" 
-                            listener="#{jobFinanceManager.proformaDialogReturn}"
-                            update=""/>
+                            listener="#{systemManager.doModuleSearch}"
+                            update=":mainTabViewForm:mainTabView:centerTabView:modulesTable" />
 
                 </p:menuitem> 
-                <p:menuitem value="Cost Estimate"
-                            title="Create new cost estimate"
-                            icon="ui-icon-plus"
-                            disabled="false"
-                            onstart="PF('longProcessDialogVar').show();" 
-                            oncomplete="longProcessDialogVar.hide();"
-                            actionListener="#{jobFinanceManager.openNewCostEstimateDialog}" 
+
+                <p:menuitem value="Privilege"
+                            title="Create new privilege"
+                            icon="pi pi-plus"
+                            actionListener="#{systemManager.createNewPrivilege}" 
                             process="@this" >
 
                     <p:ajax event="dialogReturn" 
-                            listener="#{jobFinanceManager.costEstimateDialogReturn}"
-                            update=""/>
+                            listener="#{systemManager.doPrivilegeSearch}"
+                            update=":mainTabViewForm:mainTabView:centerTabView:privilegesTable" />
 
                 </p:menuitem>
+
+                <p:menuitem value="Setting"
+                            title="Create new setting"
+                            icon="pi pi-plus"
+                            actionListener="#{systemManager.createNewSystemOption()}" 
+                            process="@this" >
+
+                    <p:ajax event="dialogReturn" 
+                            listener="#{systemManager.doSystemSettingSearch}"
+                            update=":mainTabViewForm:mainTabView:centerTabView:systemOptionsTable"/>
+
+                </p:menuitem>
+
             </p:menuButton>    
 
         </p:toolbarGroup>
 
         <p:toolbarGroup align="right">            
             <p:menuButton value="Tools" >  
-                <p:menuitem value="Job Browser"
-                            title="Open the Job Browser tab"
-                            onstart="PF('longProcessDialogVar').show();" 
-                            actionListener="#{jobManager.openJobBrowser}" 
-                            oncomplete="longProcessDialogVar.hide();"
-                            process="@this" />              
-                <p:separator />
-                <p:menuitem value="Client Management"
-                            title="Open the Clients tab"
-                            onstart="PF('longProcessDialogVar').show();" 
-                            actionListener="#{jobManager.openClientsTab}" 
-                            oncomplete="longProcessDialogVar.hide();"
-                            process="@this" />
 
-                <p:menuitem actionListener="#{jobFinanceManager.updateAccPacClient}"
-                            onstart="PF('longProcessDialogVar').show();"                                                    
-                            value="Client Credit Status"
-                            update=""
-                            oncomplete="PF('accPacClientInformationDialog').show();PF('longProcessDialogVar').hide();"
-                            process="@this" />
-                <p:separator />
-                <p:menuitem value="Proforma Invoices"
-                            title="Browse proforma invoices"
-                            disabled="false"
-                            onstart="PF('longProcessDialogVar').show();" 
-                            actionListener="#{jobFinanceManager.openProformaInvoicesDialog}" 
-                            oncomplete="longProcessDialogVar.hide();"
-                            process="@this" />
-                 <p:menuitem value="Price List"
-                            title="Browse price list"
-                            disabled="false"
-                            onstart="PF('longProcessDialogVar').show();" 
-                            actionListener="#{jobFinanceManager.openPriceListDialog}" 
-                            oncomplete="longProcessDialogVar.hide();"
-                            process="@this" />
-                <p:separator />
-                <p:menuitem value="Reports"
-                            title="Open the Reports tab"
-                            onstart="PF('longProcessDialogVar').show();" 
-                            actionListener="#{jobManager.openReportsTab}" 
-                            oncomplete="longProcessDialogVar.hide();"
-                            process="@this" />
+                <p:menuitem 
+                    actionListener="#{systemManager.mainTabView.openTab('System Administration')}" 
+                    title="System administration" 
+                    rendered="#{systemManager.user.hasModule('systemManager')}"
+                    value="System Administration" 
+                    icon="pi pi-server" /> 
 
             </p:menuButton>         
         </p:toolbarGroup>
     </p:toolbar>
 
-    <ui:include src="search.xhtml"/>   
+    <ui:remove>
+        <ui:include src="search.xhtml"/>   
+    </ui:remove>
 
 
 </html>
