@@ -7,7 +7,7 @@
     <version>2.2.2</version>
     <packaging>war</packaging>
 
-    <name>SM</name>
+    <name>c.SM</name>
     <description>A system management software.</description>
 
     <properties>
