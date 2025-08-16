@@ -1,6 +1,6 @@
 <!--
 System Management (SM) 
-Copyright (C) 2024  D P Bennett & Associates Limited
+Copyright (C) 2025  D P Bennett & Associates Limited
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU Affero General Public License as published by
@@ -25,6 +25,7 @@ Email: info@dpbennett.com.jm
       xmlns:f="http://java.sun.com/jsf/core">
 
     <p:toolbar>
+        
         <p:toolbarGroup align="left" >
             <p:commandButton title="Add new option"                                  
                              value="New"
@@ -51,112 +52,7 @@ Email: info@dpbennett.com.jm
             </h:panelGroup>
 
         </p:toolbarGroup>
-        <p:toolbarGroup align="right" >
-
-            <h:panelGroup id="emButtonPanelGroup">
-
-                <p:commandButton 
-                    style="margin-top: 5px;"
-                    title="Entity manager: #{systemManager.entityManagerSetting('SMEM')}"
-                    actionListener="#{systemManager.editEM('SMEM')}" 
-                    value="SMEM" >
-
-                    <p:ajax event="dialogReturn" 
-                            update=":mainTabViewForm:mainTabView:centerTabView:emButtonPanelGroup"/>
-
-                </p:commandButton>
-                <p:spacer width="5"/>
-                <p:commandButton 
-                    style="margin-top: 5px;"
-                    title="Entity manager: #{systemManager.entityManagerSetting('FMEM')}"
-                    actionListener="#{systemManager.editEM('FMEM')}" 
-                    value="FMEM" >
-
-                    <p:ajax event="dialogReturn" 
-                            update=":mainTabViewForm:mainTabView:centerTabView:emButtonPanelGroup"/>
-
-                </p:commandButton>
-                <p:spacer width="5"/>
-                <p:commandButton 
-                    style="margin-top: 5px;"
-                    title="Entity manager: #{systemManager.entityManagerSetting('JMTSEM')}"
-                    actionListener="#{systemManager.editEM('JMTSEM')}" 
-                    value="JMTSEM" >
-
-                    <p:ajax event="dialogReturn" 
-                            update=":mainTabViewForm:mainTabView:centerTabView:emButtonPanelGroup"/>
-
-                </p:commandButton>
-                <p:spacer width="5"/>
-                <p:commandButton 
-                    style="margin-top: 5px;"
-                    title="Entity manager: #{systemManager.entityManagerSetting('CMEM')}"
-                    actionListener="#{systemManager.editEM('CMEM')}" 
-                    value="CMEM" >
-
-                    <p:ajax event="dialogReturn" 
-                            update=":mainTabViewForm:mainTabView:centerTabView:emButtonPanelGroup"/>
-
-                </p:commandButton>
-                <p:spacer width="5"/>
-                <p:commandButton 
-                    style="margin-top: 5px;"
-                    title="Entity manager: #{systemManager.entityManagerSetting('HRMEM')}"
-                    actionListener="#{systemManager.editEM('HRMEM')}" 
-                    value="HRMEM" >
-
-                    <p:ajax event="dialogReturn" 
-                            update=":mainTabViewForm:mainTabView:centerTabView:emButtonPanelGroup"/>
-
-                </p:commandButton>
-                <p:spacer width="5"/>
-                <p:commandButton 
-                    style="margin-top: 5px;"
-                    title="Entity manager: #{systemManager.entityManagerSetting('RMEM')}"
-                    actionListener="#{systemManager.editEM('RMEM')}" 
-                    value="RMEM" >
-
-                    <p:ajax event="dialogReturn" 
-                            update=":mainTabViewForm:mainTabView:centerTabView:emButtonPanelGroup"/>
-
-                </p:commandButton>
-                <p:spacer width="5"/>
-                <p:commandButton 
-                    style="margin-top: 5px;"
-                    title="Entity manager: #{systemManager.entityManagerSetting('SCEM')}"
-                    actionListener="#{systemManager.editEM('SCEM')}" 
-                    value="SCEM" >
-
-                    <p:ajax event="dialogReturn" 
-                            update=":mainTabViewForm:mainTabView:centerTabView:emButtonPanelGroup"/>
-
-                </p:commandButton>
-                <p:spacer width="5"/>
-                <p:commandButton 
-                    style="margin-top: 5px;"
-                    title="Entity manager: #{systemManager.entityManagerSetting('LOEM')}"
-                    actionListener="#{systemManager.editEM('LOEM')}" 
-                    value="LOEM" >
-
-                    <p:ajax event="dialogReturn" 
-                            update=":mainTabViewForm:mainTabView:centerTabView:emButtonPanelGroup"/>
-
-                </p:commandButton>
-                <p:spacer width="5"/>
-                <p:commandButton 
-                    style="margin-top: 5px;"
-                    title="Entity manager: #{systemManager.entityManagerSetting('LPEM')}"
-                    actionListener="#{systemManager.editEM('LPEM')}" 
-                    value="LPEM" >
-
-                    <p:ajax event="dialogReturn" 
-                            update=":mainTabViewForm:mainTabView:centerTabView:emButtonPanelGroup"/>
-
-                </p:commandButton>
-
-            </h:panelGroup>
-
-        </p:toolbarGroup>
+    
     </p:toolbar>
 
     <p:dataTable id="systemOptionsTable"                                       

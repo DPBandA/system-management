@@ -1,6 +1,6 @@
 <!--
 System Management (SM) 
-Copyright (C) 2023  D P Bennett & Associates Limited
+Copyright (C) 2025  D P Bennett & Associates Limited
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU Affero General Public License as published by
@@ -32,17 +32,17 @@ Email: info@dpbennett.com.jm
                      header="Confirm" 
                      severity="warn">
 
-            <p:commandButton value="Yes" 
-                             icon="pi pi-check" 
-                             actionListener="#{systemManager.deleteNotification}"                             
-                             process="@this" 
-                             oncomplete="PF('deleteNotificationDialog').hide()" />
+        <p:commandButton value="Yes" 
+                         icon="pi pi-check" 
+                         actionListener="#{systemManager.deleteNotification}"                             
+                         process="@this" 
+                         oncomplete="PF('deleteNotificationDialog').hide()" />
 
-            <p:commandButton value="No" 
-                             type="button" 
-                             styleClass="ui-button-secondary" 
-                             icon="pi pi-times"
-                             onclick="PF('deleteNotificationDialog').hide()" />
+        <p:commandButton value="No" 
+                         type="button" 
+                         styleClass="ui-button-secondary" 
+                         icon="pi pi-times"
+                         onclick="PF('deleteNotificationDialog').hide()" />
 
     </p:confirmDialog>
 
@@ -111,7 +111,7 @@ Email: info@dpbennett.com.jm
     </p:confirmDialog>   
 
     <p:ajaxStatus onstart="PF('statusDialog').show()" onsuccess="PF('statusDialog').hide()"/>
-    
+
     <h:form>
         <p:dialog widgetVar="statusDialog" 
                   modal="false" 
@@ -126,6 +126,26 @@ Email: info@dpbennett.com.jm
                style="font-size: 3em;margin:0;padding:0;"
                aria-hidden="true">                       
             </i>
+
+        </p:dialog>
+    </h:form>
+
+    <h:form>
+        <p:dialog widgetVar="systemInfoDialog" 
+                  minHeight="40" 
+                  width="350" 
+                  header="System Information"
+                  showEffect="fade" 
+                  showHeader="true"
+                  modal="true" 
+                  closeOnEscape="true">
+
+            <p>
+                Persistence Units:
+            </p>
+            <p>
+                #{systemManager.systemInfo}
+            </p>
 
         </p:dialog>
     </h:form>
