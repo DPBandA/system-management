@@ -260,13 +260,17 @@ Email: info@dpbennett.com.jm
 
                         <p:outputLabel for="newPwd" value="New password" 
                                        style="font-weight: bold;margin-right: 10px;" />
-                        <p:password id="newPwd" toggleMask="true"
+                        <p:password id="newPwd" 
+                                    toggleMask="true"
+                                    redisplay="true"
                                     validator="passwordValidator"
                                     value="#{systemManager.selectedUser.newPassword}" />
 
                         <p:outputLabel for="confirmedPwd" value="Confirm password" 
                                        style="font-weight: bold;margin-right: 10px;" />
-                        <p:password id="confirmedPwd" toggleMask="true"
+                        <p:password id="confirmedPwd" 
+                                    toggleMask="true"
+                                    redisplay="true"
                                     validator="passwordValidator"
                                     value="#{systemManager.selectedUser.confirmedNewPassword}" />
                     </h:panelGrid>  
