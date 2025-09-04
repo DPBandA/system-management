@@ -100,11 +100,6 @@ Email: info@dpbennett.com.jm
 
                         <f:attribute name="em" value="#{humanResourceManager.entityManager1}"/>
 
-                        <p:ajax event="itemSelect"
-                                listener="#{systemManager.updateUser}"
-                                global="false"
-                                process="@this"/>
-
                     </p:autoComplete>   
 
                 </h:panelGrid>
@@ -112,7 +107,7 @@ Email: info@dpbennett.com.jm
 
             <p:tabView >
 
-                <p:tab title="Module Access">
+                <p:tab title="Modules">
                     <p:toolbar>
                         <p:toolbarGroup align="left" >  
                             <p:commandButton title="Edit module list"                                  
@@ -212,40 +207,6 @@ Email: info@dpbennett.com.jm
 
                 </p:tab>
 
-                <p:tab title="Preferences" >
-                    <h:panelGrid columns="2" cellpadding="5">
-                        <p:outputLabel value="Theme" style="font-weight: bold;"/>
-                        <p:selectOneMenu id="theme" 
-                                         value="#{systemManager.selectedUser.PFThemeName}"
-                                         title="#{systemManager.selectedUser.PFThemeName}" >
-
-                            <f:selectItems  value="#{systemManager.PFThemes2}"
-                                            var="theme"                            
-                                            itemValue="#{theme.value}"
-                                            itemLabel="#{theme.label}"/>
-
-                            <p:ajax listener="#{systemManager.updateSelectedUserPreferences}"
-                                    global="false"
-                                    process="@this"/>
-
-                        </p:selectOneMenu>
-
-                        <p:outputLabel value="Job table view" style="font-weight: bold;"/>
-                        <p:selectOneMenu value="#{systemManager.selectedUser.jobTableViewPreference}"
-                                         title="#{systemManager.selectedUser.jobTableViewPreference}" >
-
-                            <f:selectItems  value="#{systemManager.jobTableViews}"
-                                            var="v"                            
-                                            itemValue="#{v.value}"
-                                            itemLabel="#{v.label}"/>
-
-                            <p:ajax listener="#{systemManager.updateSelectedUserPreferences}"
-                                    global="false"
-                                    process="@this"/>
-
-                        </p:selectOneMenu>
-                    </h:panelGrid>                        
-                </p:tab>
                 <p:tab title="Security" >
                     <h:panelGrid columns="2" cellpadding="5">
                         <p:outputLabel value="Authenticate" for="authenticateUser" 
@@ -258,7 +219,7 @@ Email: info@dpbennett.com.jm
                         <p:selectBooleanCheckbox id="updateLDAPUser" 
                                                  value="#{systemManager.selectedUser.updateLDAPUser}" />
 
-                        <p:outputLabel for="newPwd" value="New password" 
+                        <p:outputLabel for="newPwd" value="New password *" 
                                        style="font-weight: bold;margin-right: 10px;" />
                         <p:password id="newPwd" 
                                     toggleMask="true"
@@ -266,7 +227,7 @@ Email: info@dpbennett.com.jm
                                     validator="passwordValidator"
                                     value="#{systemManager.selectedUser.newPassword}" />
 
-                        <p:outputLabel for="confirmedPwd" value="Confirm password" 
+                        <p:outputLabel for="confirmedPwd" value="Confirm password *" 
                                        style="font-weight: bold;margin-right: 10px;" />
                         <p:password id="confirmedPwd" 
                                     toggleMask="true"
@@ -282,97 +243,57 @@ Email: info@dpbennett.com.jm
                                      process="@form"
                                      update=":userDialogForm:userdialog_growl"
                                      actionListener="#{systemManager.saveSelectedUserSecurityProfile}" />                    
-                </p:tab>
+                </p:tab>   
 
-                <p:tab title="Settings" 
-                       rendered="#{systemManager.user.can('BeJMTSAdministrator')}" >
+                <p:tab title="Settings" >
 
-                    <p:toolbar>
-                        <p:toolbarGroup align="left" >
-                            <p:commandButton title="Add new option"                                  
-                                             value="New"
-                                             disabled="#{systemManager.selectedUser.id == null}"
-                                             actionListener="#{systemManager.createNewSelectedUserSystemOption()}" 
-                                             global="true"
-                                             process="@this"
-                                             icon="pi pi-plus" >
+                    <p:panel header="Display">
 
-                                <p:ajax event="dialogReturn" 
-                                        update="userSystemOptionsTable"/>
+                        <h:panelGrid columns="2" cellpadding="5">
+                            <p:outputLabel value="Theme *" style="font-weight: bold;"/>
+                            <p:selectOneMenu id="theme" 
+                                             value="#{systemManager.selectedUser.PFThemeName}"
+                                             title="#{systemManager.selectedUser.PFThemeName}" >
 
-                            </p:commandButton>                           
-                        </p:toolbarGroup>
-                    </p:toolbar>
+                                <f:selectItems  value="#{systemManager.PFThemes2}"
+                                                var="theme"                            
+                                                itemValue="#{theme.value}"
+                                                itemLabel="#{theme.label}"/>
 
-                    <p:dataTable id="userSystemOptionsTable"                                       
-                                 var="systemOption"     
-                                 editable="false" 
-                                 editMode="cell"
-                                 paginator="true"
-                                 reflow="true"
-                                 rows="15"
-                                 style="margin-top: 5px;"
-                                 widgetVar="systemOptionsTableVar"
-                                 paginatorTemplate="{FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
-                                 value="#{systemManager.selectedUserSystemOptions}">
+                                <p:ajax listener="#{systemManager.updateSelectedUserPreferences}"
+                                        global="false"
+                                        process="@this"/>
 
-                        <p:column>
-                            <f:facet name="header">
-                                <p:outputLabel value="Description"/>
-                            </f:facet>
-                            <p:cellEditor>
-                                <f:facet name="output"> 
-                                    <p:outputLabel value="#{systemOption.comments}" />
-                                </f:facet>
-                                <f:facet name="input">
-                                    <p:inputText value="#{systemOption.comments}" style="width:96%"/>
-                                </f:facet>
-                            </p:cellEditor>                                           
-                        </p:column>   
+                            </p:selectOneMenu>
 
-                        <p:column>
-                            <f:facet name="header" >
-                                <p:outputLabel value="Name"/>
-                            </f:facet>
-                            <p:cellEditor>
-                                <f:facet name="output"> 
-                                    <p:outputLabel value="#{systemOption.name}" />
-                                </f:facet>
-                                <f:facet name="input">
-                                    <p:inputText value="#{systemOption.name}" style="width:96%"/>
-                                </f:facet>
-                            </p:cellEditor>                                         
-                        </p:column>   
+                            <p:outputLabel value="Job table view *" style="font-weight: bold;"/>
+                            <p:selectOneMenu value="#{systemManager.selectedUser.jobTableViewPreference}"
+                                             title="#{systemManager.selectedUser.jobTableViewPreference}" >
 
-                        <p:column>
-                            <f:facet name="header">
-                                <p:outputLabel value="Value"/>
-                            </f:facet>
-                            <p:cellEditor>
-                                <f:facet name="output"> 
-                                    <p:outputLabel value="#{systemOption.optionValueDisplay}" />
-                                </f:facet>
-                                <f:facet name="input">
-                                    <p:inputText value="#{systemOption.optionValue}" style="width:96%"/>
-                                </f:facet>
-                            </p:cellEditor>                                         
-                        </p:column>   
+                                <f:selectItems  value="#{systemManager.jobTableViews}"
+                                                var="v"                            
+                                                itemValue="#{v.value}"
+                                                itemLabel="#{v.label}"/>
 
-                        <p:column>
-                            <p:commandButton title="View or edit system option"   
-                                             actionListener="#{systemManager.editSystemOption('/admin/systemOptionDialog')}"
-                                             global="true"
-                                             process="@this"
-                                             icon="pi pi-pencil">
+                                <p:ajax listener="#{systemManager.updateSelectedUserPreferences}"
+                                        global="false"
+                                        process="@this"/>
 
-                                <p:ajax event="dialogReturn" 
-                                        update="userSystemOptionsTable"/>
+                            </p:selectOneMenu>
+                        </h:panelGrid>   
 
-                                <f:setPropertyActionListener value="#{systemOption}"                                                                    
-                                                             target="#{systemManager.selectedSystemOption}" />
-                            </p:commandButton>           
-                        </p:column>
-                    </p:dataTable> 
+                    </p:panel>
+
+                    <p:panel header="Notifications">
+                        
+                        <p:panelGrid columns="2" >
+                            <p:outputLabel value="Job assigned" for="jobAssigned"/>
+                            <p:toggleSwitch value="#{systemManager.selectedUser.jobAssigned}" 
+                                            id="jobAssigned"
+                                            onIcon="pi pi-check" offIcon="pi pi-times" />
+                        </p:panelGrid>
+                        
+                    </p:panel>
 
                 </p:tab>
 

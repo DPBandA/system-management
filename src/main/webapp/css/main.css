@@ -1,3 +1,10 @@
+.ui-toolbar, .ui-panel-titlebar, .ui-menubar, .ui-panel, .ui-scrollpanel,
+.ui-accordion-content, .ui-accordion-header,
+.ui-panel-content, .ui-overlaypanel {
+    border: none !important;
+    box-shadow: none !important;
+}
+
 html {
     font-size: 11px;
 }

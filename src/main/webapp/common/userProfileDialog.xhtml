@@ -1,6 +1,6 @@
 <!--
 System Management (SM) 
-Copyright (C) 2024  D P Bennett & Associates Limited
+Copyright (C) 2025  D P Bennett & Associates Limited
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU Affero General Public License as published by
@@ -49,9 +49,10 @@ Email: info@dpbennett.com.jm
                                      oncomplete="PF('userProfileDialog').hide();" />
                 </p:toolbarGroup>
             </p:toolbar>
+
             <p:tabView style="margin-top: 1px;margin-bottom: 1px;">
                 <p:tab title="General" >
-                    <h:panelGrid columns="2" cellspacing="5">
+                    <p:panelGrid columns="2">
 
                         <p:outputLabel value="Username" style="font-weight: bold;margin-right: 10px;"/>  
                         <p:outputLabel value="#{systemManager.user.username}" />
@@ -65,7 +66,7 @@ Email: info@dpbennett.com.jm
                         <p:outputLabel value="Position(s)" style="font-weight: bold;margin-right: 10px;" />               
                         <p:outputLabel value="#{systemManager.employee.employmentPositions}" />
 
-                    </h:panelGrid>
+                    </p:panelGrid>
                 </p:tab>
                 <p:tab title="Modules" >
                     <p:selectOneRadio id="modulesTable"
@@ -78,6 +79,7 @@ Email: info@dpbennett.com.jm
                                        itemValue="#{module.description}"/>
                     </p:selectOneRadio>  
                 </p:tab>
+
                 <p:tab title="Privileges" >
                     <p:dataTable var="privilege"                                  
                                  id="privilegesTable" 
@@ -88,56 +90,27 @@ Email: info@dpbennett.com.jm
                         </p:column>
 
                     </p:dataTable>                  
-                </p:tab>    
-                <p:tab title="Settings" >
-                    <h:panelGrid columns="2" cellpadding="5">
-                        <p:outputLabel value="Theme" style="font-weight: bold;margin-right: 10px;"/>
-                        <p:selectOneMenu id="theme" 
-                                         value="#{systemManager.user.PFThemeName}"
-                                         title="#{systemManager.user.PFThemeName}" >
+                </p:tab>   
 
-                            <f:selectItems  value="#{systemManager.PFThemes2}"
-                                            var="theme"                            
-                                            itemValue="#{theme.value}"
-                                            itemLabel="#{theme.label}"/>
+                <p:tab id="securityTab" title="Security" 
+                       rendered="#{systemManager.showUserProfileSecurityTab}">
 
-                            <p:ajax listener="#{systemManager.updatePreferences}"
-                                    global="false"
-                                    process="@this"/>
-
-                        </p:selectOneMenu>
-
-                        <p:outputLabel value="Job table view" style="font-weight: bold;margin-right: 10px;"/>
-                        <p:selectOneMenu value="#{systemManager.user.jobTableViewPreference}"
-                                         title="#{systemManager.user.jobTableViewPreference}" >
-
-                            <f:selectItems  value="#{systemManager.jobTableViews}"
-                                            var="v"                            
-                                            itemValue="#{v.value}"
-                                            itemLabel="#{v.label}"/>
-
-                            <p:ajax listener="#{systemManager.updatePreferences}"
-                                    global="false"
-                                    process="@this"/>
-
-                        </p:selectOneMenu>
-                    </h:panelGrid>                        
-                </p:tab>
-                <p:tab id="securityTab" title="Security" rendered="#{systemManager.showUserProfileSecurityTab}">
-                    <h:panelGrid columns="2" cellpadding="5">
+                    <p:panelGrid columns="2">
                         <p:outputLabel value="Authenticated" for="authenticateUser" 
                                        style="font-weight: bold;margin-right: 10px;" /> 
                         <p:selectBooleanCheckbox id="authenticateUser" 
                                                  disabled="true"  
                                                  value="#{systemManager.selectedUser.authenticate}" />
 
-                        <p:outputLabel for="newPwd" value="New password" style="font-weight: bold;margin-right: 10px;" />
+                        <p:outputLabel for="newPwd" value="New password *" 
+                                       style="font-weight: bold;margin-right: 10px;" />
                         <p:password id="newPwd" toggleMask="true" redisplay="true" 
                                     value="#{systemManager.user.newPassword}" />
 
-                        <p:outputLabel for="confirmedPwd" value="Confirm password" style="font-weight: bold;margin-right: 10px;" />
+                        <p:outputLabel for="confirmedPwd" value="Confirm password *" 
+                                       style="font-weight: bold;margin-right: 10px;" />
                         <p:password id="confirmedPwd" toggleMask="true" redisplay="true" value="#{systemManager.user.confirmedNewPassword}" />
-                    </h:panelGrid>
+                    </p:panelGrid>
                     <p:divider />
                     <p:commandButton value="Change password" 
                                      title="Save changed password"
@@ -147,7 +120,56 @@ Email: info@dpbennett.com.jm
 
                 </p:tab>
 
+                <p:tab title="Settings" >
+
+                    <p:panel header="Display">
+                        <p:panelGrid columns="2">
+                            <p:outputLabel value="Theme *" style="font-weight: bold;margin-right: 10px;"/>
+                            <p:selectOneMenu id="theme" 
+                                             value="#{systemManager.user.PFThemeName}"
+                                             title="#{systemManager.user.PFThemeName}" >
+
+                                <f:selectItems  value="#{systemManager.PFThemes2}"
+                                                var="theme"                            
+                                                itemValue="#{theme.value}"
+                                                itemLabel="#{theme.label}"/>
+
+                                <p:ajax listener="#{systemManager.updatePreferences}"
+                                        global="false"
+                                        process="@this"/>
+
+                            </p:selectOneMenu>
+
+                            <p:outputLabel value="Job table view *" style="font-weight: bold;margin-right: 10px;"/>
+                            <p:selectOneMenu value="#{systemManager.user.jobTableViewPreference}"
+                                             title="#{systemManager.user.jobTableViewPreference}" >
+
+                                <f:selectItems  value="#{systemManager.jobTableViews}"
+                                                var="v"                            
+                                                itemValue="#{v.value}"
+                                                itemLabel="#{v.label}"/>
+
+                                <p:ajax listener="#{systemManager.updatePreferences}"
+                                        global="false"
+                                        process="@this"/>
+
+                            </p:selectOneMenu>
+                        </p:panelGrid>   
+                    </p:panel>
+
+                    <p:panel header="Notifications">
+                        <p:panelGrid columns="2" >
+                            <p:outputLabel value="Job assigned" for="jobAssigned"/>
+                            <p:toggleSwitch value="#{systemManager.user.jobAssigned}" 
+                                            id="jobAssigned"
+                                            onIcon="pi pi-check" offIcon="pi pi-times" />
+                        </p:panelGrid>
+                    </p:panel>
+
+                </p:tab>
+
             </p:tabView>
+
             <p:toolbar>
                 <p:toolbarGroup align="left" >
                     <p:commandButton value="Ok" 
