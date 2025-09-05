@@ -69,15 +69,15 @@ Email: info@dpbennett.com.jm
                     </p:panelGrid>
                 </p:tab>
                 <p:tab title="Modules" >
-                    <p:selectOneRadio id="modulesTable"
-                                      style="margin-top: 15px;margin-bottom: 15px;"
-                                      layout="grid" columns="3" styleClass="grid-radio"
-                                      unselectable="true" >
-                        <f:selectItems value="#{systemManager.user.activeModules}" 
-                                       var="module" 
-                                       itemLabel="#{module.description}" 
-                                       itemValue="#{module.description}"/>
-                    </p:selectOneRadio>  
+                    <p:dataTable var="module"                                  
+                                 id="modulesTable"                                 
+                                 value="#{systemManager.user.activeModules}" >
+
+                        <p:column>
+                            <h:outputText value="#{module.description}"/>
+                        </p:column>
+
+                    </p:dataTable>
                 </p:tab>
 
                 <p:tab title="Privileges" >
