@@ -163,6 +163,21 @@ Email: info@dpbennett.com.jm
                             <p:toggleSwitch value="#{systemManager.user.jobAssigned}" 
                                             id="jobAssigned"
                                             onIcon="pi pi-check" offIcon="pi pi-times" />
+                            
+                            <p:outputLabel value="Job costing prepared" for="jobCostingPrepared"/>
+                            <p:toggleSwitch value="#{systemManager.user.jobCostingPrepared}" 
+                                            id="jobCostingPrepared"
+                                            onIcon="pi pi-check" offIcon="pi pi-times" />
+                            
+                            <p:outputLabel value="Child job costing approved" for="jobCostingApproved"/>
+                            <p:toggleSwitch value="#{systemManager.user.jobCostingApproved}" 
+                                            id="jobCostingApproved"
+                                            onIcon="pi pi-check" offIcon="pi pi-times" />
+                            
+                            <p:outputLabel value="Cash payment made" for="cashPaymentMade"/>
+                            <p:toggleSwitch value="#{systemManager.user.cashPaymentMade}" 
+                                            id="cashPaymentMade"
+                                            onIcon="pi pi-check" offIcon="pi pi-times" />
                         </p:panelGrid>
                     </p:panel>
 
