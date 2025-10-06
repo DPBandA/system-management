@@ -144,6 +144,7 @@ Email: info@dpbennett.com.jm
 
                             <p:accordionPanel id="dashboardAccordion" 
                                               value="#{systemManager.dashboard.tabs}" 
+                                              activeIndex="#{systemManager.dashboard.tabIndex}"
                                               var="t"   
                                               widgetVar="dashboardAccordionVar"
                                               rendered="true"
@@ -187,6 +188,7 @@ Email: info@dpbennett.com.jm
                                     <p:tabView id="mainTabView"  
                                                rendered="#{systemManager.mainTabView.render}"
                                                value="#{systemManager.mainTabView.tabs}" 
+                                               activeIndex="#{systemManager.mainTabView.tabIndex}"
                                                var="t" 
                                                dynamic="false"
                                                widgetVar="mainTabViewVar">
@@ -248,7 +250,7 @@ Email: info@dpbennett.com.jm
                     </div>
                 </footer>
 
-                <p:poll interval="60" 
+                <p:poll interval="#{systemManager.pollInterval}" 
                         global="false"
                         onerror="PF('connectionErrorDialog').show();"
                         listener="#{systemManager.handleKeepAlive}" />
