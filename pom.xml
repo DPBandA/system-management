@@ -13,7 +13,6 @@
     <properties>
         <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <jakartaee>8.0.0</jakartaee>
         <skipTests>true</skipTests>
     </properties>
 
