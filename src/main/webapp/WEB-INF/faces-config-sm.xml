@@ -41,11 +41,7 @@
     <converter>
         <converter-id>notificationConverter</converter-id>
         <converter-class>jm.com.dpbennett.sm.converter.NotificationConverter</converter-class>
-    </converter>     
-    <converter>
-        <converter-id>activeDepartmentConverter</converter-id>
-        <converter-class>jm.com.dpbennett.hrm.converter.ActiveDepartmentConverter</converter-class>
-    </converter>
+    </converter>  
     <converter>
         <converter-id>activeClientConverter</converter-id>
         <converter-class>jm.com.dpbennett.cm.converter.ActiveClientConverter</converter-class>
