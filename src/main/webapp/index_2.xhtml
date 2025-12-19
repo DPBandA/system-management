@@ -20,28 +20,34 @@ Email: info@dpbennett.com.jm
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html
     xmlns="http://www.w3.org/1999/xhtml"
-    xmlns:h="http://java.sun.com/jsf/html" 
+    xmlns:h="http://xmlns.jcp.org/jsf/html" 
     xmlns:p="http://primefaces.org/ui"
     xmlns:ui="http://java.sun.com/jsf/facelets"
-    xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"> 
-    <h:head>
-        <ui:include src="head.xhtml" />
-        <title>Application Server</title>        
-        <script type="text/javascript" src="s/jmtsJavascript.js" />   
-        <link rel="stylesheet" href="css/main.css" />
-    </h:head>
-    <h:body>
-        <h:form>      
-            <p:outputLabel value="An unknown error occured. Please reload the page or contact the System Administrator."
-                          style="color: red;
-                          font-size: 14pt;
-                          font-weight: bold;" />
-            <br/>
-            <br/>
-            <p:commandButton value="Reload"
-                             onclick="window.location.reload();"/>
-        </h:form>
+    xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+    xmlns:f="http://java.sun.com/jsf/core"> 
 
-    </h:body>
+    <ui:composition
+        template="/ui/templates/base.xhtml"
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+        xmlns:h="http://xmlns.jcp.org/jsf/html"
+        xmlns:p="http://primefaces.org/ui">
+
+        <ui:define name="title">
+            System Management
+        </ui:define>
+
+        <ui:define name="content">
+
+            <h1>System Management Dashboard</h1>
+
+            <p:panel header="System Overview">
+                Welcome to the JMTS System Management module.
+            </p:panel>
+
+        </ui:define>
+
+    </ui:composition>
+
 </html>
 
