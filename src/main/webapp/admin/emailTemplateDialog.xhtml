@@ -17,26 +17,24 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 Email: info@dpbennett.com.jm
 -->
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:p="http://primefaces.org/ui"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:f="http://java.sun.com/jsf/core">
+<ui:composition template="/jmts-ui/templates/jmts-dialog.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets">
 
-    <h:head>
-        <ui:include src="../head.xhtml" />
-        <title>Email Template</title> 
-        <ui:include src="head.xhtml" />
-    </h:head>
+    <ui:define name="head">
+        <title>Email Template</title>
+    </ui:define>
 
-    <h:body >  
-        <ui:include src="../common/commonDialogs.xhtml"/>           
+    <ui:define name="content">
+
         <h:form id="emailTemplateDialogForm">                    
             <p:growl id="email_template_growl" life="5000" showDetail="true"/>
 
             <p:toolbar style="margin-bottom: 1px;">
-                
+
                 <p:toolbarGroup>
                     <p:commandButton value="Ok"
                                      actionListener="#{systemManager.saveSelectedEmail}"
@@ -56,7 +54,7 @@ Email: info@dpbennett.com.jm
                                   style="font-weight: bold;" /> 
 
                 </p:toolbarGroup>
-                
+
             </p:toolbar>
 
             <p:tabView style="margin-bottom: 1px;margin-bottom: 1px;" >
@@ -160,7 +158,7 @@ Email: info@dpbennett.com.jm
             </p:tabView>
 
             <p:toolbar>
-                
+
                 <p:toolbarGroup>
                     <p:commandButton value="Ok"
                                      actionListener="#{systemManager.saveSelectedEmail}"
@@ -180,8 +178,9 @@ Email: info@dpbennett.com.jm
                                   style="font-weight: bold;" /> 
 
                 </p:toolbarGroup>
-                
+
             </p:toolbar> 
         </h:form> 
-    </h:body>
-</html>
+
+    </ui:define>
+</ui:composition>

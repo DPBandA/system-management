@@ -1,5 +1,5 @@
 <!--
-System Management (SM) 
+Job Management & Tracking System (JMTS) 
 Copyright (C) 2025  D P Bennett & Associates Limited
 
 This program is free software: you can redistribute it and/or modify
@@ -17,109 +17,71 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 Email: info@dpbennett.com.jm
 -->
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html
+<ui:composition
+    template="/jmts-ui/templates/jmts-base.xhtml"
     xmlns="http://www.w3.org/1999/xhtml"
-    xmlns:h="http://xmlns.jcp.org/jsf/html" 
+    xmlns:h="http://xmlns.jcp.org/jsf/html"
     xmlns:p="http://primefaces.org/ui"
-    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
     xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
-    xmlns:f="http://java.sun.com/jsf/core"> 
+    xmlns:f="http://java.sun.com/jsf/core">
 
-    <ui:composition
-        template="/jmts-ui/templates/base.xhtml"
-        xmlns="http://www.w3.org/1999/xhtml"
-        xmlns:h="http://xmlns.jcp.org/jsf/html"
-        xmlns:p="http://primefaces.org/ui"
-        xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-        xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
-        xmlns:f="http://java.sun.com/jsf/core">
+    <ui:define name="head">        
+        <title>#{systemManager.applicationHeader}</title>
 
-        <!-- ===== HEAD ===== -->
-        <ui:define name="head">
-            <ui:include src="head.xhtml"/>
-            <link rel="shortcut icon" type="image/x-icon"
-                  href="#{systemManager.appShortcutIconURL}"/>
-            <title>System Manager</title>
-        </ui:define>
+        <script type="text/javascript" src="js/javascripts.js"/>
+        <script type="text/javascript" src="js/app.js"/>
 
-        <!-- ===== DIALOGS ===== -->
-        <ui:define name="dialogs">
-            <ui:include src="common/commonDialogs.xhtml"/>
-            <ui:include src="common/loginDialog.xhtml"/>
-            <ui:include src="common/userProfileDialog.xhtml"/>
-        </ui:define>
+        <link rel="shortcut icon" type="image/x-icon" href="#{systemManager.appShortcutIconURL}" />
+        <link rel="stylesheet" href="css/main.css"/>
+        <link rel="stylesheet" href="css/sm.css"/>
+    </ui:define>
 
-        <!-- ===== LEFT SIDEBAR ===== -->
-        <ui:define name="left">
+    <ui:define name="dialogs">
+        <ui:include src="common/commonDialogs.xhtml"/>
+        <ui:include src="common/loginDialog.xhtml"/>
+        <ui:include src="common/userProfileDialog.xhtml"/>
+    </ui:define>
 
-            <h:form id="dashboardForm">
+    <ui:define name="header">
+        <ui:include src="header.xhtml"/>
+    </ui:define>
 
-                <p:panel header="Dashboard">
+    <ui:define name="upper-divider">
+        <p:divider rendered="#{systemManager.userLoggedIn}" />
+    </ui:define>
 
-                    <p:accordionPanel
-                        value="#{systemManager.dashboard.tabs}"
-                        activeIndex="#{systemManager.dashboard.tabIndex}"
-                        var="t"
-                        widgetVar="dashboardAccordionVar">
+    <ui:define name="main-content">
 
-                        <p:ajax event="tabChange"
-                                immediate="true"
-                                process="@this"
-                                update=":mainTabViewForm"
-                                listener="#{systemManager.onDashboardTabChange}"/>
+        <p:scrollPanel mode="native">
 
-                        <p:tab title="#{t.name}">
-                            <ui:include src="dashboard/admin/generalAdminTab.xhtml"/>
-                        </p:tab>
+            <main class="flex flex-column md:flex-row flex-auto">
 
-                    </p:accordionPanel>
+                <aside class="w-full md:w-3 flex-shrink-0">
+                    <ui:include src="dashboard.xhtml"/>
+                </aside>
 
-                </p:panel>
+                <section class="w-full md:w-9">
+                    <ui:include src="mainTabView.xhtml"/>
+                </section>
 
-            </h:form>
+            </main>
 
-        </ui:define>
+            <p:scrollTop target="parent"
+                         threshold="100"
+                         styleClass="custom-scrolltop"
+                         icon="pi pi-arrow-up"/>
 
-        <!-- ===== RIGHT MAIN CONTENT ===== -->
-        <ui:define name="right">
+        </p:scrollPanel>
 
-            <h:form id="mainTabViewForm">
+    </ui:define>
 
-                <p:panel>
+    <ui:define name="lower-divider">
+        <p:divider rendered="#{systemManager.userLoggedIn}" />
+    </ui:define>
 
-                    <ui:include src="menubar.xhtml"/>
+    <ui:define name="footer">
+        <ui:include src="footer.xhtml"/>
+    </ui:define>
 
-                    <p:tabView id="mainTabView"
-                               value="#{systemManager.mainTabView.tabs}"
-                               activeIndex="#{systemManager.mainTabView.tabIndex}"
-                               var="t"
-                               widgetVar="mainTabViewVar">
-
-                        <p:ajax event="tabClose"
-                                immediate="true"
-                                process="@this"
-                                listener="#{systemManager.onMainViewTabClose}"/>
-
-                        <p:ajax event="tabChange"
-                                process="@form"
-                                update="@form"
-                                listener="#{systemManager.onMainViewTabChange}"/>
-
-                        <p:tab title="#{t.name}" closable="true">
-                            <ui:include src="admin/generalAdminTab.xhtml"/>
-                        </p:tab>
-
-                    </p:tabView>
-
-                </p:panel>
-
-            </h:form>
-
-        </ui:define>
-
-    </ui:composition>
-
-
-</html>
-
+</ui:composition>

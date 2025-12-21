@@ -17,21 +17,19 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 Email: info@dpbennett.com.jm
 -->
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:p="http://primefaces.org/ui"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:f="http://java.sun.com/jsf/core">
+<ui:composition template="/jmts-ui/templates/jmts-dialog.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets">
 
-    <h:head>
-        <ui:include src="../head.xhtml" />
-        <title>Attachment</title>    
-        <ui:include src="head.xhtml" />
-    </h:head>
+    <ui:define name="head">
+        <title>Attachment</title>
+    </ui:define>
 
-    <h:body >  
-        <ui:include src="../common/commonDialogs.xhtml"/>  
+    <ui:define name="content">
+
         <h:form enctype="multipart/form-data" id="attachmentDialogForm">        
             <p:growl id="growl" life="5000" showDetail="true"/>
 
@@ -75,9 +73,9 @@ Email: info@dpbennett.com.jm
                                  required="true"
                                  requiredMessage="Name Required"
                                  id="name" >
-                        
+
                         <f:validator validatorId="nameFieldValidator" />
-                        
+
                     </p:inputText>
 
                     <p:outputLabel value="Purpose *" style="font-weight: bold;" />
@@ -121,7 +119,7 @@ Email: info@dpbennett.com.jm
                         <f:validator validatorId="requiredFieldValidator" />
 
                     </p:inputTextarea>   
-                    <p:outputLabel value="&nbsp;&nbsp;" />
+                    <p:outputLabel value="  " />
                     <p:outputLabel id="valueCharsRemaining" />
 
                 </h:panelGrid>
@@ -152,5 +150,6 @@ Email: info@dpbennett.com.jm
 
             </p:toolbar>
         </h:form> 
-    </h:body>
-</html>
+
+    </ui:define>
+</ui:composition>

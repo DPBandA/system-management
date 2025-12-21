@@ -1,0 +1,125 @@
+<!--
+System Management (SM) 
+Copyright (C) 2025  D P Bennett & Associates Limited
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU Affero General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Affero General Public License for more details.
+
+You should have received a copy of the GNU Affero General Public License
+along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+Email: info@dpbennett.com.jm
+-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://xmlns.jcp.org/jsf/html" 
+    xmlns:p="http://primefaces.org/ui"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+    xmlns:f="http://java.sun.com/jsf/core"> 
+
+    <ui:composition
+        template="/jmts-ui/templates/base.xhtml"
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:h="http://xmlns.jcp.org/jsf/html"
+        xmlns:p="http://primefaces.org/ui"
+        xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+        xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+        xmlns:f="http://java.sun.com/jsf/core">
+
+        <!-- ===== HEAD ===== -->
+        <ui:define name="head">
+            <ui:include src="head.xhtml"/>
+            <link rel="shortcut icon" type="image/x-icon"
+                  href="#{systemManager.appShortcutIconURL}"/>
+            <title>System Manager</title>
+        </ui:define>
+
+        <!-- ===== DIALOGS ===== -->
+        <ui:define name="dialogs">
+            <ui:include src="common/commonDialogs.xhtml"/>
+            <ui:include src="common/loginDialog.xhtml"/>
+            <ui:include src="common/userProfileDialog.xhtml"/>
+        </ui:define>
+
+        <!-- ===== LEFT SIDEBAR ===== -->
+        <ui:define name="left">
+
+            <h:form id="dashboardForm">
+
+                <p:panel header="Dashboard">
+
+                    <p:accordionPanel
+                        value="#{systemManager.dashboard.tabs}"
+                        activeIndex="#{systemManager.dashboard.tabIndex}"
+                        var="t"
+                        widgetVar="dashboardAccordionVar">
+
+                        <p:ajax event="tabChange"
+                                immediate="true"
+                                process="@this"
+                                update=":mainTabViewForm"
+                                listener="#{systemManager.onDashboardTabChange}"/>
+
+                        <p:tab title="#{t.name}">
+                            <ui:include src="dashboard/admin/generalAdminTab.xhtml"/>
+                        </p:tab>
+
+                    </p:accordionPanel>
+
+                </p:panel>
+
+            </h:form>
+
+        </ui:define>
+
+        <!-- ===== RIGHT MAIN CONTENT ===== -->
+        <ui:define name="right">
+
+            <h:form id="mainTabViewForm">
+
+                <p:panel>
+
+                    <ui:include src="menubar.xhtml"/>
+
+                    <p:tabView id="mainTabView"
+                               value="#{systemManager.mainTabView.tabs}"
+                               activeIndex="#{systemManager.mainTabView.tabIndex}"
+                               var="t"
+                               widgetVar="mainTabViewVar">
+
+                        <p:ajax event="tabClose"
+                                immediate="true"
+                                process="@this"
+                                listener="#{systemManager.onMainViewTabClose}"/>
+
+                        <p:ajax event="tabChange"
+                                process="@form"
+                                update="@form"
+                                listener="#{systemManager.onMainViewTabChange}"/>
+
+                        <p:tab title="#{t.name}" closable="true">
+                            <ui:include src="admin/generalAdminTab.xhtml"/>
+                        </p:tab>
+
+                    </p:tabView>
+
+                </p:panel>
+
+            </h:form>
+
+        </ui:define>
+
+    </ui:composition>
+
+
+</html>
+

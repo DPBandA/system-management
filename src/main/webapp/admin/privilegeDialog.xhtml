@@ -17,22 +17,18 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 Email: info@dpbennett.com.jm
 -->
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:p="http://primefaces.org/ui"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:f="http://java.sun.com/jsf/core">
+<ui:composition template="/jmts-ui/templates/jmts-dialog.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets">
 
-    <h:head>
-        <ui:include src="../head.xhtml" />
+    <ui:define name="head">
         <title>Privilege</title>
-        <ui:include src="head.xhtml" />
-    </h:head>
+    </ui:define>
 
-    <h:body > 
-
-        <ui:include src="../common/commonDialogs.xhtml"/> 
+    <ui:define name="content">
 
         <h:form id="privilegeDialogForm">    
 
@@ -78,5 +74,6 @@ Email: info@dpbennett.com.jm
             <ui:include src="privilegeDialogToolbar.xhtml" /> 
 
         </h:form> 
-    </h:body>
-</html>
+
+    </ui:define>
+</ui:composition>
