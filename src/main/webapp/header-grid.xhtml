@@ -27,7 +27,7 @@ Email: info@dpbennett.com.jm
 
     <div class="col-12 col-nogutter">
         <div class="grid">
-            <div class="col-12 md:col-4">
+            <p:outputPanel styleClass="col-12 md:col-4">
                 <h:panelGroup style="float: left;margin-right: 10px;" >
                     <p:commandButton styleClass="ui-button-flat hamburger hamburger-icon"
                                      rendered="true"
@@ -40,7 +40,8 @@ Email: info@dpbennett.com.jm
                                     height="#{systemManager.logoURLImageHeight}" 
                                     width="#{systemManager.logoURLImageWidth}"/>
                 </h:panelGroup>
-                <h:panelGrid columns="1" cellspacing="0" >   
+                <h:panelGrid columns="1" cellspacing="0" 
+                             rendered="#{!systemManager.user.renderMobileUI}" >   
 
                     <p:outputLabel value="#{systemManager.applicationHeader}"
                                    class="header-text" />
@@ -49,15 +50,16 @@ Email: info@dpbennett.com.jm
                                    class="subheader-text" />  
 
                 </h:panelGrid>
-            </div>    
-            <div class="col-12 md:col-4">
-                <p:outputPanel style="text-align: center;">
-                    <h:outputText value="#{systemManager.lastSystemNotificationContent}"                                                   
+            </p:outputPanel>    
+            <p:outputPanel style="text-align: center;" 
+                           styleClass="col-12 md:col-4">
+                
+                    <h:outputText value="#{systemManager.lastSystemNotificationContent}"                                  
                                   style="font-size: 1em;"
                                   escape="false" />
-                </p:outputPanel>                          
-            </div>  
-            <div class="col-12 md:col-4">
+                                      
+            </p:outputPanel>  
+            <p:outputPanel styleClass="col-12 md:col-4'">
                 <h:panelGroup style="float: right;" >
 
                     <p:badge value="#{systemManager.sizeOfActiveNotifications}" 
@@ -112,12 +114,13 @@ Email: info@dpbennett.com.jm
 
 
                 </h:panelGroup>
-            </div>
+            </p:outputPanel>
         </div>
     </div>     
-    <div class="col-12 col-nogutter">
+    <p:outputPanel styleClass="col-12 col-nogutter" 
+                   rendered="#{!systemManager.user.renderMobileUI}">
         <ui:include src="menubar.xhtml" />
-    </div>
+    </p:outputPanel>
 
 
 </html>

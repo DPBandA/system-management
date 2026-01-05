@@ -89,7 +89,7 @@ Email: info@dpbennett.com.jm
             <h:outputText value="Search Results (found: #{documentManager.numberOfPosts})" />
         </f:facet>
         
-        <p:column style="width: 30px;">
+        <p:column style="width: 30px;" rendered="#{!systemManager.user.renderMobileUI}">
             <f:facet name="header">
                 <p:outputLabel value="Active"/>
             </f:facet>           

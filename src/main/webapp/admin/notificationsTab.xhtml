@@ -67,7 +67,7 @@ Email: info@dpbennett.com.jm
                  paginatorTemplate="{FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
                  value="#{systemManager.foundNotifications}">
 
-        <p:column style="width: 30px;">
+        <p:column style="width: 30px;" rendered="#{!systemManager.user.renderMobileUI}">
             <f:facet name="header">
                 <p:outputLabel value="Active"/>
             </f:facet>           

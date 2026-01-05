@@ -89,7 +89,7 @@ Email: info@dpbennett.com.jm
                  paginatorTemplate="{FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
                  value="#{systemManager.foundUsers}">
         
-        <p:column style="width: 30px;">
+        <p:column style="width: 30px;" rendered="#{!systemManager.user.renderMobileUI}">
             <f:facet name="header">
                 <p:outputLabel value="Active"/>
             </f:facet>           
@@ -99,7 +99,7 @@ Email: info@dpbennett.com.jm
                 value="#{user.active}" />
         </p:column>
         
-        <p:column style="width: 60px;">
+        <p:column style="width: 60px;" rendered="#{!systemManager.user.renderMobileUI}">
             <f:facet name="header">
                 <p:outputLabel value="Authenticate"/>
             </f:facet>           

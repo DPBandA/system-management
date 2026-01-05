@@ -89,7 +89,7 @@ Email: info@dpbennett.com.jm
 
         <p:ajax event="cellEdit" listener="#{systemManager.onLDAPCellEdit}" />
         
-        <p:column style="width: 30px;">
+        <p:column style="width: 30px;" rendered="#{!systemManager.user.renderMobileUI}">
             <f:facet name="header">
                 <p:outputLabel value="Active"/>
             </f:facet>           

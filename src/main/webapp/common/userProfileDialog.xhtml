@@ -157,6 +157,13 @@ Email: info@dpbennett.com.jm
                                         process="@this"/>
 
                             </p:selectOneMenu>
+                            
+                            <p:outputLabel value="Mobile display" 
+                                           style="font-weight: bold;margin-right: 10px;"
+                                           for="renderMobileUI"/>
+                            <p:toggleSwitch value="#{systemManager.user.renderMobileUI}" 
+                                            id="renderMobileUI"
+                                            onIcon="pi pi-check" offIcon="pi pi-times" />
                         </p:panelGrid>   
                     </p:panel>
 
