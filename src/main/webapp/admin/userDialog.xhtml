@@ -1,6 +1,6 @@
 <!--
 System Management (SM) 
-Copyright (C) 2025  D P Bennett & Associates Limited
+Copyright (C) 2026  D P Bennett & Associates Limited
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU Affero General Public License as published by
@@ -224,7 +224,6 @@ Email: info@dpbennett.com.jm
                                        style="font-weight: bold;margin-right: 10px;" />
                         <p:password id="newPwd" 
                                     toggleMask="true"
-                                    redisplay="true"
                                     validator="passwordValidator"
                                     value="#{systemManager.selectedUser.newPassword}" />
 
@@ -232,7 +231,6 @@ Email: info@dpbennett.com.jm
                                        style="font-weight: bold;margin-right: 10px;" />
                         <p:password id="confirmedPwd" 
                                     toggleMask="true"
-                                    redisplay="true"
                                     validator="passwordValidator"
                                     value="#{systemManager.selectedUser.confirmedNewPassword}" />
                     </h:panelGrid>  

@@ -53,11 +53,11 @@ Email: info@dpbennett.com.jm
             </p:outputPanel>    
             <p:outputPanel style="text-align: center;" 
                            styleClass="col-12 md:col-4">
-                
-                    <h:outputText value="#{systemManager.lastSystemNotificationContent}"                                  
-                                  style="font-size: 1em;"
-                                  escape="false" />
-                                      
+
+                <h:outputText value="#{systemManager.lastSystemNotificationContent}"                                  
+                              style="font-size: 1em;"
+                              escape="false" />
+
             </p:outputPanel>  
             <p:outputPanel styleClass="col-12 md:col-4'">
                 <h:panelGroup style="float: right;" >
@@ -94,17 +94,19 @@ Email: info@dpbennett.com.jm
                         </p:overlayPanel>
 
                     </p:badge>
-                    <p:spacer width="30"/>                                   
+                    <p:spacer width="30"/>                            
 
-
-                    <p:commandButton actionListener="#{systemManager.viewUserProfile}"                                            
-                                     update=":userProfileDialogForm"
-                                     oncomplete="PF('userProfileDialog').show();"
+                    <p:commandButton actionListener="#{systemManager.editUserProfile}"   
+                                     title="View or edit user profile" 
                                      icon="pi pi-user"
-                                     title="Profile"
                                      style="margin-right: 10px;"
                                      styleClass="rounded-button"
-                                     process="@this"/>  
+                                     process="@this">
+                        
+                        <p:ajax event="dialogReturn" 
+                                oncomplete="window.location.reload();"/>
+
+                    </p:commandButton>  
                     <p:commandButton actionListener="#{systemManager.logout}"                                             
                                      icon="pi pi-sign-out"
                                      styleClass="rounded-button"
