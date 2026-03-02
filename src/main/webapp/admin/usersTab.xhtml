@@ -88,26 +88,29 @@ Email: info@dpbennett.com.jm
                  style="margin-top: 5px;"
                  paginatorTemplate="{FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
                  value="#{systemManager.foundUsers}">
-        
-        <p:column style="width: 30px;" rendered="#{!systemManager.user.renderMobileUI}">
-            <f:facet name="header">
-                <p:outputLabel value="Active"/>
-            </f:facet>           
-            <p:selectBooleanCheckbox 
-                style="display: block;text-align: center;"
-                disabled="true"
-                value="#{user.active}" />
-        </p:column>
-        
-        <p:column style="width: 60px;" rendered="#{!systemManager.user.renderMobileUI}">
-            <f:facet name="header">
-                <p:outputLabel value="Authenticate"/>
-            </f:facet>           
-            <p:selectBooleanCheckbox 
-                style="display: block;text-align: center;"
-                disabled="true"
-                value="#{user.authenticate}" />
-        </p:column>
+
+        <ui:remove>
+            <p:column style="width: 30px;" 
+                      rendered="#{!systemManager.user.renderMobileUI}">
+                <f:facet name="header">
+                    <p:outputLabel value="Active"/>
+                </f:facet>           
+                <p:selectBooleanCheckbox 
+                    style="display: block;text-align: center;"
+                    disabled="true"
+                    value="#{user.active}" />
+            </p:column>
+
+            <p:column style="width: 60px;" rendered="#{!systemManager.user.renderMobileUI}">
+                <f:facet name="header">
+                    <p:outputLabel value="Authenticate"/>
+                </f:facet>           
+                <p:selectBooleanCheckbox 
+                    style="display: block;text-align: center;"
+                    disabled="true"
+                    value="#{user.authenticate}" />
+            </p:column>
+        </ui:remove>
 
         <p:column>
             <f:facet name="header">
@@ -115,21 +118,37 @@ Email: info@dpbennett.com.jm
             </f:facet>
             <p:outputLabel value="#{user.username}" />
         </p:column> 
-        
+
+        <ui:remove>
+            <p:column>
+                <f:facet name="header">
+                    <p:outputLabel value="Firstname"/>
+                </f:facet>
+                <p:outputLabel value="#{user.employeeFirstname}"/>
+            </p:column>
+
+            <p:column>
+                <f:facet name="header">
+                    <p:outputLabel value="Lastname"/>
+                </f:facet>
+                <p:outputLabel value="#{user.employeeLastname}"/>
+            </p:column>
+        </ui:remove>
+
         <p:column>
             <f:facet name="header">
-                <p:outputLabel value="Firstname"/>
+                <p:outputLabel value="Employee"/>
             </f:facet>
-            <p:outputLabel value="#{user.employeeFirstname}"/>
+            <p:outputLabel value="#{user.employee}"/>
         </p:column>
         
         <p:column>
             <f:facet name="header">
-                <p:outputLabel value="Lastname"/>
+                <p:outputLabel value="Department"/>
             </f:facet>
-            <p:outputLabel value="#{user.employeeLastname}"/>
+            <p:outputLabel value="#{user.employee.department}"/>
         </p:column>
-        
+
         <p:column>
             <f:facet name="header">
                 <p:outputLabel value="Modules"/>
@@ -139,11 +158,18 @@ Email: info@dpbennett.com.jm
         
         <p:column>
             <f:facet name="header">
+                <p:outputLabel value="Privileges"/>
+            </f:facet>
+            <p:outputLabel value="#{user.allPrivileges}"/>
+        </p:column>
+
+        <p:column>
+            <f:facet name="header">
                 <p:outputLabel value="Activity"/>
             </f:facet>
             <p:outputLabel value="#{user.activity}" />
         </p:column>  
-        
+
         <p:column>
             <p:commandButton title="View or edit user"  
                              actionListener="#{systemManager.editUser}"
