@@ -27,6 +27,10 @@ Email: info@dpbennett.com.jm
     xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
     xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
 
+    <f:metadata>
+        <f:viewAction action="#{systemManager.reInitUI}" onPostback="false"/>
+    </f:metadata>
+
     <ui:define name="head">        
         <title>#{systemManager.applicationHeader}</title>
 
