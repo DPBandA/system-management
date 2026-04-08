@@ -76,7 +76,7 @@ Email: info@dpbennett.com.jm
                 disabled="true"
                 value="#{notification.active}" />
         </p:column>
-        
+
         <p:column>
             <f:facet name="header">
                 <p:outputLabel value="Name"/>
@@ -106,29 +106,37 @@ Email: info@dpbennett.com.jm
         </p:column>
 
         <p:column>
-            <p:commandButton title="View or edit notification"   
-                             actionListener="#{systemManager.editNotification}"                            
-                             global="true"
-                             process="@this"
-                             icon="pi pi-pencil">
 
-                <p:ajax event="dialogReturn" 
-                        update=":mainTabViewForm:mainTabView:centerTabView:notificationsTable,headerForm:notificationBadge" />
+            <p:menuButton icon="pi pi-pencil" 
+                          title="Edit or delete">
 
-                <f:setPropertyActionListener value="#{notification}"                                                                    
-                                             target="#{systemManager.selectedNotification}" />
-            </p:commandButton>           
-        </p:column>
+                <p:menuitem value="View or edit"                                  
+                            icon="pi pi-pencil" 
+                            actionListener="#{systemManager.editNotification}"                            
+                            process="@this" >      
 
-        <p:column>
-            <p:commandButton title="Delete notification"   
-                             oncomplete="PF('deleteNotificationDialog').show()"  
-                             process="@this"
-                             icon="pi pi-trash">
+                    <p:ajax event="dialogReturn" 
+                            update=":mainTabViewForm:mainTabView:centerTabView:notificationsTable,headerForm:notificationBadge" />
 
-                <f:setPropertyActionListener value="#{notification}"                                                                    
-                                             target="#{systemManager.selectedNotification}" />
-            </p:commandButton>           
+                    <f:setPropertyActionListener value="#{notification}"                                                                    
+                                                 target="#{systemManager.selectedNotification}" />
+
+                </p:menuitem>       
+
+                <p:menuitem
+                    value="Delete"
+                    icon="pi pi-trash" 
+                    oncomplete="PF('deleteNotificationDialog').show()" 
+                    process="@this" >
+
+                    <f:setPropertyActionListener value="#{notification}"                                                                    
+                                                 target="#{systemManager.selectedNotification}" />
+
+                
+                </p:menuitem>
+
+            </p:menuButton>   
+
         </p:column>
 
     </p:dataTable>   
