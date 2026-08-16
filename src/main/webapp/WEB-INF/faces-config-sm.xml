@@ -14,67 +14,7 @@
             org.primefaces.application.DialogViewHandler
         </view-handler>
     </application>  
-    <converter>
-        <converter-id>activePrivilegeConverter</converter-id>
-        <converter-class>jm.com.dpbennett.sm.converter.ActivePrivilegeConverter</converter-class>
-    </converter>
-    <converter>
-        <converter-id>activeModuleConverter</converter-id>
-        <converter-class>jm.com.dpbennett.sm.converter.ActiveModuleConverter</converter-class>
-    </converter>
-    <converter>
-        <converter-id>activeEmployeeConverter</converter-id>
-        <converter-class>jm.com.dpbennett.hrm.converter.ActiveEmployeeConverter</converter-class>
-    </converter>
-    <converter>
-        <converter-id>documentTypeConverter</converter-id>
-        <converter-class>jm.com.dpbennett.sm.converter.DocumentTypeConverter</converter-class>
-    </converter>
-    <converter>
-        <converter-id>countryConverter</converter-id>
-        <converter-class>jm.com.dpbennett.sm.converter.CountryConverter</converter-class>
-    </converter> 
-    <converter>
-        <converter-id>activeCategoryConverter</converter-id>
-        <converter-class>jm.com.dpbennett.sm.converter.ActiveCategoryConverter</converter-class>
-    </converter> 
-    <converter>
-        <converter-id>notificationConverter</converter-id>
-        <converter-class>jm.com.dpbennett.sm.converter.NotificationConverter</converter-class>
-    </converter>  
-    <converter>
-        <converter-id>activeClientConverter</converter-id>
-        <converter-class>jm.com.dpbennett.cm.converter.ActiveClientConverter</converter-class>
-    </converter>
-    <converter>
-        <converter-id>accPacCustomerConverter</converter-id>
-        <converter-class>jm.com.dpbennett.fm.converter.AccPacCustomerConverter</converter-class>
-    </converter>    
-    <converter>
-        <converter-id>accountingCodeConverter</converter-id>
-        <converter-class>jm.com.dpbennett.fm.converter.AccountingCodeConverter</converter-class>
-    </converter>
-    <converter>
-        <converter-id>taxConverter</converter-id>
-        <converter-class>jm.com.dpbennett.fm.converter.TaxConverter</converter-class>
-    </converter>
-    <converter>
-        <converter-id>discountConverter</converter-id>
-        <converter-class>jm.com.dpbennett.fm.converter.DiscountConverter</converter-class>
-    </converter>
-    <converter>
-        <converter-id>serviceConverter</converter-id>
-        <converter-class>jm.com.dpbennett.fm.converter.ServiceConverter</converter-class>
-    </converter>  
-    <converter>
-        <converter-id>activeMarketProductConverter</converter-id>
-        <converter-class>jm.com.dpbennett.fm.converter.ActiveMarketProductConverter</converter-class>
-    </converter>
-    <converter>
-        <converter-id>activeDocumentStandardConverter</converter-id>
-        <converter-class>jm.com.dpbennett.sc.converter.ActiveDocumentStandardConverter</converter-class>
-    </converter>
-    
+     
     <validator>
         <validator-id>jobNumberValidator</validator-id>
         <validator-class>jm.com.dpbennett.sm.validator.JobNumberValidator</validator-class>
