@@ -1,0 +1,109 @@
+<!--
+System Management (SM) 
+Copyright (C) 2026  D P Bennett & Associates Limited
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU Affero General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Affero General Public License for more details.
+
+You should have received a copy of the GNU Affero General Public License
+along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+Email: info@dpbennett.com.jm
+-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:p="http://primefaces.org/ui"
+    xmlns:h="http://xmlns.jcp.org/jsf/html"
+    xmlns:f="http://xmlns.jcp.org/jsf/core"
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"   
+    xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+    xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+
+    <p:toolbar style="margin-bottom: 1px;">
+
+        <p:toolbarGroup align="left" >
+
+            <p:menuButton value="New" >  
+
+                <p:menuitem value="User"
+                            title="Create new user"
+                            icon="pi pi-plus"
+                            actionListener="#{systemManager.createNewUser}" 
+                            process="@this" >
+
+                    <p:ajax event="dialogReturn" 
+                            listener="#{systemManager.doUserSearch}"
+                            update=":mainTabViewForm:mainTabView:centerTabView:usersTable"/>
+
+                </p:menuitem>  
+
+                <p:menuitem value="Module"
+                            title="Create new module"
+                            icon="pi pi-plus"
+                            actionListener="#{systemManager.createNewModule}" 
+                            process="@this" >
+
+                    <p:ajax event="dialogReturn" 
+                            listener="#{systemManager.doModuleSearch}"
+                            update=":mainTabViewForm:mainTabView:centerTabView:modulesTable" />
+
+                </p:menuitem> 
+
+                <p:menuitem value="Privilege"
+                            title="Create new privilege"
+                            icon="pi pi-plus"
+                            actionListener="#{systemManager.createNewPrivilege}" 
+                            process="@this" >
+
+                    <p:ajax event="dialogReturn" 
+                            listener="#{systemManager.doPrivilegeSearch}"
+                            update=":mainTabViewForm:mainTabView:centerTabView:privilegesTable" />
+
+                </p:menuitem>
+
+                <p:menuitem value="Setting"
+                            title="Create new setting"
+                            icon="pi pi-plus"
+                            actionListener="#{systemManager.createNewSystemOption()}" 
+                            process="@this" >
+
+                    <p:ajax event="dialogReturn" 
+                            listener="#{systemManager.doSystemSettingSearch}"
+                            update=":mainTabViewForm:mainTabView:centerTabView:systemOptionsTable"/>
+
+                </p:menuitem>
+
+            </p:menuButton>    
+
+        </p:toolbarGroup>
+
+        <p:toolbarGroup align="right">            
+            <p:menuButton value="Tools" >  
+
+                <p:menuitem 
+                    actionListener="#{systemManager.mainTabView.openTab('System Administration')}" 
+                    title="System administration" 
+                    rendered="#{systemManager.user.hasModule('systemManager')}"
+                    value="System Administration" 
+                    icon="pi pi-server" /> 
+
+            </p:menuButton>         
+        </p:toolbarGroup>
+    </p:toolbar>
+
+    <ui:remove>
+        <ui:include src="search.xhtml"/>   
+    </ui:remove>
+
+
+</html>
+
+

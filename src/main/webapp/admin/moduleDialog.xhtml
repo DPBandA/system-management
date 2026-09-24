@@ -1,0 +1,175 @@
+<!--
+System Management (SM) 
+Copyright (C) 2026  D P Bennett & Associates Limited
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU Affero General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Affero General Public License for more details.
+
+You should have received a copy of the GNU Affero General Public License
+along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+Email: info@dpbennett.com.jm
+-->
+<ui:composition
+    template="/jmts-ui/templates/jmts-dialog.xhtml"
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:p="http://primefaces.org/ui"
+    xmlns:h="http://xmlns.jcp.org/jsf/html"
+    xmlns:f="http://xmlns.jcp.org/jsf/core"
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"   
+    xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+    xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+
+    <ui:define name="head">
+        <title>Module</title>
+    </ui:define>
+
+    <ui:define name="content">
+        
+        <ui:include src="../common/commonDialogs.xhtml"/> 
+
+        <h:form id="moduleDialogForm">    
+
+            <p:growl id="module_growl" life="5000" showDetail="true"/>
+
+            <ui:include src="moduleDialogToolbar.xhtml" /> 
+
+            <p:panel style="margin-bottom: 1px;margin-top: 1px;">
+                <h:panelGrid columns="2" cellpadding="5" >
+
+                    <p:outputLabel value="Active *"                                    
+                                   for="activeModule" 
+                                   style="font-weight: bold;" /> 
+                    <p:selectBooleanCheckbox id="activeModule" 
+                                             value="#{systemManager.selectedModule.active}" >
+
+                        <p:ajax event="change"                                                       
+                                process="@this"/>
+
+                    </p:selectBooleanCheckbox>
+
+                    <p:outputLabel value="Name" for="moduleName" style="font-weight: bold;"/>
+                    <p:inputText id="moduleName"
+                                 value="#{systemManager.selectedModule.name}"  
+                                 required="true"
+                                 requiredMessage="Name Required"
+                                 validator="nameFieldValidator" >       
+
+                        <p:ajax event="change"                                                       
+                                process="@this"/>
+
+                    </p:inputText>
+
+                    <p:outputLabel value="Dashboard title" for="dashboardTitle" style="font-weight: bold;"/>
+                    <p:inputText id="dashboardTitle"
+                                 value="#{systemManager.selectedModule.dashboardTitle}"  
+                                 required="true"
+                                 requiredMessage="Title Required"
+                                 validatorMessage="A valid title is required"
+                                 validator="requiredFieldValidator" >       
+
+                        <p:ajax event="change"                                                       
+                                process="@this"/>
+
+                    </p:inputText>
+
+                    <p:outputLabel value="Main view title" for="mainViewTitle" 
+                                   style="font-weight: bold;"/>
+                    <p:inputText id="mainViewTitle"
+                                 value="#{systemManager.selectedModule.mainViewTitle}"  
+                                 required="true"
+                                 requiredMessage="Main View Title Required"
+                                 validatorMessage="A valid main view title is required"
+                                 validator="requiredFieldValidator" >       
+
+                        <p:ajax event="change"                                                       
+                                process="@this"/>
+
+                    </p:inputText>
+
+                    <p:outputLabel value="Description" for="description" style="font-weight: bold;"/>       
+                    <p:inputTextarea  value="#{systemManager.selectedModule.description}" 
+                                      id="description"
+                                      counter="valueCharsRemaining"
+                                      counterTemplate="{0} characters remaining."
+                                      maxlength="250"
+                                      rows="3"
+                                      required="true"
+                                      requiredMessage="Description Required"
+                                      autoResize="false"
+                                      style="width:100%;" >
+
+                        <f:validator validatorId="requiredFieldValidator" />
+
+                    </p:inputTextarea>
+                    <p:outputLabel value="  " />
+                    <p:outputLabel id="valueCharsRemaining" />
+                </h:panelGrid>
+            </p:panel>
+
+            <p:tabView id="privileges">
+                <p:tab title="Privileges">
+                    <p:toolbar>
+                        <p:toolbarGroup align="left" >  
+                            <p:commandButton title="Edit privilege list"                                  
+                                             value="Add/remove"
+                                             actionListener="#{systemManager.addModulePrivileges}"
+                                             update=":moduleDialogForm:module_growl"                                                
+                                             global="true"
+                                             process="@this"
+                                             icon="pi pi-pencil">
+
+                                <p:ajax event="dialogReturn" 
+                                        listener="#{systemManager.addModulePrivilegesDialogReturn}"
+                                        update="privilegesTable"/>
+
+                            </p:commandButton> 
+                        </p:toolbarGroup>  
+
+                    </p:toolbar> 
+
+                    <p:dataTable var="privilege"                                  
+                                 id="privilegesTable"                                 
+                                 value="#{systemManager.selectedModule.privileges}">
+
+                        <p:column>
+                            <h:outputText value="#{privilege.description}"/>
+                        </p:column>
+
+                    </p:dataTable>
+
+                    <p:toolbar>
+                        <p:toolbarGroup align="left" >  
+                            <p:commandButton title="Edit privilege list"                                  
+                                             value="Add/remove"
+                                             actionListener="#{systemManager.addModulePrivileges}"
+                                             update=":moduleDialogForm:module_growl"                                                
+                                             global="true"
+                                             process="@this"
+                                             icon="pi pi-pencil">
+
+                                <p:ajax event="dialogReturn" 
+                                        listener="#{systemManager.addModulePrivilegesDialogReturn}"
+                                        update="privilegesTable"/>
+
+                            </p:commandButton> 
+                        </p:toolbarGroup>                     
+                    </p:toolbar>
+                </p:tab>                           
+
+            </p:tabView>
+
+            <ui:include src="moduleDialogToolbar.xhtml" /> 
+
+        </h:form> 
+
+    </ui:define>
+    
+</ui:composition>

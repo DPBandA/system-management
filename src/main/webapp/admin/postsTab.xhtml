@@ -1,0 +1,158 @@
+<!--
+Document Management 
+Copyright (C) 2026  D P Bennett & Associates Limited
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU Affero General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Affero General Public License for more details.
+
+You should have received a copy of the GNU Affero General Public License
+along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+Email: info@dpbennett.com.jm
+-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:p="http://primefaces.org/ui"
+    xmlns:h="http://xmlns.jcp.org/jsf/html"
+    xmlns:f="http://xmlns.jcp.org/jsf/core"
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"   
+    xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+    xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+
+    <p:toolbar>
+        <p:toolbarGroup align="left" >  
+
+            <p:commandButton 
+                value="New"
+                icon="pi pi-plus" 
+                actionListener="#{documentManager.createNewPost}"                                            
+                process="@this"
+                title="Create a new post" >
+
+                <p:ajax event="dialogReturn" 
+                        listener="#{documentManager.doPostSearch}"
+                        update=":mainTabViewForm:mainTabView:centerTabView:postsTable,:headerForm:growl3"/>
+
+            </p:commandButton>
+            <p:spacer width="20" />
+            <h:panelGroup>
+                <p:inputText id="postSearchText" 
+                             placeholder="Enter search text"
+                             value="#{documentManager.postSearchText}" />
+                <p:commandButton id="postSearchButton"
+                                 class="search-button"   
+                                 actionListener="#{documentManager.doPostSearch}"
+                                 update=":mainTabViewForm:mainTabView:centerTabView:postsTable"
+                                 icon="pi pi-search"
+                                 process="@form" />
+            </h:panelGroup>
+        </p:toolbarGroup>
+
+        <p:toolbarGroup align="right" >
+            <h:outputText value="Active posts only" />
+            <p:spacer height="0px" width="5px"/>
+            <h:panelGroup>
+                <p:selectBooleanCheckbox style="vertical-align: middle"
+                                         id="isActivePostsOnly"
+                                         value="#{documentManager.isActivePostsOnly}" >
+                    <p:ajax  update=":mainTabViewForm:mainTabView:centerTabView:postsTable"
+                             listener="#{documentManager.doPostSearch}"
+                             event="change"                                      
+                             process="@this"/>
+                </p:selectBooleanCheckbox>            
+                <p:tooltip for="isActivePostsOnly" value="Check to search for activate posts only" 
+                           showEffect="fade" hideEffect="fade" />
+                <p:spacer width="15" />                
+            </h:panelGroup>
+        </p:toolbarGroup>
+    </p:toolbar>
+    <p:dataTable id="postsTable"
+                 var="post"
+                 style="margin-bottom: 1px;margin-top: 1px;"
+                 editable="false" 
+                 editMode="cell"
+                 paginator="true"                                 
+                 rows="15"
+                 reflow="true"
+                 paginatorTemplate="{FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
+                 value="#{documentManager.foundPosts}">                        
+
+        <f:facet name="header">
+            <h:outputText value="Search Results (found: #{documentManager.numberOfPosts})" />
+        </f:facet>
+        
+        <p:column style="width: 30px;" rendered="#{!systemManager.user.renderMobileUI}">
+            <f:facet name="header">
+                <p:outputLabel value="Active"/>
+            </f:facet>           
+            <p:selectBooleanCheckbox 
+                style="display: block;text-align: center;"
+                disabled="true"
+                value="#{post.active}" />
+        </p:column>
+
+        <p:column sortBy="#{post.name}">
+            <f:facet name="header">
+                <h:outputText value="Name"/>
+            </f:facet>
+            <h:outputText value="#{post.name}" />
+        </p:column>
+
+        <p:column sortBy="#{post.description}">
+            <f:facet name="header">
+                <h:outputText value="Description"/>
+            </f:facet>
+            <h:outputText value="#{post.description}" />
+        </p:column>
+
+        <p:column sortBy="#{post.url}">
+            <f:facet name="header">
+                <h:outputText value="URL"/>
+            </f:facet>
+            <h:outputText value="#{post.url}" />
+        </p:column>
+
+        <p:column>
+            <p:commandButton icon="pi pi-pencil"
+                             actionListener="#{documentManager.editSelectedPost}"
+                             process="@this"
+                             title="View or edit this post's detail">
+
+                <f:setPropertyActionListener value="#{post}" 
+                                             target="#{documentManager.selectedPost}" />
+
+                <p:ajax event="dialogReturn" 
+                        listener="#{documentManager.doPostSearch}"
+                        update=":mainTabViewForm:mainTabView:centerTabView:postsTable"/>
+
+            </p:commandButton>
+        </p:column>
+    </p:dataTable>
+    <p:toolbar>
+        <p:toolbarGroup align="left" >  
+
+            <p:commandButton 
+                value="New"
+                icon="pi pi-plus" 
+                actionListener="#{documentManager.createNewPost}"                                            
+                process="@this"
+                title="Create a new post" >
+
+                <p:ajax event="dialogReturn" 
+                        listener="#{documentManager.doPostSearch}"
+                        update=":mainTabViewForm:mainTabView:centerTabView:postsTable"/>
+
+            </p:commandButton>            
+        </p:toolbarGroup>
+    </p:toolbar>
+
+</html>
+
