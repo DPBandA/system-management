@@ -36,6 +36,8 @@ Email: info@dpbennett.com.jm
         <ui:include src="../common/commonDialogs.xhtml"/> 
 
         <h:form id="userProfileDialogForm">
+            
+            <p:growl id="growl" life="5000" showDetail="true"/>
 
             <p:toolbar>
                 <p:toolbarGroup align="left" >
@@ -120,6 +122,7 @@ Email: info@dpbennett.com.jm
                     <p:divider />
                     <p:commandButton value="Change password" 
                                      title="Save changed password"
+                                     update=":userProfileDialogForm:growl"
                                      process="@form"
                                      actionListener="#{systemManager.saveUserSecurityProfile}" />                    
 
