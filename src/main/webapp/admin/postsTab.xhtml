@@ -49,6 +49,7 @@ Email: info@dpbennett.com.jm
                              value="#{documentManager.postSearchText}" />
                 <p:commandButton id="postSearchButton"
                                  class="search-button"   
+                                 style="margin-top: 5px;"
                                  actionListener="#{documentManager.doPostSearch}"
                                  update=":mainTabViewForm:mainTabView:centerTabView:postsTable"
                                  icon="pi pi-search"
@@ -60,7 +61,7 @@ Email: info@dpbennett.com.jm
             <h:outputText value="Active posts only" />
             <p:spacer height="0px" width="5px"/>
             <h:panelGroup>
-                <p:selectBooleanCheckbox style="vertical-align: middle"
+                <p:selectBooleanCheckbox style="vertical-align: middle;margin-top: 5px;"
                                          id="isActivePostsOnly"
                                          value="#{documentManager.isActivePostsOnly}" >
                     <p:ajax  update=":mainTabViewForm:mainTabView:centerTabView:postsTable"

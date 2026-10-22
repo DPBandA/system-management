@@ -45,7 +45,8 @@ Email: info@dpbennett.com.jm
                 <p:inputText value="#{systemManager.ldapSearchText}"
                              placeholder="Enter search text" />
                 <p:commandButton id="ldapSearchButton"
-                                 class="search-button"   
+                                 class="search-button"  
+                                 style="margin-top: 5px;"
                                  actionListener="#{systemManager.doLdapContextSearch}"
                                  update=":mainTabViewForm:mainTabView:centerTabView:LDAPTable"
                                  icon="pi pi-search"
@@ -58,7 +59,7 @@ Email: info@dpbennett.com.jm
 
                 <p:outputLabel for="activeLdapOnly" value="Active" /> 
                 <p:spacer width="10" />
-                <p:selectBooleanCheckbox style="vertical-align: middle"
+                <p:selectBooleanCheckbox style="vertical-align: middle;margin-top: 5px;"
                                          id="activeLdapOnly"
                                          value="#{systemManager.isActiveLdapsOnly}" >
                     <p:ajax  update=":mainTabViewForm:mainTabView:centerTabView:LDAPTable"

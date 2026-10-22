@@ -51,6 +51,7 @@ Email: info@dpbennett.com.jm
 
                 <p:commandButton id="userSearchButton"
                                  class="search-button"   
+                                 style="margin-top: 5px;"
                                  actionListener="#{systemManager.doUserSearch}"
                                  update=":mainTabViewForm:mainTabView:centerTabView:usersTable"
                                  icon="pi pi-search"
@@ -62,7 +63,7 @@ Email: info@dpbennett.com.jm
             <h:panelGroup style="float: right;" >
                 <p:outputLabel for="activeUsersOnly" value="Active" />  
                 <p:spacer width="10" />
-                <p:selectBooleanCheckbox style="vertical-align: middle"
+                <p:selectBooleanCheckbox style="vertical-align: middle;margin-top: 5px;"
                                          id="activeUsersOnly"
                                          value="#{systemManager.isActiveUsersOnly}" >
 
