@@ -33,7 +33,7 @@ Email: info@dpbennett.com.jm
             <p:commandButton title="Add new user"    
                              class="new-user"
                              value="New"                                                     
-                             actionListener="#{systemManager.createNewUser}"
+                             actionListener="#{systemManager.createNewUser('userDialog')}"
                              global="true"
                              process="@this"
                              icon="pi pi-plus">
@@ -173,7 +173,7 @@ Email: info@dpbennett.com.jm
 
         <p:column>
             <p:commandButton title="View or edit user"  
-                             actionListener="#{systemManager.editUser}"
+                             actionListener="#{systemManager.editUser('userDialog')}"
                              global="true"
                              process="@this"
                              icon="pi pi-pencil">
