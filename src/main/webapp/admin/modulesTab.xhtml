@@ -32,7 +32,7 @@ Email: info@dpbennett.com.jm
             <p:commandButton title="Add new module"                                  
                              value="New"
                              id="newModule"
-                             actionListener="#{systemManager.createNewModule}"                            
+                             actionListener="#{systemManager.createNewModule('moduleDialog')}"                            
                              update=":mainTabViewForm:mainTabView:centerTabView:modulesTable"
                              global="true"
                              process="@this"
@@ -139,7 +139,7 @@ Email: info@dpbennett.com.jm
 
         <p:column>
             <p:commandButton title="View or edit module"   
-                             actionListener="#{systemManager.editModule}"                            
+                             actionListener="#{systemManager.editModule('moduleDialog')}"                            
                              global="true"
                              process="@this"
                              icon="pi pi-pencil">

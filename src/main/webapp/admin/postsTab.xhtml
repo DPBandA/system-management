@@ -33,7 +33,7 @@ Email: info@dpbennett.com.jm
             <p:commandButton 
                 value="New"
                 icon="pi pi-plus" 
-                actionListener="#{documentManager.createNewPost}"                                            
+                actionListener="#{documentManager.createNewPost('postDialog')}"                                            
                 process="@this"
                 title="Create a new post" >
 
@@ -123,7 +123,7 @@ Email: info@dpbennett.com.jm
 
         <p:column>
             <p:commandButton icon="pi pi-pencil"
-                             actionListener="#{documentManager.editSelectedPost}"
+                             actionListener="#{documentManager.editSelectedPost('postDialog')}"
                              process="@this"
                              title="View or edit this post's detail">
 
