@@ -32,7 +32,7 @@ Email: info@dpbennett.com.jm
             <p:commandButton title="Add new module"                                  
                              value="New"
                              id="newModule"
-                             actionListener="#{systemManager.createNewModule}"                            
+                             actionListener="#{systemManager.createNewModule('moduleDialog')}"                            
                              update=":mainTabViewForm:mainTabView:centerTabView:modulesTable"
                              global="true"
                              process="@this"
@@ -50,6 +50,7 @@ Email: info@dpbennett.com.jm
                              placeholder="Enter search text" />            
                 <p:commandButton id="moduleSearchButton"
                                  class="search-button"   
+                                 style="margin-top: 5px;"
                                  actionListener="#{systemManager.doModuleSearch}"
                                  update=":mainTabViewForm:mainTabView:centerTabView:modulesTable"
                                  icon="pi pi-search"
@@ -62,7 +63,7 @@ Email: info@dpbennett.com.jm
             <h:panelGroup style="float: right;" >
                 <p:outputLabel for="activeModulesOnly" value="Active" />  
                 <p:spacer width="10" />
-                <p:selectBooleanCheckbox style="vertical-align: middle"
+                <p:selectBooleanCheckbox style="vertical-align: middle;margin-top: 5px;"
                                          id="activeModulesOnly"
                                          value="#{systemManager.isActiveModulesOnly}" >
 
@@ -138,7 +139,7 @@ Email: info@dpbennett.com.jm
 
         <p:column>
             <p:commandButton title="View or edit module"   
-                             actionListener="#{systemManager.editModule}"                            
+                             actionListener="#{systemManager.editModule('moduleDialog')}"                            
                              global="true"
                              process="@this"
                              icon="pi pi-pencil">

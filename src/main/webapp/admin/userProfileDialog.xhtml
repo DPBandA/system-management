@@ -37,6 +37,8 @@ Email: info@dpbennett.com.jm
 
         <h:form id="userProfileDialogForm">
 
+            <p:growl id="growl" life="5000" showDetail="true"/>
+
             <p:toolbar>
                 <p:toolbarGroup align="left" >
                     <p:commandButton value="Ok" 
@@ -56,7 +58,7 @@ Email: info@dpbennett.com.jm
                 </p:toolbarGroup>
             </p:toolbar>
 
-            <p:tabView style="margin-top: 1px;margin-bottom: 1px;">
+            <p:accordionPanel style="margin-top: 1px;margin-bottom: 1px;">
                 <p:tab title="General" >
                     <p:panelGrid columns="2">
 
@@ -120,6 +122,7 @@ Email: info@dpbennett.com.jm
                     <p:divider />
                     <p:commandButton value="Change password" 
                                      title="Save changed password"
+                                     update=":userProfileDialogForm:growl"
                                      process="@form"
                                      actionListener="#{systemManager.saveUserSecurityProfile}" />                    
 
@@ -159,14 +162,12 @@ Email: info@dpbennett.com.jm
                                         process="@this"/>
 
                             </p:selectOneMenu>
-                            <ui:remove>
-                                <p:outputLabel value="Mobile display" 
-                                               style="font-weight: bold;margin-right: 10px;"
-                                               for="renderMobileUI"/>
-                                <p:toggleSwitch value="#{systemManager.user.renderMobileUI}" 
-                                                id="renderMobileUI"
-                                                onIcon="pi pi-check" offIcon="pi pi-times" />
-                            </ui:remove>
+                            <p:outputLabel value="Mobile display" 
+                                           style="font-weight: bold;margin-right: 10px;"
+                                           for="renderMobileUI"/>
+                            <p:toggleSwitch value="#{systemManager.user.renderMobileUI}" 
+                                            id="renderMobileUI"
+                                            onIcon="pi pi-check" offIcon="pi pi-times" />
                         </p:panelGrid>   
                     </p:panel>
 
@@ -196,7 +197,7 @@ Email: info@dpbennett.com.jm
 
                 </p:tab>
 
-            </p:tabView>
+            </p:accordionPanel>
 
             <p:toolbar>
                 <p:toolbarGroup align="left" >
