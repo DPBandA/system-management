@@ -316,13 +316,7 @@
         <managed-bean-class>jm.com.dpbennett.sm.manager.SystemManager</managed-bean-class>
         <managed-bean-scope>session</managed-bean-scope>
     </managed-bean> 
-    
-    <managed-bean>
-        <managed-bean-name>documentManager</managed-bean-name>
-        <managed-bean-class>jm.com.dpbennett.sm.manager.DocumentManager</managed-bean-class>
-        <managed-bean-scope>session</managed-bean-scope>
-    </managed-bean> 
-    
+     
     <managed-bean>
         <managed-bean-name>humanResourceManager</managed-bean-name>
         <managed-bean-class>jm.com.dpbennett.hrm.manager.HumanResourceManager</managed-bean-class>
