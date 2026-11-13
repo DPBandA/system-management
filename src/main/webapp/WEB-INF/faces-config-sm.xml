@@ -97,210 +97,175 @@
     </validator>   
     
     <navigation-rule>
-        <from-view-id>*</from-view-id>
-        <navigation-case>
-            <from-outcome>emailTemplateDialog</from-outcome>
-            <to-view-id>/admin/emailTemplateDialog.xhtml</to-view-id>
-        </navigation-case>
-    </navigation-rule> 
-    <navigation-rule>
-        <from-view-id>*</from-view-id>
-        <navigation-case>
-            <from-outcome>emailTemplateDialog-m</from-outcome>
-            <to-view-id>/admin/emailTemplateDialog-m.xhtml</to-view-id>
-        </navigation-case>
-    </navigation-rule> 
-    <navigation-rule>
-        <from-view-id>*</from-view-id>
-        <navigation-case>
-            <from-outcome>postDialog</from-outcome>
-            <to-view-id>/admin/postDialog.xhtml</to-view-id>
-        </navigation-case>
-    </navigation-rule>   
-    <navigation-rule>
-        <from-view-id>*</from-view-id>
-        <navigation-case>
-            <from-outcome>postDialog-m</from-outcome>
-            <to-view-id>/admin/postDialog-m.xhtml</to-view-id>
-        </navigation-case>
-    </navigation-rule>    
-    <navigation-rule>
-        <from-view-id>*</from-view-id>
+        <from-view-id>/index.xhtml</from-view-id>
         <navigation-case>
             <from-outcome>privilegePickListDialog</from-outcome>
             <to-view-id>/admin/privilegePickListDialog.xhtml</to-view-id>
         </navigation-case>
     </navigation-rule>
+    
     <navigation-rule>
-        <from-view-id>*</from-view-id>
+        <from-view-id>/index-m.xhtml</from-view-id>
         <navigation-case>
             <from-outcome>privilegePickListDialog-m</from-outcome>
             <to-view-id>/admin/privilegePickListDialog-m.xhtml</to-view-id>
         </navigation-case>
     </navigation-rule> 
+    
     <navigation-rule>
-        <from-view-id>*</from-view-id>
+        <from-view-id>/index.xhtml</from-view-id>
         <navigation-case>
             <from-outcome>modulePickListDialog</from-outcome>
             <to-view-id>/admin/modulePickListDialog.xhtml</to-view-id>
         </navigation-case>
     </navigation-rule>
+    
     <navigation-rule>
-        <from-view-id>*</from-view-id>
+        <from-view-id>/index-m.xhtml</from-view-id>
         <navigation-case>
             <from-outcome>modulePickListDialog-m</from-outcome>
             <to-view-id>/admin/modulePickListDialog-m.xhtml</to-view-id>
         </navigation-case>
     </navigation-rule>
+    
     <navigation-rule>
-        <from-view-id>*</from-view-id>
+        <from-view-id>/index.xhtml</from-view-id>
         <navigation-case>
             <from-outcome>moduleDialog</from-outcome>
             <to-view-id>/admin/moduleDialog.xhtml</to-view-id>
         </navigation-case>
     </navigation-rule>
+    
     <navigation-rule>
-        <from-view-id>*</from-view-id>
+        <from-view-id>/index-m.xhtml</from-view-id>
         <navigation-case>
             <from-outcome>moduleDialog-m</from-outcome>
             <to-view-id>/admin/moduleDialog-m.xhtml</to-view-id>
         </navigation-case>
     </navigation-rule>
+    
     <navigation-rule>
-        <from-view-id>*</from-view-id>
+        <from-view-id>/index.xhtml</from-view-id>
         <navigation-case>
             <from-outcome>userDialog</from-outcome>
             <to-view-id>/admin/userDialog.xhtml</to-view-id>
         </navigation-case>
     </navigation-rule>
+    
     <navigation-rule>
-        <from-view-id>*</from-view-id>
+        <from-view-id>/index-m.xhtml</from-view-id>
         <navigation-case>
             <from-outcome>userDialog-m</from-outcome>
             <to-view-id>/admin/userDialog-m.xhtml</to-view-id>
         </navigation-case>
     </navigation-rule>
+    
     <navigation-rule>
-        <from-view-id>*</from-view-id>
+        <from-view-id>/index.xhtml</from-view-id>
         <navigation-case>
             <from-outcome>userProfileDialog</from-outcome>
             <to-view-id>/admin/userProfileDialog.xhtml</to-view-id>
         </navigation-case>
     </navigation-rule>
+    
     <navigation-rule>
-        <from-view-id>*</from-view-id>
+        <from-view-id>/index-m.xhtml</from-view-id>
         <navigation-case>
             <from-outcome>userProfileDialog-m</from-outcome>
             <to-view-id>/admin/userProfileDialog-m.xhtml</to-view-id>
         </navigation-case>
     </navigation-rule>
+    
     <navigation-rule>
-        <from-view-id>*</from-view-id>
+        <from-view-id>/index.xhtml</from-view-id>
         <navigation-case>
             <from-outcome>privilegeDialog</from-outcome>
             <to-view-id>/admin/privilegeDialog.xhtml</to-view-id>
         </navigation-case>
     </navigation-rule> 
+    
     <navigation-rule>
-        <from-view-id>*</from-view-id>
+        <from-view-id>/index-m.xhtml</from-view-id>
         <navigation-case>
-            <from-outcome>privilegeDialog-m</from-outcome>
-            <to-view-id>/admin/privilegeDialog-m.xhtml</to-view-id>
+            <from-outcome>privilegeDialog</from-outcome>
+            <to-view-id>/admin/privilegeDialog.xhtml</to-view-id>
         </navigation-case>
     </navigation-rule> 
+    
     <navigation-rule>
-        <from-view-id>*</from-view-id>
+        <from-view-id>/index.xhtml</from-view-id>
         <navigation-case>
             <from-outcome>categoryDialog</from-outcome>
             <to-view-id>/admin/categoryDialog.xhtml</to-view-id>
         </navigation-case>
     </navigation-rule>
+    
     <navigation-rule>
-        <from-view-id>*</from-view-id>
+        <from-view-id>/index-m.xhtml</from-view-id>
         <navigation-case>
-            <from-outcome>categoryDialog-m</from-outcome>
-            <to-view-id>/admin/categoryDialog-m.xhtml</to-view-id>
+            <from-outcome>categoryDialog</from-outcome>
+            <to-view-id>/admin/categoryDialog.xhtml</to-view-id>
         </navigation-case>
     </navigation-rule>
+    
     <navigation-rule>
-        <from-view-id>*</from-view-id>
+        <from-view-id>/index.xhtml</from-view-id>
         <navigation-case>
             <from-outcome>countryDialog</from-outcome>
             <to-view-id>/admin/countryDialog.xhtml</to-view-id>
         </navigation-case>
     </navigation-rule>
+    
     <navigation-rule>
-        <from-view-id>*</from-view-id>
+        <from-view-id>/index-m.xhtml</from-view-id>
         <navigation-case>
-            <from-outcome>countryDialog-m</from-outcome>
-            <to-view-id>/admin/countryDialog-m.xhtml</to-view-id>
+            <from-outcome>countryDialog</from-outcome>
+            <to-view-id>/admin/countryDialog.xhtml</to-view-id>
         </navigation-case>
     </navigation-rule>
+    
     <navigation-rule>
-        <from-view-id>*</from-view-id>
+        <from-view-id>/index.xhtml</from-view-id>
         <navigation-case>
             <from-outcome>notificationDialog</from-outcome>
             <to-view-id>/admin/notificationDialog.xhtml</to-view-id>
         </navigation-case>
     </navigation-rule>
+    
     <navigation-rule>
-        <from-view-id>*</from-view-id>
+        <from-view-id>/index-m.xhtml</from-view-id>
         <navigation-case>
-            <from-outcome>notificationDialog-m</from-outcome>
-            <to-view-id>/admin/notificationDialog-m.xhtml</to-view-id>
+            <from-outcome>notificationDialog</from-outcome>
+            <to-view-id>/admin/notificationDialog.xhtml</to-view-id>
         </navigation-case>
     </navigation-rule>
+         
     <navigation-rule>
-        <from-view-id>*</from-view-id>
-        <navigation-case>
-            <from-outcome>documentTypeDialog</from-outcome>
-            <to-view-id>/admin/documentTypeDialog.xhtml</to-view-id>
-        </navigation-case>
-    </navigation-rule>
-    <navigation-rule>
-        <from-view-id>*</from-view-id>
-        <navigation-case>
-            <from-outcome>documentTypeDialog-m</from-outcome>
-            <to-view-id>/admin/documentTypeDialog-m.xhtml</to-view-id>
-        </navigation-case>
-    </navigation-rule> 
-    <navigation-rule>
-        <from-view-id>*</from-view-id>
-        <navigation-case>
-            <from-outcome>attachmentDialog</from-outcome>
-            <to-view-id>/admin/attachmentDialog.xhtml</to-view-id>
-        </navigation-case>
-    </navigation-rule> 
-    <navigation-rule>
-        <from-view-id>*</from-view-id>
-        <navigation-case>
-            <from-outcome>attachmentDialog-m</from-outcome>
-            <to-view-id>/admin/attachmentDialog-m.xhtml</to-view-id>
-        </navigation-case>
-    </navigation-rule> 
-    <navigation-rule>
-        <from-view-id>*</from-view-id>
+        <from-view-id>/index.xhtml</from-view-id>
         <navigation-case>
             <from-outcome>ldapDialog</from-outcome>
             <to-view-id>/admin/ldapDialog.xhtml</to-view-id>
         </navigation-case>
     </navigation-rule>
+    
     <navigation-rule>
-        <from-view-id>*</from-view-id>
+        <from-view-id>/index-m.xhtml</from-view-id>
         <navigation-case>
-            <from-outcome>ldapDialog-m</from-outcome>
-            <to-view-id>/admin/ldapDialog-m.xhtml</to-view-id>
+            <from-outcome>ldapDialog</from-outcome>
+            <to-view-id>/admin/ldapDialog.xhtml</to-view-id>
         </navigation-case>
     </navigation-rule>
+    
     <navigation-rule>
-        <from-view-id>*</from-view-id>
+        <from-view-id>/index.xhtml</from-view-id>
         <navigation-case>
             <from-outcome>registrationDialog</from-outcome>
             <to-view-id>/admin/registrationDialog.xhtml</to-view-id>
         </navigation-case>
     </navigation-rule>
+    
     <navigation-rule>
-        <from-view-id>*</from-view-id>
+        <from-view-id>/index-m.xhtml</from-view-id>
         <navigation-case>
             <from-outcome>registrationDialog-m</from-outcome>
             <to-view-id>/admin/registrationDialog-m.xhtml</to-view-id>
